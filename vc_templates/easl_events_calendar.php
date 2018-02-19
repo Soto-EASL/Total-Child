@@ -111,13 +111,12 @@ $top_filter = '
 			<div class="easl-col easl-col-3-4">
 				<div class="easl-col-inner">
 					<div class="ec-filter-search">
-						<input type="text" name="ecf_search" value="" placeholder="Search for an event"/>
+						<input type="text" name="ecf_search" value="" placeholder="Search"/>
 						<span class="ecs-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
 					</div>
 					<div class="easl-row">
 						<div class="easl-col easl-col-2-3">
 							<div class="easl-col-inner">
-								<h4>Filter Events:</h4>
 								<div class="ec-filter-fields">
 									<div class="ec-filter-field-wrap">
 										<div class="easl-custom-select">
