@@ -68,7 +68,7 @@ foreach($topics as $topic_id => $topic_name){
 		';
 }
 $meeting_type_list = '
-	<option value="">Meeting Type</option>
+	<option value="">Category</option>
 	';
 $meeting_types = get_terms( array(
 	'taxonomy' => EASL_Event_Config::get_meeting_type_slug(),
@@ -121,7 +121,7 @@ $top_filter = '
 								<div class="ec-filter-fields">
 									<div class="ec-filter-field-wrap">
 										<div class="easl-custom-select">
-											<span class="ec-cs-label">Meeting Type</span>
+											<span class="ec-cs-label">Category</span>
 											<select name="ec_meeting_type">
 												'. $meeting_type_list .'
 											</select>
@@ -136,23 +136,14 @@ $top_filter = '
 										</div>
 									</div>
 									<div class="ec-filter-field-wrap">
-										<div class="easl-custom-date">
-											<span class="ecd-lable-left">From:</span>
-											<input class="easl-date-picker" type="text" name="ec_filter_date_from" />
-											<span class="ecd-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-										</div>
-									</div>
-									<div class="ec-filter-field-wrap">
-										<div class="easl-custom-date ecfd-to">
-											<span class="ecd-lable-left">To:</span>
-											<input class="easl-date-picker" type="text" name="ec_filter_date_to" />
-											<span class="ecd-icon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-										</div>
-									</div>
-									<div class="ec-filter-field-wrap">
 										<div class="ecf-events-types">
 											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="future" checked="checked"/> <span>Future Events</span></label>
 											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="past"/> <span>Past Events</span></label>
+										</div>
+									</div>
+									<div class="ec-filter-field-wrap">
+										<div class="easl-filter-reset-wrap">
+											<button class="easl-button easl-button-small easl-ecf-reset">Clear</button>
 										</div>
 									</div>
 								</div>

@@ -189,7 +189,7 @@ body a {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 1;
+    z-index: 0;
     opacity: 0;
 }
 
@@ -1018,6 +1018,11 @@ body .wpb_single_image a.easl-vc-image-over:after {
     font-size: 14px;
     color: #666;
     line-height: 20px;
+}
+.easl-filter-reset-wrap {
+    text-align: right;
+}
+.easl-ecf-reset {
 }
 
 

@@ -24,6 +24,9 @@
         this.scrollLoad = true;
         this.filterValdiateError = false;
         this.filterValdiateMessage = [];
+        this.resettingFilter = false;
+        this.requestData = false;
+        this.scrollLoading = false;
     };
     EventCalendar.prototype.init = function(){
         if($('.easl-ec-filter-container', this.$wrap).length > 0){
@@ -38,15 +41,45 @@
         this.cssAnimation = "undefined" !== typeof this.$wrap.data('cssanimation') ? this.$wrap.data('cssanimation') : '';
         this.lastPage = "undefined" !== typeof this.$wrap.data('lastpage') ? this.$wrap.data('lastpage') : false;
         this.scrollLoad = !this.lastPage;
+        this.requestData = JSON.stringify(this.getFilters());
     };
     EventCalendar.prototype.addListeners = function(){
         $(':input', this.$filterCon).on('change', $.proxy(this, 'filter'));
         if("undefined" !== typeof $.fn.appear){ 
             $('.easl-ec-load-more', this.$wrap).appear($.proxy(this, 'scrollLoadNow'), {one: false});
         }
+        $(".easl-ecf-reset", this.$filterCon).on('click', $.proxy(this, 'resetFilter'));
     };
     EventCalendar.prototype.showFilterValidateMessage = function(){
         alert(this.filterValdiateMessage.join("\n"));
+    };
+    
+    EventCalendar.prototype.resetFilter = function(){
+        this.resettingFilter = true;
+        $('.ec-filter-topics .easl-custom-checkbox', this.$filterCon).not('.easl-cb-all').each(function(){
+            $(this)
+                .removeClass('easl-active')
+                .find('input')
+                .prop('checked', false);
+        });
+        $('.ec-filter-topics .easl-cb-all', this.$filterCon)
+                .addClass('easl-active')
+                .find('input')
+                .prop('checked', true);
+        $('.easl-custom-select', this.$filterCon).each(function(){
+            var labelText = $(this).find('.ecs-list li').removeClass('easl-active').first().addClass('easl-active').html();
+            $(this).find('.ec-cs-label').html(labelText);
+            $(this).find('select option').prop('selected', false).first().prop('selected', true);
+            
+        });
+        $('[name="ecf_search"]', this.$filterCon).val('');
+        $('.ecf-events-types', this.$filterCon).each(function(){
+            $(this).find('.easl-custom-radio').removeClass('easl-active').find('input').prop('checked', false);
+            $(this).find('.easl-custom-radio').first().addClass('easl-active').find('input').prop('checked', true);
+        });
+        
+        this.resettingFilter = false;
+        this.filter();
     };
     EventCalendar.prototype.getFilters = function(){
         var data = {}, topics = [], search = '', meetingType = '', location = '', dateFrom = '', dateTo = '', eventType = '';
@@ -58,8 +91,6 @@
         search = $('[name="ecf_search"]', this.$filterCon).val();
         meetingType = $('[name="ec_meeting_type"]', this.$filterCon).val();
         location = $('[name="ec_location"]', this.$filterCon).val();
-        dateFrom = $('[name="ec_filter_date_from"]', this.$filterCon).val();
-        dateTo = $('[name="ec_filter_date_to"]', this.$filterCon).val();
         eventType = $('[name="ec_filter_type"]:checked', this.$filterCon).val();
         
         if(topics.length > 0){
@@ -74,29 +105,15 @@
         if(location){
             data.location = location;
         }
-        if(dateFrom){
-            data.form_date = dateFrom;
-        }
-        if(dateTo){
-            data.to_date = dateTo;
-        }
-        if(dateFrom || dateTo){
-            $('.ecf-events-types', this.$filterCon).addClass('ec-filter-field-diasble');
-        }else{
-            $('.ecf-events-types', this.$filterCon).removeClass('ec-filter-field-diasble');
-        }
-        if(dateFrom && dateTo && (easlCompareDates(dateTo, dateFrom) < 1)){
-            this.filterValdiateError = true;
-            this.filterValdiateMessage.push('Please enter a "To Date" larger than the "From Date"');
-        }
+        data.event_type = eventType;
         
-        if( !dateFrom && !dateTo && eventType){
-            data.event_type = eventType;
-        }
         data.event_number = 5;
         return data;
     };
     EventCalendar.prototype.filter = function(){
+        if(this.resettingFilter){
+            return;
+        }
         var data = this.getFilters();
         if(this.filterValdiateError){
             this.showFilterValidateMessage();
@@ -142,9 +159,15 @@
         if(!this.scrollLoad){
             return false;
         }
+        this.scrollLoading = true;
         this.requestEvents(this.getFilters());
     };
     EventCalendar.prototype.requestEvents = function(data){
+        if(!this.scrollLoading && (JSON.stringify(data) === this.requestData) ){
+            return;
+        }
+        
+        this.requestData = JSON.stringify(data);
         this.abortRequest();
         this.showLoader();
         !this.scrollLoad && this.clearEventCon();
@@ -164,6 +187,7 @@
     EventCalendar.prototype.loadEvents = function(data){
         this.hideLoader();
         this.request = false;
+        this.scrollLoading = false;
         if('undefined' === typeof data.status){
             this.scrollLoad = false;
             return false;
@@ -267,28 +291,40 @@
                 .find('.ecs-list')
                 .slideUp(250);
         });
+        $body.on('click', '.easl-custom-checkbox input', function(e){
+            e.stopPropagation();
+        });
         $body.on('click', '.easl-custom-checkbox', function(e){
-            var $cc = $(this);
-            if($('input', $cc).is(':checked')){
+            var $cc = $(this), $ul = $cc.closest('ul');
+            
+            if(!$('input', $cc).is(':checked')){
                 $cc.addClass('easl-active');
                 if($cc.hasClass('easl-cb-all')){
-                    $cc
-                        .closest('ul')
+                    $ul
                         .find('.easl-custom-checkbox')
                         .not($cc)
                         .removeClass('easl-active')
                         .find('input')
                             .prop('checked', false);
                 }else{
-                   $cc
-                        .closest('ul')
+                   $ul
                         .find('.easl-cb-all')
                         .removeClass('easl-active')
                         .find('input')
                             .prop('checked', false);
                 }
             }else{
+                if($cc.hasClass('easl-cb-all')){
+                    return false;
+                }
                 $cc.removeClass('easl-active');
+                if(!$ul.find('.easl-active').length){
+                    $ul
+                        .find('.easl-cb-all')
+                        .addClass('easl-active')
+                        .find('input')
+                            .prop('checked', true);
+                }
             }
         });
         $body.on('click', '.easl-custom-radio', function(e){
