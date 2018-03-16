@@ -54,14 +54,18 @@ $topics = get_terms( array(
 if( !is_array($topics)){
 	$topics = array();
 }
+
+$topic_country_map = easl_get_events_topic_count();
+
 foreach($topics as $topic_id => $topic_name){
 	$topic_color = get_term_meta($topic_id, 'easl_tax_color', true);
 	if(!$topic_color){
 		$topic_color = 'blue';
 	}
+	$topic_ccs = isset($topic_country_map[$topic_id]) ? $topic_country_map[$topic_id] : array();
 	$topics_list .= '
 		<li>
-			<label class="easl-custom-checkbox csic-'. $topic_color .'">
+			<label class="easl-custom-checkbox csic-'. $topic_color .'" data-countries="'. json_encode($topic_ccs) .'">
 				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'"/> <span>'. esc_html($topic_name) .'</span>
 			</label>
 		</li>
@@ -91,6 +95,7 @@ $location_list = '
 	<option value="">Location</option>
 	';
 $countries = easl_event_db_countries();
+
 foreach($countries as $country_code => $country_name){
 	$location_list .= '
 		<option value="'. $country_code .'">'. esc_html($country_name) .'</option>

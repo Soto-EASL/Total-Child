@@ -355,3 +355,36 @@ function easl_event_get_countries(){
 		'ZW' => __( 'Zimbabwe', 'total' ),
 	);
 }
+
+function easl_get_events_topic_count(){
+	global $wpdb;
+
+	$inner_select = " SELECT tt.term_id AS topic_id, p2.ID as pid FROM {$wpdb->posts} AS p2";
+	$inner_select .= " LEFT JOIN {$wpdb->term_relationships } AS tr ON p2.ID = tr.object_id";
+	$inner_select .= " LEFT JOIN {$wpdb->term_taxonomy } AS tt ON tt.term_taxonomy_id = tr.term_taxonomy_id";
+	$inner_select .= " WHERE p2.post_type = 'event'";
+	$inner_select .= " AND p2.post_status != 'private'";
+	$inner_select .= " AND tt.taxonomy = 'event_topic' ";
+	
+	$query = "SELECT tp.topic_id, mt.meta_value as country_code, COUNT(*) AS num_posts FROM {$wpdb->posts} as p";
+	$query .= " LEFT JOIN {$wpdb->postmeta} AS mt ON p.ID = mt.post_id";
+	$query .= " LEFT JOIN ({$inner_select}) AS tp ON tp.pid = p.ID";
+	$query .= " WHERE p.post_type = 'event'";
+	$query .= " AND p.post_status != 'private'";
+	$query .= " AND mt.meta_key = 'event_location_country'";
+	$query .= " GROUP BY tp.topic_id, mt.meta_value";
+	
+	$results = (array) $wpdb->get_results( $query, ARRAY_A );
+	$topics_country = array();
+	foreach($results as $tc_count){
+		if($tc_count['num_posts'] < 1){
+			continue;
+		}
+		$topic_id = absint($tc_count['topic_id']);
+		if(!isset($topics_country[$topic_id])){
+			$topics_country[$topic_id] = array();
+		}
+		$topics_country[$topic_id][] = $tc_count['country_code'];
+	}
+	return $topics_country;
+}
