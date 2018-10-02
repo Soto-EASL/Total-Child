@@ -39,9 +39,9 @@ wp_enqueue_script('easl-staff-list-script',
 // Define output var
 $output = '';
 
+$item_content_layout = $contact_info = '';
 // Get and extract shortcode attributes
-$atts = vc_map_get_attributes( 'vcex_staff_grid', $atts );
-
+$atts = vc_map_get_attributes( 'easl_staff_list', $atts );
 // Extract shortcode atts
 extract( $atts );
 
@@ -76,6 +76,10 @@ if ( $wpex_query->have_posts() ) :
     $title_tag          = $title_tag ? esc_attr( $title_tag ) : 'h2';
     $filter_html = '';
     $post_html='';
+	
+	if($item_content_layout == 'two_col') {
+		$grid_classes[] = 'easl-staff-grid-two-col';
+	}
 
     // Load lightbox scripts
     if ( 'lightbox' == $thumb_link ) {
@@ -683,6 +687,31 @@ if ( $wpex_query->have_posts() ) :
                     endif;
 
                     $post_html .= apply_filters( 'vcex_staff_grid_excerpt', $excerpt_output, $atts );
+
+                    /*** Contact Info ***/
+                    $contact_info_output = '';
+					$staff_telephone = get_field('telephone');
+					$staff_fax = get_field('fax');
+					$staff_email = get_field('email');
+                    if ( 'true' == $contact_info && ($staff_telephone || $staff_fax || $staff_email) ) :
+
+                        $contact_info_output .= '<div class="easl-staff-contact-info wpex-clr"'. $excerpt_style .'>';
+
+						if($staff_telephone){
+							$contact_info_output .= sprintf('<p class="easl-staff-telephone"><a href="tel:%s">%s</a></p>', $staff_telephone, $staff_telephone);
+						}
+						if($staff_fax){
+							$contact_info_output .= sprintf('<p class="easl-staff-fax"><span>%s</span></p>', $staff_fax, $staff_fax);
+						}
+						if($staff_email){
+							$contact_info_output .= sprintf('<p class="easl-staff-email"><a href="mailto:%s">%s</a></p>', $staff_email, $staff_email);
+						}
+
+                        $contact_info_output .= '</div>';
+
+                    endif;
+
+                    $post_html .= $contact_info_output;
 
                     /*** Social Links ***/
                     $social_output = '';

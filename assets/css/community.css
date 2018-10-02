@@ -192,3 +192,25 @@ hr.in-the-bottom{
     margin-bottom: 20px;
 }
 
+.easl-staff-contact-info p {
+    margin: 0;
+}
+.easl-staff-contact-info p a {
+    color: inherit;
+}
+.easl-staff-grid-two-col .entry-media {
+    flex: 0 0 auto;
+    width: 95px;
+}
+.easl-staff-grid-two-col .staff-entry-details {
+    flex: 1 0 auto;
+    padding-left: 15px;
+    padding-top: 0;
+}
+.easl-staff-grid-two-col .staff-entry-title {
+    margin-top: -4px;
+}
+.easl-staff-grid-two-col  .entry-inner.staff-entry-inner {
+    flex-direction: row;
+    padding: 5px 0 0;
+}

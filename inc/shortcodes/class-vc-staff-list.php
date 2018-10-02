@@ -669,6 +669,25 @@ if( !class_exists('EASL_VC_STAFF_LIST') ){
                         'group' => __( 'Excerpt', 'total' ),
                         'dependency' => array( 'element' => 'excerpt', 'value' => 'true' ),
                     ),
+                    // Item Layout
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => __( 'Item Content Layout', 'total' ),
+                        'param_name' => 'item_content_layout',
+						'std' => 'single_col',
+                        'value' => array(
+                            __( 'Image Top - Single Column', 'total' ) => 'single_col',
+                            __( 'Image Left - Two column', 'total' ) => 'two_col',
+                        ),
+                        'group' => __( 'Item Layout', 'total' ),
+                    ),
+                    array(
+                        'type' => 'vcex_ofswitch',
+                        'std' => 'false',
+                        'heading' => __( 'Enable', 'total' ),
+                        'param_name' => 'contact_info',
+                        'group' => __( 'Item Layout', 'total' ),
+                    ),
                     // Button
                     array(
                         'type' => 'vcex_ofswitch',
