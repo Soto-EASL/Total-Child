@@ -27,18 +27,77 @@ return array(
 				'description' => esc_html__( 'Select the organisation of the event.', 'total' ),
 				'options' => easl_event_get_organisations(),
 			),
+            'programme' => array(
+                'title'=> esc_html__('Programme', 'total'),
+                'id' => $prefix . 'programme',
+                'type' => 'select',
+                'description' => esc_html__('Select the sourse of programme', 'total'),
+                'options' => easl_event_get_programme(),
+            ),
 			'start_date' => array(
-				'title' => esc_html__( 'Sart Date', 'total' ),
+				'title' => esc_html__( 'Start Date', 'total' ),
 				'id' => $prefix . 'start_date',
 				'type' => 'date',
 				'description' => esc_html__( 'Enter the start date of the event.', 'total' ),
+
 			),
 			'end_date' => array(
 				'title' => esc_html__( 'End Date', 'total' ),
 				'id' => $prefix . 'end_date',
 				'type' => 'date',
 				'description' => esc_html__( 'Enter the end date of the event.', 'total' ),
+
 			),
+            'event_website_url' => array(
+                'title' => esc_html__( 'Event Website URL', 'total' ),
+                'id' => $prefix . 'website_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter the Event Website URL.', 'total' ),
+            ),
+            'online_programme_url' => array(
+                'title' => esc_html__( 'Online Programme URL', 'total' ),
+                'id' => $prefix . 'online_programme_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter the Online Programme URL.', 'total' ),
+            ),
+            'notification_url' => array(
+                'title' => esc_html__( 'Notification URL', 'total' ),
+                'id' => $prefix . 'notification_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter the Notification URL.', 'total' ),
+            ),
+            'submit_abstract' => array(
+                'title' => esc_html__( 'Submit Abstract', 'total' ),
+                'id' => $prefix . 'submit_abstract_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter the Submit Abstract URL.', 'total' ),
+            ),
+            'register' => array(
+                'title' => esc_html__( 'Register', 'total' ),
+                'id' => $prefix . 'register_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter the Register URL.', 'total' ),
+            ),
+            'display_sponsorship_sidebar' => array(
+                'title' => esc_html__( 'Display Sponsorship Sidebar?', 'total' ),
+                'id' => $prefix . 'display_sponsorship_sidebar',
+                'type' => 'checkbox',
+                'value' => 'on' ,
+
+            ),
+            'bursary_available' => array(
+                'title' => esc_html__( 'Bursary Available?', 'total' ),
+                'id' => $prefix . 'bursary_available',
+                'type' => 'checkbox',
+                'value' => 'on',
+            ),
+            'press_ivited' => array(
+                'title' => esc_html__( 'Press Ivited?', 'total' ),
+                'id' => $prefix . 'press_ivited',
+                'type' => 'checkbox',
+                'value' => 'on',
+            ),
+
 		)
 	),
 );

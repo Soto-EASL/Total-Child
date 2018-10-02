@@ -14,6 +14,12 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-mentors.php'
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-mentors-table.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-cag-members.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-menu-stacked-content.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-post-type-grid.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-users-grid.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-card-button.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staff-list.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
 
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-button.php' );
@@ -30,5 +36,7 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_mentors_table', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-mentors-table.php' );
 	vc_lean_map( 'easl_cag_members', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-cag-members.php' );
 	vc_lean_map( 'easl_menu_stacked_content', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-menu-stacked-content.php' );
+	vc_lean_map( 'easl_card_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-card-button.php' );
+
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

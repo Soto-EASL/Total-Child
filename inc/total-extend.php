@@ -36,6 +36,11 @@ function easl_vc_button_grid_icons(){
 		__( 'Groups', 'total' ) => 'groups',
 		__( 'Membership', 'total' ) => 'membership',
 		__( 'Mentorship', 'total' ) => 'mentorship',
+		__( 'Liver', 'total' ) => 'liver',
+		__( 'Arrows', 'total' ) => 'arrows',
+		__( 'Arrows', 'total' ) => 'arrows',
+		__( 'Globe', 'total' ) => 'globe',
+		__( 'UEG', 'total' ) => 'ueg',
 	);
 }
 function easl_title_icons(){
@@ -50,6 +55,10 @@ function easl_title_icons(){
 		'groups' => __( 'Groups', 'total' ),
 		'membership' => __( 'Membership', 'total' ),
 		'mentorship' => __( 'Mentorship', 'total' ),
+		'liver' => __( 'Liver', 'total' ),
+		'arrows' => __( 'Arrows', 'total' ),
+		'globe' => __( 'Globe', 'total' ),
+		'ueg' => __( 'UEG', 'total' ),
 	);
 }
 function easl_social_profile_options_list(){
@@ -220,46 +229,10 @@ function easl_vc_add_params(){
 }
 add_action( 'vc_after_init', 'easl_vc_add_params', 40 );
 
-/*Post type: move to individual php */
 
-add_action('init', 'easl_cpt_register');
-function easl_cpt_register(){
-	register_post_type( 'publication', array(
-		'labels' => array(
-			'name' => 'Publication',
-			'singular_name' => 'Publication',
-			'add_new' => __( 'Add New', 'total' ),
-			'add_new_item' => __( 'Add New Item', 'total' ),
-			'edit_item' => __( 'Edit Item', 'total' ),
-			'new_item' => __( 'Add New Item', 'total' ),
-			'view_item' => __( 'View Item', 'total' ),
-			'search_items' => __( 'Search Items', 'total' ),
-			'not_found' => __( 'No Items Found', 'total' ),
-			'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
-		),
-		'public' => true,
-		'capability_type' => 'post',
-		'has_archive' => false,
-		'menu_icon' => 'dashicons-media-text',
-		'menu_position' => 20,
-		'rewrite' => array( 'slug' => 'publication', 'with_front' => false ),
-		'supports' => array(
-			'title',
-			'editor',
-			'excerpt',
-			'thumbnail',
-			'comments',
-			'custom-fields',
-			'revisions',
-			'author',
-			'page-attributes',
-		),
-	) );
-}
 
 add_filter('wpex_main_metaboxes_post_types', 'easl_total_post_types');
 function easl_total_post_types($post_types){
 	$post_types['event'] = 'event';
-	$post_types['publication'] = 'publication';
 	return $post_types;
 }

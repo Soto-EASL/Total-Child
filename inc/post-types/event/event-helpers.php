@@ -10,6 +10,20 @@ function easl_event_get_organisations(){
 		2 => 'EASL - AASLD',
 	);
 }
+function easl_event_get_programme(){
+	return array(
+		1 => 'URL',
+		2 => 'PDF',
+	);
+}
+//function easl_event_get_key_dates(){
+//    return array(
+//        1 => 'Abstract submission',
+//        2 => 'Early Registration',
+//        3 => 'Registration',
+//        4 => 'Extended deadline',
+//    );
+//}
 
 function easl_taxonomoy_colors(){
 	return array(
@@ -84,6 +98,7 @@ function easl_event_db_countries(){
 			$key_countries[$country_code] = $full_country_list[$country_code];
 		}
 	}
+	asort($key_countries);
 	return $key_countries;
 }
 

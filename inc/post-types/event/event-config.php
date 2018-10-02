@@ -11,6 +11,7 @@ class EASL_Event_Config {
 		'event' => 'event',
 		'topic' => 'event_topic',
 		'type'  => 'event_type',
+        //'key_dates' => 'key_dates',
 	);
 	/**
 	 * Get thing started
@@ -24,6 +25,8 @@ class EASL_Event_Config {
 		add_action( 'init', array( 'EASL_Event_Config', 'register_event_type' ), 0 );
 		// Register event topics
 		add_action( 'init', array( 'EASL_Event_Config', 'register_topics' ), 0 );
+        // Register event key dates
+		//add_action( 'init', array( 'EASL_Event_Config', 'register_key_dates' ), 0 );
 		if ( is_admin() ) {
 			// Add gallery metabox to event 
 			add_filter( 'wpex_gallery_metabox_post_types', array( 'EASL_Event_Config', 'add_gallery_metabox' ), 20 );
@@ -47,6 +50,10 @@ class EASL_Event_Config {
 	public static function get_meeting_type_slug(){
 		return self::$slugs['type'];
 	}
+
+//    public static function get_key_dates_slug(){
+//        return self::$slugs['key_dates'];
+//    }
 	/**
 	 * Register post type.
 	 *
@@ -163,6 +170,40 @@ class EASL_Event_Config {
 		
 		register_taxonomy( self::get_topic_slug(), array( self::get_event_slug() ), $args );
 	}
+
+//    public static function register_key_dates() {
+//
+//        // Define Event Type arguments
+//        $args = array(
+//            'labels' => array(
+//                'name' => __( 'Key Dates', 'total' ),
+//                'singular_name' => __( 'Key Date', 'total' ),
+//                'menu_name' => __( 'Key Dates', 'total' ),
+//                'search_items' => __( 'Search','total' ),
+//                'popular_items' => __( 'Popular', 'total' ),
+//                'all_items' => __( 'All', 'total' ),
+//                'parent_item' => __( 'Parent', 'total' ),
+//                'parent_item_colon' => __( 'Parent', 'total' ),
+//                'edit_item' => __( 'Edit', 'total' ),
+//                'update_item' => __( 'Update', 'total' ),
+//                'add_new_item' => __( 'Add New', 'total' ),
+//                'new_item_name' => __( 'New', 'total' ),
+//                'separate_items_with_commas' => __( 'Separate with commas', 'total' ),
+//                'add_or_remove_items' => __( 'Add or remove', 'total' ),
+//                'choose_from_most_used' => __( 'Choose from the most used', 'total' ),
+//            ),
+//            'public' => true,
+//            'show_in_nav_menus' => false,
+//            'show_ui' => true,
+//            'show_admin_column' => true,
+//            'show_tagcloud' => false,
+//            'hierarchical' => true,
+//            'rewrite' => array( 'slug' => 'key_dates', 'with_front' => false ),
+//            'query_var' => true,
+//        );
+//
+//        register_taxonomy( self::get_key_dates_slug(), array( self::get_event_slug() ), $args );
+//    }
 
 	/**
 	 * Adds the portfolio post type to the gallery metabox post types array.

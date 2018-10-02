@@ -29,7 +29,7 @@ $items = '
 	<div class="easl-news-col easl-col easl-col-3">
 		<div class="easl-col-inner">
 			<article class="easl-news-item">
-				<figure><a href=""><img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/10/thumb1.jpg"/></a></figure>
+				<figure><a href=""><img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/10/thumb1.jpg"/></a></figure>
 				<p class="easl-news-date">10/09/17</p>
 				<h3><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
 				<p class="easl-news-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet tempus lectus, sit amet vehicula felis. Vivamus euismod tempus turpis at semper. Ut urna magna, malesuada quis orci…</p>
@@ -53,7 +53,7 @@ $items = '
 	<div class="easl-news-col easl-col easl-col-3">
 		<div class="easl-col-inner">
 			<article class="easl-news-item">
-				<figure><a href=""><img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/10/thumb2.jpg"/></a></figure>
+				<figure><a href=""><img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/10/thumb2.jpg"/></a></figure>
 				<p class="easl-news-date">06/09/17</p>
 				<h3><a href="">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></h3>
 				<p class="easl-news-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet tempus lectus, sit amet vehicula felis. Vivamus euismod tempus turpis at semper. Ut urna magna, malesuada quis orci…</p>

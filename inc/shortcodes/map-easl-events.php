@@ -18,6 +18,19 @@ return array(
 			'description' => __( 'Enter text used as widget title (Note: located above content element).', 'js_composer' ),
 		),
 		array(
+			'type'        => 'textfield',
+			'heading'     => __( 'Widget subtitle', 'js_composer' ),
+			'param_name'  => 'subtitle',
+			'description' => __( 'Enter text used as widget subtitle (Note: located below Widget title).', 'js_composer' ),
+		),
+		array(
+			'type'        => 'textfield',
+			'heading'     => __( 'Number of Events', 'total' ),
+			'param_name'  => 'numberposts',
+			'std'         => '4',
+			'description' => __( 'You can leave empty to display all Events.', 'total' ),
+		),
+		array(
 			'type' => 'checkbox',
 			'param_name' => 'view_all_link',
 			'heading' => __( 'Show view all link?', 'total' ),

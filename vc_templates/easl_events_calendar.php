@@ -65,8 +65,8 @@ foreach($topics as $topic_id => $topic_name){
 	$topic_ccs = isset($topic_country_map[$topic_id]) ? $topic_country_map[$topic_id] : array();
 	$topics_list .= '
 		<li>
-			<label class="easl-custom-checkbox csic-'. $topic_color .'" data-countries="'. json_encode($topic_ccs) .'">
-				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'"/> <span>'. esc_html($topic_name) .'</span>
+			<label class="easl-custom-checkbox csic-'. $topic_color .'">
+				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'" data-countries="'. esc_attr( json_encode($topic_ccs)) .'" /> <span>'. esc_html($topic_name) .'</span>
 			</label>
 		</li>
 		';
@@ -103,6 +103,40 @@ foreach($countries as $country_code => $country_name){
 }
 
 $top_filter = '
+<style>
+    .entry ul.submit-proposal{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .submit-proposal li{
+        padding: 12px 0;
+        list-style: none;
+        border-bottom: 1px solid #dedede;
+    }
+    .submit-proposal li:last-child{
+    border-bottom: none;
+    }
+    .submit-proposal li a{
+        color: #004b87;
+        font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 16px;
+    }
+    .easl-custom-select .ecs-list {
+        display: none;
+        background: #fff;
+        border: 1px solid #e3e0e0;
+        position: absolute;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        list-style: none;
+        z-index: 10;
+    }
+</style>
 	<div class="easl-ec-filter-container">
 		<div class="easl-ec-filter easl-row">
 			<div class="easl-col easl-col-4 ec-filter-showme">
@@ -111,7 +145,7 @@ $top_filter = '
 					<ul class="ec-filter-topics">
 						'. $topics_list .'
 					</ul>
-				</div>
+				</div>   
 			</div>
 			<div class="easl-col easl-col-3-4">
 				<div class="easl-col-inner">
@@ -122,8 +156,26 @@ $top_filter = '
 					<div class="easl-row">
 						<div class="easl-col easl-col-2-3">
 							<div class="easl-col-inner">
+							    <div class="vc_row wpb_row vc_row-fluid no-bottom-margins">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner ">
+                                <div class="wpb_wrapper">
+                                    <div class="wpb_text_column wpb_content_element ">
+                                        <div class="wpb_wrapper">
+                                            <h2 style="margin-bottom: 10px;">Filter by:</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 								<div class="ec-filter-fields">
-									<div class="ec-filter-field-wrap">
+								    <div class="ec-filter-field-wrap">
+										<div class="ecf-events-types" style="margin-bottom: 15px">
+											<label class="easl-custom-radio"><input type="radio" name="organizer" value="easl" checked="checked"/> <span>EASL Organised</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="organizer" value="other"/> <span>Other Events</span></label>
+										</div>
+									
 										<div class="easl-custom-select">
 											<span class="ec-cs-label">Category</span>
 											<select name="ec_meeting_type">
@@ -131,7 +183,12 @@ $top_filter = '
 											</select>
 										</div>
 									</div>
-									<div class="ec-filter-field-wrap">
+									<div class="ec-filter-field-wrap ec-filter-field-location">
+										<div class="ecf-events-types" style="margin-bottom: 15px">
+											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="future" checked="checked"/> <span>Future Events</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="past"/> <span>Past Events</span></label>
+										</div>
+									
 										<div class="easl-custom-select">
 											<span class="ec-cs-label">Location</span>
 											<select name="ec_location">
@@ -140,24 +197,31 @@ $top_filter = '
 										</div>
 									</div>
 									<div class="ec-filter-field-wrap">
-										<div class="ecf-events-types">
-											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="future" checked="checked"/> <span>Future Events</span></label>
-											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="past"/> <span>Past Events</span></label>
-										</div>
+										
 									</div>
-									<div class="ec-filter-field-wrap">
+									<div class="ec-filter-field-wrap" style="margin-bottom:0;margin-top: 34px;">
 										<div class="easl-filter-reset-wrap">
-											<button class="easl-button easl-button-small easl-ecf-reset">Clear</button>
+											<button class="easl-button easl-button-small easl-ecf-reset"
+											style="color: #004b87;
+                                            background: #ffffff;
+                                            padding: 0;
+                                            font-size: 14px;
+                                            "><i class="fa fa-times-circle"></i> Clear Filters</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="easl-col easl-col-3 ecf-submit-event">
-							<div class="easl-col-inner">
-								<h4>Submit an Event</h4>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vita.In fermentum tellus id ultricies efficitur. Vivamus molestie purus sagittis.</p>
-								<a class="easl-button easl-button-small" href="">Tell us about an Event</a>
+							<div class="easl-col-inner" style="border-left: 2px solid #004b87;">
+								<h4>Submit your proposal</h4>
+								
+								<ul class="submit-proposal">
+								    <li><a href="">EASL Endorsement or Sponsorship requests <i class="fa fa-angle-right"></i></a></li>
+								    <li><a href="">Announce my Event <i class="fa fa-angle-right"></i></a></li>
+								    <li><a href="">Call for Proposal <i class="fa fa-angle-right"></i></a></li>
+                                </ul>
+								
 							</div>
 						</div>
 					</div>

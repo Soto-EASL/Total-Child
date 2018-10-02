@@ -71,60 +71,84 @@ if($row_count % 2 == 0){
 				<span class="ec-meta-sep"> | </span>
 				<span class="ec-country"><?php echo $event_location; ?></span>
 			</p>
-			<p class="ec-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in sollicitudin augue. Nunc eget laoreet ex. Donec finibus commodo nunc, in bibendum ligula tincidunt et. Nulla convallis ac erat eu </p>
+			<p class="ec-excerpt"></p>
 			<div class="ec-icons clr">
 				<ul class="ec-icons-nav clr">
 					<li class="ec-links-more">
 						<a href="<?php the_permalink(); ?>">
-							<span class="ec-links-icon"><i class="fa fa-info" aria-hidden="true"></i></span>
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon info"></span>
+                            </span>
 							<span class="ec-link-text">More<br/>Information</span>
 						</a>
 					</li>
 					<li class="ec-links-website">
-						<a href="" target="_blank">
-							<span class="ec-links-icon"><i class="fa fa-laptop" aria-hidden="true"></i></span>
+						<a href="<?php echo(get_field('event_website_url')) ?>" target="_blank">
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon laptop"></span>
+                            </span>
 							<span class="ec-link-text">Visit<br/>Website</span>
 						</a>
 					</li>
 					<li class="ec-links-deadline">
 						<a href="">
-							<span class="ec-links-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon clock"></span>
+                            </span>
 							<span class="ec-link-text">Key<br/>Deadlines</span>
 						</a>
 					</li>
 					<li class="ec-links-program">
-						<a href="">
-							<span class="ec-links-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
+						<a href="<?php echo get_field('event_online_programme_url');?>">
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon list"></span>
+                            </span>
 							<span class="ec-link-text">Online<br/>Programme</span>
 						</a>
 					</li>
 					<li class="ec-links-notify">
-						<a href="">
-							<span class="ec-links-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+						<a href="<?php echo get_field('event_notification_url');?>">
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon envelope"></span>
+                            </span>
 							<span class="ec-link-text">Get<br/>Notified</span>
 						</a>
 					</li>
 					<li class="ec-links-calendar">
 						<a href="">
-							<span class="ec-links-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon calendar"></span>
+                            </span>
 							<span class="ec-link-text">Add to<br/>Calendar</span>
 						</a>
 					</li>
 				</ul>
 				<div class="ec-links-details ec-links-details-key-deadlines">
 					<ul>
-						<li>
-							<span>06.07.2017</span>
-							<span>Lorem ipsum dolor amet consecteteur</span>
-						</li>
-						<li>
-							<span>04.08.2017</span>
-							<span>Ipsum dolor amet consecteteur</span>
-						</li>
-						<li>
-							<span>11.09.2017</span>
-							<span>Dolor Lorem ipsum dolor amet consecteteur</span>
-						</li>
+                        <?php $key_dates = get_field('event_key_deadline_row');?>
+
+                        <?php $counter = 0;?>
+                        <?php foreach ($key_dates as $date):?>
+                            <?php switch($counter):
+                                case 0:
+                                    $addon_class = 'active';
+                                    break;
+                                case 1:
+                                    $addon_class = 'next-key';
+                                    break;
+                                default:
+                                    $addon_class = '';
+
+                            endswitch;
+
+
+                            ?>
+                            <li class="app-process-key <?php echo $addon_class;?>">
+                                <span class="event-kd-date"><?php echo $date['event_key_start_date'];?></span>
+                                <span class="event-kd-title"><?php echo strip_tags($date['event_key_deadline_description'], '<br>');?></span>
+                            </li>
+                            <?php $counter++;?>
+                        <?php endforeach;?>
 					</ul>
 				</div>
 			</div>

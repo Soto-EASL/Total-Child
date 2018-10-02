@@ -11,67 +11,139 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+wp_enqueue_script('event-single-script',
+    get_stylesheet_directory_uri() . '/assets/js/event-single.js',
+    ['jquery'],
+    false,
+    true);
+
+wp_enqueue_style('event-single-style',
+    get_stylesheet_directory_uri() . '/assets/css/event-detail.css');
+
+$organisation = easl_event_get_organisations();
+$country = easl_event_get_countries();
+
+
 
  ?>
 
 <article id="single-blocks" class="single-event-article entry clr">
 	<div class="event-top-section">
 		<div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex">
-			<div class="wpb_column vc_column_container vc_col-sm-9">
+			<div class="wpb_column vc_column_container vc_col-sm-7">
 				<div class="vc_column-inner">
 					<div class="wpb_wrapper clr">
 						<div class="event-dates-wrap">
 							<div class="event-dates">
-								<span class="event-day">12</span>
-								<span class="event-mon">OCT</span>
-								<span class="event-year">2017</span>
+
+                                <?php $begining_date = new DateTime('@'.get_field('event_start_date'));?>
+								<span class="event-day"><?php echo $begining_date->format('d'); ?></span>
+								<span class="event-mon"><?php echo $begining_date->format('M'); ?></span>
+								<span class="event-year"><?php echo $begining_date->format('Y'); ?></span>
 							</div>
 						</div>
 						<div class="event-meta-wrap">
 							<p class="event-meta">
 								<span class="event-meta-type">Topic:</span>
-								<span class="event-meta-value">Liver Tumors</span>
+                                <?php $terms =  get_the_terms(get_the_ID(), 'event_topic');?>
+                                <?php foreach ($terms as $term):?>
+                                    <span class="event-meta-value"><?php echo $term->name;?></span>&nbsp;
+                                <?php endforeach;?>
+
 							</p>
 							<p class="event-meta">
 								<span class="event-meta-type">Course Directors:</span>
-								<span class="event-meta-value">EASL</span>
+								<span class="event-meta-value"><?php echo $organisation[get_field('event_organisation')];?></span>
 							</p>
 							<p class="event-meta">
 								<span class="event-meta-type">Location:</span>
-								<span class="event-meta-value">Clinical School  |  Madrid, Spain</span>
+								<span class="event-meta-value">Clinical School  |  <?php echo get_field('event_location_city');?>, <?php echo $country[get_field('event_location_country')];?></span>
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="wpb_column vc_column_container vc_col-sm-3">
-				<div class="vc_column-inner event-top-sidebar">
-					<div class="wpb_wrapper">
-						<a class="event-button event-button-wide event-button-icon event-button-icon-application" href="">Application Submission</a>
-					</div>
-				</div>
-			</div>
+            <div class="wpb_column vc_column_container vc_col-sm-5">
+                <div class="vc_column-inner">
+                    <div class="wpb_wrapper">
+                        <div class="vc_row wpb_row vc_row-fluid">
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <a class="event-button event-button-wide event-button-icon event-button-icon-application"
+                                           style="padding-top: 8px;
+                                                  padding-bottom: 8px;"
+                                           href="<?php echo get_field('event_submit_abstract_url');?>" target="_blank">Submit Abstract</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-6">
+                                <div class="vc_column-inner ">
+                                    <div class="wpb_wrapper">
+                                        <a class="event-button event-button-wide event-button-icon event-button-icon-person"
+                                           style="padding-top: 8px;
+                                                  padding-bottom: 8px;" href="<?php echo get_field('event_register_url');?>" target="_blank">Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 	
 	<div class="event-main-section">
 		<div class="vc_row wpb_row vc_row-fluid">
-			<div class="wpb_column vc_column_container vc_col-sm-9">
+			<div class="wpb_column vc_column_container vc_col-sm-8">
 				<div class="vc_column-inner">
 					<div class="wpb_wrapper clr">
 						<div class="event-text-block">
 							<h3>Description</h3>
-							<p>EASL Schools of Hepatology cover diverse aspects in the field of hepatology. The course is divided into a balanced blend of lectures on theoretical, practical and clinical case-based discussions presented during a residential course with limited attendance. Text links look <a href="">like this</a>.</p>
+                            <div class="event_description">
+                                <?php echo get_field('event_short_description');?>    
+                            </div>
+                            <div class="event_description hidden">
+                                <?php echo get_field('event_show_more');?>
+                            </div>
+                            <p><a href="#" class="show_more_btn">Show more <i class="fa fa-angle-down"></i></a></p>
 						</div>
-						<div class="event-image-box event-image-box-bg">
-							<div class="eib-image">
-								<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/10/event-poster.jpg"/>
-							</div>
-							<div class="eib-text">
-								<h3 class="easl-text-gray">Help us to inform the liver community by downloading the poster, printing it and placing it on your institute's notice board or forwarding it to your local network:</h3>
-								<p><a class="event-button event-button-icon event-button-no-arrow event-button-icon-download" href="">Download Poster</a></p>
-							</div>
-						</div>
+                        <div class="event-text-block event-sidebar-item event-links">
+
+                            <ul class="event-links-list">
+                                <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
+                                    <a href="<?php echo get_field('event_online_programme_url');?>" style="display: inline-block" target="_blank">
+                                        <span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
+                                        <span class="event-link-text">Online Programme</span>
+                                    </a>
+                                </li>
+                                <li class="event-link-calendar" style="float: left;border: none;margin-right: 40px">
+                                    <a href="" style="display: inline-block">
+                                        <span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
+                                        <span class="event-link-text">Add to Calendar</span>
+                                    </a>
+                                </li>
+                                <li class="event-link-notify" style="float: left;border: none;">
+                                    <a href="<?php echo get_field('event_notification_url');?>" style="display: inline-block" target="_blank">
+                                        <span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                        <span class="event-link-text">Get Notified</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="event-text-block">
+                            <h3>Why attend?</h3>
+                            <?php echo get_field('event_why_attend');?>
+                        </div>
+                        <div class="event-text-block">
+                            <h3>Who should attend?</h3>
+                            <?php echo get_field('event_who_should_attend');?>
+                        </div>
+                        <div class="event-text-block">
+                            <h3>Topic to be covered</h3>
+                            <?php echo get_field('event_topic_covered');?>
+                        </div>
 						<div class="event-text-block">
 							<h3>About EASL Schoools</h3>
 							<p>The schools contribute to the training of new generations of hepatologists and are a major element of our association. Aimed at young fellows enrolled in hepatology-oriented departments or more experienced clinicians who want to be exposed to the newest trends in hepatology.</p>
@@ -82,7 +154,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="event-seperator"></div>
 						<div class="event-image-box event-image-box-border-tb">
 							<div class="eib-image">
-								<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/10/cme-credit-logo.jpg"/>
+								<img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2018/09/cme.jpg"/>
 							</div>
 							<div class="eib-text">
 								<h3>An application has been made to the EACCME® for CME accreditation of this event, lorem ipsum dolor amet.</h3>
@@ -92,82 +164,123 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</div>
 				</div>
 			</div>
-			<div class="wpb_column vc_column_container vc_col-sm-3">
+			<div class="wpb_column vc_column_container vc_col-sm-4">
 				<div class="vc_column-inner event-main-sidebar">
 					<div class="wpb_wrapper">
-						<div class="event-sidebar-item">
+                        <?php if(get_field('event_display_sponsorship_sidebar')):?>
+                            <div class="event-sidebar-item">
+                                <a class="easl-image-link" href="">
+                                    <img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2017/10/event-image-1.jpg"/>
+                                    <span>Sponsor this event</span>
+                                </a>
+                            </div>
+                        <?php endif;?>
+                        <?php if(get_field('event_bursary_available')):?>
+                            <div class="event-sidebar-item">
+                                <a class="easl-image-link" href="">
+                                    <img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2018/09/pig.jpg"/>
+                                    <span>Bursaries available for this event</span>
+                                </a>
+                            </div>
+                        <?php endif;?>
+                        <?php if(get_field('event_press_ivited')):?>
+                        <div class="event-sidebar-item">
 							<a class="easl-image-link" href="">
-								<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/10/event-image-1.jpg"/>
-								<span>Sponsor this event</span>
+								<img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2017/10/pm-thumb.jpg"/>
+								<span>Press Invited</span>
 							</a>
 						</div>
+                        <?php endif;?>
 						<div class="event-sidebar-item event-key-deadlines">
-							<div class="event-sidebar-item-inner">
-								<h3 class="event-sidebar-item-title">KEY DEADLINES</h3>
+							<div class="event-sidebar-item-inner app-process">
+
+								<h3 class="event-sidebar-item-title">Key Deadlines</h3>
 								<ul>
-									<li class="ekd-color-red">
-										<p class="event-kd-date">06.07.2017</p>
-										<h4 class="event-kd-title">Lorem ipsum dolor amet conse cteteur elit</h4>
-									</li>
-									<li>
-										<p class="event-kd-date">04.08.2017</p>
-										<h4 class="event-kd-title">Lorem ipsum dolor amet cons</h4>
-									</li>
-									<li>
-										<p class="event-kd-date">06.07.2017</p>
-										<h4 class="event-kd-title">Lorem ipsum dolor amet conse cteteur elit</h4>
-									</li>
+                                    <?php $key_dates = get_field('event_key_deadline_row');?>
+
+                                    <?php $counter = 0;?>
+                                    <?php foreach ($key_dates as $date):?>
+                                        <?php switch($counter):
+                                            case 0:
+                                                $addon_class = 'active';
+                                                break;
+                                            case 1:
+                                                $addon_class = 'next-key';
+                                                break;
+                                            default:
+                                                $addon_class = '';
+
+                                        endswitch;
+
+
+                                        ?>
+                                        <li class="app-process-key <?php echo $addon_class;?>">
+                                            <p class="event-kd-date"><?php echo $date['event_key_start_date'];?></p>
+                                            <h4 class="event-kd-title"><?php echo strip_tags($date['event_key_deadline_description'], '<br>');?></h4>
+                                        </li>
+                                        <?php $counter++;?>
+                                    <?php endforeach;?>
 								</ul>
 							</div>
 						</div>
-						<div class="event-sidebar-item event-links">
-							<ul class="event-links-list">
-								<li class="event-link-program">
-									<a href="">
-										<span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
-										<span class="event-link-text">Online Programme</span>
-									</a>
-								</li>
-								<li class="event-link-calendar">
-									<a href="">
-										<span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
-										<span class="event-link-text">Add to Calendar</span>
-									</a>
-								</li>
-								<li class="event-link-notify">
-									<a href="">
-										<span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-										<span class="event-link-text">Get Notified</span>
-									</a>
-								</li>
-								<li class="event-link-map">
-									<a href="" target="_blank">
-										<span class="event-link-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-										<span class="event-link-text">View on Map</span>
-									</a>
-								</li>
-							</ul>
-						</div>
+                        <div class="event-image-box-column event-image-box-bg">
+                            <div class="eib-image">
+                                <img alt="" src="<?php echo get_field('event_poster_image');?>"/>
+                            </div>
+                            <div class="eib-text">
+                                <h3 class="easl-text-gray">Help us to inform the liver community by downloading the poster, printing it and placing it on your institute's notice board or forwarding it to your local network:</h3>
+                                <p>
+                                    <a class="event-button event-button-icon event-button-no-arrow event-button-icon-download" style="width: 100%" href="<?php echo get_field('event_poster_image');?>" download>Download Poster</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="event-image-box-column event-image-box-bg">
+                            <div class="eib-image">
+                                <iframe src="<?php echo get_field('event_google_map');?>" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                            <div class="eib-text">
+                                <p style="color:#004b87;font-family: 'KnockoutHTF51Middleweight';font-size: 21px;"><?php echo get_field('event_address');?></p>
+                                <p><a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker"
+                                      style="width: 100%"
+                                      href="<?php echo get_field('event_google_map_view_on_map');?>" target="_blank"
+                                    >View on Map</a></p>
+                            </div>
+                        </div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="event-social-share-section">
-		<span class="social-share-text">Share this page</span>
-		<div class="social-share-wrap">
-			<ul class="social-share">
-				<li>
-					<a href=""><span class="hexagon"></span><i class="fa fa-facebook" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href=""><span class="hexagon"></span><i class="fa fa-twitter" aria-hidden="true"></i></a>
-				</li>
-				<li>
-					<a href=""><span class="hexagon"></span><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-				</li>
-			</ul>
-		</div>
-	</div>
 
+    <div class="vc_row wpb_row vc_row-fluid">
+        <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner " style="margin-bottom: 0">
+                <div class="wpb_wrapper">
+                    <div style="float: left;margin-right: 20px;font-family: 'KnockoutHTF51Middleweight';
+    font-size: 16px;
+    font-weight: normal;color:#104f85;">Share this page</div>
+                    <div class="wpex-social-share position-horizontal style-custom display-block" style="margin-bottom: 0"
+                         data-source="<?php echo get_bloginfo('url')?>"
+                         data-url="<?php the_permalink();?>"
+                         data-title="<?php the_title();?>"
+                         data-specs="menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600">
+                        <ul class="clr social-share">
+                            <li class="wpex-twitter">
+                                <a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="wpex-facebook">
+                                <a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            </li>
+                            <li class="wpex-linkedin">
+                                <a href=""><span class="hexagon"></span><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php echo do_shortcode('[vcex_social_share style="custom" sites="%5B%7B%22site%22%3A%22twitter%22%7D%2C%7B%22site%22%3A%22facebook%22%7D%2C%7B%22site%22%3A%22linkedin%22%7D%5D"]');?>
 </article><!-- #single-blocks -->

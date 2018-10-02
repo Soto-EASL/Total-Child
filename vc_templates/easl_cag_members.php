@@ -32,7 +32,7 @@ $rows = '';
 $rows .= '
 	<div class="cag-members-row clr">
 		<div class="cagm-thumb">
-			<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/11/thumb-femke.jpg"/>
+			<img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/11/thumb-femke.jpg"/>
 		</div>
 		<div class="cagm-text">
 			<h5>Femke</h5>
@@ -43,7 +43,7 @@ $rows .= '
 $rows .= '
 	<div class="cag-members-row clr">
 		<div class="cagm-thumb">
-			<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/11/thumb-giacomo.jpg"/>
+			<img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/11/thumb-giacomo.jpg"/>
 		</div>
 		<div class="cagm-text">
 			<h5>Giacomo</h5>
@@ -54,7 +54,7 @@ $rows .= '
 $rows .= '
 	<div class="cag-members-row clr">
 		<div class="cagm-thumb">
-			<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/11/thumb-rodrigo.jpg"/>
+			<img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/11/thumb-rodrigo.jpg"/>
 		</div>
 		<div class="cagm-text">
 			<h5>Rodrigo</h5>
@@ -65,7 +65,7 @@ $rows .= '
 $rows .= '
 	<div class="cag-members-row clr">
 		<div class="cagm-thumb">
-			<img alt="" src="http://easl.websitestage.co.uk/wp-content/uploads/2017/11/thumb-upkar.jpg"/>
+			<img alt="" src="' . EASL_HOME_URL . '/wp-content/uploads/2017/11/thumb-upkar.jpg"/>
 		</div>
 		<div class="cagm-text">
 			<h5>Upkar</h5>

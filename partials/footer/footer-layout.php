@@ -36,6 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif; ?> 
 <?php if ( wpex_get_mod( 'footer_bottom_newsletter', true ) ) : ?>
 	<div class="footer-newsletter">
+        <i class="fa fa-times-circle"></i>
 		<div class="footer-newsletter-inner container clr">
 			<?php echo do_shortcode( wpex_get_mod( 'footer_bottom_newsletter_sc' ) ); ?> 
 		</div>
