@@ -25,10 +25,7 @@ function easl_customizer_sections($sections) {
 		);
 	}
 	// Footer Newsletter Section
-	$sections['wpex_footer_bottom'] = array(
-		'title' => __( 'General', 'total' ),
-		'settings' => array(
-			array(
+	$sections['wpex_footer_bottom']['settings'][] = array(
 				'id' => 'footer_bottom_newsletter',
 				'transport' => 'partialRefresh',
 				'default' => true,
@@ -37,7 +34,8 @@ function easl_customizer_sections($sections) {
 					'type' => 'checkbox',
 					'desc' => __( 'Enable to display footer bottom newsletter.', 'total' ),
 				),
-			),
+			);
+	$sections['wpex_footer_bottom']['settings'][] = 
 			array(
 				'id' => 'footer_bottom_newsletter_sc',
 				'transport' => 'partialRefresh',
@@ -46,9 +44,7 @@ function easl_customizer_sections($sections) {
 					'label' => __( 'Newsletter Shortcode/content', 'total' ),
 					'type' => 'textarea',
 				),
-			),
-		),
-	);
+			);
     return $sections;
 }
 

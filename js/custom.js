@@ -1,6 +1,18 @@
 (function($){
     var $body;
     
+    function easlStickyHeader(){
+        if( $(window).scrollTop() <= 0 ){
+            $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled')
+        }else{
+            $('body').addClass('easl-scrolled').removeClass('easl-scroll-at-top');
+        }
+        
+    }
+    function easlScrollEvent(){
+        easlStickyHeader();
+    }
+    
     function easlCompareDates(date1, date2){
         date1 = new Date(date1);
         date2 = new Date(date2);
@@ -254,6 +266,7 @@
     });
     $(document).ready(function(){
         $body = $('body');
+        easlStickyHeader();
         easlCustomCheckbox();
         easlCustomRadio();
         easlCustomSelect();
@@ -370,5 +383,8 @@
         // Stuff to be done when windows resize
         $(window).resize(function(){
         });
+        $(window).scroll( function() {
+            easlScrollEvent();
+        } );
     });
 })(jQuery);

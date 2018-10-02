@@ -31,7 +31,7 @@ if ( $content || ( wpex_get_mod( 'main_search', true ) && 'two' == $header_style
 	} ?>
 
 	<aside id="header-aside" class="<?php echo esc_attr( $classes ); ?>">
-		<div class="header-aside-content clr"><?php echo do_shortcode( $content ); ?></div>
+		<div class="header-aside-content clr"><div class="header-aside-content-inner"><?php echo do_shortcode( $content ); ?></div></div>
 		<?php
 		// Show header search field if enabled in the theme options panel and it's header style 2
 		if ( wpex_get_mod( 'header_aside_search', true ) && 'two' == $header_style ) : ?>
