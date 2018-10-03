@@ -795,8 +795,9 @@ if ( $wpex_query->have_posts() ) :
 
         $output .= $filter_html;
     }
-
-    $output .= '<div class="intro-para-wrapper"></div>';
+	if($content){
+		$output .= '<div class="intro-para-wrapper"><div class="governing-board-intro-para">'. wpb_js_remove_wpautop( $content ).'</div></div>';
+	}
 
 
 

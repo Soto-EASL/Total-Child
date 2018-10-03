@@ -25,35 +25,4 @@ jQuery(function($) {
             $('.easl-msc-content-wrap-inner').html(response);
         });
     });
-
-    function get_governing_board_intro_para(item){
-        $.post(ajaxurl.ajaxurl, {
-            'action': 'get_intro_para_func',
-            'category': item
-        }, function (response) {
-            $(document).find('.intro-para-wrapper').html(response);
-        });
-
-    }
-
-    $(document).on('click', '#menu-community li a', function (e) {
-        e.preventDefault();
-        // $('#menu-community').find('li').each(function () {
-        //    $(this).removeClass('current-menu-item');
-        // });
-        //$(this).closest('li.menu-item').addClass('current-menu-item');
-        var item = $(this).data('item');
-        get_governing_board_intro_para(item);
-        if($(this).attr('href') !== '#'){
-            window.location.href = $(this).attr('href');
-        }
-
-
-
-
-    });
-
-    get_governing_board_intro_para($('.current-menu-item a').data('item'));
-
-
 });

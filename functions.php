@@ -544,53 +544,6 @@ function get_membership_categories(){
 
 }
 
-add_action( 'wp_ajax_get_intro_para_func', 'get_intro_para' );
-add_action( 'wp_ajax_nopriv_get_intro_para_func', 'get_intro_para' );
-function get_intro_para(){
-    $categoty = $_POST['category'];
-    switch ($categoty){
-        case "Governing Board":
-            $category_name = 'governing-board';
-            break;
-        case "EASL Office":
-            $category_name = 'easl-office';
-            break;
-        default:
-            $category_name = '';
-    }
-    $row = '';
-    if($category_name){
-        $the_query = new WP_Query( array(
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-            'category_name' => $category_name,
-        ) );
-
-
-        if ( $the_query->have_posts() ){
-            while ( $the_query->have_posts() ){
-                $the_query->the_post();
-
-                $row .= get_the_content();
-            }
-        }
-    }
-     else {
-        $row .= 'there is not any post yet';
-    }
-    ob_start();
-    ?>
-    <div class="governing-board-intro-para">
-        <?php echo $row;?>
-    </div>
-    <?php
-    $html = ob_get_contents();
-    ob_end_clean();
-    echo $html;
-    die();
-
-}
-
 add_action( 'wp_ajax_get_national_associations_func', 'get_national_associations' );
 add_action( 'wp_ajax_nopriv_get_national_associations_func', 'get_national_associations' );
 function get_national_associations(){

@@ -50,6 +50,12 @@ if( !class_exists('EASL_VC_STAFF_LIST') ){
                 'icon' => 'vcex-icon fa fa-book',
                 'php_class_name' => 'EASL_VC_STAFF_LIST',
                 'params' => array(
+					array(
+						'type'        => 'textarea_html',
+						'heading'     => __( 'Introduction', 'js_composer' ),
+						'param_name'  => 'content',
+						'description' =>  __( 'Enter ingtroduction text.', 'js_composer' ),
+					),
                     array(
                         'type' => 'textfield',
                         'heading' => __( 'Unique Id', 'total' ),
