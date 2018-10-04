@@ -784,6 +784,7 @@ if ( $wpex_query->have_posts() ) :
                     $count=0;
                 }
             }
+			wp_reset_query();
             $post_html .= '</div>';
         endforeach;
 
@@ -796,14 +797,383 @@ if ( $wpex_query->have_posts() ) :
         $output .= $filter_html;
     }
 	if($content){
-		$output .= '<div class="intro-para-wrapper"><div class="governing-board-intro-para">'. wpb_js_remove_wpautop( $content ).'</div></div>';
+		$output .= '<div class="intro-para-wrapper"><div class="governing-board-intro-para">'. wpb_js_remove_wpautop( $content, true ).'</div></div>';
 	}
+	
+	if ( 'true' != $filter ) {
+		// Define counter var to clear floats
+		$count=0;
+		$post_html .= '<div class="'. $grid_classes .' easl-staff-list"'. $grid_data .'>';
+		while ( $wpex_query->have_posts() ) {
+
+			// Get post from query
+			$wpex_query->the_post();
+
+			$atts['post_id']        = get_the_ID();
+			$atts['post_permalink'] = wpex_get_permalink( $atts['post_id'] );
+			$atts['post_title']     = get_the_title();
+			$atts['post_esc_title'] = wpex_get_esc_title();
+			$atts['post_excerpt']   = '';
+
+			// Generate post Excerpt
+			if ( 'true' == $excerpt || 'true' == $thumb_lightbox_caption ) {
+				$atts['post_excerpt'] = wpex_get_excerpt( array(
+					'length'  => $excerpt_length,
+					'context' => 'vcex_staff_grid',
+				) );
+			}
+
+			// Add to the counter var
+			$count++;
+
+			// Add classes to the entries
+			$entry_classes = array( 'staff-entry' );
+			$entry_classes[] = $columns_class;
+			if ( $content_alignment ) {
+				$entry_classes[] = 'text'. $content_alignment;
+			}
+			if ( 'false' == $columns_responsive ) {
+				$entry_classes[] = 'nr-col';
+			} else {
+				$entry_classes[] = 'col';
+			}
+			if ( $count ) {
+				$entry_classes[] = 'col-'. $count;
+			}
+			if ( 'true' == $read_more ) {
+				$entry_classes[] = 'has-readmore';
+			}
+			if ( $css_animation && 'none' != $css_animation ) {
+				$entry_classes[] = $css_animation;
+			}
+			if ( $is_isotope ) {
+				//$entry_classes[] = 'vcex-isotope-entry';
+			}
+			if ( 'no_margins' == $grid_style ) {
+				$entry_classes[] = 'vcex-no-margin-entry';
+			}
 
 
+			$post_html .= '<div '. vcex_grid_get_post_class( $entry_classes, $atts['post_id'] ) .'>';
 
+			$post_html .= '<div class="staff-entry-inner entry-inner clr';
 
+			if ( $entry_css ) {
+				$post_html .= ' '. $entry_css;
+			}
 
+			$post_html .= '">';
 
+			/*** Featured Media ***/
+			$media_output = '';
+			if ( 'true' == $entry_media && has_post_thumbnail() ) :
+
+				$media_output .= '<div class="'. $media_classes .'">';
+
+				// Thumbnail with link
+				if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) ) :
+
+					// Lightbox link
+					if ( $thumb_link == 'lightbox' ) :
+
+						// Lightbox data
+						if ( 'lightbox' == $thumb_link ) {
+
+							// Lightbox link
+							$atts['lightbox_link'] = wpex_get_lightbox_image();
+
+							// Lightbox data
+							$atts['lightbox_data'] = array();
+							if ( $lightbox_skin ) {
+								$atts['lightbox_data'][] = 'data-skin="'. $lightbox_skin .'"';
+							}
+							if ( 'true' == $thumb_lightbox_title ) {
+								$atts['lightbox_data'][] = 'data-title="'. $atts['post_esc_title'] .'"';
+							} else {
+								$atts['lightbox_data'][] = 'data-show_title="false"';
+							}
+							if ( 'true' == $thumb_lightbox_caption && $atts['post_excerpt'] ) {
+								$atts['lightbox_data'][] = 'data-caption="'. str_replace( '"',"'", $atts['post_excerpt'] ) .'"';
+							}
+							$lightbox_data = ' '. implode( ' ', $atts['lightbox_data'] );
+						}
+
+						$media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="'. $atts['lightbox_link'] .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link'. $lightbox_single_class .'"'. $lightbox_data .'>';
+
+					// Standarad post link
+					else :
+
+						$media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="'. $atts['post_permalink'] .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link"'. vcex_html( 'target_attr', $link_target ) .'>';
+
+					endif;
+
+				endif; // End link tag
+
+				// Define thumbnail args
+				$thumbnail_args = array(
+					'size'          => $img_size,
+					'crop'          => $img_crop,
+					'width'         => $img_width,
+					'height'        => $img_height,
+					'apply_filters' => 'vcex_staff_grid_thumbnail_args',
+				);
+
+				// Add data-no-lazy to prevent conflicts with WP-Rocket
+				if ( $is_isotope ) {
+					$thumbnail_args['attributes'] = array( 'data-no-lazy' => 1 );
+				}
+
+				// Output post thumbnail
+				$media_output .= wpex_get_post_thumbnail( $thumbnail_args );
+
+				$media_output .= wpex_get_entry_media_after( 'vcex_staff_grid' );
+
+				// Close link and output inside overlay HTML
+				if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) ) :
+
+					// Inner Overlay
+					if ( $overlay_style && 'none' != $overlay_style ) {
+						ob_start();
+						wpex_overlay( 'inside_link', $overlay_style, $atts );
+						$media_output .= ob_get_clean();
+					}
+
+					$media_output .= '</a>';
+
+				endif;
+
+				// Outside Overlay
+				if ( $overlay_style && 'none' != $overlay_style ) {
+					ob_start();
+					wpex_overlay( 'outside_link', $overlay_style, $atts );
+					$media_output .= ob_get_clean();
+				}
+
+				$media_output .= '</div>';
+
+			endif;
+
+			$post_html .= apply_filters( 'vcex_staff_grid_media', $media_output, $atts );
+
+			/*** Content ***/
+			if ( 'true' == $title
+				|| 'true' == $excerpt
+				|| 'true' == $read_more
+				|| 'true' == $position
+				|| 'true' == $show_categories
+				|| 'true' == $social_links
+			) :
+
+				$post_html .= '<div class="staff-entry-details entry-details wpex-clr';
+
+				if ( $content_css ) {
+					$post_html .= ' '. $content_css;
+				}
+
+				$post_html .= '"';
+
+				$post_html .= $content_style;
+
+				$post_html .= '>';
+
+				// Open equal height container
+				// Equal height div
+				if ( $equal_heights_grid ) {
+					$post_html .= '<div class="match-height-content">';
+				}
+
+				/*** Title ***/
+				$title_output = '';
+				if ( 'true' == $title ) :
+
+					// Open title tag
+					$title_output .= '<' . $title_tag . ' class="staff-entry-title entry-title"'. $heading_style .'>';
+
+					// Display title and link to post
+					if ( 'post' == $title_link ) :
+
+						$title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. $atts['post_permalink'] .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
+
+					// Display title and link to lightbox
+					elseif ( 'lightbox' == $title_link ) :
+
+						// Load lightbox script
+						vcex_enque_style( 'ilightbox', $lightbox_skin );
+
+						$title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. wpex_get_lightbox_image() .'"'. $heading_link_style .' class="wpex-lightbox">'. wp_kses_post( $atts['post_title'] ) .'</a>';
+
+					// Display title without link
+					else :
+
+						$title_output .= wp_kses_post( $atts['post_title'] );
+
+					endif;
+
+					// Close title tag
+					$title_output .= '</' . $title_tag . '>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_title', $title_output, $atts );
+
+				/*** Position ***/
+				$position_output = '';
+				if ( 'true' == $position
+					&& $get_position = get_post_meta( $atts['post_id'], 'wpex_staff_position', true )
+				) :
+
+					$position_output .= '<div class="staff-entry-position"' . $position_style . '>';
+
+					$position_output .= apply_filters( 'wpex_staff_entry_position', wp_kses_post( $get_position ) );
+
+					$position_output .= '</div>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_position', $position_output, $atts );
+
+				/*** Categories ***/
+				$categories_output = '';
+				if ( 'true' == $show_categories ) :
+
+					$categories_output .= '<div class="'. $categories_classes .'"'. $categories_style .'>';
+
+					if ( 'true' == $show_first_category_only ) {
+
+						$categories_output .= wpex_get_first_term_link( $atts['post_id'], 'staff_category' );
+
+					} else {
+
+						$categories_output .= wpex_get_list_post_terms( 'staff_category', true, true );
+
+					}
+
+					$categories_output .= '</div>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_categories', $categories_output, $atts );
+
+				/*** Excerpt ***/
+				$excerpt_output = '';
+				if ( 'true' == $excerpt && $atts['post_excerpt'] ) :
+//                        $desired_width = 100;
+//                        $string = $atts['post_excerpt'];
+//                        if (strlen($string) > $desired_width)
+//                        {
+//                            $string = wordwrap($string, $desired_width);
+//                            $string = substr($string, 0, strpos($string, "\n"));
+//                            $string .= ' <a href="'.$atts['post_permalink'].'">read more</a>';
+//                        }
+
+					$excerpt_output .= '<div class="staff-entry-excerpt entry-excerpt wpex-clr"'. $excerpt_style .'>';
+
+					$excerpt_output .= $atts['post_excerpt'];
+
+					$excerpt_output .= '</div>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_excerpt', $excerpt_output, $atts );
+
+				/*** Contact Info ***/
+				$contact_info_output = '';
+				$staff_telephone = get_field('telephone');
+				$staff_fax = get_field('fax');
+				$staff_email = get_field('email');
+				if ( 'true' == $contact_info && ($staff_telephone || $staff_fax || $staff_email) ) :
+
+					$contact_info_output .= '<div class="easl-staff-contact-info wpex-clr"'. $excerpt_style .'>';
+
+					if($staff_telephone){
+						$contact_info_output .= sprintf('<p class="easl-staff-telephone"><a href="tel:%s">%s</a></p>', $staff_telephone, $staff_telephone);
+					}
+					if($staff_fax){
+						$contact_info_output .= sprintf('<p class="easl-staff-fax"><span>%s</span></p>', $staff_fax, $staff_fax);
+					}
+					if($staff_email){
+						$contact_info_output .= sprintf('<p class="easl-staff-email"><a href="mailto:%s">%s</a></p>', $staff_email, $staff_email);
+					}
+
+					$contact_info_output .= '</div>';
+
+				endif;
+
+				$post_html .= $contact_info_output;
+
+				/*** Social Links ***/
+				$social_output = '';
+				if ( 'true' == $social_links ) :
+
+					$social_output .= '<div class="staff-entry-social-links wpex-clr"'. $social_links_inline_css .'>';
+
+					$social_output .= wpex_get_staff_social( array(
+						'style'     => $social_links_style,
+						'font_size' => $social_links_size,
+					) );
+
+					$social_output .= '</div>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_social', $social_output, $atts );
+
+				/*** Read More ***/
+				$readmore_output = '';
+				if ( 'true' == $read_more && $read_more_text ) :
+
+					$readmore_output .= '<div class="staff-entry-readmore-wrap entry-readmore-wrap clr">';
+
+					$attrs = array(
+						'href'   => $atts['post_permalink'],
+						'class'  => $readmore_classes,
+						'rel'    => 'bookmark',
+						'target' => $link_target,
+						'style'  => $readmore_style,
+					);
+
+					if ( $readmore_hover_data ) {
+						$attrs['data-wpex-hover'] = $readmore_hover_data;
+					}
+
+					$readmore_output .= '<a ' . wpex_parse_attrs( $attrs ) . '>';
+
+					$readmore_output .= esc_html( $read_more_text );
+
+					if ( 'true' == $readmore_rarr ) {
+						$readmore_output .= '<span class="vcex-readmore-rarr">'. wpex_element( 'rarr' ) .'</span>';
+					}
+
+					$readmore_output .= '</a>';
+
+					$readmore_output .= '</div>';
+
+				endif;
+
+				$post_html .= apply_filters( 'vcex_staff_grid_readmore', $readmore_output, $atts );
+
+				// Close Equal height div
+				if ( $equal_heights_grid ) {
+
+					$post_html .= '</div>';
+
+				}
+
+				$post_html .= '</div>'; // Entry details
+
+			endif; // End staff entry details check
+
+			$post_html .= '</div>'; // Entry inner
+
+			$post_html .= '</div>'; // Entry
+
+			// Reset counter
+			if ( $count == $columns ) {
+				$count=0;
+			}
+		}
+		$post_html .= '</div>';
+	}
 
     // Start loop
     $output .= $post_html;

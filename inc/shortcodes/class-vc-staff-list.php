@@ -690,7 +690,7 @@ if( !class_exists('EASL_VC_STAFF_LIST') ){
                     array(
                         'type' => 'vcex_ofswitch',
                         'std' => 'false',
-                        'heading' => __( 'Enable', 'total' ),
+                        'heading' => __( 'Enable Contact Info', 'total' ),
                         'param_name' => 'contact_info',
                         'group' => __( 'Item Layout', 'total' ),
                     ),
