@@ -595,3 +595,11 @@ function easl_vc_tab_list_newline($html) {
 	return str_replace('--NL--', '<br/>', $html);
 }
 add_filter('vc-tta-get-params-tabs-list', 'easl_vc_tab_list_newline', 10);
+
+function easl_posts_pagination_display($display, $post_type) {
+	if('publication' == $post_type){
+		return false;
+	}
+	return $display;
+}
+add_filter( 'wpex_has_next_prev', 'easl_posts_pagination_display', 10, 2 );
