@@ -2258,6 +2258,75 @@ body .wpb_single_image a.easl-vc-image-over:after {
     background-color: #e1e1e1;
     text-decoration: none;
 }
+.easl-menu-stacked-content-vertical {
+    
+}
+.easl-msc-container-vertical {
+    
+}
+.easl-msc-menu-wrap-vertical {
+    
+}
+.easl-msc-menu-wrap-vertical .msch-menu {
+    border-bottom: 2px solid #e1e1e1;
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.easl-msc-menu-wrap-vertical .msch-menu li {
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+.easl-msc-menu-wrap-vertical .msch-menu li a {
+    line-height: 18px;
+    padding: 16px 20px 14px;
+    display: block;
+    background-color: #fff;
+    color: #004b87;
+    font-family: 'KnockoutHTF51Middleweight';
+    font-size: 17px;
+}
+.easl-msc-menu-wrap-vertical .msch-menu li.current-menu-item a,
+.easl-msc-menu-wrap-vertical .msch-menu li:hover a {
+    text-decoration: none;
+    background-color: #e1e1e1;
+    color: #004b87;
+}
+.easl-msc-menu-wrap-vertical .msch-menu li.current-menu-item a {
+    cursor: default;
+}
+.easl-msc-content-wrap-vertical {
+    margin-top: 20px;
+}
+/**
+bg: 06589b
+tca: 71c5e8
+padding: 15 20
+*/
+.easl-msc-content-wrap-vertical .vc_tta.vc_general .vc_tta-tabs-container .vc_tta-tabs-list {
+    border: 0 none;
+    background: #06589b;
+    padding: 0;
+}
+.easl-msc-content-wrap-vertical .vc_tta.vc_general .vc_tta-tabs-container .vc_tta-tabs-list .vc_tta-tab {
+    margin: 0;
+}
+.easl-msc-content-wrap-vertical .vc_tta.vc_general .vc_tta-tabs-list .vc_tta-tab > a {
+    color: #fff;
+    font-size: 16px;
+    font-family: 'KnockoutHTF51Middleweight';
+    line-height: 1.4em;
+    background: transparent!important;
+    padding: 10px 20px;
+}
+.easl-msc-content-wrap-vertical  .vc_tta.vc_general .vc_tta-tabs-list .vc_tta-tab.vc_active > a, 
+.easl-msc-content-wrap-vertical  .vc_tta.vc_general .vc_tta-tabs-list .vc_tta-tab:hover > a {
+    color: #71c5e8;
+    background: transparent!important;
+}
 
 .wpb-js-composer .easl-msc-content-wrap .vc_tta-container {
     margin-bottom: 0;

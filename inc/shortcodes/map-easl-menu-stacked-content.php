@@ -36,7 +36,17 @@ return array(
 			'value' => $custom_menus,
 			'description' => empty( $custom_menus ) ? __( 'Custom menus not found. Please visit <b>Appearance > Menus</b> page to create new menu.', 'js_composer' ) : __( 'Select menu to display.', 'js_composer' ),
 			'admin_label' => true,
-			'save_always' => true,
+		),
+		array(
+			'type' => 'dropdown',
+			'heading' => __( 'Layout', 'js_composer' ),
+			'param_name' => 'layout',
+			'value' => array(
+				__( 'Horizontal', 'js_composer' ) => 'horizontal',
+				__( 'Vertical', 'js_composer' ) => 'vertical',
+			),
+			'description' => empty( $custom_menus ) ? __( 'Select layout.', 'js_composer' ) : __( 'Select menu to display.', 'js_composer' ),
+			'admin_label' => false,
 		),
 		vc_map_add_css_animation(),
 		array(

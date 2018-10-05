@@ -590,3 +590,8 @@ function get_national_associations(){
     die();
 
 }
+
+function easl_vc_tab_list_newline($html) {
+	return str_replace('--NL--', '<br/>', $html);
+}
+add_filter('vc-tta-get-params-tabs-list', 'easl_vc_tab_list_newline', 10);
