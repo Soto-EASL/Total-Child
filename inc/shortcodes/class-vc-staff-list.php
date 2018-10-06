@@ -50,6 +50,12 @@ if( !class_exists('EASL_VC_STAFF_LIST') ){
                 'icon' => 'vcex-icon fa fa-book',
                 'php_class_name' => 'EASL_VC_STAFF_LIST',
                 'params' => array(
+                    array(
+                        'type' => 'textfield',
+                        'heading' => __( 'Widget Title', 'total' ),
+                        'param_name' => 'widget_title',
+                        'admin_label' => true,
+                    ),
 					array(
 						'type'        => 'textarea_html',
 						'heading'     => __( 'Introduction', 'js_composer' ),
@@ -60,7 +66,6 @@ if( !class_exists('EASL_VC_STAFF_LIST') ){
                         'type' => 'textfield',
                         'heading' => __( 'Unique Id', 'total' ),
                         'param_name' => 'unique_id',
-                        'admin_label' => true,
                     ),
                     array(
                         'type' => 'textfield',

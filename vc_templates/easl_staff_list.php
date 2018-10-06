@@ -420,12 +420,13 @@ if ( $wpex_query->have_posts() ) :
 
                 // Get post from query
                 $posts->the_post();
-
+				$staff_post = get_post(get_the_ID());
                 $atts['post_id']        = get_the_ID();
                 $atts['post_permalink'] = wpex_get_permalink( $atts['post_id'] );
                 $atts['post_title']     = get_the_title();
                 $atts['post_esc_title'] = wpex_get_esc_title();
                 $atts['post_excerpt']   = '';
+                $atts['post_content']   = $staff_post->post_content;
 
                 // Generate post Excerpt
                 if ( 'true' == $excerpt || 'true' == $thumb_lightbox_caption ) {
@@ -602,17 +603,9 @@ if ( $wpex_query->have_posts() ) :
                         $title_output .= '<' . $title_tag . ' class="staff-entry-title entry-title"'. $heading_style .'>';
 
                         // Display title and link to post
-                        if ( 'post' == $title_link ) :
+                        if ( $atts['post_content'] ) :
 
                             $title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. $atts['post_permalink'] .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
-
-                        // Display title and link to lightbox
-                        elseif ( 'lightbox' == $title_link ) :
-
-                            // Load lightbox script
-                            vcex_enque_style( 'ilightbox', $lightbox_skin );
-
-                            $title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. wpex_get_lightbox_image() .'"'. $heading_link_style .' class="wpex-lightbox">'. wp_kses_post( $atts['post_title'] ) .'</a>';
 
                         // Display title without link
                         else :
@@ -803,17 +796,21 @@ if ( $wpex_query->have_posts() ) :
 	if ( 'true' != $filter ) {
 		// Define counter var to clear floats
 		$count=0;
+		if($widget_title){
+			$post_html .= '<div class="wpex-row easl-staff-list term-name"><h2>' . $widget_title . '</h2></div>';
+		}
 		$post_html .= '<div class="'. $grid_classes .' easl-staff-list"'. $grid_data .'>';
 		while ( $wpex_query->have_posts() ) {
 
 			// Get post from query
 			$wpex_query->the_post();
-
+			$staff_post = get_post( get_the_ID());
 			$atts['post_id']        = get_the_ID();
 			$atts['post_permalink'] = wpex_get_permalink( $atts['post_id'] );
 			$atts['post_title']     = get_the_title();
 			$atts['post_esc_title'] = wpex_get_esc_title();
 			$atts['post_excerpt']   = '';
+			$atts['post_content']   = $staff_post->post_content;
 
 			// Generate post Excerpt
 			if ( 'true' == $excerpt || 'true' == $thumb_lightbox_caption ) {
@@ -990,17 +987,9 @@ if ( $wpex_query->have_posts() ) :
 					$title_output .= '<' . $title_tag . ' class="staff-entry-title entry-title"'. $heading_style .'>';
 
 					// Display title and link to post
-					if ( 'post' == $title_link ) :
+					if ( $atts['post_content'] ) :
 
 						$title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. $atts['post_permalink'] .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
-
-					// Display title and link to lightbox
-					elseif ( 'lightbox' == $title_link ) :
-
-						// Load lightbox script
-						vcex_enque_style( 'ilightbox', $lightbox_skin );
-
-						$title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="'. wpex_get_lightbox_image() .'"'. $heading_link_style .' class="wpex-lightbox">'. wp_kses_post( $atts['post_title'] ) .'</a>';
 
 					// Display title without link
 					else :
