@@ -11,7 +11,18 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+$image = has_post_thumbnail( get_the_ID() ) ?
+    wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
+$image_src = $image ? $image[0] : EASL_HOME_URL . '/wp-content/uploads/2017/10/journal-1.jpg';
 
+$topic_str = '';
+$topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
+if($topics){
+    foreach ($topics as $topic){
+        $topic_str .= $topic->name.' ';
+
+    }
+}
 ?>
 
 <article id="single-blocks" class="single-publication-article entry clr">
@@ -25,61 +36,90 @@ if (!defined('ABSPATH')) {
                                 <div class="vc_column-inner">
                                     <div class="pub-thumb">
                                         <img alt=""
-                                             src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2017/11/pub-thumb1.png"/>
+                                             src="<?php echo $image_src ?>"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="wpb_column vc_column_container vc_col-sm-8">
                                 <div class="vc_column-inner">
                                     <div class="pub-content">
-                                        <div class="red-delimeter"
-                                             style="border-left: 5px solid #dc214e;padding-left: 10px; margin-bottom: 30px">
+                                        <div class="color-delimeter filter-bg-<?php echo easl_get_events_topic_color();?>"
+                                             style="padding-left: 10px; margin-bottom: 30px">
                                             <div class="pub-meta" style="margin-bottom: 20px;">
                                                 <p class="sp-meta">
-                                                    <span class="sp-meta-date">01 November 2016</span>
+                                                    <span class="sp-meta-date"><?php echo get_field('publication_date');?></span>
                                                     <span class=sp-meta-sep"> | </span>
                                                     <span class="sp-meta-type">Topic:</span>
-                                                    <span class="sp-meta-value">Non-HCC Liver tumours</span>
+                                                    <span class="sp-meta-value"><?php echo $topic_str;?></span>
                                                 </p>
                                             </div>
                                             <h3 class="pub-section-title" style="font-size: 26px;
-    line-height: 17px;
-    margin: 0 0 0px;">Introduction</h3>
+    line-height: 30px;
+    margin: 0 0 0px;"><?php echo get_the_title();?></h3>
                                         </div>
 
                                         <div class="pub-description">
-                                            <p>Benign liver tumours are a heterogeneous group of lesions with different
-                                                cellular origins, as summarized by an international panel of experts
-                                                sponsored by the World Congress of Gastroenterology in 1994.</p>
-                                            <p>These lesions are frequently found incidentally as a consequence of the
-                                                widespread use of imaging tests and often have a benign course. Some of
-                                                these lesions are of greater clinical relevance than others, and the aim
-                                                of these recommendations is to provide a contemporary aid for the
-                                                practical diagnosis and management of the more common benign
-                                                tumours.</p>
-                                            <p>These include haemangiomas, focal nodular hyperplasia (FNH) and
-                                                hepatocellular adenoma (HCA).</p>
+                                            <?php the_content();?>
                                         </div>
-                                        <div class="publication-social-share-section">
-                                            <span class="social-share-text">Share this page</span>
-                                            <div class="social-share-wrap">
-                                                <ul class="social-share">
-                                                    <li>
-                                                        <a href=""><span class="hexagon light-blue"></span><i
-                                                                    class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href=""><span class="hexagon light-blue"></span><i
-                                                                    class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href=""><span class="hexagon light-blue"></span><i
-                                                                    class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                                    </li>
-                                                </ul>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner " style="margin-bottom: 0">
+                                                    <div class="wpb_wrapper">
+                                                        <div style="float: left;margin-right: 20px;font-family: 'KnockoutHTF51Middleweight';
+    font-size: 16px;
+    font-weight: normal;color:#104f85;">Share this page</div>
+                                                        <div class="wpex-social-share position-horizontal style-custom display-block" style="margin-bottom: 0"
+                                                             data-source="<?php echo get_bloginfo('url')?>"
+                                                             data-url="<?php the_permalink();?>"
+                                                             data-title="<?php the_title();?>"
+                                                             data-specs="menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600">
+                                                            <ul class="clr">
+                                                                <li class="wpex-twitter">
+                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/tw.png');
+background-repeat: no-repeat;
+background-position: top left;
+background-size: cover;
+height: 25px;
+    width: 30px;
+    display: block;">
+
+                                                                    </a>
+                                                                </li>
+                                                                <li class="wpex-facebook">
+                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/f.png');
+background-repeat: no-repeat;background-position: top left; background-size: cover;
+height: 25px;
+    width: 30px;
+    display: block;">
+
+                                                                    </a>
+                                                                </li>
+                                                                <li class="wpex-linkedin">
+                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/in.png');
+background-repeat: no-repeat;background-position: top left; background-size: cover;
+height: 25px;
+    width: 30px;
+    display: block;">
+                                                                    </a>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <?php echo do_shortcode('[vcex_social_share style="custom" sites="%5B%7B%22site%22%3A%22twitter%22%7D%2C%7B%22site%22%3A%22facebook%22%7D%2C%7B%22site%22%3A%22linkedin%22%7D%5D"]');?>
                                     </div>
+                                    <style>
+                                        .wpex-social-share,
+                                        .hidden{
+                                            display: none;
+                                        }
+                                        .display-block{
+                                            display: block;
+                                        }
+                                    </style>
                                 </div>
                             </div>
                         </div>
@@ -101,11 +141,12 @@ if (!defined('ABSPATH')) {
                                         <option value="ar">Arabic</option>
                                     </select>
                                 </div>
-                                <button class="easl-button easl-button-wide">Download</button>
+                                <button class="easl-button easl-button-wide publication-download-pdf-btn hidden">Download</button>
+                                <a href="<?php echo get_field('publication_link_to_pdf')?>" class="easl-button easl-button-wide publication-download-pdf-btn" download>Download</a>
                             </form>
                         </div>
                         <div class="">
-                            <a href="#"
+                            <a href="<?php echo get_field('publication_slide_decks')?>"
                                class="vcex-button theme-button inline animate-on-hover wpex-dhover-0"
                                style="background:#ffffff;
                                #ffffff;
@@ -118,7 +159,7 @@ if (!defined('ABSPATH')) {
                                background-position: 0px 5px;
                                padding-left: 48px;
 
-"><span
+" download><span
                                         class="theme-button-inner">Download Slide Deck<span
                                             class="vcex-icon-wrap theme-button-icon-right"><span
                                                 class="fa fa-angle-right"></span></span></span></a>
