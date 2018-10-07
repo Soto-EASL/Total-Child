@@ -132,56 +132,63 @@ $second_aplication_period_finish = get_field('second_aplication_period_finish') 
                 </div>
 
                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+				<?php if( have_rows('past_fellows') ): ?>
                 <div class="vc_row wpb_row vc_inner vc_row-fluid" style="padding: 0 15px;">
                     <div class="wpb_content_element vc_align_left">
                         <h2 class="past-fellows">Past Fellows</h2>
                     </div>
                 </div>
                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_row wpb_row vc_inner vc_row-fluid" style="padding: 0 15px;">
-                    <div class="wpb_content_element vc_align_left">
-                        <ul class="previous-winners">
-                            <?php
-                            $number = 6;
-                            $counter = 0;
-                            $this_year = 2017;
-                            while ($counter < $number):?>
-                                <li>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div class="item"><div class="year"><?php echo $this_year;?></div></div>
-                                        <div class="item">
-                                            <div class="master">
-                                                <div class="picture" style="background-image: url('/wp-content/uploads/2018/09/Iuliana_Nenu-e1537278277659-150x150.jpg');">
-                                                </div>
-                                                <div class="info">
-                                                    <h4 style="margin: 15px 0 6px;">Lorem ipsum dolor sit.</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <div class="slave">
-                                                <div class="picture" style="background-image: url('/wp-content/uploads/2018/09/Iuliana_Nenu-e1537278277659-150x150.jpg');"></div>
-                                                <div class="info">
-                                                    <h4>Lorem ipsum dolor sit.</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            <?php $counter++;?>
-                            <?php $this_year--;?>
-                            <?php endwhile; ?>
-
-
-                        </ul>
-                    </div>
+				<?php while( have_rows('past_fellows') ): the_row(); ?>
+				<span style="font-size: 18px;color: #ffffff;line-height: 38px;text-align: left; padding: 8px 12px!important;background-color: #454545!important;" class="vc_custom_heading easl-recognition-award-year"><?php the_sub_field('year'); ?></span>
+				<div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+                <div class="vc_row wpb_row vc_inner vc_row-fluid">
+					<?php if( have_rows('fellow') ): ?>
+					<?php while( have_rows('fellow') ): the_row(); ?>
+					<div class="wpb_column vc_column_container vc_col-sm-4">
+						<div class="vc_column-inner">
+							<div class="wpb_wrapper">
+								<?php 
+								$avatar = get_sub_field('avatar');
+								$avatar_url = wp_get_attachment_image_url($avatar, 'staff_grid');
+								if($avatar_url):
+								?>
+								<div class="wpb_single_image wpb_content_element">
+									<figure class="wpb_wrapper vc_figure">
+										<img src="<?php echo $avatar_url; ?>" alt="" width="254" height="254"/>
+									</figure>
+								</div>
+								<?php endif; ?>
+								<div style="color:#104e85;font-family:KnockoutHTF51Middleweight;font-size:19px;" class="wpb_text_column has-custom-color wpb_content_element  recognition-link">
+									<div class="wpb_wrapper">
+										<p><?php the_sub_field('name'); ?></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php endwhile; ?>
+					<?php endif; ?>
                 </div>
-                <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
-                <a href="#" class="vcex-button theme-button inline animate-on-hover" style="background-color: #104f85">
-                    <span class="theme-button-inner">Show more</span>
+				<div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+				<?php endwhile; ?>
+				<?php endif; ?>
+				<?php 
+				$show_more_link = get_field('show_more_link');
+				if($show_more_link):
+				?>
+                <a href="<?php echo esc_url($show_more_link['url']); ?>" class="vcex-button theme-button inline animate-on-hover" style="background-color: #104f85">
+					<span class="theme-button-inner">
+						<?php 
+						if(empty($show_more_link['title'])){
+							_e('Show more', 'totla');
+						}else{
+							echo $show_more_link['title'];	
+						} 
+						?>
+					</span>
                 </a>
+				<?php endif; ?>
                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
 
 
