@@ -256,20 +256,18 @@ wp_enqueue_script('highlights-script',
 
                         <li class="easl-events-li easl-event-li-red">
                             <h3>
-                                <a title="" href="https://easl.websitestage.co.uk/event/test-event/">Test Event</a>
+                                <a title="" href="https://easl.websitestage.co.uk/event/liver_cell_isolation_and_characterisation/">Liver Cell isolation event </a>
                             </h3>
                             <a class="events-li-date" href="">
-                                <span class="eld-day">26</span>
-                                <span class="eld-mon">NOV</span>
+                                <span class="eld-day">16-18</span>
+                                <span class="eld-mon">JAN</span>
                                 <span class="eld-year">2018</span>
                                 <i class="fa fa-play" aria-hidden="true"></i>
                             </a>
                             <p class="el-location">
                                 <span class="ell-name">Clinical School</span>
                                 <span class="ell-bar">|</span>
-                                <span class="ell-country">
-				United Kingdom (UK), London
-				</span>
+                                <span class="ell-country">United Kingdom (UK), London</span>
                             </p>
                         </li>
 
@@ -293,10 +291,10 @@ wp_enqueue_script('highlights-script',
                         <figure class="wpb_wrapper vc_figure">
                             <div class="vc_single_image-wrapper   vc_box_border_grey">
                                 <img class="vc_single_image-img "
-                                     src="https://easl.websitestage.co.uk/wp-content/uploads/2017/10/journal-2.jpg"
-                                     width="80" height="100"
-                                     alt="journal-2"
-                                     title="journal-2">
+                                     src="https://easl.websitestage.co.uk/wp-content/uploads/2018/10/journal-4.jpg"
+                                     width="80" height="104"
+                                     alt="journal-4"
+                                     title="journal-4">
                             </div>
                         </figure>
                     </div>
@@ -306,18 +304,17 @@ wp_enqueue_script('highlights-script',
     margin-left: 95px;
     border-left: 4px solid #dc214e;
     padding-left: 8px;
-    line-height: 14px;" class="vc_custom_heading">01 February 2018</h4>
+    line-height: 14px;" class="vc_custom_heading">2018</h4>
                         <h2 style="font-size: 19px;
     color: #004b87;
     line-height: 24px;
     text-align: left;
     margin-left: 95px;
     padding-left: 8px;
-    height: 42px;
     border-left: 4px solid #dc214e;
     margin-bottom: 13px;"
-                            class="vc_custom_heading">Roles of endoscopy in primary sclerosis cholangitis</h2>
-                        <a href="#" class="vcex-button theme-button inline animate-on-hover"
+                            class="vc_custom_heading">EASL Clinical Practice Guidelines: Hepatitis E virus infection</h2>
+                        <a href="https://easl.websitestage.co.uk/publication/easl-clinical-practice-guidelines-on-hepatitis-e-virus-infection/" class="vcex-button theme-button inline animate-on-hover"
                            style="background: #71c5e8;
     color: #ffffff;
     font-size: 16px;
@@ -337,7 +334,7 @@ wp_enqueue_script('highlights-script',
                 <a href="#"
                    class="vcex-button theme-button inline animate-on-hover"
                    style="background:#f0f0f0;color:#004b87;padding: 0px 40px;">
-                    <span class="theme-button-inner">Slide Desks</span>
+                    <span class="theme-button-inner">Slide Decks</span>
                 </a>
                 <div class="vc_empty_space" style="height: 24px"><span class="vc_empty_space_inner"></span></div>
 
@@ -355,24 +352,8 @@ wp_enqueue_script('highlights-script',
     height: 42px;
     border-left: 4px solid #0b9490;
     margin-bottom: 13px;"
-                            class="vc_custom_heading">Roles of endoscopy in primary sclerosis cholangitis</h2>
+	class="vc_custom_heading"><a href="https://easl.websitestage.co.uk/education/slide-decks/">Best of ILC 2018 General hepatolgy </a></h2>
                     </div>
-                <div class="wpb_content_element">
-                    <h4 style="color: #666666;
-    text-align: left;
-    border-left: 4px solid #eb6018;
-    padding-left: 8px;
-    line-height: 14px;" class="vc_custom_heading">01 February 2018</h4>
-                    <h2 style="font-size: 19px;
-    color: #004b87;
-    line-height: 24px;
-    text-align: left;
-    padding-left: 8px;
-    height: 42px;
-    border-left: 4px solid #eb6018;
-    margin-bottom: 13px;"
-                        class="vc_custom_heading">Roles of endoscopy in primary sclerosis cholangitis</h2>
-                </div>
 
             </div>
         </div>
