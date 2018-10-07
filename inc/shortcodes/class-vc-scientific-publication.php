@@ -190,6 +190,50 @@ if( !class_exists('EASL_VC_Scientific_Publication') ){
                         'group' => __( 'View', 'total' ),
                         'description' => __( 'Hide Excerpt.', 'total' ),
                     ),
+					//Take Me To Group
+                    array(
+                        'type' => 'vcex_ofswitch',
+                        'std' => 'true',
+                        'heading' => __( 'Enable', 'total' ),
+                        'param_name' => 'enable_related_links',
+						'group' => __( 'Related Links', 'total' ),
+                        'description' => __( 'Hide Excerpt.', 'total' ),
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        'heading' => __( 'Title', 'total' ),
+                        'param_name' => 'relink_title',
+                        'value' => 'Take me to:',
+                        'group' => __( 'Related Links', 'total' ),
+						'dependency'	 => array(
+							'element'	 => 'enable_related_links',
+							'value'		 => array( 'true' ),
+						),
+                    ),
+					array(
+						'type' => 'param_group',
+						'heading' => __( 'Related Links', 'total' ),
+						'param_name' => 'related_links',
+						'group' => __( 'Related Links', 'total' ),
+						'dependency'	 => array(
+							'element'	 => 'enable_related_links',
+							'value'		 => array( 'true' ),
+						),
+						'value' => urlencode( json_encode( array(
+							array(
+								'rlink' => '',
+							),
+						) ) ),
+						'params' => array(
+							array(
+								'type' => 'vc_link',
+								'value' => '',
+								'param_name' => 'rlink',
+								'heading' => __( 'Related link data', 'total' ),
+								'admin_label' => true,
+							),
+						),
+					),
 
                     // Design Options
                     array(
@@ -255,9 +299,35 @@ if( !class_exists('EASL_VC_Scientific_Publication') ){
             }
             return $data;
         }
+		public function get_related_links_data( $rlinks_param ) {
+			$related_links_data = array();
+			if ( strlen( $rlinks_param ) > 0 ) {
+				$related_links_data = vc_param_group_parse_atts( $rlinks_param );
+			}
+			if(empty($related_links_data)){
+				$related_links_data = array();
+			}
+			$parsed_links_data = array();
+			foreach($related_links_data as $link) {
+				if(empty($link['rlink'])){
+					continue;
+				}
+				$p_link = $this->parse_url($link['rlink']);
+				if( strlen($p_link['url']) > 0) {
+					$parsed_links_data[] = $p_link;
+				}
 
+			}
+			return $parsed_links_data;
+		}
+	
+		public function parse_url($link) {
+			//parse link
+			$link = ( '||' === $link ) ? '' : $link;
+			return vc_build_link( $link );
+		}
 
-
+		
 	}
 }
 new EASL_VC_Scientific_Publication;

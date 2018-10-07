@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) {
  * @var $this SC_LL_Video_Box
  */
 $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = '';
+$enable_related_links = $relink_title = $related_links = '';
 $atts = vc_map_get_attributes( 'easl_scientific_publication', $atts );
 
 extract($atts);
@@ -37,6 +38,11 @@ if ($title && $view_all_link) {
 }
 $filter_by_topic = '';
 $taxonomy_string = '';
+
+$related_links_data = array();
+if($enable_related_links){
+	$related_links_data = $this->get_related_links_data($related_links);
+}
 
 if($hide_topic === "false"){
     $taxonomies = get_categories(['taxonomy' => 'publication_topic']);
@@ -88,15 +94,24 @@ if($hide_topic === "false"){
     $br = '<br>';
     $no_bottom_margins = 'no-bottom-margins';
 }
-$take_me_to = '<h4 style="font-size: 18px">Take me to:</h4>'.
-    '<a href="/journal-of-hepatology" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Journal of Hepatology'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/jhep-reports" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Jhep Report'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/eu-publications" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">EU Publications'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/patient-documents" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Patient Documents'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br;
+$related_links_html = '';
+if($enable_related_links){
+	$related_links_html .= '<div class="easl-sp-related-links" style="padding-bottom: 7px;">';
+	$related_links_html .= '<h4 style="font-size: 18px;margin-bottom: 18px;">'. $relink_title .'</h4>';
+	foreach($related_links_data as $rel_link) {
+		$link_attributes = array();
+		$link_attributes[] = 'href="' . trim( $rel_link['url'] ) . '"';
+		if ( ! empty( $rel_link['target'] ) ) {
+			$link_attributes[] = 'target="' . esc_attr( trim( $rel_link['target'] ) ) . '"';
+		}
+		if ( ! empty( $rel_link['rel'] ) ) {
+			$link_attributes[] = 'rel="' . esc_attr( trim( $rel_link['rel'] ) ) . '"';
+		}
+		$link_attributes = implode( ' ', $link_attributes );
+		$related_links_html .= '<a class="animate-on-hover wpex-dhover-0 publication-filter-button" '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>' . $br;
+	}
+	$related_links_html .= '</div>';
+}
 
 $top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row-fluid" style="background-color:#ffffff !important; padding-top: 30px; margin-bottom: 30px;border: 3px solid #004b87;">'.
     $filter_by_topic.
@@ -128,19 +143,19 @@ $top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row
 								'</select>'.
 							'</div>';
 
-$top_filter .= $hide_topic === "false" ? $take_me_to : '';
+$top_filter .= $hide_topic === "false" ? $related_links_html : '';
 $top_filter .=			'</div>'.
 					'</div>'.
 				'</div>'.
 			'</div>'.
 		'</div>'.
 	'</div>';
-$top_filter .=  $hide_topic === "true" ? '<div class="wpb_column vc_column_container vc_col-sm-4" style="border-left: 1px solid #104f85;">'.
+$top_filter .=  $hide_topic === "true" ? '<div class="wpb_column vc_column_container vc_col-sm-4" style="border-left: 1px solid #104f85; margin-bottom: 15px;">'.
 '<div class="vc_column-inner ">'.
 			'<div class="wpb_wrapper">'.
 				'<div class="wpb_raw_code wpb_content_element wpb_raw_html">'.
 					'<div class="wpb_wrapper">'.
-						'<div class="easl-col-inner" >'. $take_me_to.'</div></div></div></div></div></div>': '';
+						'<div class="easl-col-inner" >'. $related_links_html .'</div></div></div></div></div></div>': '';
 $top_filter .= '</div>';
 
 $atts['post_type'] = 'publication';
