@@ -603,3 +603,11 @@ function easl_posts_pagination_display($display, $post_type) {
 	return $display;
 }
 add_filter( 'wpex_has_next_prev', 'easl_posts_pagination_display', 10, 2 );
+
+function easl_staffs_types_args($args){
+	$args['public'] = false;
+	$args['show_ui'] = true;
+	return $args;
+}
+
+add_filter('wpex_staff_args', 'easl_staffs_types_args');
