@@ -20,6 +20,7 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-card-button.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staff-list.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
 
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-button.php' );
@@ -28,7 +29,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_events', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-events.php' );
 	vc_lean_map( 'easl_events_calendar', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-events-calendar.php' );
 	vc_lean_map( 'easl_news', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-news.php' );
-	vc_lean_map( 'easl_scientific_publication', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-scientific-publication.php' );
 	vc_lean_map( 'easl_carousel', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-carousel.php' );
 	vc_lean_map( 'easl_carousel_item', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-carousel-item.php' );
 	vc_lean_map( 'easl_yi_fellowship', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-yifellowship.php' );
@@ -37,6 +37,7 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_cag_members', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-cag-members.php' );
 	vc_lean_map( 'easl_menu_stacked_content', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-menu-stacked-content.php' );
 	vc_lean_map( 'easl_card_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-card-button.php' );
+	vc_lean_map( 'easl_staffs', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-staffs.php' );
 
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

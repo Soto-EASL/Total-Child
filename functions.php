@@ -18,7 +18,7 @@ require_once EASL_INC_DIR . 'post-types/publication/publication-config.php';
 
 
 function easl_theme_setup(){
-	
+	add_image_size('staff_grid', 254, 254, true);
 }
 add_action( 'after_setup_theme', 'easl_theme_setup' );
 

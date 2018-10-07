@@ -18,6 +18,7 @@ return array(
 			'heading' => __( 'Button Text', 'total' ),
 			'param_name' => 'button_text',
 			'description' => __( 'Enter button text.', 'total' ),
+			'admin_label' => true,
 		),
 		array(
 			'type' => 'textfield',
