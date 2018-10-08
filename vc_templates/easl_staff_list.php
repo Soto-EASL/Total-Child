@@ -514,9 +514,9 @@ if ( $wpex_query->have_posts() ) :
                             $media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="'. $atts['lightbox_link'] .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link'. $lightbox_single_class .'"'. $lightbox_data .'>';
 
                         // Standarad post link
-                        else :
+                        elseif($atts['post_content']) :
 
-                            $media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="#'. sanitize_title_with_dashes($atts['post_title']) .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link"'. vcex_html( 'target_attr', $link_target ) .'>';
+                            $media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="#'. sanitize_title_with_dashes($atts['post_title']) .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link easl-staff-details-button"'. vcex_html( 'target_attr', $link_target ) .'>';
 
                         endif;
 
@@ -542,7 +542,7 @@ if ( $wpex_query->have_posts() ) :
                     $media_output .= wpex_get_entry_media_after( 'vcex_staff_grid' );
 
                     // Close link and output inside overlay HTML
-                    if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) ) :
+                    if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) && $atts['post_content'] ) :
 
                         // Inner Overlay
                         if ( $overlay_style && 'none' != $overlay_style ) {
@@ -605,7 +605,7 @@ if ( $wpex_query->have_posts() ) :
                         // Display title and link to post
                         if ( $atts['post_content'] ) :
 
-                            $title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="#'. sanitize_title_with_dashes($atts['post_title']) .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
+                            $title_output .= '<a class="easl-staff-details-button" style="display:inline-block;" data-target="'.$atts['post_id'].'" href="#'. sanitize_title_with_dashes($atts['post_title']) .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
 
                         // Display title without link
                         else :
@@ -898,9 +898,9 @@ if ( $wpex_query->have_posts() ) :
 						$media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="'. $atts['lightbox_link'] .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link'. $lightbox_single_class .'"'. $lightbox_data .'>';
 
 					// Standarad post link
-					else :
+					elseif($atts['post_content']) :
 
-						$media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="#'. sanitize_title_with_dashes($atts['post_title']) .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link"'. vcex_html( 'target_attr', $link_target ) .'>';
+						$media_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'"  href="#'. sanitize_title_with_dashes($atts['post_title']) .'" title="'. $atts['post_esc_title'] .'" class="staff-entry-media-link easl-staff-details-button"'. vcex_html( 'target_attr', $link_target ) .'>';
 
 					endif;
 
@@ -926,7 +926,7 @@ if ( $wpex_query->have_posts() ) :
 				$media_output .= wpex_get_entry_media_after( 'vcex_staff_grid' );
 
 				// Close link and output inside overlay HTML
-				if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) ) :
+				if ( ! in_array( $thumb_link, array( 'none', 'nowhere' ) ) && $atts['post_content'] ) :
 
 					// Inner Overlay
 					if ( $overlay_style && 'none' != $overlay_style ) {
@@ -989,7 +989,7 @@ if ( $wpex_query->have_posts() ) :
 					// Display title and link to post
 					if ( $atts['post_content'] ) :
 
-						$title_output .= '<a style="display:inline-block;" data-target="'.$atts['post_id'].'" href="#'. sanitize_title_with_dashes($atts['post_title']) .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
+						$title_output .= '<a class="easl-staff-details-button" style="display:inline-block;" data-target="'.$atts['post_id'].'" href="#'. sanitize_title_with_dashes($atts['post_title']) .'"'. $heading_link_style .''. vcex_html( 'target_attr', $link_target ) .'>'. wp_kses_post( $atts['post_title'] ) .'</a>';
 
 					// Display title without link
 					else :

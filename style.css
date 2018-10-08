@@ -3296,6 +3296,47 @@ body.single-publication {
     margin-top: -4px;
 }
 
+.easl-staff-details-wrap {
+    display: none;
+    position: relative;
+    min-height: 250px;
+}
+.easl-show-staff-details .easl-msc-content-wrap-inner {
+    display: none;
+}
+.easl-show-staff-details .easl-msc-content-wrap-inner {
+    
+}
+.easl-show-staff-details .easl-staff-details-wrap {
+    display: block;
+}
+.easl-show-staff-details .easl-sd-load-icon {
+    display: none;
+    text-align: center;
+    position: absolute;
+    height: 75px;
+    width: 75px;
+    margin-left: -60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.easl-staff-details-navigation, .easl-member-profile-back-link , .easl-staff-details-content {
+    display: none;
+}
+
+.easl-staff-details-loading .easl-sd-load-icon{
+    display: block;
+}
+.easl-staff-details-loaded .easl-staff-details-navigation, 
+.easl-staff-details-loaded .easl-member-profile-back-link, 
+.easl-staff-details-loaded .easl-staff-details-content{
+    display: block;
+}
+.easl-member-profile-back-link {
+    margin: 0 0 15px;
+}
+
 /* Buttons Grid in column container */
 .easl-button-grid-column-container {}
 

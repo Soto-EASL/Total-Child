@@ -97,14 +97,14 @@ if ( $staff_query->have_posts() ) {
 					<div class="easl-staff-item-inner clr">
 						<?php if ( has_post_thumbnail() ): ?>
 							<div class="easl-staff-item-thumb">
-								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>"><?php endif; ?>
+								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php echo the_ID(); ?>"><?php endif; ?>
 									<?php echo $this->get_staff_profile_thumb( get_the_ID() ); ?>
 									<?php if ( $this->staff_has_details( get_the_ID() ) ): ?></a><?php endif; ?>
 							</div>
 						<?php endif; ?>
 						<div class="easl-staff-item-detail wpex-clr">
 							<h2 class="easl-staff-item-name">
-								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>"><?php endif; ?>
+								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a  class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php echo the_ID(); ?>"><?php endif; ?>
 									<span><?php the_title(); ?></span>
 									<?php if ( $this->staff_has_details( get_the_ID() ) ): ?></a><?php endif; ?>
 							</h2>

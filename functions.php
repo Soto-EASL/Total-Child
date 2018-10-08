@@ -371,135 +371,22 @@ add_filter ('get_archives_link',
 add_action( 'wp_ajax_get_staff_profile', 'get_staff_profile' );
 add_action( 'wp_ajax_nopriv_get_staff_profile', 'get_staff_profile' );
 function get_staff_profile(){
-    $staff_id = $_POST['staff_id'];
-    $back_link_url = get_home_url() . '/community';
+    $staff_id = !empty($_POST['staff_id']) ? absint($_POST['staff_id']): false;
+	if(!$staff_id){
+		echo '';
+		die();
+	}
+	global $post;
     $post = get_post($staff_id);
-    $img_path = '';
-
-    if ( ! empty( $el_id ) ) {
-        $wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
-    }
-
-    if($post){
-        if (has_post_thumbnail( $post->ID ) ){
-            $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-            if($image){
-                $img_path = $image[0];
-            }
-        }
-        $terms = get_the_terms( $post->ID, 'staff_category' );
-
-    }
-
-    ob_start();?>
-    <div class="profile-block-wrapper">
-        <div class="vc_row wpb_row vc_row-fluid">
-            <div class="wpb_column vc_column_container vc_col-sm-12">
-                <div class="vc_column-inner custom-margin-18">
-                    <div class="wpb_wrapper">
-                        <div class="easl-member-profile-back-link">
-                            <a class="easl-back-link-chevron" href="<?php echo $back_link_url;?>">Back</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="vc_row wpb_row vc_row-fluid">
-            <div class="wpb_column vc_column_container vc_col-sm-8">
-                <div class="vc_column-inner custom-margin-0">
-                    <div class="wpb_wrapper">
-                        <div class="easl-member-profile">
-                            <div class="easl-member-profile-header vc_clearfix">
-                                <div class="sp-thumb">
-                                    <img style="max-width: 250px;" alt='' src='<?php echo $img_path ? $img_path : '/wp-content/themes/Total-Child/images/default-avatar.png' ?>' class='avatar avatar-121 photo'/>
-                                </div>
-                                <div class="sp-content">
-                                    <h2 class="easl-member-profile-name">
-                                        <?php echo $post->post_title;?>
-                                    </h2>
-                                    <?php if($terms):?>
-                                        <?php foreach ($terms as $term): ?>
-                                            <h4 class="easl-member-profile-position"><?php echo $term->name;?></h4>
-                                        <?php endforeach;?>
-                                    <?php endif;?>
-                                    <p class="sp-excerpt"><?php echo $post->post_excerpt ? $post->post_excerpt : '';?></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wpb_column vc_column_container vc_col-sm-4">
-                <div class="vc_column-inner custom-margin-0">
-                    <div class="wpb_wrapper">
-                        <div class="easl-member-profile-details">
-                            <div class="easl-profile-details-item">
-                                <div class="easl-row">
-                                    <div class="easl-col easl-col-2">
-                                        <h4 class="easl-profile-details-item-title">tel:</h4>
-                                        <p class="easl-profile-details-item-content"><?php echo get_field('telephone', $post->ID);?></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="easl-profile-details-item">
-                                <div class="easl-row">
-                                    <div class="easl-col easl-col-1">
-                                        <h4 class="easl-profile-details-item-title">email:</h4>
-                                        <p class="easl-profile-details-item-content"><?php echo get_field('email', $post->ID);?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="vc_row wpb_row vc_row-fluid">
-            <div class="wpb_column vc_column_container vc_col-sm-12">
-                <div class="vc_column-inner custom-margin">
-                    <div class="wpb_wrapper">
-                        <div class="easl-member-profile-description vc_clearfix"><?php echo $post->post_content;?></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="in-the-bottom">
-        <div class="vc_row wpb_row vc_row-fluid">
-            <div class="wpb_column vc_column_container vc_col-sm-6">
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="wpb_text_column wpb_content_element ">
-                            <div class="wpb_wrapper">
-                                <a href="#" class="prev-profile">Previous Profile</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="wpb_column vc_column_container vc_col-sm-6">
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="wpb_text_column wpb_content_element ">
-                            <div class="wpb_wrapper">
-                                <a href="#" class="next-profile">Next Profile</a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    
-<?php
-    $html = ob_get_contents();
-    ob_end_clean();
+	if(!$post){
+		echo '';
+		die();
+	}
+	setup_postdata($post);
+    ob_start();
+	get_template_part('partials/staff/details');
+	wp_reset_postdata();
+    $html = ob_get_clean();
     echo $html;
     die();
 }
