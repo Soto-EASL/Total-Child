@@ -58,7 +58,7 @@ jQuery(function($) {
         nextPrev = getNextPrevStaff(current);
         if(nextPrev.prev){
             $('.prev-profile', $staffDetailWrap)
-                .attr('href', currentPageLink + nextPrev.prev.url)
+                .attr('href', nextPrev.prev.url)
                 .data('target', nextPrev.prev.id)
                 .removeClass('easl-hide');
         }else{
@@ -67,7 +67,7 @@ jQuery(function($) {
         
         if(nextPrev.next){
             $('.next-profile', $staffDetailWrap)
-                .attr('href', currentPageLink + nextPrev.next.url)
+                .attr('href', nextPrev.next.url)
                 .data('target', nextPrev.next.id)
                 .removeClass('easl-hide');
         }else{
@@ -97,7 +97,7 @@ jQuery(function($) {
             return false;
         }
         if($(this).attr('href')){
-            window.location = $(this).attr('href');
+            window.location.hash = $(this).attr('href');
         }
         !$(this).hasClass('sd-next-prev') && $mscContentWrap.data('easlscrollpos', document.documentElement.scrollTop);
         $mscContentWrap.addClass('easl-show-staff-details easl-staff-details-loading');
@@ -132,4 +132,7 @@ jQuery(function($) {
         }
         $mscContentWrap.data('easlscrollpos', false);
     });
+    if(window.location.hash && $('.easl-msc-content-wrap .easl-staff-details-button[href="'+ window.location.hash +'"]').length){
+        $('.easl-msc-content-wrap .easl-staff-details-button[href="'+ window.location.hash +'"]').eq(0).trigger('click');
+    }
 });

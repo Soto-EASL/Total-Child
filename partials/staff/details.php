@@ -7,7 +7,7 @@ $post = get_post( get_the_ID() );
 
 $img_path = '';
 if ( has_post_thumbnail( $post->ID ) ) {
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
+	$image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'staff_grid' );
 	if ( $image ) {
 		$img_path = $image[ 0 ];
 	}
