@@ -16,7 +16,7 @@ $terms = get_the_terms( $post->ID, 'staff_category' );
 ?>
 <div class="profile-block-wrapper">
 	<div class="vc_row wpb_row vc_row-fluid">
-		<div class="wpb_column vc_column_container vc_col-sm-8">
+		<div class="wpb_column vc_column_container vc_col-sm-12">
 			<div class="vc_column-inner custom-margin-0">
 				<div class="wpb_wrapper">
 					<div class="easl-member-profile">
@@ -32,30 +32,6 @@ $terms = get_the_terms( $post->ID, 'staff_category' );
 									<?php endforeach; ?>
 								<?php endif; ?>
 								<p class="sp-excerpt"><?php echo $post->post_excerpt ? $post->post_excerpt : ''; ?></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="wpb_column vc_column_container vc_col-sm-4">
-			<div class="vc_column-inner custom-margin-0">
-				<div class="wpb_wrapper">
-					<div class="easl-member-profile-details">
-						<div class="easl-profile-details-item">
-							<div class="easl-row">
-								<div class="easl-col easl-col-2">
-									<h4 class="easl-profile-details-item-title">tel:</h4>
-									<p class="easl-profile-details-item-content"><?php echo get_field( 'telephone', $post->ID ); ?></p>
-								</div>
-							</div>
-						</div>
-						<div class="easl-profile-details-item">
-							<div class="easl-row">
-								<div class="easl-col easl-col-1">
-									<h4 class="easl-profile-details-item-title">email:</h4>
-									<p class="easl-profile-details-item-content"><?php echo get_field( 'email', $post->ID ); ?></p>
-								</div>
 							</div>
 						</div>
 					</div>
