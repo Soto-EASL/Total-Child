@@ -167,6 +167,29 @@ body a {
     background-color: #f9bc49;
 }
 
+.filter-bg-light-blue{
+    border-left: 5px solid #71c5e8;
+}
+.filter-bg-blue{
+    border-left: 5px solid #165291;
+}
+.filter-bg-red{
+    border-left: 5px solid #de2a57;
+}
+.filter-bg-teal{
+    border-left: 5px solid #189790;
+}
+.filter-bg-orrange{
+    border-left: 5px solid #f26827;
+}
+.filter-bg-gray{
+    border-left: 5px solid #7e6a73;
+}
+.filter-bg-yellow{
+    border-left: 5px solid #f9bc49;
+}
+
+
 .easl-custom-checkbox:after {
     background: transparent;
     content: "\f00c";
@@ -687,6 +710,24 @@ body #site-navigation .dropdown-menu a {
 }
 .page-header .page-header-title-icon-ueg .page-header-title{
     background-image: url(images/title-icons/ueg.jpg);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.page-header .page-header-title-icon-aleh .page-header-title{
+    background-image: url(images/icons/ALEH.png);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.page-header .page-header-title-icon-aasld .page-header-title{
+    background-image: url(images/icons/AASLD-Logo-Vertical-CMYK.png);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.page-header .page-header-title-icon-apasl .page-header-title{
+    background-image: url(images/icons/APASL-logo-2.png);
     min-height: 118px;
     padding-left: 164px;
     line-height: 118px;
@@ -1840,7 +1881,25 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn-icon.easl-gbtn-ueg{
     height: 63px;
 }
+.easl-gbtn-icon.easl-gbtn-aleh{
+    height: 63px;
+}
+.easl-gbtn-icon.easl-gbtn-aasld{
+    height: 63px;
+}
+.easl-gbtn-icon.easl-gbtn-apasl{
+    height: 63px;
+}
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-ueg{
+    background-position: 0px 0px;
+}
+.easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-aleh{
+    background-position: 0px 0px;
+}
+.easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-aasld{
+    background-position: 0px 0px;
+}
+.easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-apasl{
     background-position: 0px 0px;
 }
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-globe{
@@ -1896,7 +1955,19 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .ueg-icon,
 .easl-gbtn-ueg{
-    background-image: url("images/icons/ueg.jpg");
+    background-image: url("images/icons/UEG_Logo_CMYK.png");
+}
+.aleh-icon,
+.easl-gbtn-aleh{
+    background-image: url("images/icons/ALEH.png");
+}
+.aasld-icon,
+.easl-gbtn-aasld{
+    background-image: url("images/icons/AASLD-Logo-Vertical-CMYK.png");
+}
+.apasl-icon,
+.easl-gbtn-apasl{
+    background-image: url("images/icons/APASL-logo-2.png");
 }
 .easl-gbtn-text {
     display: block;
@@ -3832,6 +3903,27 @@ a.easl-card-btn:hover{
     background-position: 0 0;
 
 }
+.easl-card-btn-icon.aleh-icon{
+    height: 63px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.aleh-icon {
+    background-position: 0 0;
+
+}
+.easl-card-btn-icon.aasld-icon{
+    height: 63px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.aasld-icon {
+    background-position: 0 0;
+
+}
+.easl-card-btn-icon.apasl-icon{
+    height: 63px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.apasl-icon {
+    background-position: 0 0;
+
+}
 .easl-card-block{
     height: 90px;
 }
@@ -4106,4 +4198,7 @@ ul.suggestions{
 .easl-ec-row-gray .ec-links-icon.calendar{
     background-image: url("images/events-icons/calendar.png");
     background-position: -36px -41px;
+}
+.fellowships li a:hover{
+    text-decoration: none;
 }
