@@ -2372,11 +2372,6 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-msc-content-wrap-vertical {
     margin-top: 20px;
 }
-/**
-bg: 06589b
-tca: 71c5e8
-padding: 15 20
-*/
 .easl-msc-content-wrap-vertical .vc_tta.vc_general .vc_tta-tabs-container .vc_tta-tabs-list {
     border: 0 none;
     background: #06589b;
@@ -2409,6 +2404,76 @@ padding: 15 20
 }
 .wpb-js-composer .easl-msc-content-wrap .vc_tta.vc_tta-style-classic .vc_tta-panel:last-child .vc_tta-panel-heading {
     border-bottom: 0 none!important;
+}
+
+.msc-rm-filter-container {
+    width: 33.333%;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+}
+
+.msc-rm-filter-container:before{
+    content: "\f105";
+    display: block;
+    font-family: 'FontAwesome';
+    position: absolute;
+    font-size: 16px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #62cff5;
+}
+.msc-rm-filter-container:hover:before{
+    content: "\f107";
+}
+.msc-rm-filter-container .msc-filter-menu {
+    list-style: none;
+    margin: 0;
+    z-index: 1;
+}
+.msc-rm-filter-container .msc-filter-menu li {
+    margin-right: 0;
+    margin-bottom: -1px;
+    flex: 1 1 auto;
+    width: 100%;
+    display: none;
+    background-color: #ffffff;
+}
+.msc-rm-filter-container .msc-filter-menu li.active{
+    display: block;
+}
+.msc-rm-filter-container .msc-filter-menu li a{
+    width: 100%;
+    border: 1px solid #ddd;
+    color: #004b87;
+    background: transparent;
+    display: block;
+    padding: 0.5em 1em;
+    font-family: inherit;
+    font-size: .923em;
+    font-weight: 400;
+    margin: 0;
+    cursor: pointer;
+    line-height: 1.65;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: inherit;
+    text-decoration: none !important;
+    max-width: 100%;
+    transition: 0.15s all ease;
+}
+.msc-rm-filter-container .msc-filter-menu:hover li{
+    display: block;
+}
+.msc-rm-filter-container .msc-filter-menu li.active a {
+    color: #004b87;
+    background: #f7f7f7;
+}
+.msc-rm-filter-container .msc-filter-menu li a:hover,
+.msc-rm-filter-container .msc-filter-menu li a:active{
+    background: #f7f7f7;
+    color: #000;
 }
 
 /* VC Shortcode: EASL Post Type Grid */
@@ -3291,14 +3356,17 @@ body.single-publication {
     margin: 0;
     padding: 0;
 }
-.easl-staffs-row .easl-staff-item:last-child {
-    margin-bottom: 0;
+.easl-staffs-row {
+    margin-bottom: 10px;
 }
 .easl-staffs-widget-intro {
     margin: 0 0 20px;
 }
 .easl-staffs-widget-intro p:last-child {
     margin-bottom: 0;
+}
+.easl-staff-item {
+    margin-bottom: 20px;
 }
 .easl-staff-item-thumb {
     margin-bottom: 10px;

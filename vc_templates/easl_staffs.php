@@ -30,7 +30,7 @@ $info_template			 = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$class_to_filter = 'vcex-module easl-staffs-wrap clr';
+$class_to_filter = 'vcex-module easl-staffs-wrap easl-msc-filterable-con clr';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
 $css_class		 = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings[ 'base' ], $atts );
 
@@ -41,6 +41,11 @@ if ( $item_content_layout == 'two_col' ) {
 }
 
 $wrapper_attributes = array();
+
+if($widget_title && empty($atts[ 'el_id' ])){
+	$atts[ 'el_id' ] = sanitize_title_with_dashes($widget_title);
+}
+
 if ( !empty( $atts[ 'el_id' ] ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $atts[ 'el_id' ] ) . '"';
 }
@@ -73,8 +78,14 @@ $staff_query = new WP_Query( $query_args );
 
 if ( $staff_query->have_posts() ) {
 	$this->enqueue_css_js();
-	$item_class	 = array( 'easl-staff-item', vcex_get_grid_column_class( array('columns' => $staff_col_width) ), 'col' );
+	$item_class	 = array( 'easl-staff-item easl-col', vcex_get_grid_column_class( array('columns' => $staff_col_width) ), 'col' );
 	$count		 = 0;
+	if($widget_title && class_exists('EASL_VC_Menu_Stacked_content') && EASL_VC_Menu_Stacked_content::$enable_right_menu_data ){
+		EASL_VC_Menu_Stacked_content::$right_menu_data[] = array(
+			'title' => $widget_title,
+			'id' => $atts[ 'el_id' ],
+		);
+	}
 	?>
 	<div <?php echo implode( ' ', $wrapper_attributes ); ?>>
 		<?php if ( $widget_title ): ?>
@@ -87,24 +98,24 @@ if ( $staff_query->have_posts() ) {
 				<?php echo wpb_js_remove_wpautop( $content, true ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="wpex-row easl-staffs-row wpex-clr">
+		<div class="easl-staffs-row easl-row easl-row-col-2">
 			<?php
 			while ( $staff_query->have_posts() ) {
 				$staff_query->the_post();
 				$count++;
 				?>
-				<div class="<?php echo implode( ' ', $item_class ) . ' col-' . $count; ?>">
-					<div class="easl-staff-item-inner clr">
+				<div class="<?php echo implode( ' ', $item_class ) . ' easl-col-' . $count; ?>">
+					<div class="easl-staff-item-inner easl-col-inner">
 						<?php if ( has_post_thumbnail() ): ?>
 							<div class="easl-staff-item-thumb">
-								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php echo the_ID(); ?>"><?php endif; ?>
+								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php the_ID(); ?>"><?php endif; ?>
 									<?php echo $this->get_staff_profile_thumb( get_the_ID() ); ?>
 									<?php if ( $this->staff_has_details( get_the_ID() ) ): ?></a><?php endif; ?>
 							</div>
 						<?php endif; ?>
 						<div class="easl-staff-item-detail wpex-clr">
 							<h2 class="easl-staff-item-name">
-								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a  class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php echo the_ID(); ?>"><?php endif; ?>
+								<?php if ( $this->staff_has_details( get_the_ID() ) ): ?><a  class="easl-staff-details-button" href="#<?php echo sanitize_title_with_dashes( get_the_title()); ?>" data-target="<?php the_ID(); ?>"><?php endif; ?>
 									<span><?php the_title(); ?></span>
 									<?php if ( $this->staff_has_details( get_the_ID() ) ): ?></a><?php endif; ?>
 							</h2>

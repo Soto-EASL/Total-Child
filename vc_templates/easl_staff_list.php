@@ -406,7 +406,9 @@ if ( $wpex_query->have_posts() ) :
                         'terms' => $term->slug
                     )
                 ),
-                'numberposts' => -1
+                'numberposts' => -1,
+                'orderby' => 'menu_order',
+                'order' => 'ASC',
             ) );
             // Define counter var to clear floats
             $count=0;

@@ -14,8 +14,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this EASL_VC_Menu_Stacked_content
  */
 $title = $nav_menu = $layout =  $el_class = $el_id = $css_animation = '';
+$enable_right_menu_filter = $filter_all_link = '';
+
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
+
+if($enable_right_menu_filter == 'true') {
+	$enable_right_menu_filter = true;
+}else{
+	$enable_right_menu_filter = false;
+}
+$filter_all_link = trim($filter_all_link);
 
 $css_classes = 'easl-menu-stacked-content wpb_content_element ' . $this->getCSSAnimation( $css_animation );
 $css_classes .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class );
@@ -59,6 +68,26 @@ if($menu_content){
 $wrapper_attributes = array();
 
 $wrapper_attributes[] = 'class="' . esc_attr( trim( $css_classes ) ) . '"';
+EASL_VC_Menu_Stacked_content::$right_menu_data = array();
+EASL_VC_Menu_Stacked_content::$enable_right_menu_data = $enable_right_menu_filter;
+$parsed_content = wpb_js_remove_wpautop( $content );
+$right_menu_html = '';
+if($enable_right_menu_filter && count(EASL_VC_Menu_Stacked_content::$right_menu_data) > 1) {
+	$right_menu_html = '<div class="msc-rm-filter-container"><ul class="msc-filter-menu">';
+	if($filter_all_link) {
+		$right_menu_html .= '<li class="active" ><a href="#all">' . $filter_all_link . '</a></li>';
+	}
+	$rmf_count = 0;
+	foreach(EASL_VC_Menu_Stacked_content::$right_menu_data as $rmitem){
+		$rmf_item_calss = '';
+		if(!$filter_all_link && (0 == $rmf_count)){
+			$rmf_item_calss = ' class="active"';
+		}
+		$right_menu_html .= '<li' . $rmf_item_calss . '><a href="#'. $rmitem['id'] .'">' . $rmitem['title'] . '</a></li>';
+		$rmf_count++;
+	}
+	$right_menu_html .= '</ul></div>';
+}
 
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
@@ -67,11 +96,12 @@ if ( ! empty( $el_id ) ) {
 $output = '
 	<div ' . implode( ' ', $wrapper_attributes ) . '>
 		' . wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_easl_widget_heading' ) ) . '
+		'. $right_menu_html .'
 		<div class="'.$container_class.'">
 			'. $menu_content .'
 			<div class="'. $content_wrapp_class .'">
 				<div class="easl-msc-content-wrap-inner">
-					'. wpb_js_remove_wpautop( $content ) .'
+					'. $parsed_content .'
 				</div>
 			</div>
 		</div>

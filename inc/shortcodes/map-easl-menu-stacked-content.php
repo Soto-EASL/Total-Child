@@ -48,6 +48,26 @@ return array(
 			'description' => empty( $custom_menus ) ? __( 'Select layout.', 'js_composer' ) : __( 'Select menu to display.', 'js_composer' ),
 			'admin_label' => false,
 		),
+		array(
+			'type' => 'vcex_ofswitch',
+			'heading' => __( 'Show Filter on Top', 'js_composer' ),
+			'std' => 'false',
+			'param_name' => 'enable_right_menu_filter',
+			'admin_label' => false,
+			'dependency' => array(
+				'element'	 => 'layout',
+				'value'		 => array( 'horizontal' ),
+			),
+		),
+		array(
+			'type' => 'textfield',
+			'heading' => __( 'All filter link', 'js_composer' ),
+			'param_name' => 'filter_all_link',
+			'dependency' => array(
+				'element'	 => 'enable_right_menu_filter',
+				'value'		 => array( 'true' ),
+			),
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',

@@ -89,6 +89,25 @@ jQuery(function($) {
             $('.easl-staff-list').show();
         }
     });
+    
+    
+    $(document).on('click', '.msc-filter-menu a', function (e) {
+        e.preventDefault();
+        var $this = $(this),
+            $thisLI = $this.closest('li'),
+            filter = $this.attr('href');
+        if($thisLI.hasClass('active')){
+            return;
+        }
+        $thisLI.addClass('active');
+        if(filter !== '#all'){
+            $thisLI.siblings('li').not($thisLI).removeClass('active');
+            $('.easl-msc-filterable-con').not(filter).hide();
+            $(filter).show();
+        } else {
+            $('.easl-msc-filterable-con').show();
+        }
+    });
 
     $(document).on('click', '.easl-msc-content-wrap .easl-staff-details-button', function (e) {
         e.preventDefault();

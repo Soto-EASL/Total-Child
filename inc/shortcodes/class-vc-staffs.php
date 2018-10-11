@@ -102,6 +102,8 @@ if ( !class_exists( 'EASL_VC_Staffs' ) ) {
 				$city		 = get_field( 'city', $id );
 				$country	 = get_field( 'country', $id );
 				$email		 = get_field( 'email', $id );
+				$job_title		 = get_field( 'job_title', $id );
+				$easl_posiiton		 = get_field( 'easl_posiiton', $id );
 			} else {
 				$telephone	 = get_post_meta( $id, 'telephone', true );
 				$fax		 = get_post_meta( $id, 'fax', true );
@@ -109,6 +111,8 @@ if ( !class_exists( 'EASL_VC_Staffs' ) ) {
 				$city		 = get_post_meta( $id, 'city', true );
 				$country	 = get_post_meta( $id, 'country', true );
 				$email		 = get_post_meta( $id, 'email', true );
+				$job_title		 = get_post_meta( $id, 'job_title', true );
+				$easl_posiiton		 = get_post_meta( $id, 'easl_posiiton', true );
 			}
 			$excerpt		 = $staff_post->post_excerpt;
 			$name			 = get_the_title( $id );
@@ -133,6 +137,8 @@ if ( !class_exists( 'EASL_VC_Staffs' ) ) {
 				'{{country}}'		 => $country,
 				'{{excerpt}}'		 => $excerpt,
 				'{{name}}'			 => $name,
+				'{{job_title}}'		=> $job_title,
+				'{{easl_posiiton}}'		=> $easl_posiiton,
 			);
 			$parsed_output = str_replace(array_keys($replaces), array_values($replaces), $template);
 			return trim($parsed_output);
@@ -148,8 +154,8 @@ if ( !class_exists( 'EASL_VC_Staffs' ) ) {
 				'country',
 				'excerpt',
 				'name',
-			//'job_title',
-			//'easl_posiiton',
+				'job_title',
+				'easl_posiiton',
 			);
 		}
 
