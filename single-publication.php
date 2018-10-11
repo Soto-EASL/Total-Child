@@ -18,7 +18,7 @@ get_header(); ?>
 
 		<?php wpex_hook_primary_before(); ?>
 
-		<div id="primary" class="content-area clr">
+		<div id="primary" class="clr">
 
 			<?php wpex_hook_content_before(); ?>
 
@@ -44,7 +44,7 @@ get_header(); ?>
 
 		</div><!-- #primary -->
 
-		<?php wpex_hook_primary_after(); ?>
+		<?php //wpex_hook_primary_after(); ?>
 
 	</div><!-- .container -->
 
