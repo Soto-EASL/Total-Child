@@ -21,6 +21,9 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staff-list.p
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-annual-reports.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php';
 
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-button.php' );

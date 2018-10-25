@@ -94,7 +94,7 @@
         this.filter();
     };
     EventCalendar.prototype.getFilters = function(){
-        var data = {}, topics = [], search = '', meetingType = '', location = '', dateFrom = '', dateTo = '', eventType = '';
+        var data = {}, topics = [], search = '', meetingType = '', location = '', dateFrom = '', dateTo = '', organizer = '', eventType = '';
         this.filterValdiateError = false;
         this.filterValdiateMessage = [];
         $('[name="ec_filter_topics[]"]:checked', this.$filterCon).each(function(){
@@ -104,7 +104,11 @@
         meetingType = $('[name="ec_meeting_type"]', this.$filterCon).val();
         location = $('[name="ec_location"]', this.$filterCon).val();
         eventType = $('[name="ec_filter_type"]:checked', this.$filterCon).val();
-        
+        organizer = $('[name="organizer"]:checked', this.$filterCon).val();
+
+        if(organizer){
+            data.organizer = organizer;
+        }
         if(topics.length > 0){
             data.topics = topics;
         }
@@ -258,7 +262,7 @@
                 }
             });
             if(lis.length > 0){
-                $cs.append('<ul class="ecs-list">' + lis + '</ul>')
+                $cs.append('<ul class="ecs-list filter-list">' + lis + '</ul>')
             }
         });  
     };

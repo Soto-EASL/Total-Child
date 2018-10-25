@@ -5,6 +5,16 @@ wp_enqueue_script('highlights-script',
     ['jquery'],
     false,
     true);
+
+$color_list = [
+    'blue' => '#165291',
+    'red' => '#dc214e',
+    'teal' => '#189790',
+    'orrange ' => '#eb6018',
+    'gray' => '#7e6a73',
+    'yellow' => '#f9bc49',
+];
+
 ?>
 <style>
     .filter-wrapper {
@@ -104,38 +114,38 @@ wp_enqueue_script('highlights-script',
         background-color: transparent;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(1):after,
-    ul.current-filter li.current-active.all-topic:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-light-blue:after,
+    ul.current-filter li.current-active.csic-light-blue:after {
         background-color: #71c4e8;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(2):after,
-    ul.current-filter li.current-active.general-hepatology:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-blue:after,
+    ul.current-filter li.current-active.csic-blue:after {
         background-color: #004b87;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(3):after,
-    ul.current-filter li.current-active.liver-tumors:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-red:after,
+    ul.current-filter li.current-active.csic-red:after {
         background-color: #dc224e;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(4):after,
-    ul.current-filter li.current-active.cholestatic:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-orrange:after,
+    ul.current-filter li.current-active.csic-orrange:after {
         background-color: #f26a29;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(5):after,
-    ul.current-filter li.current-active.metabolic:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-teal:after,
+    ul.current-filter li.current-active.csic-teal:after {
         background-color: #0a9490;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(6):after,
-    ul.current-filter li.current-active.cirrhosis:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-gray:after,
+    ul.current-filter li.current-active.csic-gray:after {
         background-color: #866c74;
     }
 
-    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li:nth-child(7):after,
-    ul.current-filter li.current-active.viral-hepatitis:after {
+    ul.current-filter:hover li.current-active .filter-links-wrapper ul.vcex-filter-links li.csic-yellow:after,
+    ul.current-filter li.current-active.csic-yellow:after {
         background-color: #f8bf3e;
     }
 
@@ -192,40 +202,39 @@ wp_enqueue_script('highlights-script',
                             <div class="wpb_wrapper">
                                 <div class="filter-wrapper">
                                     <ul class="current-filter">
-                                        <li class="current-active all-topic">
-                                            <a href="#" data-filter="*"
-                                               class="theme-button" style="padding-left: 22px;"><span>All Topics</span></a>
+                                        <li class="current-active csic-light-blue">
+                                            <a href="#" data-filter="all" data-bgclass="csic-light-blue"
+                                               class="highlight-filter-item theme-button csic-light-blue" style="padding-left: 22px;"><span>All Topics</span></a>
                                             <div class="filter-links-wrapper">
                                                 <ul class="vcex-filter-links clr">
-                                                    <li class="active">
-                                                        <a href="#" data-filter="*" data-bgclass="all-topic"
-                                                           class="theme-button"><span>All Topics</span></a>
+                                                    <li class="csic-light-blue active">
+                                                        <a href="#" data-filter="all" data-bgclass="csic-light-blue"
+                                                           class="highlight-filter-item theme-button csic-light-blue"><span>All Topics</span></a>
                                                     </li>
-                                                    <li class="filter-cat-41">
-                                                        <a href="#" data-filter=".cat-41"
-                                                           data-bgclass="general-hepatology"
-                                                           class="theme-button">General Hepatology</a>
-                                                    </li>
-                                                    <li class="filter-cat-42">
-                                                        <a href="#" data-filter=".cat-42" data-bgclass="liver-tumors"
-                                                           class="theme-button">Liver Tumors</a>
-                                                    </li>
-                                                    <li class="filter-cat-43">
-                                                        <a href="#" data-filter=".cat-43" data-bgclass="cholestatic"
-                                                           class="theme-button">Cholestatic & Autoimmune</a>
-                                                    </li>
-                                                    <li class="filter-cat-44">
-                                                        <a href="#" data-filter=".cat-44" data-bgclass="metabolic"
-                                                           class="theme-button">Metabolic, Alcohol & Toxicity</a>
-                                                    </li>
-                                                    <li class="filter-cat-45">
-                                                        <a href="#" data-filter=".cat-45" data-bgclass="cirrhosis"
-                                                           class="theme-button">Cirrhosis & Complications</a>
-                                                    </li>
-                                                    <li class="filter-cat-46">
-                                                        <a href="#" data-filter=".cat-46" data-bgclass="viral-hepatitis"
-                                                           class="theme-button">Viral Hepatitis</a>
-                                                    </li>
+                                                    <?php
+                                                    $topics = get_terms( array(
+                                                        'taxonomy' => EASL_Event_Config::get_topic_slug(),
+                                                        'hide_empty' => false,
+                                                        'orderby' => 'term_id',
+                                                        'order' => 'ASC',
+                                                        'fields' => 'all',
+                                                    ) );
+
+                                                    foreach($topics as $topic):
+                                                        $topic_color = get_term_meta($topic->term_id, 'easl_tax_color', true);
+                                                        if(!$topic_color){
+                                                            $topic_color = 'blue';
+                                                        }
+                                                        $topic_ccs = isset($topic_country_map[$topic->term_id]) ? $topic_country_map[$topic->term_id] : array();
+                                                        ?>
+                                                        <li class="filter-cat-<?php echo $topic->term_id;?> csic-<?php echo $topic_color;?>">
+                                                            <a href="#" data-filter="<?php echo $topic->slug;?>"
+                                                               data-bgclass="csic-<?php echo $topic_color;?>"
+                                                               class="highlight-filter-item theme-button csic-<?php echo $topic_color;?>" ><?php echo esc_html($topic->name);?></a>
+                                                        </li>
+
+                                                    <?php endforeach;?>
+
                                                 </ul>
                                             </div>
                                         </li>
@@ -241,11 +250,11 @@ wp_enqueue_script('highlights-script',
 </div>
 <div class="vc_empty_space" style="height: 24px"><span class="vc_empty_space_inner"></span></div>
 
-<div class="vc_row wpb_row vc_row-fluid no-bottom-margins d-flex">
+<div class="vc_row wpb_row vc_row-fluid no-bottom-margins d-flex highlights-content">
     <div class="wpb_column vc_column_container vc_col-sm-4">
         <div class="vc_column-inner ">
             <div class="wpb_wrapper">
-                <a href="#"
+                <a href="/events/calendar"
                    class="vcex-button theme-button inline animate-on-hover"
                    style="background:#f0f0f0;color:#004b87;padding: 0px 40px;">
                     <span class="theme-button-inner">Events</span>
@@ -253,24 +262,44 @@ wp_enqueue_script('highlights-script',
                 <div class="vc_empty_space" style="height: 24px"><span class="vc_empty_space_inner"></span></div>
                 <div class="easl-events-list-wrap">
                     <ul>
+                        <?php
+                        $organisation = easl_event_get_organisations();
+                        $country = easl_event_get_countries();
 
-                        <li class="easl-events-li easl-event-li-red">
-                            <h3>
-                                <a title="" href="https://easl.websitestage.co.uk/event/liver_cell_isolation_and_characterisation/">Liver Cell isolation event </a>
-                            </h3>
-                            <a class="events-li-date" href="">
-                                <span class="eld-day">16-18</span>
-                                <span class="eld-mon">JAN</span>
-                                <span class="eld-year">2018</span>
-                                <i class="fa fa-play" aria-hidden="true"></i>
-                            </a>
-                            <p class="el-location">
-                                <span class="ell-name">Clinical School</span>
-                                <span class="ell-bar">|</span>
-                                <span class="ell-country">United Kingdom (UK), London</span>
-                            </p>
-                        </li>
+                        $latest_event = new WP_Query('post_type=event&posts_per_page=1');
 
+                        if($latest_event->have_posts()):
+                            while ($latest_event->have_posts()):
+                                $latest_event->the_post();
+                                $begining_date = new DateTime('@'.get_field('event_start_date'));
+                                $event_location_city = get_field('event_location_city');
+                                $event_country =  $country[get_field('event_location_country')];
+                                $topics = wp_get_post_terms(get_the_ID(), 'event_topic' );
+                                foreach ($topics as $topic):
+                                    $topic_color = get_term_meta($topic->term_id, 'easl_tax_color', true);
+                                endforeach;
+
+                                if(!$topic_color):
+                                    $topic_color = 'blue';
+                                endif;
+                                ?>
+
+                                <li class="easl-events-li easl-event-li-<?php echo $topic_color;?>">
+                                    <h3><a title="<?php the_title_attribute();?>" href="<?php echo get_permalink();?>"><?php echo get_the_title();?></a></h3>
+                                    <a class="events-li-date" href="<?php echo get_permalink();?>">
+                                        <span class="eld-day"><?php echo $begining_date->format('d'); ?></span>
+                                        <span class="eld-mon"><?php echo $begining_date->format('M'); ?></span>
+                                        <span class="eld-year"><?php echo $begining_date->format('Y'); ?></span>
+                                        <i class="fa fa-play" aria-hidden="true"></i>
+                                    </a>
+                                    <p class="el-location">
+                                        <span class="ell-name">Clinical School</span>
+                                        <span class="ell-bar">|</span>
+                                        <span class="ell-country"><?php echo $event_location_city;?>, <?php echo $event_country;?></span>
+                                    </p>
+                                </li>
+                            <?php endwhile;?>
+                        <?php endif;?>
                     </ul>
                 </div>
             </div>
@@ -280,49 +309,72 @@ wp_enqueue_script('highlights-script',
          style="border-right: 1px solid #dedede;border-left: 1px solid #dedede;">
         <div class="vc_column-inner ">
             <div class="wpb_wrapper">
-                <a href="#"
+                <a href="/publications"
                    class="vcex-button theme-button inline animate-on-hover"
                    style="background:#f0f0f0;color:#004b87;padding: 0px 40px;">
                     <span class="theme-button-inner">Publication</span>
                 </a>
                 <div class="vc_empty_space" style="height: 24px"><span class="vc_empty_space_inner"></span></div>
                 <div class="wpb_wrapper">
-                    <div class="wpb_single_image wpb_content_element" style="float: left;margin-right: 15px;">
-                        <figure class="wpb_wrapper vc_figure">
-                            <div class="vc_single_image-wrapper   vc_box_border_grey">
-                                <img class="vc_single_image-img "
-                                     src="https://easl.websitestage.co.uk/wp-content/uploads/2018/10/journal-4.jpg"
-                                     width="80" height="104"
-                                     alt="journal-4"
-                                     title="journal-4">
+                    <?php
+                    $latest_publication = new WP_Query('post_type=publication&posts_per_page=1');
+                    if($latest_publication->have_posts()):
+                        while ($latest_publication->have_posts()):
+                            $latest_publication->the_post();
+                            $image = has_post_thumbnail( get_the_ID() ) ?
+                            wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
+
+                            $topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
+                            foreach ($topics as $topic):
+                                $topic_color = get_term_meta($topic->term_id, 'easl_tax_color', true);
+                            endforeach;
+
+                            if(!$topic_color):
+                                $topic_color = 'blue';
+                            endif;
+                            ?>
+                            <div class="wpb_single_image wpb_content_element" style="float: left;margin-right: 15px;">
+                                <figure class="wpb_wrapper vc_figure">
+                                    <div class="vc_single_image-wrapper   vc_box_border_grey">
+                                        <?php if($image):?>
+                                        <img class="vc_single_image-img " style="height:107px;width:80px;"
+                                             src="<?php echo $image[0];?>"
+                                             width="80" height="107"
+                                             alt="<?php the_title_attribute();?>"
+                                             title="<?php the_title_attribute();?>">
+                                        <?php endif;?>
+                                    </div>
+                                </figure>
                             </div>
-                        </figure>
-                    </div>
-                    <div class="wpb_content_element">
-                        <h4 style="color: #666666;
-    text-align: left;
-    margin-left: 95px;
-    border-left: 4px solid #dc214e;
-    padding-left: 8px;
-    line-height: 14px;" class="vc_custom_heading">2018</h4>
-                        <h2 style="font-size: 19px;
-    color: #004b87;
-    line-height: 24px;
-    text-align: left;
-    margin-left: 95px;
-    padding-left: 8px;
-    border-left: 4px solid #dc214e;
-    margin-bottom: 13px;"
-                            class="vc_custom_heading">EASL Clinical Practice Guidelines: Hepatitis E virus infection</h2>
-                        <a href="https://easl.websitestage.co.uk/publication/easl-clinical-practice-guidelines-on-hepatitis-e-virus-infection/" class="vcex-button theme-button inline animate-on-hover"
-                           style="background: #71c5e8;
-    color: #ffffff;
-    font-size: 16px;
-    border-radius: 0px;
-    font-family: KnockoutHTF51Middleweight;
-    padding: 5px 12px;"><span
-                                    class="theme-button-inner">Read More</span></a>
-                    </div>
+                            <div class="wpb_content_element">
+                                <h4 style="color: #666666;
+                                    text-align: left;
+                                    margin-left: 95px;
+                                    border-left: 4px solid <?php echo $color_list[$topic_color]?>;
+                                    padding-left: 8px;
+                                    line-height: 14px;" class="vc_custom_heading"><?php echo get_field('publication_date');?></h4>
+                                <h2 style="font-size: 19px;
+                                    color: #004b87;
+                                    line-height: 24px;
+                                    text-align: left;
+                                    margin-left: 95px;
+                                    padding-left: 8px;
+                                    height: 45px;
+                                    overflow: hidden;
+                                    border-left: 4px solid <?php echo $color_list[$topic_color]?>;
+                                    margin-bottom: 13px;"
+                                    class="vc_custom_heading"><?php echo get_the_title();?></h2>
+                                <a href="<?php echo get_permalink();?>" class="vcex-button theme-button inline animate-on-hover"
+                                   style="background: #71c5e8;
+                                    color: #ffffff;
+                                    font-size: 16px;
+                                    border-radius: 0px;
+                                    font-family: KnockoutHTF51Middleweight;
+                                    padding: 5px 12px;"><span class="theme-button-inner">Read More</span></a>
+                            </div>
+                        <?php endwhile;?>
+                    <?php endif; ?>
+
 
                 </div>
             </div>
@@ -331,30 +383,46 @@ wp_enqueue_script('highlights-script',
     <div class="wpb_column vc_column_container vc_col-sm-4">
         <div class="vc_column-inner ">
             <div class="wpb_wrapper">
-                <a href="#"
+                <a href="/slide-decks"
                    class="vcex-button theme-button inline animate-on-hover"
                    style="background:#f0f0f0;color:#004b87;padding: 0px 40px;">
                     <span class="theme-button-inner">Slide Decks</span>
                 </a>
-                <div class="vc_empty_space" style="height: 24px"><span class="vc_empty_space_inner"></span></div>
+                <div class="vc_empty_space" style="height: 24px">
+                    <span class="vc_empty_space_inner"></span>
+                </div>
+                <?php
+                $latest_slide_desks = new WP_Query('post_type=slide_decks&posts_per_page=2');
+                if($latest_slide_desks->have_posts()):
+                while ($latest_slide_desks->have_posts()):
+                    $latest_slide_desks->the_post();
+                    $topics = wp_get_post_terms(get_the_ID(), 'slide_decks_topic' );
+                    foreach ($topics as $topic):
+                        $topic_color = get_term_meta($topic->term_id, 'easl_tax_color', true);
+                    endforeach;
 
+                    if(!$topic_color):
+                        $topic_color = 'blue';
+                    endif;
+                ?>
                     <div class="wpb_content_element">
-                        <h4 style="color: #666666;
-    text-align: left;
-    border-left: 4px solid #0b9490;
-    padding-left: 8px;
-    line-height: 14px;" class="vc_custom_heading">01 February 2018</h4>
-                        <h2 style="font-size: 19px;
+<!--                        <h4 style="color: #666666;-->
+<!--    text-align: left;-->
+<!--    border-left: 4px solid #0b9490;-->
+<!--    padding-left: 8px;-->
+<!--    line-height: 14px;" class="vc_custom_heading">01 February 2018</h4>-->
+                        <a href="<?php echo get_field('slide-decks-file');?>"><h2 style="font-size: 19px;
     color: #004b87;
     line-height: 24px;
     text-align: left;
     padding-left: 8px;
     height: 42px;
-    border-left: 4px solid #0b9490;
+    border-left: 4px solid <?php echo $color_list[$topic_color]?>;
     margin-bottom: 13px;"
-	class="vc_custom_heading"><a href="https://easl.websitestage.co.uk/education/slide-decks/">Best of ILC 2018 General hepatolgy </a></h2>
+                            class="vc_custom_heading"><?php echo get_the_title();?></h2></a>
                     </div>
-
+                <?php endwhile;?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

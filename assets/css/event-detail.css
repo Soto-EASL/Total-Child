@@ -52,7 +52,7 @@
 .app-process ul li.active,
 .app-process ul li.active h4,
 .app-process ul li.active p{
-    color:#cbcbcb;
+    color:#dc234e;
     font-family: 'KnockoutHTF51Middleweight';
 }
 .app-process ul li h4{
@@ -85,7 +85,7 @@
 }
 .app-process ul li.next-key p,
 .app-process ul li.next-key h4{
-    color: #dc234e;
+    /*color: #dc234e;*/
 }
 
 .wpex-social-share {

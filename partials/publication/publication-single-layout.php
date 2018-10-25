@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 }
 $image = has_post_thumbnail( get_the_ID() ) ?
     wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
-$image_src = $image ? $image[0] : EASL_HOME_URL . '/wp-content/uploads/2017/10/journal-1.jpg';
+$image_src = $image ? $image[0] : '';
 
 $topic_str = '';
 $topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
@@ -23,8 +23,18 @@ if($topics){
 
     }
 }
-?>
+wp_enqueue_script('publication-detailed-item-script',
+    get_stylesheet_directory_uri() . '/assets/js/publication_detailed.js',
+    ['jquery'],
+    false,
+    true);
 
+?>
+<style>
+    .text-decoration-none:hover {
+        text-decoration: none;
+    }
+</style>
 <article id="single-blocks" class="single-publication-article entry clr">
     <div class="publication-main-section">
         <div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex">
@@ -35,8 +45,10 @@ if($topics){
                             <div class="wpb_column vc_column_container vc_col-sm-4">
                                 <div class="vc_column-inner">
                                     <div class="pub-thumb">
+                                        <?php if($image_src):?>
                                         <img alt=""
                                              src="<?php echo $image_src ?>"/>
+                                        <?php endif;?>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +56,7 @@ if($topics){
                                 <div class="vc_column-inner">
                                     <div class="pub-content">
                                         <div class="color-delimeter filter-bg-<?php echo easl_get_events_topic_color();?>"
-                                             style="padding-left: 10px; margin-bottom: 30px">
+                                             style="padding-left: 0px; margin-bottom: 30px; border-left:none;">
                                             <div class="pub-meta" style="margin-bottom: 20px;">
                                                 <p class="sp-meta">
                                                     <span class="sp-meta-date"><?php echo get_field('publication_date');?></span>
@@ -129,41 +141,68 @@ height: 25px;
             <div class="wpb_column vc_column_container vc_col-sm-3">
                 <div class="vc_column-inner publication-sidebar">
                     <div class="wpb_wrapper">
-                        <div class="publication-sidebar-item pub-download-item"
-                             style="padding-bottom: 15px; border-bottom: 1px solid #004b87;">
-                            <h3 class="publication-sidebar-item-title">Download as a PDF</h3>
-                            <form action="" method="post">
-                                <div class="easl-custom-select">
-                                    <span class="ec-cs-label">Select language</span>
-                                    <select name="ec-meeting-type">
-                                        <option value="en" selected="selected">English</option>
-                                        <option value="fr">French</option>
-                                        <option value="ar">Arabic</option>
-                                    </select>
-                                </div>
-                                <button class="easl-button easl-button-wide publication-download-pdf-btn hidden">Download</button>
-                                <a href="<?php echo get_field('publication_link_to_pdf')?>" class="easl-button easl-button-wide publication-download-pdf-btn" download>Download</a>
-                            </form>
-                        </div>
-                        <div class="">
-                            <a href="<?php echo get_field('publication_slide_decks')?>"
-                               class="vcex-button theme-button inline animate-on-hover wpex-dhover-0"
-                               style="background:#ffffff;
-                               #ffffff;
-                               color:#004b87;
-                               font-family: KnockoutHTF51Middleweight;
-                               font-size: 17px;
-                               background-image: url('/wp-content/themes/Total-Child/images/ppoint.png');
-                               background-repeat: no-repeat;
-                               background-size: auto;
-                               background-position: 0px 5px;
-                               padding-left: 48px;
-
-" download><span
-                                        class="theme-button-inner">Download Slide Deck<span
-                                            class="vcex-icon-wrap theme-button-icon-right"><span
-                                                class="fa fa-angle-right"></span></span></span></a>
-                        </div>
+                        <?php if(have_rows('publication_other_languages')):?>
+                            <div class="publication-sidebar-item pub-download-item"
+                                 style="padding-bottom: 15px;">
+                                <h3 class="publication-sidebar-item-title">Download as a PDF</h3>
+                                <form action="" method="post">
+                                    <div class="easl-custom-select">
+                                        <span class="ec-cs-label">Select language</span>
+                                        <select name="ec-meeting-type">
+                                            <option value="<?php echo get_field('publication_link_to_pdf');?>" selected="selected">English</option>
+                                            <?php while( have_rows('publication_other_languages') ): the_row(); ?>
+                                                <option value="<?php the_sub_field('link_to_file'); ?>"><?php the_sub_field('language'); ?></option>
+                                            <?php endwhile;?>
+                                        </select>
+                                    </div>
+                                    <a href="<?php echo get_field('publication_link_to_pdf')?>" class="easl-button easl-button-wide publication-download-pdf-btn" download>Download</a>
+                                </form>
+                            </div>
+                            <?php if(get_field('publication_slide_decks')):?>
+                            <div class="" style="border-top: 1px solid #004b87;">
+                                <a href="<?php echo get_field('publication_slide_decks')?>"
+                                   class="vcex-button theme-button inline animate-on-hover wpex-dhover-0"
+                                   style="background:#ffffff;
+                                           #ffffff;
+                                           color:#004b87;
+                                           font-family: KnockoutHTF51Middleweight;
+                                           font-size: 17px;
+                                           background-image: url('/wp-content/themes/Total-Child/images/ppoint.png');
+                                           background-repeat: no-repeat;
+                                           background-size: auto;
+                                           background-position: 0px 5px;
+                                           padding-left: 38px;"><span
+                                            class="theme-button-inner">Download Slide Deck<span
+                                                class="vcex-icon-wrap theme-button-icon-right"><span
+                                                    class="fa fa-angle-right"></span></span></span></a>
+                            </div>
+                            <?php endif;?>
+                        <?php else:?>
+                            <div class="publication-sidebar-item pub-download-item">
+                                <a href="<?php echo get_field('publication_link_to_pdf')?>" class="text-decoration-none">
+                                    <h3 class="publication-sidebar-item-title" style="border-bottom: none;">Download as a PDF</h3>
+                                </a>
+                            </div>
+                            <?php if(get_field('publication_slide_decks')):?>
+                            <div class="" style="padding-top: 10px;border-top: 1px solid #004b87;">
+                                <a href="<?php echo get_field('publication_slide_decks')?>"
+                                   class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 text-decoration-none"
+                                   style="background:#ffffff;
+                                           #ffffff;
+                                           color:#004b87;
+                                           font-family: KnockoutHTF51Middleweight;
+                                           font-size: 17px;
+                                           background-image: url('/wp-content/themes/Total-Child/images/ppoint.png');
+                                           background-repeat: no-repeat;
+                                           background-size: auto;
+                                           background-position: 0px 5px;
+                                           padding: 5px 5px 5px 38px;"
+                                   download>
+                                    <h3 class="publication-sidebar-item-title" style="border-bottom: none;">Download Slide Deck</h3>
+                                </a>
+                            </div>
+                            <?php endif;?>
+                        <?php endif;?>
                     </div>
                 </div>
             </div>

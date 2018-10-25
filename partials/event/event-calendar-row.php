@@ -5,13 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 $event_id = get_the_ID();
 $event_data = get_post_meta($event_id);
 
-
+$organisations_list = easl_event_get_organisations();
 
 $event_start_date = isset($event_data['event_start_date'])?$event_data['event_start_date'][0]:'';
 $event_end_date = isset($event_data['event_end_date'])?$event_data['event_end_date'][0]:'';
 $event_location_city = isset($event_data['event_location_city'])?$event_data['event_location_city'][0]:'';
 $event_location_country = isset($event_data['event_location_country'])?$event_data['event_location_country'][0]:'';
-$event_organisation = isset($event_data['event_organisation'])?$event_data['event_organisation'][0]:'';
+$event_organisation = isset($event_data['event_organisation'])?$organisations_list[$event_data['event_organisation'][0]]:'';
 
 $event_date_days = date('d', $event_start_date);
 if($event_end_date > $event_start_date){
@@ -54,17 +54,20 @@ if($row_count % 2 == 0){
 			<span><?php echo $current_events_month; ?></span>
 		</div>
 	</div>
-	<?php endif;?> 
+	<?php endif;?>
 	<div class="easl-ec-row easl-ec-row-<?php echo $row_position; ?> easl-ec-row-<?php echo $event_color; ?> clr">
 		<article class="easl-ec-event <?php echo $css_animation; ?>">
 			<header class="ec-head">
 				<p class="ec-meta">
 					<span class="ec-meta-type">Topic:</span> <span class="ec-meta-value"><?php echo easl_event_topics_name($event_id); ?></span>
 					<span class="ec-meta-sep"> | </span>
-					<span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo esc_html('EASL'); ?></span>
+					<span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo $event_organisation; ?></span>
 				</p>
 				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-				<p class="ec-dates" href=""><span class="ecd-day"><?php echo $event_date_days; ?></span><span class="ecd-mon"><?php echo date('M', $event_start_date); ?></span><span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="fa fa-play" aria-hidden="true"></i></p>
+				<p class="ec-dates" href="">
+                    <span class="ecd-day"><?php echo $event_date_days; ?></span>
+                    <span class="ecd-mon"><?php echo date('M', $event_start_date); ?></span>
+                    <span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="fa fa-play" aria-hidden="true"></i></p>
 			</header>
 			<p class="ec-location">
 				<span class="ec-loc-name"><?php echo easl_meeting_type_name($event_id); ?></span>

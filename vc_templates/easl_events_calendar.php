@@ -66,13 +66,13 @@ foreach($topics as $topic_id => $topic_name){
 	$topics_list .= '
 		<li>
 			<label class="easl-custom-checkbox csic-'. $topic_color .'">
-				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'" data-countries="'. esc_attr( json_encode($topic_ccs)) .'" /> <span>'. esc_html($topic_name) .'</span>
+				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'" data-countries="'. esc_attr( json_encode($topic_ccs)) .'" /> <span style="">'. esc_html($topic_name) .'</span>
 			</label>
 		</li>
 		';
 }
 $meeting_type_list = '
-	<option value="">Category</option>
+	<option value="">Meeting Type</option>
 	';
 $meeting_types = get_terms( array(
 	'taxonomy' => EASL_Event_Config::get_meeting_type_slug(),
@@ -172,12 +172,12 @@ $top_filter = '
 								<div class="ec-filter-fields">
 								    <div class="ec-filter-field-wrap">
 										<div class="ecf-events-types" style="margin-bottom: 15px">
-											<label class="easl-custom-radio"><input type="radio" name="organizer" value="easl" checked="checked"/> <span>EASL Organised</span></label>
-											<label class="easl-custom-radio"><input type="radio" name="organizer" value="other"/> <span>Other Events</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="organizer" value="1" checked="checked"/> <span>EASL Organised</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="organizer" value="2"/> <span>Other Events</span></label>
 										</div>
 									
-										<div class="easl-custom-select">
-											<span class="ec-cs-label">Category</span>
+										<div class="easl-custom-select easl-custom-select-filter-type">
+											<span class="ec-cs-label">Meeting Type</span>
 											<select name="ec_meeting_type">
 												'. $meeting_type_list .'
 											</select>
@@ -189,7 +189,7 @@ $top_filter = '
 											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="past"/> <span>Past Events</span></label>
 										</div>
 									
-										<div class="easl-custom-select">
+										<div class="easl-custom-select easl-custom-select-filter-location">
 											<span class="ec-cs-label">Location</span>
 											<select name="ec_location">
 												'. $location_list .'
@@ -217,9 +217,9 @@ $top_filter = '
 								<h4>Submit your proposal</h4>
 								
 								<ul class="submit-proposal">
-								    <li><a href="">EASL Endorsement or Sponsorship requests <i class="fa fa-angle-right"></i></a></li>
-								    <li><a href="">Announce my Event <i class="fa fa-angle-right"></i></a></li>
-								    <li><a href="">Call for Proposal <i class="fa fa-angle-right"></i></a></li>
+								    <li><a href="mailto:easloffice@easloffice.eu">EASL Endorsement or Sponsorship requests <i class="fa fa-angle-right"></i></a></li>
+								    <li><a href="mailto:easloffice@easloffice.eu">Announce my Event <i class="fa fa-angle-right"></i></a></li>
+								    <li><a href="mailto:easloffice@easloffice.eu">Call for Proposal <i class="fa fa-angle-right"></i></a></li>
                                 </ul>
 								
 							</div>

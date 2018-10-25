@@ -79,8 +79,8 @@ class WPEX_Associations_Config {
         $args = apply_filters( 'wpex_associations_args', array(
 
             'labels' => array(
-                'name' => __( 'Associations', 'total' ),
-                'singular_name' => __( 'Association', 'total' ),
+                'name' => __( 'National Associations', 'total' ),
+                'singular_name' => __( 'National Association', 'total' ),
                 'add_new' => __( 'Add New', 'total' ),
                 'add_new_item' => __( 'Add New Item', 'total' ),
                 'edit_item' => __( 'Edit Item', 'total' ),

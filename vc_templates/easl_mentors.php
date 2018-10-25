@@ -47,7 +47,7 @@ $rows .= '
 	</div>
 	';
 $rows .= '
-	<div id="mario-strazzabosco" class="vc_tta-panel" data-vc-content=".vc_tta-panel-body">
+	<div id="mario-strazzabosco" class="vc_tta-panel vc_active" data-vc-content=".vc_tta-panel-body">
 		<div class="vc_tta-panel-heading">
 			<h4 class="vc_tta-panel-title vc_tta-controls-icon-position-right">
 				<a href="#mario-strazzabosco" data-vc-accordion="" data-vc-container=".vc_tta-container">

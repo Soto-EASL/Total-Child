@@ -15,7 +15,8 @@ require_once EASL_INC_DIR . 'shortcodes.php';
 require_once EASL_INC_DIR . 'post-types/fellowship/fellowship-config.php';
 require_once EASL_INC_DIR . 'post-types/associations/associations-config.php';
 require_once EASL_INC_DIR . 'post-types/publication/publication-config.php';
-
+require_once EASL_INC_DIR . 'post-types/annual-reports/annual-reports-config.php';
+require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
 
 function easl_theme_setup(){
 	add_image_size('staff_grid', 254, 254, true);
@@ -447,30 +448,29 @@ function get_national_associations(){
         )
     ) );
     $rows = '';
-    if ( $the_associations->have_posts() ) {
-        while ($the_associations->have_posts()) {
+    if ( $the_associations->have_posts() ):
+        ob_start();
+        while ($the_associations->have_posts()):
             $the_associations->the_post();
             $image = has_post_thumbnail( get_the_ID() ) ?
                 wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
-            $rows .= '<div class="associations clr">'.
-                        '<div class="associations-content-wrapper">'.
-                            '<div class="d-flex">'.
-                                '<div class="associations-thumb">'.
-                                    '<a href="'. get_permalink() . '" title=""><img alt="" src="'.$image[0].'"/></a>'.
-                                '</div>'.
-                                '<div class="associations-title-wrap clr">'.
-                                    '<h3><a href="'. get_permalink() . '">'.get_the_title().'</a></h3>'.
-                                '</div>'.
-                            '</div>'.
-                            '<div class="associations-content">'.get_the_content().'</div>'.
-                        '</div>'.
-                    '</div>';
-        }
-    } else {
-        $rows .= 'there is not any post yet';
-    }
-    ob_start();
-    echo $rows;
+            ?>
+            <div class="associations clr">
+                        <div class="associations-content-wrapper">
+                            <div class="d-flex">
+                        <?php echo ($image ? '<div class="associations-thumb"><img alt="" src="'.$image[0].'"/></div>' : '')?>
+                                <div class="associations-title-wrap clr">
+                                    <?php echo the_title('<h3>','</h3>');?>
+                                </div>
+                            </div>
+                            <div class="associations-content"><?php the_content();?></div>
+                        </div>
+                    </div>
+        <?php endwhile;
+    else:?>
+        <p>'there is not any post yet'</p>
+    <?php endif;
+
     $html = ob_get_contents();
     ob_end_clean();
     echo $html;
@@ -484,10 +484,18 @@ function easl_vc_tab_list_newline($html) {
 add_filter('vc-tta-get-params-tabs-list', 'easl_vc_tab_list_newline', 10);
 
 function easl_posts_pagination_display($display, $post_type) {
-	if('publication' == $post_type){
-		return false;
-	}
-	return $display;
+	$response = false;
+	switch ($post_type){
+        case 'publication':
+        case 'annual_reports':
+        case 'slide_decks':
+        case 'associations':
+            $response = false;
+            break;
+        default:
+            $response = $display;
+    }
+	return $response;
 }
 add_filter( 'wpex_has_next_prev', 'easl_posts_pagination_display', 10, 2 );
 

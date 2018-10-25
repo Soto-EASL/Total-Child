@@ -41,6 +41,9 @@ function easl_vc_button_grid_icons(){
 		__( 'Arrows', 'total' ) => 'arrows',
 		__( 'Globe', 'total' ) => 'globe',
 		__( 'UEG', 'total' ) => 'ueg',
+		__( 'ALEH', 'total' ) => 'aleh',
+		__( 'AASLD', 'total' ) => 'aasld',
+		__( 'APASL', 'total' ) => 'apasl',
 	);
 }
 function easl_title_icons(){
@@ -59,6 +62,10 @@ function easl_title_icons(){
 		'arrows' => __( 'Arrows', 'total' ),
 		'globe' => __( 'Globe', 'total' ),
 		'ueg' => __( 'UEG', 'total' ),
+		'aleh' => __( 'ALEH', 'total' ),
+		'aasld' => __( 'AASLD', 'total' ),
+		'apasl' => __( 'APASL', 'total' ),
+
 	);
 }
 function easl_social_profile_options_list(){

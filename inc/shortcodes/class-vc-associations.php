@@ -1,6 +1,6 @@
 <?php
 /**
- * EASL_VC_STAFF_LIST
+ * EASL_VC_NATIONAL_ASSOCIATIONS
  */
 
 if( !class_exists('EASL_VC_NATIONAL_ASSOCIATIONS') ){

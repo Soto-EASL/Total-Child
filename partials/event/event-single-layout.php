@@ -109,7 +109,6 @@ $country = easl_event_get_countries();
                             <p><a href="#" class="show_more_btn">Show more <i class="fa fa-angle-down"></i></a></p>
 						</div>
                         <div class="event-text-block event-sidebar-item event-links">
-
                             <ul class="event-links-list">
                                 <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
                                     <a href="<?php echo get_field('event_online_programme_url');?>" style="display: inline-block" target="_blank">
@@ -123,10 +122,16 @@ $country = easl_event_get_countries();
                                         <span class="event-link-text">Add to Calendar</span>
                                     </a>
                                 </li>
-                                <li class="event-link-notify" style="float: left;border: none;">
+                                <li class="event-link-notify" style="float: left;border: none;margin-right: 40px">
                                     <a href="<?php echo get_field('event_notification_url');?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Get Notified</span>
+                                    </a>
+                                </li>
+                                <li class="event-link-website" style="float: left;border: none;margin-right: 40px">
+                                    <a href="<?php echo(get_field('event_website_url')) ?>" style="display: inline-block" target="_blank">
+                                        <span class="event-link-icon"><i class="fa fa-tv" aria-hidden="true"></i></span>
+                                        <span class="event-link-text">Visit Website</span>
                                     </a>
                                 </li>
                             </ul>

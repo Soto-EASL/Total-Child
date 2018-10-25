@@ -139,39 +139,64 @@ $second_aplication_period_finish = get_field('second_aplication_period_finish') 
                     </div>
                 </div>
                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
-				<?php while( have_rows('past_fellows') ): the_row(); ?>
-				<span style="font-size: 18px;color: #ffffff;line-height: 38px;text-align: left; padding: 8px 12px!important;background-color: #454545!important;" class="vc_custom_heading easl-recognition-award-year"><?php the_sub_field('year'); ?></span>
-				<div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
-                <div class="vc_row wpb_row vc_inner vc_row-fluid">
-					<?php if( have_rows('fellow') ): ?>
-					<?php while( have_rows('fellow') ): the_row(); ?>
-					<div class="wpb_column vc_column_container vc_col-sm-4">
-						<div class="vc_column-inner">
-							<div class="wpb_wrapper">
-								<?php 
-								$avatar = get_sub_field('avatar');
-								$avatar_url = wp_get_attachment_image_url($avatar, 'staff_grid');
-								if($avatar_url):
-								?>
-								<div class="wpb_single_image wpb_content_element">
-									<figure class="wpb_wrapper vc_figure">
-										<img src="<?php echo $avatar_url; ?>" alt="" width="254" height="254"/>
-									</figure>
-								</div>
-								<?php endif; ?>
-								<div style="color:#104e85;font-family:KnockoutHTF51Middleweight;font-size:19px;" class="wpb_text_column has-custom-color wpb_content_element  recognition-link">
-									<div class="wpb_wrapper">
-										<p><?php the_sub_field('name'); ?></p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<?php endwhile; ?>
-					<?php endif; ?>
-                </div>
-				<div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
-				<?php endwhile; ?>
+
+                <?php if(get_field('show_past_fellows_as_row') === true):?>
+                <div class="vc_row wpb_row vc_row-fluid no-bottom-margins">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner ">
+                            <div class="wpb_wrapper">
+                                <div class="wpb_text_column wpb_content_element ">
+                                    <div class="wpb_wrapper">
+                                        <div class="d-flex justify-content-between">
+
+                <?php endif;?>
+                    <?php while( have_rows('past_fellows') ): the_row(); ?>
+                        <div class="past_fellows-item" style="flex: 1 0 auto;">
+                    <span style="font-size: 18px;color: #ffffff;line-height: 38px;text-align: left; padding: 8px 12px!important;background-color: #454545!important;"
+                          class="vc_custom_heading easl-recognition-award-year"><?php the_sub_field('year'); ?></span>
+
+                    <div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                        <?php if( have_rows('fellow') ): ?>
+                        <?php while( have_rows('fellow') ): the_row(); ?>
+                        <div class="wpb_column vc_column_container <?php echo get_field('show_past_fellows_as_row') === false ? 'vc_col-sm-4' : '';?>">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <?php
+                                    $avatar = get_sub_field('avatar');
+                                    $avatar_url = wp_get_attachment_image_url($avatar, 'staff_grid');
+                                    if($avatar_url):
+                                    ?>
+                                    <div class="wpb_single_image wpb_content_element">
+                                        <figure class="wpb_wrapper vc_figure">
+                                            <img src="<?php echo $avatar_url; ?>" alt="" width="254" height="254"/>
+                                        </figure>
+                                    </div>
+                                    <?php endif; ?>
+                                    <div style="color:#104e85;font-family:KnockoutHTF51Middleweight;font-size:19px;" class="wpb_text_column has-custom-color wpb_content_element  recognition-link">
+                                        <div class="wpb_wrapper">
+                                            <p><?php the_sub_field('name'); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+                        </div>
+                    <?php endwhile; ?>
+                                            <?php if(get_field('show_past_fellows_as_row') === true):?>
+                                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                                        <?php endif;?>
+
 				<?php endif; ?>
 				<?php 
 				$show_more_link = get_field('show_more_link');

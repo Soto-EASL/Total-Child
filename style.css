@@ -878,6 +878,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-event-li-orrange {
     color: #eb6018;
 }
+.easl-event-li-yellow {
+    color: #f9bc49;
+}
 .events-li-date {
     border: 3px solid #004b87;
     background: #f3f3ee;
@@ -908,6 +911,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .easl-event-li-green .events-li-date {
     border-color: #0b9490;
+}
+.easl-event-li-yellow .events-li-date {
+    border-color: #f9bc49;
 }
 .easl-event-li-orrange .events-li-date {
     border-color: #eb6018;
@@ -1030,10 +1036,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
     position: absolute;
     right: 0;
     top: 0;
-    height: 50px;
+    height: 40px;
     padding: 0 10px;
     font-size: 24px;
-    line-height: 50px;
+    line-height: 40px;
 }
 
 .ec-filter-fields {
@@ -2412,6 +2418,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     position: absolute;
     top: 0;
     right: 15px;
+    z-index: 1;
 }
 
 .msc-rm-filter-container:before{
@@ -2474,6 +2481,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .msc-rm-filter-container .msc-filter-menu li a:active{
     background: #f7f7f7;
     color: #000;
+}
+.easl-msc-content-wrap .wpb_text_column h2 {
+    font-size: 21px;
 }
 
 /* VC Shortcode: EASL Post Type Grid */
@@ -3786,7 +3796,7 @@ body #site-scroll-top {
     content: '';
     display: block;
     width: 2px;
-    height: 100px;
+    height: 122%;
     position: absolute;
     border-left: 3px solid #62cff5;
     z-index: -2;
@@ -3824,7 +3834,7 @@ a.button:hover{
 }
 @media only screen and (min-width:1200px){
     .constitution-text p{
-        padding-right: 62px;
+        /*padding-right: 62px;*/
     }
 
 }
@@ -4261,7 +4271,7 @@ ul.suggestions{
 }
 .easl-ec-row-gray .ec-links-icon.envelope {
     background-image: url("images/events-icons/envelope.png");
-    background-position: -31px -34px
+    background-position: -31px -20px
 }
 .easl-ec-row-gray .ec-links-icon.calendar{
     background-image: url("images/events-icons/calendar.png");
@@ -4269,4 +4279,30 @@ ul.suggestions{
 }
 .fellowships li a:hover{
     text-decoration: none;
+}
+.easl-custom-select-filter-type{
+    color: #004b87;
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.filter-list{
+    background: #fff;
+    border: 1px solid #e3e0e0;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    list-style: none;
+    z-index: 10;
+    top: 40px;
+}
+.easl-custom-select-filter-location{
+    font-weight: 700;
+    font-size: 13px;
 }

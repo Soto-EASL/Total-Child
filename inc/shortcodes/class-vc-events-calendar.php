@@ -103,6 +103,18 @@ if( class_exists('WPBakeryShortCode') ){
 					'type' => 'NUMERIC',
 				);
 			}
+
+            if(isset($organizer) ){
+                $meta_query[] = array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => 'event_organisation',
+                        'value' => $organizer,
+                        'compare' => '=',
+                        'type' => 'NUMERIC',
+                    )
+                );
+            }
 			// Ignor event type if formdate/todate is set
 			if($form_date ||$to_date){
 				$event_type = '';
@@ -168,6 +180,7 @@ if( class_exists('WPBakeryShortCode') ){
 			}
 			//var_dump($event_args);
 			$event_query = new WP_Query($event_args);
+            //var_dump($event_query);
 			$rows = '';
 			if($event_query->have_posts()){
 

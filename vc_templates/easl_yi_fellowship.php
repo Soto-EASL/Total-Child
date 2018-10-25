@@ -31,9 +31,6 @@ $the_fellowships = new WP_Query( array(
     'post_type' => 'fellowship',
     'posts_per_page' => -1,
     'orderby' => 'menu_order',
-//    'category_name' => $a,
-//    'meta_key' => 'history_year',
-//    'orderby' => 'meta_value',
     'order' => 'ASC',
 
 ) );
@@ -62,9 +59,26 @@ if ( $the_fellowships->have_posts() ) {
         $thumb_tag = '';
         $closed_block = '';
         $is_finished = false;
+
+        $first_aplication_period_start = date("d-M", strtotime(get_field('aplication_period_start')));
+        $first_aplication_period_finish = date("d-M", strtotime(get_field('aplication_period_finish')));
+
+        $second_aplication_period_start = get_field('second_aplication_period_start') ? date("d-M", strtotime(get_field('second_aplication_period_start'))) : '';
+        $second_aplication_period_finish = get_field('second_aplication_period_finish') ? date("d-M", strtotime(get_field('second_aplication_period_finish'))) : '';
+        $app_period = '';
         if($today < $finished){
+
+
+            if($second_aplication_period_start & $second_aplication_period_finish):
+                $app_period = $first_aplication_period_start.' - '. $first_aplication_period_finish.' | '.
+                     $second_aplication_period_start.' - '. $second_aplication_period_finish;
+            else:
+                $app_period = $first_aplication_period_start.' - '. $first_aplication_period_finish;
+            endif;
+
+
             $application_period = '<div class="yif-application-preiod">
-<span>Application Period:  '.date("d-M", strtotime(get_field('aplication_period_start'))).' - '.date("d-M", strtotime(get_field('aplication_period_finish'))).'</span></div>';
+<span>Application Period:  '.$app_period.'</span></div>';
 
             $thumb_tag = '<span class="yi-thumb-tag">'.get_field('featured_image_caption').'</span>';
 
@@ -131,4 +145,3 @@ $output = '<div ' . implode( ' ', $wrapper_attributes ) . ' class="' . esc_attr(
 ';
 
 echo $output;
-//wp_get_archives();

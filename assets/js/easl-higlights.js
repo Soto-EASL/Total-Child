@@ -1,18 +1,20 @@
 jQuery.noConflict();
 
 jQuery(function($) {
-    $(document).on('click', 'ul.vcex-filter-links li a.theme-button', function (e) {
+
+    $(document).on('click', '.highlight-filter-item', function (e) {
         e.preventDefault();
         $('.vcex-filter-links li').removeClass('active');
         $(this).parent().addClass('active');
         var element = $('ul.current-filter li.current-active');
-        element.removeClass('viral-hepatitis');
-        element.removeClass('cirrhosis');
-        element.removeClass('metabolic');
-        element.removeClass('cholestatic');
-        element.removeClass('liver-tumors');
-        element.removeClass('general-hepatology');
-        element.removeClass('all-topic');
+
+        element.removeClass('csic-light-blue');
+        element.removeClass('csic-blue');
+        element.removeClass('csic-red');
+        element.removeClass('csic-orrange');
+        element.removeClass('csic-teal');
+        element.removeClass('csic-gray');
+        element.removeClass('csic-yellow');
 
         element.addClass($(this).data('bgclass'));
 
@@ -20,11 +22,20 @@ jQuery(function($) {
         
         var filter = $(this).data('filter');
 
-        if (filter !== '*') {
-            //$('.easl-staff-list').hide();
-            $(filter).show();
-        } else {
-            //$('.easl-staff-list').show();
-        }
+        $.ajax({
+            url: ajaxurl.ajaxurl,
+            dataType: 'html',
+            data: {
+                action: 'easl_get_highlights',
+                filter: filter,
+            },
+            success: function (response) {
+                console.log('response', response);
+                $('.highlights-content').html(response);
+            }
+        });
     });
+
+
+
 });

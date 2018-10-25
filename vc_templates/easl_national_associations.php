@@ -4,14 +4,14 @@ $taxonomies = get_categories(['taxonomy' => 'associations_category']);
 $menu = '';
 $counter = 0;
 $first_point = '';
-$rows = '';
 
 foreach ($taxonomies as $taxonomy):
     if($counter < 1){
         $first_point = $taxonomy->term_id;
     }
+    $current_country = $counter < 1 ? 'current-country' : '';
+    $menu .= '<div class="menu-item-block"><a style="color: #004b87;" class="national-associations-menu-item '.$current_country.'" href="#" data-term="'. $taxonomy->term_id.'">'. $taxonomy->name.' <i class="fa fa-angle-right"></i></a></div>';
     $counter++;
-    $menu .='<div class="menu-item-block"><a style="color: #004b87;" class="national-associations-menu-item" href="#" data-term="'. $taxonomy->term_id.'">'. $taxonomy->name.' <i class="fa fa-angle-right"></i></a></div>';
 endforeach;
 
 $the_associations = new WP_Query( array(
@@ -26,33 +26,7 @@ $the_associations = new WP_Query( array(
     )
 ) );
 
-if ( $the_associations->have_posts() ) {
-    while ($the_associations->have_posts()) {
-        $the_associations->the_post();
-        $image = has_post_thumbnail( get_the_ID() ) ?
-            wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
-        $rows .= '<div class="associations clr">'.
-                    '<div class="associations-content-wrapper">'.
-                        '<div class="d-flex">'.
-                            '<div class="associations-thumb">'.
-                                '<a href="'. get_permalink() . '" title="">'.
-                                    '<img alt="" src="'.$image[0].'"/>'.
-                                '</a>'.
-                            '</div>'.
-                            '<div class="associations-title-wrap clr">'.
-                                '<h3>'.
-                                    '<a href="'. get_permalink() . '">'.get_the_title().'</a>'.
-                                '</h3>'.
 
-                            '</div>'.
-                        '</div>'.
-                        '<div class="associations-content">'.
-                            get_the_content().
-                        '</div>'.
-                    '</div>'.
-                '</div>';
-    }
-}
 ?>
 <style>
     .menu-item-block {
@@ -67,6 +41,9 @@ if ( $the_associations->have_posts() ) {
     .associations-content-block{
         background-color: #efefef;
     }
+    .current-country{
+        font-weight: 700;
+    }
 </style>
 <div class="vc_row wpb_row vc_row-fluid">
     <div class="wpb_column vc_column_container vc_col-sm-6">
@@ -79,7 +56,27 @@ if ( $the_associations->have_posts() ) {
     <div class="wpb_column vc_column_container vc_col-sm-6 ">
         <div class="vc_column-inner associations-content-block">
             <div class="wpb_wrapper associations-content-block-response" style="padding: 15px">
-                <?php echo $rows;?>
+                <?php if ( $the_associations->have_posts() ):
+                    while ($the_associations->have_posts()) :
+                        $the_associations->the_post();
+                        $image = has_post_thumbnail( get_the_ID() ) ?
+                        wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';?>
+                        <div class="associations clr">
+                            <div class="associations-content-wrapper">
+                                <div class="d-flex">
+                                    <?php echo ($image ? '<div class="associations-thumb"><img alt="" src="'.$image[0].'"></div>' : '')?>
+                                    <div class="associations-title-wrap clr">
+                                        <?php echo the_title('<h3>','</h3>');?>
+                                        </div>
+                                </div>
+                                <div class="associations-content">
+                                    <?php echo the_content();?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile;?>
+                <?php endif;?>
+
             </div>
         </div>
     </div>
