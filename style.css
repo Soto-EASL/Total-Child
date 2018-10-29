@@ -714,6 +714,21 @@ body #site-navigation .dropdown-menu a {
     padding-left: 164px;
     line-height: 118px;
 }
+.page-header-title-icon-science .page-header-title{
+    background-image: url(images/title-icons/science.png);
+    background-position: 0px 0px !important;
+    padding-left: 70px !important;
+}
+.page-header-title-icon-education .page-header-title{
+    background-image: url(images/title-icons/education.png);
+    background-position: 0px 0px !important;
+    padding-left: 70px !important;
+}
+.page-header-title-icon-advocacy .page-header-title{
+    background-image: url(images/title-icons/advocacy.png);
+    background-position: 0px 0px !important;
+    padding-left: 70px !important;
+}
 .page-header .page-header-title-icon-aleh .page-header-title{
     background-image: url(images/icons/ALEH.png);
     min-height: 118px;
@@ -1974,6 +1989,27 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .apasl-icon,
 .easl-gbtn-apasl{
     background-image: url("images/icons/APASL-logo-2.png");
+}
+
+.aliver-icon,
+.easl-gbtn-aliver{
+    background-image: url("images/icons/aliver.png");
+}
+.apps-icon,
+.easl-gbtn-apps{
+    background-image: url("images/icons/apps.png");
+}
+.report-icon,
+.easl-gbtn-report{
+    background-image: url("images/icons/report.png");
+}
+.twitter-icon,
+.easl-gbtn-twitter{
+    background-image: url("images/icons/twitter.png");
+}
+.video-icon,
+.easl-gbtn-video{
+    background-image: url("images/icons/video.png");
 }
 .easl-gbtn-text {
     display: block;

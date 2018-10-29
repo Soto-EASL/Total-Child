@@ -13,6 +13,15 @@ $event_location_city = isset($event_data['event_location_city'])?$event_data['ev
 $event_location_country = isset($event_data['event_location_country'])?$event_data['event_location_country'][0]:'';
 $event_organisation = isset($event_data['event_organisation'])?$organisations_list[$event_data['event_organisation'][0]]:'';
 
+$now_time = time() - 86399;
+$event_time_type = 'upcoming';
+if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
+	$event_time_type = 'past';
+}
+if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
+	$event_time_type = 'current';
+}
+
 $event_date_days = date('d', $event_start_date);
 if($event_end_date > $event_start_date){
 	$event_date_days .= '-' . date('d', $event_end_date);
@@ -109,6 +118,7 @@ if($row_count % 2 == 0){
 							<span class="ec-link-text">Online<br/>Programme</span>
 						</a>
 					</li>
+					<?php if('past' != $event_time_type): ?>
 					<li class="ec-links-notify">
 						<a href="<?php echo get_field('event_notification_url');?>">
                             <span class="icon-wrapper">
@@ -117,6 +127,8 @@ if($row_count % 2 == 0){
 							<span class="ec-link-text">Get<br/>Notified</span>
 						</a>
 					</li>
+					<?php endif; ?>
+					<?php if('past' != $event_time_type): ?>
 					<li class="ec-links-calendar">
 						<a href="">
                             <span class="icon-wrapper">
@@ -125,6 +137,7 @@ if($row_count % 2 == 0){
 							<span class="ec-link-text">Add to<br/>Calendar</span>
 						</a>
 					</li>
+					<?php endif; ?>
 				</ul>
 				<div class="ec-links-details ec-links-details-key-deadlines">
 					<ul>

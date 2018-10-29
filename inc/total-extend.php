@@ -44,27 +44,34 @@ function easl_vc_button_grid_icons(){
 		__( 'ALEH', 'total' ) => 'aleh',
 		__( 'AASLD', 'total' ) => 'aasld',
 		__( 'APASL', 'total' ) => 'apasl',
+		__( 'Aliver', 'total' ) => 'aliver',
+		__( 'Apps', 'total' ) => 'apps',
+		__( 'Report', 'total' ) => 'report',
+		__( 'Twitter', 'total' ) => 'twitter',
+		__( 'Video', 'total' ) => 'video',
 	);
 }
 function easl_title_icons(){
 	return array(
 		'' => __( 'No Icon', 'total' ),
+		'aasld' => __( 'AASLD', 'total' ),
+		'advocacy' => __( 'Advocacy', 'total' ),
+		'aleh' => __( 'ALEH', 'total' ),
+		'apasl' => __( 'APASL', 'total' ),
+		'arrows' => __( 'Arrows', 'total' ),
 		'awards' => __( 'Awards', 'total' ),
 		'bursaries' => __( 'Bursaries', 'total' ),
 		'calendar' => __( 'Calendar', 'total' ),
 		'education' => __( 'Education', 'total' ),
 		'fellowship' => __( 'Fellowship', 'total' ),
 		'flask' => __( 'Flask', 'total' ),
+		'globe' => __( 'Globe', 'total' ),
 		'groups' => __( 'Groups', 'total' ),
+		'liver' => __( 'Liver', 'total' ),
 		'membership' => __( 'Membership', 'total' ),
 		'mentorship' => __( 'Mentorship', 'total' ),
-		'liver' => __( 'Liver', 'total' ),
-		'arrows' => __( 'Arrows', 'total' ),
-		'globe' => __( 'Globe', 'total' ),
+		'science' => __( 'Science ', 'total' ),
 		'ueg' => __( 'UEG', 'total' ),
-		'aleh' => __( 'ALEH', 'total' ),
-		'aasld' => __( 'AASLD', 'total' ),
-		'apasl' => __( 'APASL', 'total' ),
 
 	);
 }
