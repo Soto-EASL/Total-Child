@@ -1911,6 +1911,16 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn-icon.easl-gbtn-apasl{
     height: 63px;
 }
+.easl-card-btn-icon.litmus-icon{
+    height: 150px;
+    width: 150px;
+}
+.easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-litmus{
+    background-position: 0px 0px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.litmus-icon {
+    background-position: 0 0;
+}
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-ueg{
     background-position: 0px 0px;
 }
@@ -1926,6 +1936,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-globe{
     background-position: 0px -62px;
 }
+
 .easl-gbtn-awards,
 .awards-icon{
     background-image: url('images/icons/awards.png')
@@ -2010,6 +2021,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .video-icon,
 .easl-gbtn-video{
     background-image: url("images/icons/video.png");
+}
+.litmus-icon,
+.easl-gbtn-litmus{
+    background-image: url("images/icons/litmus.jpg");
 }
 .easl-gbtn-text {
     display: block;
