@@ -2026,6 +2026,28 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn-litmus{
     background-image: url("images/icons/litmus.png");
 }
+
+
+.eu-star-icon,
+.easl-gbtn-eu-star{
+    background-image: url("images/icons/eu-star.png");
+}
+.handshake-icon,
+.easl-gbtn-handshake{
+    background-image: url("images/icons/handshake.png");
+    height: 41px;
+    background-position: 0px -6px;
+    margin-top: 6px;
+}
+.group-icon,
+.easl-gbtn-group{
+    background-image: url("images/icons/group.png");
+}
+.id-card-icon,
+.easl-gbtn-id-card{
+    background-image: url("images/icons/id-card.png");
+}
+
 .easl-gbtn-text {
     display: block;
     margin-top: 21px;

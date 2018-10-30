@@ -50,6 +50,10 @@ function easl_vc_button_grid_icons(){
 		__( 'Twitter', 'total' ) => 'twitter',
 		__( 'Video', 'total' ) => 'video',
         __( 'Litmus', 'total' ) => 'litmus',
+        __( 'EU stars ', 'total' ) => 'eu-star',
+        __( 'Hand shake', 'total' ) => 'handshake',
+        __( 'Group', 'total' ) => 'group',
+        __( 'ID card', 'total' ) => 'id-card',
 	);
 }
 function easl_title_icons(){
