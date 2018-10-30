@@ -184,7 +184,6 @@ height: 25px;
                                 <a href="<?php echo get_field('publication_slide_decks')?>"
                                    class="vcex-button theme-button inline animate-on-hover wpex-dhover-0"
                                    style="background:#ffffff;
-                                           #ffffff;
                                            color:#004b87;
                                            font-family: KnockoutHTF51Middleweight;
                                            font-size: 17px;
@@ -209,7 +208,6 @@ height: 25px;
                                 <a href="<?php echo get_field('publication_slide_decks')?>"
                                    class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 text-decoration-none"
                                    style="background:#ffffff;
-                                           #ffffff;
                                            color:#004b87;
                                            font-family: KnockoutHTF51Middleweight;
                                            font-size: 17px;
