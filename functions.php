@@ -102,13 +102,22 @@ function sc_easl_year() {
 
 
 function easl_page_heder_class($classes){
-	if(!wpex_page_header_subheading_content()){
-		return $classes;
+	$post_id = wpex_get_current_post_id();
+	//if(!wpex_page_header_subheading_content()){
+	//	return $classes;
+	//}
+	//$classes[] = 'ilc-page-subheading';
+	$style = wpex_page_header_style();
+	$bg_img = wpex_page_header_background_image();
+	$bg_color = get_post_meta( $post_id, 'wpex_post_title_background_color', true );
+	if('background-image' == $style && $bg_img ) {
+		$classes['easl-page-header-has-bg'] = 'easl-page-header-has-bg';
+	}else{
+		$classes['easl-page-header-has-bg'] = 'easl-page-header-no-bg';
 	}
-	$classes[] = 'ilc-page-subheading';
 	return $classes;
 }
-//add_filter('wpex_page_header_classes', 'easl_page_heder_class');
+add_filter('wpex_page_header_classes', 'easl_page_heder_class');
 
 // Add custom font to font settings
 function wpex_add_custom_fonts() {
@@ -506,3 +515,12 @@ function easl_staffs_types_args($args){
 }
 
 add_filter('wpex_staff_args', 'easl_staffs_types_args');
+
+function easl_body_classes($classes){
+	$post_id = get_queried_object_id();
+	if( is_singular('event')) {
+		$classes[] = 'event-color-' . easl_get_events_topic_color($post_id);
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'easl_body_classes' );
