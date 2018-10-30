@@ -3692,130 +3692,6 @@ body #site-scroll-top {
     bottom: 9px;
     right: 9px;
 }
-
-@media only screen and (max-width: 1199px) and (min-width: 1100px) {
-    #site-navigation .dropdown-menu > li > a {
-        padding: 0 12px;
-    }
-}
-@media only screen and (max-width: 1199px) and (min-width: 990px) {
-    #site-navigation .dropdown-menu > li > a {
-        padding: 0 12px;
-        font-size: 14px;
-    }
-}
-@media only screen and (max-width: 1070px) and (min-width: 1024px) {
-    .footer-newsletter .gform_wrapper h3.gform_title {
-        font-size: 20px;
-    }
-}
-@media only screen and (max-width: 1023px) and (min-width: 768px) {
-    .footer-newsletter .gform_wrapper .gform_heading {
-        flex: 1 0 auto;
-        width: 100%;
-        margin: 0 0 10px;
-    }
-    .footer-newsletter .gform_wrapper .gform_body {
-        flex: 1 0 auto;
-        width: 100%;
-        margin: 0 0 10px;
-    }
-}
-@media only screen and (min-width: 960px){
-    #wrap {
-        padding-top: 157px;
-        transition: padding-top .2s;
-    }
-    .admin-bar #wrap {
-        padding-top: 157px;
-    }
-    #site-header {
-        position: fixed;
-        z-index: 999;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 157px;
-        transition: height .2s;
-    }
-    .admin-bar #site-header{
-        top: 32px;
-    }
-    #site-header-inner {
-        height: auto;
-    }
-    .easl-scrolled #wrap{
-        padding-top: 103px;
-    }
-    .easl-scrolled .admin-bar #wrap {
-        padding: 135px;
-    }
-    .easl-scrolled #site-header {
-        height: 103px;
-    }
-    #site-header .logo-img-sticky {
-        display: none;
-        margin-top: 3px;
-    }
-    .easl-scrolled #site-header .logo-img {
-        display: none;
-    }
-    .easl-scrolled #site-header .logo-img-sticky {
-        display: inline-block;
-    }
-    .vc_row.seven-columns div[class*=" vc_col-sm"]{
-        width: 14.2857%;
-    }
-}
-@media only screen and (max-width: 989px) and (min-width: 960px) {
-    #site-navigation .dropdown-menu > li > a {
-        padding: 0 10px;
-        font-size: 14px;
-    }
-}
-@media only screen and (max-width: 959px) {
-    #site-logo  .logo-img-sticky {
-        display: none!important;
-    }
-    body .header-two-aside {
-        float: right;
-        clear: none;
-        padding-top: 0;
-        text-align: right;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-    .easl-col-2, .easl-row-col-2 .easl-col {
-        width: 50%
-    }
-    .easl-col-3, .easl-row-col-3 .easl-col {
-        width: 33.33333%
-    }
-    .easl-col-2-3, .easl-row-col-2-3 .easl-col {
-        width: 66.66667%
-    }
-    .easl-col-4, .easl-row-col-4 .easl-col {
-        width: 25%
-    }
-    .easl-col-3-4, .easl-row-col-3-4 .easl-col {
-        width: 75%
-    }
-    .easl-col-5, .easl-row-col-5 .easl-col {
-        width: 20%
-    }
-    .vc_row.seven-columns [class^="vc_col-sm"], 
-    .vc_row.seven-columns [class*=" vc_col-sm"]{
-        width: 14.2857%;
-    }
-}
-@media only screen and (max-width: 767px) {
-    .header-two-aside {}
-}
-@media only screen and (max-width: 640px) {
-    .header-two-aside {}
-}
-
 .easl-mission ol{
     margin: 0 0 20px 40px;
     counter-reset: step-counter;
@@ -4363,4 +4239,128 @@ ul.suggestions{
 .easl-custom-select-filter-location{
     font-weight: 700;
     font-size: 13px;
+}
+
+
+@media only screen and (max-width: 1199px) and (min-width: 1100px) {
+    #site-navigation .dropdown-menu > li > a {
+        padding: 0 12px;
+    }
+}
+@media only screen and (max-width: 1199px) and (min-width: 990px) {
+    #site-navigation .dropdown-menu > li > a {
+        padding: 0 12px;
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 1070px) and (min-width: 1024px) {
+    .footer-newsletter .gform_wrapper h3.gform_title {
+        font-size: 20px;
+    }
+}
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .footer-newsletter .gform_wrapper .gform_heading {
+        flex: 1 0 auto;
+        width: 100%;
+        margin: 0 0 10px;
+    }
+    .footer-newsletter .gform_wrapper .gform_body {
+        flex: 1 0 auto;
+        width: 100%;
+        margin: 0 0 10px;
+    }
+}
+@media only screen and (min-width: 960px){
+    #wrap {
+        padding-top: 157px;
+        transition: padding-top .2s;
+    }
+    .admin-bar #wrap {
+        padding-top: 157px;
+    }
+    #site-header {
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 157px;
+        transition: height .2s;
+    }
+    .admin-bar #site-header{
+        top: 32px;
+    }
+    #site-header-inner {
+        height: auto;
+    }
+    .easl-scrolled #wrap{
+        padding-top: 103px;
+    }
+    .easl-scrolled .admin-bar #wrap {
+        padding: 135px;
+    }
+    .easl-scrolled #site-header {
+        height: 103px;
+    }
+    #site-header .logo-img-sticky {
+        display: none;
+        margin-top: 3px;
+    }
+    .easl-scrolled #site-header .logo-img {
+        display: none;
+    }
+    .easl-scrolled #site-header .logo-img-sticky {
+        display: inline-block;
+    }
+    .vc_row.seven-columns div[class*=" vc_col-sm"]{
+        width: 14.2857%;
+    }
+}
+@media only screen and (max-width: 989px) and (min-width: 960px) {
+    #site-navigation .dropdown-menu > li > a {
+        padding: 0 10px;
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 959px) {
+    #site-logo  .logo-img-sticky {
+        display: none!important;
+    }
+    body .header-two-aside {
+        float: right;
+        clear: none;
+        padding-top: 0;
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .easl-col-2, .easl-row-col-2 .easl-col {
+        width: 50%
+    }
+    .easl-col-3, .easl-row-col-3 .easl-col {
+        width: 33.33333%
+    }
+    .easl-col-2-3, .easl-row-col-2-3 .easl-col {
+        width: 66.66667%
+    }
+    .easl-col-4, .easl-row-col-4 .easl-col {
+        width: 25%
+    }
+    .easl-col-3-4, .easl-row-col-3-4 .easl-col {
+        width: 75%
+    }
+    .easl-col-5, .easl-row-col-5 .easl-col {
+        width: 20%
+    }
+    .vc_row.seven-columns [class^="vc_col-sm"], 
+    .vc_row.seven-columns [class*=" vc_col-sm"]{
+        width: 14.2857%;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .header-two-aside {}
+}
+@media only screen and (max-width: 640px) {
+    .header-two-aside {}
 }
