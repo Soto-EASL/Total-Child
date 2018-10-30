@@ -365,6 +365,11 @@
             
         });
         $('.easl-events-calendar-wrap').easlEventCalander();
+        $(document).on('click', '.show_more_btn', function (e) {
+            e.preventDefault();
+            $('.event_description').toggle();
+
+        })
         $body.on('click', '.ec-links-deadline', function(event){
             event.preventDefault();
             var $li = $(this).closest('li');

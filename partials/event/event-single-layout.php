@@ -11,14 +11,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-wp_enqueue_script('event-single-script',
-    get_stylesheet_directory_uri() . '/assets/js/event-single.js',
-    ['jquery'],
-    false,
-    true);
-
-wp_enqueue_style('event-single-style',
-    get_stylesheet_directory_uri() . '/assets/css/event-detail.css');
 
 $organisation = easl_event_get_organisations();
 $country = easl_event_get_countries();
