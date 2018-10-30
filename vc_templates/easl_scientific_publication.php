@@ -127,15 +127,35 @@ for ($current_year = (new DateTime())->format('Y'); $current_year >= $the_year ;
     $option .= '<option value="'.$current_year.'" '.$selected_attr.'>'.$current_year.'</option>';
 
 }
+global $wp;
+$current_page = home_url( $wp->request );
+
 $take_me_to = '<h4 style="font-size: 18px">Take me to:</h4>'.
-    '<a href="/journal-of-hepatology" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Journal of Hepatology'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/jhep-reports" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Jhep Report'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/eu-publications" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">EU Publications'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br.
-    '<a href="/patient-documents" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Patient Documents'.
-    '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br;
+    (!strpos($current_page, 'clinical-practice-guidelines') ?
+        '<a href="/clinical-practice-guidelines/" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Clinical Practice Guidelines'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '').
+    (!strpos($current_page, 'congress-reports') ?
+        '<a href="/congress-reports/" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Congress Reports'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '').
+    (!strpos($current_page, 'eu-publications') ?
+        '<a href="/eu-publications" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">EU Publications'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '').
+    (!strpos($current_page, 'jhep-reports') ?
+        '<a href="/jhep-reports" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Jhep Report'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '').
+    (!strpos($current_page, 'journal-of-hepatology') ?
+        '<a href="/journal-of-hepatology" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button">Journal of Hepatology'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '').
+    (!strpos($current_page, 'patient-documents') ?
+        '<a href="/patient-documents" class="vcex-button theme-button inline animate-on-hover wpex-dhover-0 publication-filter-button permanently-hidden">Patient Documents'.
+        '<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>'.$br
+        : '');
+
 
 $top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row-fluid easl-scientific-publication-container" 
 style="background-color:#ffffff !important; padding-top: 30px; margin-bottom: 30px;border: 3px solid #004b87;">'.

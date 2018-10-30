@@ -73,6 +73,27 @@ wp_enqueue_script('publication-detailed-item-script',
                                         <div class="pub-description">
                                             <?php the_content();?>
                                         </div>
+                                        <?php if(get_field('publication_link_to_file')):?>
+                                            <style>
+                                                .easl-button-wide-short {
+                                                    padding: 8px;
+                                                    display: block;
+                                                    text-align: center;
+                                                    width: 100%;
+                                                }
+                                            </style>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner " style="margin-bottom: 40px;">
+                                                    <div class="wpb_wrapper">
+                                                        <a href="<?php echo get_field('publication_link_to_file')['url']?>"
+                                                           target="_blank" class="easl-button easl-button-wide-short"><?php echo get_field('publication_link_to_file')['title']?></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php endif;?>
+
                                         <div class="vc_row wpb_row vc_row-fluid">
                                             <div class="wpb_column vc_column_container vc_col-sm-12">
                                                 <div class="vc_column-inner " style="margin-bottom: 0">
@@ -179,7 +200,7 @@ height: 25px;
                             <?php endif;?>
                         <?php else:?>
                             <div class="publication-sidebar-item pub-download-item">
-                                <a href="<?php echo get_field('publication_link_to_pdf')?>" class="text-decoration-none">
+                                <a href="<?php echo get_field('publication_link_to_pdf')?>" class="text-decoration-none" target="_blank">
                                     <h3 class="publication-sidebar-item-title" style="border-bottom: none;">Download as a PDF</h3>
                                 </a>
                             </div>

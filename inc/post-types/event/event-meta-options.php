@@ -85,17 +85,38 @@ return array(
                 'value' => 'on' ,
 
             ),
+            'sponsorship_Link_url' => array(
+                'title' => esc_html__( 'Sponsorship Link URL', 'total' ),
+                'id' => $prefix . 'sponsorship_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter Sponsorship Link URL.', 'total' ),
+
+            ),
             'bursary_available' => array(
                 'title' => esc_html__( 'Bursary Available?', 'total' ),
                 'id' => $prefix . 'bursary_available',
                 'type' => 'checkbox',
                 'value' => 'on',
             ),
+            'bursary_Link_url' => array(
+                'title' => esc_html__( 'Bursary Link URL', 'total' ),
+                'id' => $prefix . 'bursary__url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter Bursary Link URL.', 'total' ),
+
+            ),
             'press_ivited' => array(
                 'title' => esc_html__( 'Press Ivited?', 'total' ),
                 'id' => $prefix . 'press_ivited',
                 'type' => 'checkbox',
                 'value' => 'on',
+            ),
+            'press_Link_url' => array(
+                'title' => esc_html__( 'Press Link URL', 'total' ),
+                'id' => $prefix . 'press_url',
+                'type' => 'text',
+                'description' => esc_html__( 'Enter Press Link URL.', 'total' ),
+
             ),
 
 		)

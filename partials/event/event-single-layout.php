@@ -174,7 +174,7 @@ $country = easl_event_get_countries();
 					<div class="wpb_wrapper">
                         <?php if(get_field('event_display_sponsorship_sidebar')):?>
                             <div class="event-sidebar-item">
-                                <a class="easl-image-link" href="">
+                                <a class="easl-image-link" href="<?php echo get_field('event_sponsorship_url');?>">
                                     <img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2017/10/event-image-1.jpg"/>
                                     <span>Sponsor this event</span>
                                 </a>
@@ -182,7 +182,7 @@ $country = easl_event_get_countries();
                         <?php endif;?>
                         <?php if(get_field('event_bursary_available')):?>
                             <div class="event-sidebar-item">
-                                <a class="easl-image-link" href="">
+                                <a class="easl-image-link" href="<?php echo get_field('event_bursary__url');?>">
                                     <img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2018/09/pig.jpg"/>
                                     <span>Bursaries available for this event</span>
                                 </a>
@@ -190,7 +190,7 @@ $country = easl_event_get_countries();
                         <?php endif;?>
                         <?php if(get_field('event_press_ivited')):?>
                         <div class="event-sidebar-item">
-							<a class="easl-image-link" href="">
+							<a class="easl-image-link" href="<?php echo get_field('event_press_url');?>">
 								<img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2017/10/pm-thumb.jpg"/>
 								<span>Press Invited</span>
 							</a>

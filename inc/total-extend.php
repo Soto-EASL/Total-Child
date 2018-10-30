@@ -49,6 +49,7 @@ function easl_vc_button_grid_icons(){
 		__( 'Report', 'total' ) => 'report',
 		__( 'Twitter', 'total' ) => 'twitter',
 		__( 'Video', 'total' ) => 'video',
+        __( 'Litmus', 'total' ) => 'litmus',
 	);
 }
 function easl_title_icons(){
@@ -72,6 +73,7 @@ function easl_title_icons(){
 		'mentorship' => __( 'Mentorship', 'total' ),
 		'science' => __( 'Science ', 'total' ),
 		'ueg' => __( 'UEG', 'total' ),
+		'litmus' => __( 'Litmus', 'total' ),
 
 	);
 }
