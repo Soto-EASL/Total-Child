@@ -13,6 +13,23 @@ $event_location_city = isset($event_data['event_location_city'])?$event_data['ev
 $event_location_country = isset($event_data['event_location_country'])?$event_data['event_location_country'][0]:'';
 $event_organisation = isset($event_data['event_organisation'])?$organisations_list[$event_data['event_organisation'][0]]:'';
 
+if( function_exists('get_field')){
+	$event_online_programme_url = get_field('event_online_programme_url');
+	$event_website_url = get_field('event_website_url');
+	$event_notification_url = get_field('event_notification_url');
+	$event_why_attend = trim(get_field('event_why_attend'));
+	$event_who_should_attend = trim(get_field('event_who_should_attend'));
+	$event_topic_covered = trim(get_field('event_topic_covered'));
+	$key_dates = trim(get_field('event_key_deadline_row'));
+}else{
+	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
+	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
+	$event_why_attend = trim(get_post_meta(get_the_ID(), 'event_why_attend', true));
+	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
+	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
+	$key_dates = trim(get_post_meta(get_the_ID(), 'event_key_deadline_row', true));
+}
+
 $now_time = time() - 86399;
 $event_time_type = 'upcoming';
 if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
@@ -94,14 +111,17 @@ if($row_count % 2 == 0){
 							<span class="ec-link-text">More<br/>Information</span>
 						</a>
 					</li>
+					<?php if($event_website_url): ?>
 					<li class="ec-links-website">
-						<a href="<?php echo(get_field('event_website_url')) ?>" target="_blank">
+						<a href="<?php echo esc_url( $event_website_url ); ?>" target="_blank">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon laptop"></span>
                             </span>
 							<span class="ec-link-text">Visit<br/>Website</span>
 						</a>
 					</li>
+					<?php endif; ?>
+					<?php if($key_dates): ?>
 					<li class="ec-links-deadline">
 						<a href="">
                             <span class="icon-wrapper">
@@ -110,15 +130,18 @@ if($row_count % 2 == 0){
 							<span class="ec-link-text">Key<br/>Deadlines</span>
 						</a>
 					</li>
+					<?php endif; ?>
+					<?php if($event_online_programme_url): ?>
 					<li class="ec-links-program">
-						<a href="<?php echo get_field('event_online_programme_url');?>">
+						<a href="<?php echo esc_url( $event_online_programme_url );?>">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
 							<span class="ec-link-text">Online<br/>Programme</span>
 						</a>
 					</li>
-					<?php if('past' != $event_time_type): ?>
+					<?php endif; ?>
+					<?php if($event_notification_url && ('past' != $event_time_type)): ?>
 					<li class="ec-links-notify">
 						<a href="<?php echo get_field('event_notification_url');?>">
                             <span class="icon-wrapper">
@@ -139,12 +162,15 @@ if($row_count % 2 == 0){
 					</li>
 					<?php endif; ?>
 				</ul>
+				<?php if($key_dates): ?>
 				<div class="ec-links-details ec-links-details-key-deadlines">
 					<ul>
-                        <?php $key_dates = get_field('event_key_deadline_row');?>
-
-                        <?php $counter = 0;?>
-                        <?php foreach ($key_dates as $date):?>
+                        <?php 
+						if(!$key_dates){
+							$key_dates = array();
+						}
+                        $counter = 0;
+                        foreach ($key_dates as $date):?>
                             <?php switch($counter):
                                 case 0:
                                     $addon_class = 'active';
@@ -167,6 +193,7 @@ if($row_count % 2 == 0){
                         <?php endforeach;?>
 					</ul>
 				</div>
+				<?php endif; ?>
 			</div>
 		</article>
 	</div>

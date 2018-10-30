@@ -14,10 +14,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $organisation = easl_event_get_organisations();
 $country = easl_event_get_countries();
+if( function_exists('get_field')){
+	$event_online_programme_url = get_field('event_online_programme_url');
+	$event_website_url = get_field('event_website_url');
+	$event_notification_url = get_field('event_notification_url');
+	$event_why_attend = trim(get_field('event_why_attend'));
+	$event_who_should_attend = trim(get_field('event_who_should_attend'));
+	$event_topic_covered = trim(get_field('event_topic_covered'));
+}else{
+	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
+	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
+	$event_why_attend = trim(get_post_meta(get_the_ID(), 'event_why_attend', true));
+	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
+	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
+}
+
+$event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
+$event_end_date = get_post_meta(get_the_ID(), 'event_end_date', true);
+$now_time = time() - 86399;
+$event_time_type = 'upcoming';
+if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
+	$event_time_type = 'past';
+}
+if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
+	$event_time_type = 'current';
+}
 
 
-
- ?>
+?>
 
 <article id="single-blocks" class="single-event-article entry clr">
 	<div class="event-top-section">
@@ -102,45 +126,59 @@ $country = easl_event_get_countries();
 						</div>
                         <div class="event-text-block event-sidebar-item event-links">
                             <ul class="event-links-list">
+								<?php if($event_online_programme_url): ?>
                                 <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
-                                    <a href="<?php echo get_field('event_online_programme_url');?>" style="display: inline-block" target="_blank">
+                                    <a href="<?php echo esc_url( $event_online_programme_url );?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Online Programme</span>
                                     </a>
                                 </li>
+								<?php endif; ?>
+								<?php if('past' != $event_time_type): ?>
                                 <li class="event-link-calendar" style="float: left;border: none;margin-right: 40px">
                                     <a href="" style="display: inline-block">
                                         <span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Add to Calendar</span>
                                     </a>
                                 </li>
+								<?php endif; ?>
+								<?php if($event_notification_url && ('past' != $event_time_type)): ?>
                                 <li class="event-link-notify" style="float: left;border: none;margin-right: 40px">
-                                    <a href="<?php echo get_field('event_notification_url');?>" style="display: inline-block" target="_blank">
+                                    <a href="<?php echo esc_url($event_notification_url);?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Get Notified</span>
                                     </a>
                                 </li>
+								<?php endif; ?>
+								<?php if($event_website_url): ?>
                                 <li class="event-link-website" style="float: left;border: none;margin-right: 40px">
-                                    <a href="<?php echo(get_field('event_website_url')) ?>" style="display: inline-block" target="_blank">
+                                    <a href="<?php echo esc_url( $event_website_url); ?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-tv" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Visit Website</span>
                                     </a>
                                 </li>
+								<?php endif; ?>
                             </ul>
                             <div style="clear: both"></div>
                         </div>
+						<?php if($event_why_attend): ?>
                         <div class="event-text-block">
                             <h3>Why attend?</h3>
-                            <?php echo get_field('event_why_attend');?>
+                            <?php echo do_shortcode($event_why_attend);?>
                         </div>
+						<?php endif; ?>
+						<?php if($event_who_should_attend): ?>
                         <div class="event-text-block">
                             <h3>Who should attend?</h3>
-                            <?php echo get_field('event_who_should_attend');?>
+                             <?php echo do_shortcode($event_who_should_attend);?>
                         </div>
+						<?php endif; ?>
+						<?php if($event_topic_covered): ?>
                         <div class="event-text-block">
                             <h3>Topic to be covered</h3>
-                            <?php echo get_field('event_topic_covered');?>
+                             <?php echo do_shortcode($event_topic_covered);?>
                         </div>
+						<?php endif; ?>
 						<div class="event-text-block">
 							<h3>About EASL Schoools</h3>
 							<p>The schools contribute to the training of new generations of hepatologists and are a major element of our association. Aimed at young fellows enrolled in hepatology-oriented departments or more experienced clinicians who want to be exposed to the newest trends in hepatology.</p>
@@ -188,16 +226,22 @@ $country = easl_event_get_countries();
 							</a>
 						</div>
                         <?php endif;?>
+						<?php
+						$key_dates = get_field('event_key_deadline_row');
+						if($key_dates):
+						?>
 						<div class="event-sidebar-item event-key-deadlines">
 							<div class="event-sidebar-item-inner app-process">
 
 								<h3 class="event-sidebar-item-title">Key Deadlines</h3>
 								<ul>
-                                    <?php $key_dates = get_field('event_key_deadline_row');?>
-
-                                    <?php $counter = 0;?>
-                                    <?php foreach ($key_dates as $date):?>
-                                        <?php switch($counter):
+                                    <?php 
+									if(!$key_dates){
+										$key_dates = array();
+									}
+									$counter = 0;
+                                    foreach ($key_dates as $date):
+                                        switch($counter):
                                             case 0:
                                                 $addon_class = 'active';
                                                 break;
@@ -220,10 +264,13 @@ $country = easl_event_get_countries();
 								</ul>
 							</div>
 						</div>
+						<?php endif; ?>
                         <div class="event-image-box-column event-image-box-bg">
+							<?php if(get_field('event_poster_image')): ?>
                             <div class="eib-image">
                                 <img alt="" src="<?php echo get_field('event_poster_image');?>"/>
                             </div>
+							<?php endif; ?>
                             <div class="eib-text">
                                 <h3 class="easl-text-gray">Help us to inform the liver community by downloading the poster, printing it and placing it on your institute's notice board or forwarding it to your local network:</h3>
                                 <p>
@@ -232,15 +279,23 @@ $country = easl_event_get_countries();
                             </div>
                         </div>
                         <div class="event-image-box-column event-image-box-bg">
+							<?php if(get_field('event_google_map')): ?>
                             <div class="eib-image">
                                 <iframe src="<?php echo get_field('event_google_map');?>" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                             </div>
+							<?php endif; ?>
                             <div class="eib-text">
+								<?php if(get_field('event_address')): ?>
                                 <p style="color:#004b87;font-family: 'KnockoutHTF51Middleweight';font-size: 21px;"><?php echo get_field('event_address');?></p>
-                                <p><a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker"
+								<?php endif; ?>
+								<?php if(get_field('event_google_map_view_on_map')): ?>
+                                <p>
+									<a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker"
                                       style="width: 100%"
                                       href="<?php echo get_field('event_google_map_view_on_map');?>" target="_blank"
-                                    >View on Map</a></p>
+                                    >View on Map</a>
+								</p>
+								<?php endif; ?>
                             </div>
                         </div>
 
