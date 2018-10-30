@@ -2047,6 +2047,14 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn-id-card{
     background-image: url("images/icons/id-card.png");
 }
+.hepatocytes-icon,
+.easl-gbtn-hepatocytes{
+    background-image: url("images/icons/hepatocytes.png");
+}
+.two-faces-icon,
+.easl-gbtn-two-faces {
+    background-image: url("images/icons/two-faces.png");
+}
 
 .easl-gbtn-text {
     display: block;
