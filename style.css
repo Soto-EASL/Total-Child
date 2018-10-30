@@ -3763,6 +3763,9 @@ body #site-scroll-top {
     .easl-scrolled #site-header .logo-img-sticky {
         display: inline-block;
     }
+    .vc_row.seven-columns div[class*=" vc_col-sm"]{
+        width: 14.2857%;
+    }
 }
 @media only screen and (max-width: 989px) and (min-width: 960px) {
     #site-navigation .dropdown-menu > li > a {
@@ -3800,6 +3803,10 @@ body #site-scroll-top {
     }
     .easl-col-5, .easl-row-col-5 .easl-col {
         width: 20%
+    }
+    .vc_row.seven-columns [class^="vc_col-sm"], 
+    .vc_row.seven-columns [class*=" vc_col-sm"]{
+        width: 14.2857%;
     }
 }
 @media only screen and (max-width: 767px) {
