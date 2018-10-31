@@ -20,14 +20,14 @@ if( function_exists('get_field')){
 	$event_why_attend = trim(get_field('event_why_attend'));
 	$event_who_should_attend = trim(get_field('event_who_should_attend'));
 	$event_topic_covered = trim(get_field('event_topic_covered'));
-	$key_dates = trim(get_field('event_key_deadline_row'));
+	$key_dates = get_field('event_key_deadline_row');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
 	$event_why_attend = trim(get_post_meta(get_the_ID(), 'event_why_attend', true));
 	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
-	$key_dates = trim(get_post_meta(get_the_ID(), 'event_key_deadline_row', true));
+	$key_dates = get_post_meta(get_the_ID(), 'event_key_deadline_row', true);
 }
 
 $now_time = time() - 86399;
