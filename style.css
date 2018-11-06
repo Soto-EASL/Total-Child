@@ -62,6 +62,41 @@ body a {
 
 /*EASL Common*/
 
+.easl-st-collapse:not(.easl-st-collapse-show) {
+	display: none;
+}
+
+.easl-st-collapsing {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	-webkit-transition: height .35s ease;
+	transition: height .35s ease;
+}
+
+.easl-st-collapsed {
+	display: block;
+}
+.toggle-box-button {
+    display: inline-block;
+}
+.toggle-box-button .tbb-shown-text {
+    display: inline-block;
+}
+.toggle-box-button.tbb-shown .tbb-shown-text {
+    display: none;
+}
+.toggle-box-button.tbb-hidden .tbb-shown-text {
+    display: inline-block;
+}
+.toggle-box-button .tbb-hidden-text,
+.toggle-box-button.tbb-hidden .tbb-hidden-text{
+    display: none;
+}
+.toggle-box-button.tbb-shown .tbb-hidden-text{
+    display: inline-block;
+}
+
 .easl-box-shadow {
     -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
@@ -4640,6 +4675,55 @@ ul.suggestions{
     color: #f9bc49;
 }
 
+
+.event-text-block .toggle-box-button {
+    color: #004b87;
+    font-weight: bold;
+    text-decoration: none;
+}
+.event-text-block .toggle-box-button .fa {
+    font-weight: 700;
+}
+.event-text-block .toggle-box-button:hover,
+.event-text-block .toggle-box-button:active {
+    text-decoration: none;
+    color: #71c5e8;
+}
+
+.event-text-block .event-link-item {
+    font-weight: 700;
+}
+
+.event-color-blue .event-text-block .toggle-box-button:hover,
+.event-color-blue .event-text-block .toggle-box-button:active,
+.event-color-blue .event-text-block .toggle-box-button .fa {
+    color: #165291;
+}
+.event-color-red .event-text-block .toggle-box-button:hover,
+.event-color-red .event-text-block .toggle-box-button:active,
+.event-color-red .event-text-block .toggle-box-button .fa {
+    color: #de2a57;
+}
+.event-color-teal .event-text-block .toggle-box-button:hover,
+.event-color-teal .event-text-block .toggle-box-button:active,
+.event-color-teal .event-text-block .toggle-box-button .fa {
+    color: #189790;
+}
+.event-color-orrange .event-text-block .toggle-box-button:hover,
+.event-color-orrange .event-text-block .toggle-box-button:active,
+.event-color-orrange .event-text-block .toggle-box-button .fa {
+    color: #f26827;
+}
+.event-color-gray .event-text-block .toggle-box-button:hover,
+.event-color-gray .event-text-block .toggle-box-button:active,
+.event-color-gray .event-text-block .toggle-box-button .fa {
+    color: #7e6a73;
+}
+.event-color-yellow .event-text-block .toggle-box-button:hover,
+.event-color-yellow .event-text-block .toggle-box-button:active,
+.event-color-yellow .event-text-block .toggle-box-button .fa {
+    color: #f9bc49;
+}
 
 .app-process{
     background-color: #ffffff;

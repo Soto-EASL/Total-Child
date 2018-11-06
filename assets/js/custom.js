@@ -267,6 +267,83 @@
             }
         });  
     };
+    
+    
+    function EASLSlideToggle($el) {
+        this.$el = $el;
+        this.collapsed = false;
+        this.collapsing = false;
+        this.className = {
+            COLLAPSE: "easl-st-collapse",
+            SHOW: "easl-st-collapse-show",
+            COLLAPSING:  "easl-st-collapsing",
+            COLLAPSED: "easl-st-collapsed"
+        };
+        this.EventsName = {
+            TRANSITION_END: "transitionEnd webkitTransitionEnd transitionend oTransitionEnd msTransitionEnd"
+        };
+        this.$el.removeClass(this.className.COLLAPSING).addClass(this.className.COLLAPSE);
+    };
+    EASLSlideToggle.prototype.show = function() {
+        var ob = this;
+        if(this.collapsing || this.$el.hasClass(this.className.SHOW)){
+            return;
+        }
+        this.$el.removeClass(this.className.COLLAPSE).addClass(this.className.COLLAPSING);
+        this.$el[0].style.height = 0;
+        this.collapsing = true;
+        this.$el.one(this.EventsName.TRANSITION_END, function(e) {
+            ob.$el.removeClass(ob.className.COLLAPSING).addClass(ob.className.COLLAPSED).addClass(ob.className.SHOW);
+            ob.$el[0].style.height = "";
+            ob.collapsing = false;
+        });
+        this.$el[0].style.height = this.$el[0].scrollHeight + "px";
+    };
+    EASLSlideToggle.prototype.hide = function() {
+        var ob = this;
+        if(this.collapsing || !this.$el.hasClass(this.className.SHOW)){
+            return;
+        }
+        this.$el[0].style.height = this.$el[0].getBoundingClientRect().height + "px";
+        this.$el[0].offsetHeight;
+        this.$el.addClass(this.className.COLLAPSING).removeClass(this.className.COLLAPSE).removeClass(this.className.SHOW);
+        this.collapsing = true;
+        this.$el.one(this.EventsName.TRANSITION_END, function(e) {
+            ob.$el.removeClass(ob.className.COLLAPSING).addClass(ob.className.COLLAPSE);
+            ob.collapsing = false;
+        });
+        this.$el[0].style.height = "";
+    };
+    EASLSlideToggle.prototype.toggle = function() {
+        if(this.$el.hasClass(this.className.SHOW)) {
+            this.hide();
+        }else{
+            this.show();
+        }
+    };
+    $.fn.easlSlideUp = function(){
+        return this.each(function(){
+            var st = new EASLSlideToggle($(this));
+            st.hide();
+        });
+    };
+    $.fn.easlSlideDown = function(){
+        return this.each(function(){
+            var st;
+            st = $(this).data('easlst');
+            if(typeof st === 'undefined'){
+                st = new EASLSlideToggle($(this));
+            }
+            st.show();
+        });
+    };
+    $.fn.easlSlideToggle = function(){
+        return this.each(function(){
+            var st = new EASLSlideToggle($(this));
+            st.toggle();
+        });
+    };
+    
     $(window).load(function(){
     });
     $(document).ready(function(){
@@ -388,6 +465,19 @@
                 .find('.ec-links-details-key-deadlines')
                 .addClass('easl-active');
             return false;
+        });
+        $('.toggle-box-button').on('click', function(e){
+            e.preventDefault();
+            var $t = $(this);
+            var $target = $($t.data('target'));
+            if($target.length){
+                $target.easlSlideToggle();
+            }
+            if($t.hasClass('tbb-shown')){
+                $t.removeClass('tbb-shown').addClass('tbb-hidden');
+            }else{
+               $t.removeClass('tbb-hidden').addClass('tbb-shown'); 
+            }
         });
         
         // Stuff to be done when windows resize

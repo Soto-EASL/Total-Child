@@ -48,13 +48,4 @@ jQuery(function($) {
         });
     });
 
-
-    $(document).on('click', '.read-more-btn', function (e) {
-        e.preventDefault();
-        $('.duties').toggleClass('hidden');
-    });
-
-
-
-
 });

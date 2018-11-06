@@ -129,10 +129,15 @@ $event_location = implode(', ', $event_location);
                             <div class="event_description">
                                 <?php echo get_field('event_short_description');?>    
                             </div>
-                            <div class="event_description hidden">
+                            <div id="event-more-description" class="event-description-more easl-st-collapse">
                                 <?php echo get_field('event_show_more');?>
                             </div>
-                            <p><a href="#" class="show_more_btn">Show more <i class="fa fa-angle-down"></i></a></p>
+                            <p>
+								<a href="#" class="toggle-box-button tbb-hidden" data-target="#event-more-description">
+									<span class="tbb-shown-text">Show more <i class="fa fa-angle-down"></i></span>
+									<span class="tbb-hidden-text">Show less <i class="fa fa-angle-up"></i></span>
+								</a>
+							</p>
 						</div>
                         <div class="event-text-block event-sidebar-item event-links">
                             <ul class="event-links-list">
