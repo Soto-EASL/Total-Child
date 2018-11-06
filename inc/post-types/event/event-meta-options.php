@@ -7,6 +7,12 @@ return array(
 	'event-data' => array(
 		'title' => esc_html__( 'Event Data', 'total' ),
 		'settings' => array(
+			'location_venue' => array(
+				'title' => esc_html__( 'Location - Venu Name', 'total' ),
+				'id' => $prefix . 'location_venue',
+				'type' => 'text',
+				'description' => esc_html__( 'Enter the venue of the event.', 'total' ),
+			),
 			'location_city' => array(
 				'title' => esc_html__( 'Location - City', 'total' ),
 				'id' => $prefix . 'location_city',

@@ -2,6 +2,36 @@
 if( class_exists('WPBakeryShortCode') ){
 	class EASL_VC_Events_Calendar extends WPBakeryShortCode {
 		private static $inline_scripts_once = false;
+		
+		public function string_to_array( $value ) {
+
+			// Return if value is empty
+			if ( !$value ) {
+				return;
+			}
+
+			// Return if already an array
+			if ( is_array( $value ) ) {
+				return $value;
+			}
+
+			// Define output array
+			$array = array();
+
+			// Clean up value
+			$items = preg_split( '/\,[\s]*/', $value );
+
+			// Create array
+			foreach ( $items as $item ) {
+				if ( strlen( $item ) > 0 ) {
+					$array[] = $item;
+				}
+			}
+
+			// Return array
+			return $array;
+		}
+		
 		public function output_inline_script() {
 			if(self::$inline_scripts_once){
 				return;

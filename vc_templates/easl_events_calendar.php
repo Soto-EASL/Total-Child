@@ -17,6 +17,13 @@ $event_number = $event_type = $title = $element_width = $view_all_link = $view_a
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
+
+$topics_req = !empty($_REQUEST['topics']) ? $this->string_to_array($_REQUEST['topics']): false;
+$meeting_type_req = !empty($_REQUEST['type']) ? absint($_REQUEST['type']): false;
+if(!$topics_req) {
+	$topics_req = array();
+}
+
 $css_animation = $this->getCSSAnimation($css_animation);
 
 if(!$view_all_text){
@@ -66,7 +73,7 @@ foreach($topics as $topic_id => $topic_name){
 	$topics_list .= '
 		<li>
 			<label class="easl-custom-checkbox csic-'. $topic_color .'">
-				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'" data-countries="'. esc_attr( json_encode($topic_ccs)) .'" /> <span style="">'. esc_html($topic_name) .'</span>
+				<input type="checkbox" name="ec_filter_topics[]" value="'. $topic_id .'" data-countries="'. esc_attr( json_encode($topic_ccs)) .'" '. checked(in_array($topic_id, $topics_req), true, false) .' /> <span style="">'. esc_html($topic_name) .'</span>
 			</label>
 		</li>
 		';
@@ -87,7 +94,7 @@ if( !is_array($meeting_types)){
 }
 foreach($meeting_types as $meeting_typ_id => $meeting_type_name){
 	$meeting_type_list .= '
-		<option value="'. $meeting_typ_id .'">'. esc_html($meeting_type_name) .'</option>
+		<option value="'. $meeting_typ_id .'" '. selected($meeting_typ_id, $meeting_type_req, false) .'>'. esc_html($meeting_type_name) .'</option>
 		';
 }
 
@@ -307,6 +314,32 @@ if('future' == $event_type){
             'type' => 'NUMERIC',
 		),
 	);
+}
+
+
+			
+// Taxonomy query args
+$tax_query = array();
+// Topic
+if( is_array($topics_req) && count($topics_req) > 0){
+	$tax_query[] = array(
+		'taxonomy' => EASL_Event_Config::get_topic_slug(),
+		'field' => 'term_id',
+		'terms' => $topics_req,
+	);
+}
+// Meeting Type
+if( $meeting_type_req){
+	$tax_query[] = array(
+		'taxonomy' => EASL_Event_Config::get_meeting_type_slug(),
+		'field' => 'term_id',
+		'terms' => array($meeting_type_req),
+	);
+}
+// Check if there is any topic/meeting type
+if(count($tax_query) > 0){
+	$tax_query['relation'] = 'AND';
+	$event_args['tax_query'] = $tax_query;
 }
 
 $event_query = new WP_Query($event_args);

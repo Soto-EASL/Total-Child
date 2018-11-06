@@ -4544,7 +4544,9 @@ ul.suggestions{
 .page-header.easl-page-header-no-bg .page-header-table {
     height: 220px;
 }
-.single-event .page-header.easl-page-header-no-bg .page-header-title
+.single-event .page-header.easl-page-header-no-bg .page-header-title{
+    
+}
 
 .event-color-blue .event-dates {
     border-color: #165291;

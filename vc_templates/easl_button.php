@@ -23,7 +23,7 @@ extract( $atts );
 
 $icon_html = '';
 if($button_icon){
-	$ion_html = '<img src="'. get_stylesheet_directory_uri() . '/images/button-icon-' . $button_icon .'.png" alt="icon"/>';
+	$icon_html = '<img src="'. get_stylesheet_directory_uri() . '/images/button-icon-' . $button_icon .'.png" alt="icon"/>';
 }
 
 $button_text = '';
@@ -35,7 +35,7 @@ if($button_text_2){
 }
 
 if($button_text && $button_link){
-	$button_text = '<a href="'. esc_url($button_link) .'" target="'. $button_link_target .'">'. $ion_html . $button_text . '</a>';
+	$button_text = '<a href="'. esc_url($button_link) .'" target="'. $button_link_target .'">'. $icon_html . $button_text . '</a>';
 }
 
 $class_to_filter = 'wpb_easl_button wpb_content_element ' . $this->getCSSAnimation( $css_animation );

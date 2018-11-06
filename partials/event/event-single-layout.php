@@ -49,16 +49,24 @@ if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
 if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
 	$event_time_type = 'current';
 }
+$event_city_contry_venue = array();
 $event_location = array();
+$event_location_venue = get_post_meta(get_the_ID(), 'event_location_venue', true);
 $event_location_city = get_post_meta(get_the_ID(), 'event_location_city', true);
 $event_location_country = get_post_meta(get_the_ID(), 'event_location_country', true);
+if($event_location_venue){
+	$event_city_contry_venue[] = $event_location_venue;
+}
 if($event_location_city){
 	$event_location[] = $event_location_city;
 }
 if($event_location_country){
 	$event_location[] = easl_event_map_country_key($event_location_country );
 }
-$event_location = implode(', ', $event_location);
+if(count($event_location > 0)){
+	$event_city_contry_venue[] = implode(', ', $event_location);
+}
+$event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 
 
 ?>
@@ -91,10 +99,12 @@ $event_location = implode(', ', $event_location);
 								<span class="event-meta-type"><?php _e('Organised by:', 'total-child'); ?></span>
 								<span class="event-meta-value"><?php echo $organisation[get_field('event_organisation')];?></span>
 							</p>
+							<?php if($event_city_contry_venue): ?>
 							<p class="event-meta">
 								<span class="event-meta-type">Location:</span>
-								<span class="event-meta-value">Clinical School  |  <?php echo get_field('event_location_city');?>, <?php echo $country[get_field('event_location_country')];?></span>
+								<span class="event-meta-value"><?php echo $event_city_contry_venue;  ?></span>
 							</p>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
