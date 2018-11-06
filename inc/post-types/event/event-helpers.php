@@ -70,6 +70,16 @@ function easl_event_topics_name($id = null, $first = true, $seperator = ', '){
 	}
 	return implode( $seperator, $topic_names );
 }
+function easl_meeting_type_id($id = null){
+	if(!$id){
+		$id = get_the_ID();
+	}
+	$types = wp_get_post_terms($id, EASL_Event_Config::get_meeting_type_slug());
+	if( !$types || is_wp_error( $types )){
+		return '';
+	}
+	return $types[0]->term_id;
+}
 function easl_meeting_type_name($id = null){
 	if(!$id){
 		$id = get_the_ID();

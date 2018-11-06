@@ -271,3 +271,63 @@ function easl_page_header_title_table_wrap_close() {
 }
 add_action( 'wpex_hook_page_header_inner', 'easl_page_header_title_table_wrap_open', 0 );
 add_action( 'wpex_hook_page_header_inner', 'easl_page_header_title_table_wrap_close', 9999 );
+
+function easl_page_header_style($style) {
+	if(!is_singular('event') || 'background-image' == $style) {
+		return $style;
+	}
+	$term_id = easl_meeting_type_id( get_queried_object_id());
+	if(!$term_id) {
+		return $style;
+	}
+	$bg = '';
+	if( function_exists('get_field')) {
+		$bg = get_field( 'event_header_image', 'event_type_' . $term_id );
+	}
+	if(!$bg) {
+		return $style;
+	}
+	return 'background-image';
+	
+}
+function easl_page_header_overlay_style($style) {
+	if(!is_singular('event')) {
+		return $style;
+	}
+	return '';
+	
+}
+function easl_page_header_title_heighte($height) {
+	if(!is_singular('event')) {
+		return $height;
+	}
+	return 220;
+	
+}
+
+function easl_page_header_bg($image, $event_id) {
+	if(!is_singular('event')) {
+		return $image;
+	}
+	$term_id = easl_meeting_type_id( $event_id );
+	if(!$term_id) {
+		return $image;
+	}
+	$bg = '';
+	if( function_exists('get_field')) {
+		$bg = get_field( 'event_header_image', 'event_type_' . $term_id );
+	}
+	if(!$bg) {
+		return $image;
+	}
+	$bg = wp_get_attachment_image_src($bg, 'full');
+	if(!$bg) {
+		return $image;
+	}
+	return $bg[0];
+	
+}
+add_filter('wpex_page_header_style', 'easl_page_header_style', 20);
+add_filter('wpex_post_title_height', 'easl_page_header_title_heighte', 20);
+add_filter('wpex_page_header_overlay_style', 'easl_page_header_overlay_style', 20);
+add_filter('wpex_page_header_background_image', 'easl_page_header_bg', 20, 2);

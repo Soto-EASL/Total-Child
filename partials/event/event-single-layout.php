@@ -26,6 +26,10 @@ if( function_exists('get_field')){
 	$event_accreditation = get_field('event_accreditation');
 	$event_show_more = trim(get_field('event_show_more'));
 	$event_short_description = trim(get_field('event_short_description'));
+	$event_short_description_title = trim(get_field('event_short_description_title'));
+	$event_why_attend_title = trim(get_field('event_why_attend_title'));
+	$event_who_should_attend_title = trim(get_field('event_who_should_attend_title'));
+	$event_topic_covered_title = trim(get_field('event_topic_covered_title'));
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -37,6 +41,10 @@ if( function_exists('get_field')){
 	$event_accreditation = get_post_meta(get_the_ID(), 'event_accreditation', true);
 	$event_show_more = trim(get_post_meta(get_the_ID(), 'event_show_more', true));
 	$event_short_description = trim(get_post_meta(get_the_ID(), 'event_short_description', true));
+	$event_short_description_title = trim(get_post_meta(get_the_ID(), 'event_short_description_title', true));
+	$event_why_attend_title = trim(get_post_meta(get_the_ID(), 'event_why_attend_title', true));
+	$event_who_should_attend_title = trim(get_post_meta(get_the_ID(), 'event_who_should_attend_title', true));
+	$event_topic_covered_title= trim(get_post_meta(get_the_ID(), 'event_topic_covered_title', true));
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -144,8 +152,11 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 			<div class="wpb_column vc_column_container vc_col-sm-8">
 				<div class="vc_column-inner">
 					<div class="wpb_wrapper clr">
+						<?php if($event_short_description || $event_show_more): ?>
 						<div class="event-text-block">
-							<h3>Description</h3>
+							<?php if($event_short_description_title): ?>
+							<h3><?php echo esc_html($event_short_description_title); ?></h3>
+							<?php endif; ?>
 							<?php if($event_short_description): ?>
                             <div class="event_description">
                                 <?php echo do_shortcode($event_short_description);?>    
@@ -163,6 +174,7 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 							</p>
 							<?php endif; ?>
 						</div>
+						<?php endif; ?>
                         <div class="event-text-block event-sidebar-item event-links">
                             <ul class="event-links-list">
 								<?php if($event_online_programme_url): ?>
@@ -209,20 +221,26 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
                         </div>
 						<?php if($event_why_attend): ?>
                         <div class="event-text-block">
-                            <h3>Why attend?</h3>
+							<?php if($event_why_attend_title): ?>
+                            <h3><?php echo esc_html($event_why_attend_title); ?></h3>
+							<?php endif; ?>
                             <?php echo do_shortcode($event_why_attend);?>
                         </div>
 						<?php endif; ?>
 						<?php if($event_who_should_attend): ?>
                         <div class="event-text-block">
-                            <h3>Who should attend?</h3>
-                             <?php echo do_shortcode($event_who_should_attend);?>
+							<?php if($event_who_should_attend_title): ?>
+                            <h3><?php echo esc_html($event_who_should_attend_title); ?></h3>
+							<?php endif; ?>
+                            <?php echo do_shortcode($event_who_should_attend);?>
                         </div>
 						<?php endif; ?>
 						<?php if($event_topic_covered): ?>
                         <div class="event-text-block">
-                            <h3>Topic to be covered</h3>
-                             <?php echo do_shortcode($event_topic_covered);?>
+                            <?php if($event_topic_covered_title): ?>
+                            <h3><?php echo esc_html($event_topic_covered_title); ?></h3>
+							<?php endif; ?>
+                            <?php echo do_shortcode($event_topic_covered);?>
                         </div>
 						<?php endif; ?>
 						<?php if($event_sections && is_array( $event_sections) && count($event_sections) > 0): ?>
