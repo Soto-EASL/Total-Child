@@ -26,6 +26,9 @@ add_action( 'after_setup_theme', 'easl_theme_setup' );
 
 function easl_custom_scripts(){
 	wp_enqueue_script('jquery');
+	if( is_singular('event') && easl_is_future_event( get_queried_object_id())){
+		wp_enqueue_script('atc', 'https://addevent.com/libs/atc/1.6.1/atc.min.js', array(), null, false);
+	}
     wp_enqueue_script('easl-custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array('jquery'), null, true);
 	$ssl_scheme = is_ssl() ? 'https' : 'http';
 	$fornt_end_data = array(
@@ -35,6 +38,20 @@ function easl_custom_scripts(){
 }
 add_action('wp_enqueue_scripts', 'easl_custom_scripts', 20);
 
+function easl_header_scripts() {
+	if( is_singular('event') && easl_is_future_event( get_queried_object_id())){
+		?>
+<script type="text/javascript">
+	window.addeventasync = function(){
+		addeventatc.settings({
+			css: false
+		});
+	};
+</script>
+		<?php
+	}
+}
+add_action('wp_head', 'easl_header_scripts', 99);
 function easl_footer_scripts(){
 	echo '<script type="text/javascript" src="'. get_stylesheet_directory_uri() . '/assets/js/custom.js' .'"></script>';
 }

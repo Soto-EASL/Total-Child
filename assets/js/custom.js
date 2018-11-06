@@ -221,6 +221,7 @@
         }else{
             this.scrollLoad = true;
         }
+        addeventatc && addeventatc.refresh();
     };
     
     $.fn.easlEventCalander = function(){

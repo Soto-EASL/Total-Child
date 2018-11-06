@@ -370,5 +370,5 @@ $output = '
 			' . $html . '
 	</div>
 ';
-
+$output .= $this->output_inline_script();
 echo $output;

@@ -1,6 +1,25 @@
 <?php
 if( class_exists('WPBakeryShortCode') ){
 	class EASL_VC_Events_Calendar extends WPBakeryShortCode {
+		private static $inline_scripts_once = false;
+		public function output_inline_script() {
+			if(self::$inline_scripts_once){
+				return;
+			}
+			self::$inline_scripts_once = true;
+			ob_start();
+			?>
+			<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+			<script type="text/javascript">
+				window.addeventasync = function(){
+					addeventatc.settings({
+						css: false
+					});
+				};
+			</script>
+			<?php
+			return ob_get_clean();
+		}
 		static public function load_events(){
 			// Get reuest data
 			if(!isset($_REQUEST['filters'])){

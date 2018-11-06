@@ -171,8 +171,8 @@ function easl_event_get_countries(){
 		'CC' => __( 'Cocos (Keeling) Islands', 'total' ),
 		'CO' => __( 'Colombia', 'total' ),
 		'KM' => __( 'Comoros', 'total' ),
-		'CG' => __( 'Congo (Brazzaville)', 'total' ),
-		'CD' => __( 'Congo (Kinshasa)', 'total' ),
+		'CG' => __( 'Congo', 'total' ),
+		'CD' => __( 'Congo', 'total' ),
 		'CK' => __( 'Cook Islands', 'total' ),
 		'CR' => __( 'Costa Rica', 'total' ),
 		'HR' => __( 'Croatia', 'total' ),
@@ -306,8 +306,8 @@ function easl_event_get_countries(){
 		'SH' => __( 'Saint Helena', 'total' ),
 		'KN' => __( 'Saint Kitts and Nevis', 'total' ),
 		'LC' => __( 'Saint Lucia', 'total' ),
-		'MF' => __( 'Saint Martin (French part)', 'total' ),
-		'SX' => __( 'Saint Martin (Dutch part)', 'total' ),
+		'MF' => __( 'Saint Martin', 'total' ),
+		'SX' => __( 'Saint Martin', 'total' ),
 		'PM' => __( 'Saint Pierre and Miquelon', 'total' ),
 		'VC' => __( 'Saint Vincent and the Grenadines', 'total' ),
 		'SM' => __( 'San Marino', 'total' ),
@@ -352,10 +352,10 @@ function easl_event_get_countries(){
 		'UG' => __( 'Uganda', 'total' ),
 		'UA' => __( 'Ukraine', 'total' ),
 		'AE' => __( 'United Arab Emirates', 'total' ),
-		'GB' => __( 'United Kingdom (UK)', 'total' ),
-		'US' => __( 'United States (US)', 'total' ),
-		'UM' => __( 'United States (US) Minor Outlying Islands', 'total' ),
-		'VI' => __( 'United States (US) Virgin Islands', 'total' ),
+		'GB' => __( 'United Kingdom', 'total' ),
+		'US' => __( 'United States', 'total' ),
+		'UM' => __( 'United States Minor Outlying Islands', 'total' ),
+		'VI' => __( 'United States Virgin Islands', 'total' ),
 		'UY' => __( 'Uruguay', 'total' ),
 		'UZ' => __( 'Uzbekistan', 'total' ),
 		'VU' => __( 'Vanuatu', 'total' ),
@@ -402,4 +402,17 @@ function easl_get_events_topic_count(){
 		$topics_country[$topic_id][] = $tc_count['country_code'];
 	}
 	return $topics_country;
+}
+
+function easl_is_future_event($event_id) {
+	if(!$event_id){
+		$event_id = get_the_ID();
+	}
+	$event_start_date = get_post_meta($event_id, 'event_start_date', true);
+	$event_end_date = get_post_meta($event_id, 'event_end_date', true);
+	$now_time = time() - 86399;
+	if( ($event_start_date > $now_time) && ($event_end_date > $now_time) ){
+		return true;
+	}
+	return false;
 }

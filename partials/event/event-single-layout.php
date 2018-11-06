@@ -39,6 +39,16 @@ if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
 if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
 	$event_time_type = 'current';
 }
+$event_location = array();
+$event_location_city = get_post_meta(get_the_ID(), 'event_location_city', true);
+$event_location_country = get_post_meta(get_the_ID(), 'event_location_country', true);
+if($event_location_city){
+	$event_location[] = $event_location_city;
+}
+if($event_location_country){
+	$event_location[] = easl_event_map_country_key($event_location_country );
+}
+$event_location = implode(', ', $event_location);
 
 
 ?>
@@ -128,7 +138,7 @@ if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
                             <ul class="event-links-list">
 								<?php if($event_online_programme_url): ?>
                                 <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
-                                    <a href="<?php echo esc_url( $event_online_programme_url );?>" style="display: inline-block" target="_blank">
+                                    <a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Online Programme</span>
                                     </a>
@@ -136,15 +146,22 @@ if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
 								<?php endif; ?>
 								<?php if('past' != $event_time_type): ?>
                                 <li class="event-link-calendar" style="float: left;border: none;margin-right: 40px">
-                                    <a href="" style="display: inline-block">
-                                        <span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
-                                        <span class="event-link-text">Add to Calendar</span>
-                                    </a>
+									<div title="Add to Calendar" class="addeventatc">
+										<span class="event-link-item" href="" style="display: inline-block">
+											<span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
+											<span class="event-link-text">Add to Calendar</span>
+										</span>
+										<span class="start"><?php echo date('Y-m-d', $event_start_date); ?></span>
+										<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
+										<span class="timezone">America/Los_Angeles</span>
+										<span class="title"><?php the_title(); ?></span>
+										<span class="location"><?php echo $event_location; ?></span>
+									</div>
                                 </li>
 								<?php endif; ?>
 								<?php if($event_notification_url && ('past' != $event_time_type)): ?>
                                 <li class="event-link-notify" style="float: left;border: none;margin-right: 40px">
-                                    <a href="<?php echo esc_url($event_notification_url);?>" style="display: inline-block" target="_blank">
+                                    <a class="event-link-item" href="<?php echo esc_url($event_notification_url);?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Get Notified</span>
                                     </a>
@@ -152,7 +169,7 @@ if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
 								<?php endif; ?>
 								<?php if($event_website_url): ?>
                                 <li class="event-link-website" style="float: left;border: none;margin-right: 40px">
-                                    <a href="<?php echo esc_url( $event_website_url); ?>" style="display: inline-block" target="_blank">
+                                    <a class="event-link-item" href="<?php echo esc_url( $event_website_url); ?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-tv" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Visit Website</span>
                                     </a>

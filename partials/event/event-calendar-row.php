@@ -104,7 +104,7 @@ if($row_count % 2 == 0){
 			<div class="ec-icons clr">
 				<ul class="ec-icons-nav clr">
 					<li class="ec-links-more">
-						<a href="<?php the_permalink(); ?>">
+						<a class="event-link-item" href="<?php the_permalink(); ?>">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon info"></span>
                             </span>
@@ -113,7 +113,7 @@ if($row_count % 2 == 0){
 					</li>
 					<?php if($event_website_url): ?>
 					<li class="ec-links-website">
-						<a href="<?php echo esc_url( $event_website_url ); ?>" target="_blank">
+						<a class="event-link-item" href="<?php echo esc_url( $event_website_url ); ?>" target="_blank">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon laptop"></span>
                             </span>
@@ -123,7 +123,7 @@ if($row_count % 2 == 0){
 					<?php endif; ?>
 					<?php if($key_dates): ?>
 					<li class="ec-links-deadline">
-						<a href="">
+						<a class="event-link-item" href="">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon clock"></span>
                             </span>
@@ -133,7 +133,7 @@ if($row_count % 2 == 0){
 					<?php endif; ?>
 					<?php if($event_online_programme_url): ?>
 					<li class="ec-links-program">
-						<a href="<?php echo esc_url( $event_online_programme_url );?>">
+						<a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
@@ -143,7 +143,7 @@ if($row_count % 2 == 0){
 					<?php endif; ?>
 					<?php if($event_notification_url && ('past' != $event_time_type)): ?>
 					<li class="ec-links-notify">
-						<a href="<?php echo get_field('event_notification_url');?>">
+						<a class="event-link-item" href="<?php echo esc_url($event_notification_url);?>">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon envelope"></span>
                             </span>
@@ -153,12 +153,19 @@ if($row_count % 2 == 0){
 					<?php endif; ?>
 					<?php if('past' != $event_time_type): ?>
 					<li class="ec-links-calendar">
-						<a href="">
-                            <span class="icon-wrapper">
-                                <span class="ec-links-icon calendar"></span>
-                            </span>
-							<span class="ec-link-text">Add to<br/>Calendar</span>
-						</a>
+						<div title="Add to Calendar" class="addeventatc">
+							<span class="event-link-item" href="">
+								<span class="icon-wrapper">
+									<span class="ec-links-icon calendar"></span>
+								</span>
+								<span class="ec-link-text">Add to<br/>Calendar</span>
+							</span>
+							<span class="start"><?php echo date('Y-m-d', $event_start_date); ?></span>
+							<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
+							<span class="timezone">America/Los_Angeles</span>
+							<span class="title"><?php the_title(); ?></span>
+							<span class="location"><?php echo $event_location; ?></span>
+						</div>
 					</li>
 					<?php endif; ?>
 				</ul>

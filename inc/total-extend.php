@@ -258,3 +258,16 @@ function easl_total_post_types($post_types){
 	$post_types['event'] = 'event';
 	return $post_types;
 }
+
+function easl_page_header_title_table_wrap_open() {
+	if ( is_singular('event') && 'background-image' != wpex_page_header_style() ) {
+		echo '<div class="page-header-table clr"><div class="page-header-table-cell">';
+	}
+}
+function easl_page_header_title_table_wrap_close() {
+	if ( is_singular('event') && 'background-image' != wpex_page_header_style() ) {
+		echo '</div></div>';
+	}
+}
+add_action( 'wpex_hook_page_header_inner', 'easl_page_header_title_table_wrap_open', 0 );
+add_action( 'wpex_hook_page_header_inner', 'easl_page_header_title_table_wrap_close', 9999 );
