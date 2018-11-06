@@ -19,6 +19,7 @@ require_once EASL_INC_DIR . 'post-types/annual-reports/annual-reports-config.php
 require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
 
 function easl_theme_setup(){
+	load_theme_textdomain('total-child');
 	add_image_size('staff_grid', 254, 254, true);
 }
 add_action( 'after_setup_theme', 'easl_theme_setup' );
