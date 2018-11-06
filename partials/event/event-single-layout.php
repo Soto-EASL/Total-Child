@@ -21,7 +21,9 @@ if( function_exists('get_field')){
 	$event_why_attend = trim(get_field('event_why_attend'));
 	$event_who_should_attend = trim(get_field('event_who_should_attend'));
 	$event_topic_covered = trim(get_field('event_topic_covered'));
-	$event_topic_sections = get_field('event_topic_sections');
+	$event_sections = get_field('event_sections');
+	$about_easl_schools = get_field('about_easl_schools');
+	$event_accreditation = get_field('event_accreditation');
 	$event_show_more = trim(get_field('event_show_more'));
 	$event_short_description = trim(get_field('event_short_description'));
 }else{
@@ -30,7 +32,9 @@ if( function_exists('get_field')){
 	$event_why_attend = trim(get_post_meta(get_the_ID(), 'event_why_attend', true));
 	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
-	$event_topic_sections = get_post_meta(get_the_ID(), 'event_topic_sections', true);
+	$event_sections = get_post_meta(get_the_ID(), 'event_sections', true);
+	$about_easl_schools = get_post_meta(get_the_ID(), 'about_easl_schools', true);
+	$event_accreditation = get_post_meta(get_the_ID(), 'event_accreditation', true);
 	$event_show_more = trim(get_post_meta(get_the_ID(), 'event_show_more', true));
 	$event_short_description = trim(get_post_meta(get_the_ID(), 'event_short_description', true));
 }
@@ -211,25 +215,26 @@ $event_location = implode(', ', $event_location);
                              <?php echo do_shortcode($event_topic_covered);?>
                         </div>
 						<?php endif; ?>
-						<?php if($event_topic_sections && is_array( $event_topic_sections) && count($event_topic_sections) > 0): ?>
+						<?php if($event_sections && is_array( $event_sections) && count($event_sections) > 0): ?>
                         <div class="event-sections">
 							<?php 
-							foreach ($event_topic_sections as $event_topic_section):
-								$event_topic_section_title = !empty($event_topic_section['section_title'])? trim($event_topic_section['section_title']) : '';
-								$event_topic_section_content = !empty($event_topic_section['section_content'])? trim($event_topic_section['section_content']) : '';
-								if(!$event_topic_section_content){
+							foreach ($event_sections as $event_section):
+								$event_section_title = !empty($event_section['section_title'])? trim($event_section['section_title']) : '';
+								$event_section_content = !empty($event_section['section_content'])? trim($event_section['section_content']) : '';
+								if(!$event_section_content){
 									continue;
 								}
 							?>
 								<div class="event-text-block">
-									<?php if($event_topic_section_title): ?>
-									<h3><?php echo $event_topic_section_title; ?></h3>
+									<?php if($event_section_title): ?>
+									<h3><?php echo $event_section_title; ?></h3>
 									<?php endif; ?>
-									<?php echo do_shortcode($event_topic_section_content);?>
-									<?php endforeach; ?>
+									<?php echo do_shortcode($event_section_content);?>
 								</div>
+							<?php endforeach; ?>
                         </div>
 						<?php endif; ?>
+						<?php if($about_easl_schools): ?>
 						<div class="event-text-block">
 							<h3>About EASL Schoools</h3>
 							<p>The schools contribute to the training of new generations of hepatologists and are a major element of our association. Aimed at young fellows enrolled in hepatology-oriented departments or more experienced clinicians who want to be exposed to the newest trends in hepatology.</p>
@@ -237,16 +242,19 @@ $event_location = implode(', ', $event_location);
 							<p>Application is open to young fellows under the age of 35 and/or still in training.</p>
 							<p>Approximately 30 places are available for each school and priority is given to registered EASL members during the selection process. lorem ipusm dolor amet.</p>
 						</div>
+						<?php endif; ?>
+						<?php if($event_accreditation): ?>
 						<div class="event-seperator"></div>
 						<div class="event-image-box event-image-box-border-tb">
 							<div class="eib-image">
 								<img alt="" src="<?php echo EASL_HOME_URL; ?>/wp-content/uploads/2018/09/cme.jpg"/>
 							</div>
 							<div class="eib-text">
-								<h3>An application has been made to the EACCME® for CME accreditation of this event, lorem ipsum dolor amet.</h3>
+								<h3>An application has been made to the EACCME® for CME accreditation of this event.</h3>
 							</div>
 						</div>
 						<div class="event-seperator"></div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
