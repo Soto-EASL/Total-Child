@@ -21,12 +21,18 @@ if( function_exists('get_field')){
 	$event_why_attend = trim(get_field('event_why_attend'));
 	$event_who_should_attend = trim(get_field('event_who_should_attend'));
 	$event_topic_covered = trim(get_field('event_topic_covered'));
+	$event_topic_sections = get_field('event_topic_sections');
+	$event_show_more = trim(get_field('event_show_more'));
+	$event_short_description = trim(get_field('event_short_description'));
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
 	$event_why_attend = trim(get_post_meta(get_the_ID(), 'event_why_attend', true));
 	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
+	$event_topic_sections = get_post_meta(get_the_ID(), 'event_topic_sections', true);
+	$event_show_more = trim(get_post_meta(get_the_ID(), 'event_show_more', true));
+	$event_short_description = trim(get_post_meta(get_the_ID(), 'event_short_description', true));
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -126,11 +132,14 @@ $event_location = implode(', ', $event_location);
 					<div class="wpb_wrapper clr">
 						<div class="event-text-block">
 							<h3>Description</h3>
+							<?php if($event_short_description): ?>
                             <div class="event_description">
-                                <?php echo get_field('event_short_description');?>    
+                                <?php echo do_shortcode($event_short_description);?>    
                             </div>
+							<?php endif; ?>
+							<?php if($event_show_more): ?>
                             <div id="event-more-description" class="event-description-more easl-st-collapse">
-                                <?php echo get_field('event_show_more');?>
+                                <?php echo do_shortcode($event_show_more);?>
                             </div>
                             <p>
 								<a href="#" class="toggle-box-button tbb-hidden" data-target="#event-more-description">
@@ -138,6 +147,7 @@ $event_location = implode(', ', $event_location);
 									<span class="tbb-hidden-text">Show less <i class="fa fa-angle-up"></i></span>
 								</a>
 							</p>
+							<?php endif; ?>
 						</div>
                         <div class="event-text-block event-sidebar-item event-links">
                             <ul class="event-links-list">
@@ -199,6 +209,25 @@ $event_location = implode(', ', $event_location);
                         <div class="event-text-block">
                             <h3>Topic to be covered</h3>
                              <?php echo do_shortcode($event_topic_covered);?>
+                        </div>
+						<?php endif; ?>
+						<?php if($event_topic_sections && is_array( $event_topic_sections) && count($event_topic_sections) > 0): ?>
+                        <div class="event-sections">
+							<?php 
+							foreach ($event_topic_sections as $event_topic_section):
+								$event_topic_section_title = !empty($event_topic_section['section_title'])? trim($event_topic_section['section_title']) : '';
+								$event_topic_section_content = !empty($event_topic_section['section_content'])? trim($event_topic_section['section_content']) : '';
+								if(!$event_topic_section_content){
+									continue;
+								}
+							?>
+								<div class="event-text-block">
+									<?php if($event_topic_section_title): ?>
+									<h3><?php echo $event_topic_section_title; ?></h3>
+									<?php endif; ?>
+									<?php echo do_shortcode($event_topic_section_content);?>
+									<?php endforeach; ?>
+								</div>
                         </div>
 						<?php endif; ?>
 						<div class="event-text-block">
