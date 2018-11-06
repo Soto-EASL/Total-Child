@@ -78,7 +78,7 @@ $event_location = implode(', ', $event_location);
 
 							</p>
 							<p class="event-meta">
-								<span class="event-meta-type">Course Directors:</span>
+								<span class="event-meta-type"><?php _e('Organised by:', 'total-child'); ?></span>
 								<span class="event-meta-value"><?php echo $organisation[get_field('event_organisation')];?></span>
 							</p>
 							<p class="event-meta">
