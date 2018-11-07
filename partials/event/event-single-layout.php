@@ -22,6 +22,8 @@ if( function_exists('get_field')){
 	$event_who_should_attend = trim(get_field('event_who_should_attend'));
 	$event_topic_covered = trim(get_field('event_topic_covered'));
 	$event_sections = get_field('event_sections');
+	$event_top_sections = get_field('event_top_sections');
+	$event_bottom_sections = get_field('event_bottom_sections');
 	$about_easl_schools = get_field('about_easl_schools');
 	$event_accreditation = get_field('event_accreditation');
 	$event_show_more = trim(get_field('event_show_more'));
@@ -39,6 +41,8 @@ if( function_exists('get_field')){
 	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
 	$event_sections = get_post_meta(get_the_ID(), 'event_sections', true);
+	$event_top_sections = get_post_meta(get_the_ID(), 'event_top_sections', true);
+	$event_bottom_sections = get_post_meta(get_the_ID(), 'event_bottom_sections', true);
 	$about_easl_schools = get_post_meta(get_the_ID(), 'about_easl_schools', true);
 	$event_accreditation = get_post_meta(get_the_ID(), 'event_accreditation', true);
 	$event_show_more = trim(get_post_meta(get_the_ID(), 'event_show_more', true));
@@ -162,6 +166,25 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 			<div class="wpb_column vc_column_container vc_col-sm-8">
 				<div class="vc_column-inner">
 					<div class="wpb_wrapper clr">
+						<?php if($event_top_sections && is_array( $event_top_sections) && count($event_top_sections) > 0): ?>
+                        <div class="event-sections">
+							<?php 
+							foreach ($event_top_sections as $event_top_section):
+								$event_top_section_title = !empty($event_top_section['section_title'])? trim($event_top_section['section_title']) : '';
+								$event_top_section_content = !empty($event_top_section['section_content'])? trim($event_top_section['section_content']) : '';
+								if(!$event_top_section_content){
+									continue;
+								}
+							?>
+								<div class="event-text-block">
+									<?php if($event_top_section_title): ?>
+									<h3><?php echo $event_top_section_title; ?></h3>
+									<?php endif; ?>
+									<?php echo do_shortcode($event_top_section_content);?>
+								</div>
+							<?php endforeach; ?>
+                        </div>
+						<?php endif; ?>
 						<?php if($event_short_description || $event_show_more): ?>
 						<div class="event-text-block">
 							<?php if($event_short_description_title): ?>
@@ -280,6 +303,25 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 							<p>Application is open to young fellows under the age of 35 and/or still in training.</p>
 							<p>Approximately 30 places are available for each school and priority is given to registered EASL members during the selection process. lorem ipusm dolor amet.</p>
 						</div>
+						<?php endif; ?>
+						<?php if($event_bottom_sections && is_array( $event_bottom_sections) && count($event_bottom_sections) > 0): ?>
+                        <div class="event-sections">
+							<?php 
+							foreach ($event_bottom_sections as $event_bottom_section):
+								$event_bottom_section_title = !empty($event_bottom_section['section_title'])? trim($event_bottom_section['section_title']) : '';
+								$event_bottom_section_content = !empty($event_bottom_section['section_content'])? trim($event_bottom_section['section_content']) : '';
+								if(!$event_bottom_section_content){
+									continue;
+								}
+							?>
+								<div class="event-text-block">
+									<?php if($event_bottom_section_title): ?>
+									<h3><?php echo $event_bottom_section_title; ?></h3>
+									<?php endif; ?>
+									<?php echo do_shortcode($event_bottom_section_content);?>
+								</div>
+							<?php endforeach; ?>
+                        </div>
 						<?php endif; ?>
 						<?php if($event_accreditation): ?>
 						<div class="event-seperator"></div>
