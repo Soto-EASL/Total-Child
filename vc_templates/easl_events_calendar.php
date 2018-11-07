@@ -87,6 +87,7 @@ $meeting_types = get_terms( array(
 	'orderby' => 'term_id',
 	'order' => 'ASC',
 	'fields' => 'id=>name',
+	'parent' => '0',
 ) );
 
 if( !is_array($meeting_types)){
@@ -263,9 +264,10 @@ $event_args = array(
 	'orderby' => 'meta_value_num',
 	'meta_key' => 'event_start_date',
 );
+$meta_query_date = array();
 if('future' == $event_type){
 	$event_args['order'] = 'ASC';
-	$event_args['meta_query'] = array(
+	$meta_query_date[] = array(
 		'relation' => 'OR',
 		array(
 			'key' => 'event_start_date',
@@ -282,7 +284,7 @@ if('future' == $event_type){
 	);
 }elseif('past' == $event_type){
 	$event_args['order'] = 'DESC';
-	$event_args['meta_query'] = array(
+	$meta_query_date[] = array(
 		'relation' => 'AND',
 		array(
 			'key' => 'event_start_date',
@@ -299,7 +301,7 @@ if('future' == $event_type){
 	);
 }elseif('current' == $event_type){
 	$event_args['order'] = 'ASC';
-	$event_args['meta_query'] = array(
+	$meta_query_date[] = array(
 		'relation' => 'AND',
 		array(
 			'key' => 'event_start_date',
@@ -317,6 +319,25 @@ if('future' == $event_type){
 }
 
 
+$organizer = !empty($_REQUEST['organizer']) ? absint($_REQUEST['organizer']) : 1;
+$meta_query[] = array(
+	'relation' => 'AND',
+	array(
+		'key' => 'event_organisation',
+		'value' => $organizer,
+		'compare' => '=',
+		'type' => 'NUMERIC',
+	)
+);
+if(count($meta_query_date) > 0){
+	$meta_query[] = $meta_query_date;
+}
+
+// Check if there is any meta queyr
+if(count($meta_query) > 0){
+	$meta_query['relation'] = 'AND';
+	$event_args['meta_query'] = $meta_query;
+}
 			
 // Taxonomy query args
 $tax_query = array();
