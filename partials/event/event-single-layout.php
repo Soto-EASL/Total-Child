@@ -30,6 +30,8 @@ if( function_exists('get_field')){
 	$event_why_attend_title = trim(get_field('event_why_attend_title'));
 	$event_who_should_attend_title = trim(get_field('event_who_should_attend_title'));
 	$event_topic_covered_title = trim(get_field('event_topic_covered_title'));
+	$event_submit_abstract_url = trim(get_field('event_submit_abstract_url'));
+	$event_register_url = trim(get_field('event_register_url'));
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -45,6 +47,8 @@ if( function_exists('get_field')){
 	$event_why_attend_title = trim(get_post_meta(get_the_ID(), 'event_why_attend_title', true));
 	$event_who_should_attend_title = trim(get_post_meta(get_the_ID(), 'event_who_should_attend_title', true));
 	$event_topic_covered_title= trim(get_post_meta(get_the_ID(), 'event_topic_covered_title', true));
+	$event_submit_abstract_url= trim(get_post_meta(get_the_ID(), 'event_submit_abstract_url', true));
+	$event_register_url = trim(get_post_meta(get_the_ID(), 'event_register_url', true));
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -117,33 +121,39 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 					</div>
 				</div>
 			</div>
+			<?php if($event_submit_abstract_url || $event_register_url): ?>
             <div class="wpb_column vc_column_container vc_col-sm-5">
                 <div class="vc_column-inner">
                     <div class="wpb_wrapper">
                         <div class="vc_row wpb_row vc_row-fluid">
+							<?php if($event_submit_abstract_url): ?>
                             <div class="wpb_column vc_column_container vc_col-sm-6">
                                 <div class="vc_column-inner ">
                                     <div class="wpb_wrapper">
                                         <a class="event-button event-button-wide event-button-icon event-button-icon-application"
                                            style="padding-top: 8px;
                                                   padding-bottom: 8px;"
-                                           href="<?php echo get_field('event_submit_abstract_url');?>" target="_blank">Submit Abstract</a>
+												  href="<?php echo esc_url($event_submit_abstract_url);?>" target="_blank">Submit Abstract</a>
                                     </div>
                                 </div>
                             </div>
+							<?php endif; ?>
+							<?php if($event_register_url): ?>
                             <div class="wpb_column vc_column_container vc_col-sm-6">
                                 <div class="vc_column-inner ">
                                     <div class="wpb_wrapper">
                                         <a class="event-button event-button-wide event-button-icon event-button-icon-person"
                                            style="padding-top: 8px;
-                                                  padding-bottom: 8px;" href="<?php echo get_field('event_register_url');?>" target="_blank">Register</a>
+                                                  padding-bottom: 8px;" href="<?php echo esc_url($event_register_url);?>" target="_blank">Register</a>
                                     </div>
                                 </div>
                             </div>
+							<?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
+			<?php endif; ?>
 		</div>
 	</div>
 	
