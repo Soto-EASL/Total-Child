@@ -331,3 +331,11 @@ add_filter('wpex_page_header_style', 'easl_page_header_style', 20);
 add_filter('wpex_post_title_height', 'easl_page_header_title_heighte', 20);
 add_filter('wpex_page_header_overlay_style', 'easl_page_header_overlay_style', 20);
 add_filter('wpex_page_header_background_image', 'easl_page_header_bg', 20, 2);
+
+function easl_page_header_for_event($args, $instance) {
+	if('singular_event' == $instance){
+		$args['string'] = single_post_title( '', false );
+	}
+	return $args;
+}
+add_filter('wpex_page_header_title_args', 'easl_page_header_for_event', 20, 2);
