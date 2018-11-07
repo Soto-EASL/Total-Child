@@ -63,8 +63,8 @@ if ( $awardees->have_posts() ):
                     <div class="wpb_single_image wpb_content_element vc_align_ ">
                         <figure class="wpb_wrapper vc_figure">
                             <div class="vc_single_image-wrapper   vc_box_border_grey">
-								<?php if($awardee_profile_link): ?>
-								<a href="<?php echo esc_url($awardee_profile_link['url']); ?>" <?php if($awardee_profile_link['target']){ echo 'target="'. esc_attr($awardee_profile_link['target']) .'"';} ?>>
+								<?php if($awardee_profile_link && trim($awardee_profile_link['url'])): ?>
+								<a href="<?php echo esc_url(trim($awardee_profile_link['url'])); ?>" <?php if($awardee_profile_link['target']){ echo 'target="'. esc_attr($awardee_profile_link['target']) .'"';} ?>>
 								<?php endif; ?>
                                 <img width="254" height="254" src="<?php echo $avatar_src;?>"
                                      class="vc_single_image-img attachment-full" alt=""
