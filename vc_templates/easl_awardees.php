@@ -52,7 +52,9 @@ if ( $awardees->have_posts() ):
         $image = has_post_thumbnail( get_the_ID() ) ?
             wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
         $avatar_src = $image ? $image[0] : '/wp-content/uploads/2018/10/default-avatar.png';
-
+		
+		$awardee_profile_link = get_field('recognition_awardee_profile_link');
+		
         ?>
 
         <div class="wpb_column vc_column_container <?php echo $vc_col_width;?>">
@@ -61,9 +63,13 @@ if ( $awardees->have_posts() ):
                     <div class="wpb_single_image wpb_content_element vc_align_ ">
                         <figure class="wpb_wrapper vc_figure">
                             <div class="vc_single_image-wrapper   vc_box_border_grey">
+								<?php if($awardee_profile_link): ?>
+								<a href="<?php echo esc_url($awardee_profile_link['url']); ?>" <?php if($awardee_profile_link['target']){ echo 'target="'. esc_attr($awardee_profile_link['target']) .'"';} ?>>
+								<?php endif; ?>
                                 <img width="254" height="254" src="<?php echo $avatar_src;?>"
                                      class="vc_single_image-img attachment-full" alt=""
                                      sizes="(max-width: 254px) 100vw, 254px">
+								<?php if($awardee_profile_link): ?></a><?php endif; ?>
                             </div>
                         </figure>
                     </div>
