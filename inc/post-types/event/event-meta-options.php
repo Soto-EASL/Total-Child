@@ -112,7 +112,7 @@ return array(
 
             ),
             'press_ivited' => array(
-                'title' => esc_html__( 'Press Ivited?', 'total' ),
+                'title' => esc_html__( 'Press Invited?', 'total' ),
                 'id' => $prefix . 'press_ivited',
                 'type' => 'checkbox',
                 'value' => 'on',
