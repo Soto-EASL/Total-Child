@@ -70,24 +70,54 @@ if( ($event_start_date < $now_time) && ($event_end_date < $now_time) ){
 if( ($event_start_date < $now_time) && ($event_end_date >= $now_time) ){
 	$event_time_type = 'current';
 }
-$event_city_contry_venue = array();
 $event_location = array();
 $event_location_venue = get_post_meta(get_the_ID(), 'event_location_venue', true);
 $event_location_city = get_post_meta(get_the_ID(), 'event_location_city', true);
 $event_location_country = get_post_meta(get_the_ID(), 'event_location_country', true);
-if($event_location_venue){
-	$event_city_contry_venue[] = $event_location_venue;
+$event_location_display_format = get_post_meta(get_the_ID(), 'event_location_display_format', true);
+
+if(!in_array( $event_location_display_format, array('venue|city,contury', 'venue,Country', 'venue', 'city,contury' ))) {
+	$event_location_display_format = 'venue|city,contury';
 }
-if($event_location_city){
-	$event_location[] = $event_location_city;
+
+$event_location_display = array();
+
+
+if('venue|city,contury' == $event_location_display_format){
+	if($event_location_venue){
+		$event_location_display[] = $event_location_venue;
+	}
+	if($event_location_city){
+		$event_location[] = $event_location_city;
+	}
+	if($event_location_country){
+		$event_location[] = easl_event_map_country_key($event_location_country );
+	}
+	if(count($event_location > 0)){
+		$event_location_display[] = implode(', ', $event_location);
+	}
+	$event_location_display = implode( ' | ', $event_location_display );
+}elseif('venue,Country' == $event_location_display_format){
+	if($event_location_venue){
+		$event_location_display[] = $event_location_venue;
+	}
+	if($event_location_country){
+		$event_location_display[] = easl_event_map_country_key($event_location_country );
+	}
+	$event_location_display = implode( ', ', $event_location_display );
+}elseif('venue' == $event_location_display_format){
+	$event_location_display = $event_location_venue;
+}elseif('city,contury' == $event_location_display_format){
+	if($event_location_city){
+		$event_location_display[] = $event_location_city;
+	}
+	if($event_location_country){
+		$event_location_display[] = easl_event_map_country_key($event_location_country );
+	}
+	$event_location_display = implode( ', ', $event_location_display );
+}else{
+	$event_location_display = '';
 }
-if($event_location_country){
-	$event_location[] = easl_event_map_country_key($event_location_country );
-}
-if(count($event_location > 0)){
-	$event_city_contry_venue[] = implode(', ', $event_location);
-}
-$event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 
 
 ?>
@@ -120,10 +150,10 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 								<span class="event-meta-type"><?php _e('Organised by:', 'total-child'); ?></span>
 								<span class="event-meta-value"><?php echo $organisation[get_field('event_organisation')];?></span>
 							</p>
-							<?php if($event_city_contry_venue): ?>
+							<?php if($event_location_display): ?>
 							<p class="event-meta">
 								<span class="event-meta-type">Location:</span>
-								<span class="event-meta-value"><?php echo $event_city_contry_venue;  ?></span>
+								<span class="event-meta-value"><?php echo $event_location_display;  ?></span>
 							</p>
 							<?php endif; ?>
 						</div>

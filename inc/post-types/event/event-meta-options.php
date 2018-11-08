@@ -26,6 +26,19 @@ return array(
 				'description' => esc_html__( 'Select the country of the event location.', 'total' ),
 				'options' => easl_event_get_countries(),
 			),
+			'location_display_format' => array(
+				'title' => esc_html__( 'Location Display Format', 'total' ),
+				'id' => $prefix . 'location_display_format',
+				'type' => 'select',
+				'description' => esc_html__( 'Select the format of location display.', 'total' ),
+				'options' => array(
+					'venue|city,contury' => __('Venue | City, Country', 'total-child'),
+					'venue,Country' => __('Venue, Country', 'total-child'),
+					'venue' => __('Venue Only', 'total-child'),
+					'city,contury' => __('City, Country', 'total-child'),
+				),
+				'value' => 'venue|city,contury'
+			),
 			'organisation' => array(
 				'title' => esc_html__( 'Organisation', 'total' ),
 				'id' => $prefix . 'organisation',
