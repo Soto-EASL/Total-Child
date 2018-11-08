@@ -34,6 +34,8 @@ if( function_exists('get_field')){
 	$event_topic_covered_title = trim(get_field('event_topic_covered_title'));
 	$event_submit_abstract_url = trim(get_field('event_submit_abstract_url'));
 	$event_register_url = trim(get_field('event_register_url'));
+	$event_poster_image = get_field('event_poster_image');
+	$poster_download_link = get_field('poster_download_link');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -53,6 +55,9 @@ if( function_exists('get_field')){
 	$event_topic_covered_title= trim(get_post_meta(get_the_ID(), 'event_topic_covered_title', true));
 	$event_submit_abstract_url= trim(get_post_meta(get_the_ID(), 'event_submit_abstract_url', true));
 	$event_register_url = trim(get_post_meta(get_the_ID(), 'event_register_url', true));
+	$event_poster_image = wp_get_attachment_image_src(get_post_meta(get_the_ID(), 'event_poster_image', true), 'full');
+	$event_poster_image = $event_poster_image ? $event_poster_image[0] : '';
+	$poster_download_link = get_post_meta(get_the_ID(), 'poster_download_link', true);
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -404,19 +409,25 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 							</div>
 						</div>
 						<?php endif; ?>
-                        <div class="event-image-box-column event-image-box-bg">
-							<?php if(get_field('event_poster_image')): ?>
+						<?php if($event_poster_image || $poster_download_link): ?>
+                        <div class="event-poster-image-box event-image-box-column event-image-box-bg">
+							<?php if($event_poster_image): ?>
                             <div class="eib-image">
-                                <img alt="" src="<?php echo get_field('event_poster_image');?>"/>
+                                <img alt="" src="<?php echo $event_poster_image;?>"/>
                             </div>
 							<?php endif; ?>
                             <div class="eib-text">
                                 <h3 class="easl-text-gray">Help us to inform the liver community by downloading the poster, printing it and placing it on your institute's notice board or forwarding it to your local network:</h3>
-                                <p>
-                                    <a class="event-button event-button-icon event-button-no-arrow event-button-icon-download" style="width: 100%" href="<?php echo get_field('event_poster_image');?>" download>Download Poster</a>
+                                <?php if($poster_download_link && !empty($poster_download_link['url'])): ?>
+								<p>
+									<a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button" href="<?php echo esc_url($poster_download_link['url']);?>" <?php if($poster_download_link['target']){ echo 'target="'. esc_attr($poster_download_link['target']) .'"';} ?> download>
+										<?php if(!empty($poster_download_link['title'])){echo esc_html($poster_download_link['title']);}{_e('Download Poster', 'total-child'); } ?>
+									</a>
                                 </p>
+								<?php endif; ?>
                             </div>
                         </div>
+						<?php endif; ?>
                         <div class="event-image-box-column event-image-box-bg">
 							<?php if(get_field('event_google_map')): ?>
                             <div class="eib-image">
@@ -429,8 +440,7 @@ $event_city_contry_venue = implode( ' | ', $event_city_contry_venue );
 								<?php endif; ?>
 								<?php if(get_field('event_google_map_view_on_map')): ?>
                                 <p>
-									<a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker"
-                                      style="width: 100%"
+									<a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker event-image-box-full-button"
                                       href="<?php echo get_field('event_google_map_view_on_map');?>" target="_blank"
                                     >View on Map</a>
 								</p>

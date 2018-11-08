@@ -3341,7 +3341,9 @@ ul.event-links-list li:before{
     font-weight: 700;
     line-height: 17px;
 }
-
+.event-image-box-full-button {
+    display: block;
+}
 .event-social-share-section {
     
 }
