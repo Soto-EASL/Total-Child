@@ -123,6 +123,9 @@ if('venue|city,contury' == $event_location_display_format){
 
 $event_topics_name = easl_event_topics_name(get_the_ID());
 
+$about_easl_school_title = wpex_get_mod('about_easl_schools_title');
+$about_easl_school_content = wpex_get_mod('about_easl_schools_content');
+
 ?>
 
 <article id="single-blocks" class="single-event-article entry clr">
@@ -333,13 +336,12 @@ $event_topics_name = easl_event_topics_name(get_the_ID());
 							<?php endforeach; ?>
                         </div>
 						<?php endif; ?>
-						<?php if($about_easl_schools): ?>
+						<?php if($about_easl_schools && $about_easl_school_content): ?>
 						<div class="event-text-block">
-							<h3>About EASL Schoools</h3>
-							<p>The schools contribute to the training of new generations of hepatologists and are a major element of our association. Aimed at young fellows enrolled in hepatology-oriented departments or more experienced clinicians who want to be exposed to the newest trends in hepatology.</p>
-							<p>For selected applicants, EASL will cover transportation costs to attend the school and accommodation during the event (details will be provided individually once the selection process has been done).</p>
-							<p>Application is open to young fellows under the age of 35 and/or still in training.</p>
-							<p>Approximately 30 places are available for each school and priority is given to registered EASL members during the selection process. lorem ipusm dolor amet.</p>
+							<?php if($about_easl_school_title): ?>
+							<h3><?php echo $about_easl_school_title; ?></h3>
+							<?php endif; ?>
+							<?php echo do_shortcode($about_easl_school_content);?>
 						</div>
 						<?php endif; ?>
 						<?php if($event_bottom_sections && is_array( $event_bottom_sections) && count($event_bottom_sections) > 0): ?>
