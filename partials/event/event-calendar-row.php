@@ -9,8 +9,10 @@ $organisations_list = easl_event_get_organisations();
 
 $event_start_date = isset($event_data['event_start_date'])?$event_data['event_start_date'][0]:'';
 $event_end_date = isset($event_data['event_end_date'])?$event_data['event_end_date'][0]:'';
+$event_location_venue = isset($event_data['event_location_venue'])?$event_data['event_location_venue'][0]:'';
 $event_location_city = isset($event_data['event_location_city'])?$event_data['event_location_city'][0]:'';
 $event_location_country = isset($event_data['event_location_country'])?$event_data['event_location_country'][0]:'';
+$event_location_display_format = isset($event_data['event_location_display_format'])?$event_data['event_location_display_format'][0]:'';
 $event_organisation = isset($event_data['event_organisation'])?$organisations_list[$event_data['event_organisation'][0]]:'';
 
 if( function_exists('get_field')){
@@ -45,14 +47,51 @@ if($event_end_date > $event_start_date){
 }
 
 
+if(!in_array( $event_location_display_format, array('venue|city,contury', 'venue,Country', 'venue', 'city,contury' ))) {
+	$event_location_display_format = 'venue|city,contury';
+}
+
+$event_location_display_format = 'city,contury';
+
+$event_location_display = array();
 $event_location = array();
-if($event_location_city){
-	$event_location[] = $event_location_city;
+
+
+if('venue|city,contury' == $event_location_display_format){
+	if($event_location_venue){
+		$event_location_display[] = $event_location_venue;
+	}
+	if($event_location_city){
+		$event_location[] = $event_location_city;
+	}
+	if($event_location_country){
+		$event_location[] = easl_event_map_country_key($event_location_country );
+	}
+	if(count($event_location > 0)){
+		$event_location_display[] = implode(', ', $event_location);
+	}
+	$event_location_display = implode( ' | ', $event_location_display );
+}elseif('venue,Country' == $event_location_display_format){
+	if($event_location_venue){
+		$event_location_display[] = $event_location_venue;
+	}
+	if($event_location_country){
+		$event_location_display[] = easl_event_map_country_key($event_location_country );
+	}
+	$event_location_display = implode( ', ', $event_location_display );
+}elseif('venue' == $event_location_display_format){
+	$event_location_display = $event_location_venue;
+}elseif('city,contury' == $event_location_display_format){
+	if($event_location_city){
+		$event_location_display[] = $event_location_city;
+	}
+	if($event_location_country){
+		$event_location_display[] = easl_event_map_country_key($event_location_country );
+	}
+	$event_location_display = implode( ', ', $event_location_display );
+}else{
+	$event_location_display = '';
 }
-if($event_location_country){
-	$event_location[] = easl_event_map_country_key($event_location_country );
-}
-$event_location = implode(', ', $event_location);
 
 
 
@@ -98,7 +137,7 @@ if($row_count % 2 == 0){
 			<p class="ec-location">
 				<span class="ec-loc-name"><?php echo easl_meeting_type_name($event_id); ?></span>
 				<span class="ec-meta-sep"> | </span>
-				<span class="ec-country"><?php echo $event_location; ?></span>
+				<span class="ec-country"><?php echo $event_location_display; ?></span>
 			</p>
 			<p class="ec-excerpt"></p>
 			<div class="ec-icons clr">
