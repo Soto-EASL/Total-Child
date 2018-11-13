@@ -255,7 +255,7 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
                                 <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
                                     <a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>" style="display: inline-block" target="_blank">
                                         <span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
-                                        <span class="event-link-text">Online Programme</span>
+                                        <span class="event-link-text">Scientific Programme</span>
                                     </a>
                                 </li>
 								<?php endif; ?>

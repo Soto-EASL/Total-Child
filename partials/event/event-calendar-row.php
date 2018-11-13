@@ -188,7 +188,7 @@ $event_topics_name = easl_event_topics_name($event_id);
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
-							<span class="ec-link-text">Online<br/>Programme</span>
+							<span class="ec-link-text">Scientific<br/>Programme</span>
 						</a>
 					</li>
 					<?php endif; ?>
