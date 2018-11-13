@@ -23,6 +23,7 @@ if( function_exists('get_field')){
 	$event_who_should_attend = trim(get_field('event_who_should_attend'));
 	$event_topic_covered = trim(get_field('event_topic_covered'));
 	$key_dates = get_field('event_key_deadline_row');
+	$event_organisers = trim(get_field('event_organisers'));
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -30,6 +31,7 @@ if( function_exists('get_field')){
 	$event_who_should_attend = trim(get_post_meta(get_the_ID(), 'event_who_should_attend', true));
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
 	$key_dates = get_post_meta(get_the_ID(), 'event_key_deadline_row', true);
+	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
 }
 
 $now_time = time() - 86399;
@@ -110,6 +112,8 @@ if($row_count % 2 == 0){
 	$row_position = 'right';
 }
 
+$event_topics_name = easl_event_topics_name($event_id);
+
 ?>
 
 
@@ -123,11 +127,19 @@ if($row_count % 2 == 0){
 	<div class="easl-ec-row easl-ec-row-<?php echo $row_position; ?> easl-ec-row-<?php echo $event_color; ?> clr">
 		<article class="easl-ec-event <?php echo $css_animation; ?>">
 			<header class="ec-head">
+				<?php if($event_topics_name || $event_organisers): ?>
 				<p class="ec-meta">
-					<span class="ec-meta-type">Topic:</span> <span class="ec-meta-value"><?php echo easl_event_topics_name($event_id); ?></span>
+					<?php if($event_topics_name): ?>
+					<span class="ec-meta-type">Topic:</span> <span class="ec-meta-value"><?php echo $event_topics_name; ?></span>
+					<?php endif; ?>
+					<?php if($event_topics_name && $event_organisers): ?>
 					<span class="ec-meta-sep"> | </span>
-					<span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo $event_organisation; ?></span>
+					<?php endif; ?>
+					<?php if( $event_organisers): ?>
+					<span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo esc_html($event_organisers); ?></span>
+					<?php endif; ?>
 				</p>
+				<?php endif; ?>
 				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<p class="ec-dates" href="">
                     <span class="ecd-day"><?php echo $event_date_days; ?></span>

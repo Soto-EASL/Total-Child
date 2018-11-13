@@ -39,13 +39,6 @@ return array(
 				),
 				'value' => 'venue|city,contury'
 			),
-			'organisation' => array(
-				'title' => esc_html__( 'Organisation', 'total' ),
-				'id' => $prefix . 'organisation',
-				'type' => 'select',
-				'description' => esc_html__( 'Select the organisation of the event.', 'total' ),
-				'options' => easl_event_get_organisations(),
-			),
             'programme' => array(
                 'title'=> esc_html__('Programme', 'total'),
                 'id' => $prefix . 'programme',

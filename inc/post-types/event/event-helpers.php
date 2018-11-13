@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function easl_event_get_organisations(){
 	return array(
 		1 => 'EASL',
-		2 => 'EASL - AASLD',
+		2 => 'Other',
 	);
 }
 function easl_event_get_programme(){

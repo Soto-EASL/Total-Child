@@ -36,6 +36,7 @@ if( function_exists('get_field')){
 	$event_register_url = trim(get_field('event_register_url'));
 	$event_poster_image = get_field('event_poster_image');
 	$poster_download_link = get_field('poster_download_link');
+	$event_organisers = trim(get_field('event_organisers'));
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -58,6 +59,7 @@ if( function_exists('get_field')){
 	$event_poster_image = wp_get_attachment_image_src(get_post_meta(get_the_ID(), 'event_poster_image', true), 'full');
 	$event_poster_image = $event_poster_image ? $event_poster_image[0] : '';
 	$poster_download_link = get_post_meta(get_the_ID(), 'poster_download_link', true);
+	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -119,6 +121,7 @@ if('venue|city,contury' == $event_location_display_format){
 	$event_location_display = '';
 }
 
+$event_topics_name = easl_event_topics_name(get_the_ID());
 
 ?>
 
@@ -138,18 +141,18 @@ if('venue|city,contury' == $event_location_display_format){
 							</div>
 						</div>
 						<div class="event-meta-wrap">
+							<?php if($event_topics_name): ?>
 							<p class="event-meta">
 								<span class="event-meta-type">Topic:</span>
-                                <?php $terms =  get_the_terms(get_the_ID(), 'event_topic');?>
-                                <?php foreach ($terms as $term):?>
-                                    <span class="event-meta-value"><?php echo $term->name;?></span>&nbsp;
-                                <?php endforeach;?>
-
+                                    <span class="event-meta-value"><?php echo $event_topics_name;?></span>
 							</p>
+							<?php endif; ?>
+							<?php if($event_organisers): ?>
 							<p class="event-meta">
 								<span class="event-meta-type"><?php _e('Organised by:', 'total-child'); ?></span>
-								<span class="event-meta-value"><?php echo $organisation[get_field('event_organisation')];?></span>
+								<span class="event-meta-value"><?php echo esc_html($event_organisers);?></span>
 							</p>
+							<?php endif; ?>
 							<?php if($event_location_display): ?>
 							<p class="event-meta">
 								<span class="event-meta-type">Location:</span>
