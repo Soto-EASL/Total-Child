@@ -122,6 +122,7 @@ if('venue|city,contury' == $event_location_display_format){
 }
 
 $event_topics_name = easl_event_topics_name(get_the_ID());
+$event_meeting_type_name = easl_meeting_type_name(get_the_ID());
 
 $about_easl_school_title = wpex_get_mod('about_easl_schools_title');
 $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
@@ -160,6 +161,12 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 							<p class="event-meta">
 								<span class="event-meta-type">Location:</span>
 								<span class="event-meta-value"><?php echo $event_location_display;  ?></span>
+							</p>
+							<?php endif; ?>
+							<?php if($event_meeting_type_name): ?>
+							<p class="event-meta">
+								<span class="event-meta-type"><?php _e('Meeting Type:', 'total-child'); ?></span>
+                                    <span class="event-meta-value"><?php echo $event_meeting_type_name;?></span>
 							</p>
 							<?php endif; ?>
 						</div>
