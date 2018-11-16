@@ -134,17 +134,16 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 		<div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex">
 			<div class="wpb_column vc_column_container vc_col-sm-7">
 				<div class="vc_column-inner">
-					<div class="wpb_wrapper clr">
+					<div class="event-dates-meta-wrap wpb_wrapper easl-flex-con easl-flex-align-center clr">
 						<div class="event-dates-wrap">
 							<div class="event-dates">
-
                                 <?php $begining_date = new DateTime('@'.get_field('event_start_date'));?>
 								<span class="event-day"><?php echo $begining_date->format('d'); ?></span>
 								<span class="event-mon"><?php echo $begining_date->format('M'); ?></span>
 								<span class="event-year"><?php echo $begining_date->format('Y'); ?></span>
 							</div>
 						</div>
-						<div class="event-meta-wrap">
+						<div class="event-meta-wrap easl-flex-one">
 							<?php if($event_topics_name): ?>
 							<p class="event-meta">
 								<span class="event-meta-type">Topic:</span>
@@ -175,10 +174,10 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 			</div>
 			<?php if($event_submit_abstract_url || $event_register_url): ?>
             <div class="wpb_column vc_column_container vc_col-sm-5">
-                <div class="vc_column-inner">
+                <div class="vc_column-inner" style="justify-content: center;">
                     <div class="wpb_wrapper">
                         <div class="vc_row wpb_row vc_row-fluid">
-							<?php if($event_submit_abstract_url): ?>
+						<?php if($event_submit_abstract_url): ?>
                             <div class="wpb_column vc_column_container vc_col-sm-6">
                                 <div class="vc_column-inner ">
                                     <div class="wpb_wrapper">
@@ -189,8 +188,8 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
                                     </div>
                                 </div>
                             </div>
-							<?php endif; ?>
-							<?php if($event_register_url): ?>
+						<?php endif; ?>
+						<?php if($event_register_url): ?>
                             <div class="wpb_column vc_column_container vc_col-sm-6">
                                 <div class="vc_column-inner ">
                                     <div class="wpb_wrapper">
@@ -200,10 +199,10 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
                                     </div>
                                 </div>
                             </div>
-							<?php endif; ?>
-                        </div>
+						<?php endif; ?>
                     </div>
                 </div>
+            </div>
             </div>
 			<?php endif; ?>
 		</div>

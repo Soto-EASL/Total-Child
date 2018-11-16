@@ -60,6 +60,28 @@ body a {
     z-index: 1;
 }
 
+.easl-flex-con {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.easl-flex-align-center {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+.easl-flex-one {
+    -webkit-box-flex: 1;
+	-ms-flex: 1 0 0px;
+	flex: 1 0 0;
+}
+
 /*EASL Common*/
 
 .easl-st-collapse:not(.easl-st-collapse-show) {
@@ -3016,8 +3038,10 @@ body.single-event {
     padding: 50px 0 15px;
     margin-bottom: 35px;
 }
+.event-dates-meta-wrap {
+    
+}
 .event-dates-wrap {
-    float: left;
     margin-right: 28px;
 }
 .event-dates {
@@ -4637,6 +4661,18 @@ ul.suggestions{
 }
 .event-color-yellow .event-top-section {
     border-bottom-color: #f9bc49;
+}
+
+.easl-events-buttons-wrap {
+    
+}
+.easl-events-buttons-wrap .event-button {
+    width: calc( (100% - 30px)/2 );
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.easl-events-buttons-wrap .event-button:not(:nth-child(2n)) {
+    margin-right: 30px;
 }
 
 .event-links-list li .event-link-item {
