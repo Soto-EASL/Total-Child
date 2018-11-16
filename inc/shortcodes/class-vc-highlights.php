@@ -84,16 +84,58 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                 'gray' => '#7e6a73',
                 'yellow' => '#f9bc49',
             );
-
+			$now_time = time();
             if($filter === 'all'){
-                $latest_event = new WP_Query('post_type=event&posts_per_page=1');
+                $latest_event = new WP_Query(
+					array(
+						'post_type' => EASL_Event_Config::get_event_slug(),
+						'post_status' => 'publish',
+						'posts_per_page' => 1,
+						'order' => 'ASC',
+						'orderby' => 'meta_value_num',
+						'meta_key' => 'event_start_date',
+						'meta_query' => array(
+							'relation' => 'OR',
+							array(
+								'key' => 'event_start_date',
+								'value' => $now_time - 86399,
+								'compare' => '>=',
+								'type' => 'NUMERIC',
+							),
+							array(
+								'key' => 'event_end_date',
+								'value' => $now_time - 86399,
+								'compare' => '>=',
+								'type' => 'NUMERIC',
+							),
+						)
+					)
+				);
                 $latest_publication = new WP_Query('post_type=publication&posts_per_page=1');
                 $latest_slide_desks = new WP_Query('post_type=slide_decks&posts_per_page=2');
             } else {
                 $latest_event = new WP_Query( array(
-                    'posts_per_page' => 1,
-                    'post_type' => 'event',
+                    'post_type' => EASL_Event_Config::get_event_slug(),
                     'post_status'=> 'publish',
+                    'posts_per_page' => 1,
+					'order' => 'ASC',
+					'orderby' => 'meta_value_num',
+					'meta_key' => 'event_start_date',
+					'meta_query' => array(
+						'relation' => 'OR',
+						array(
+							'key' => 'event_start_date',
+							'value' => $now_time - 86399,
+							'compare' => '>=',
+							'type' => 'NUMERIC',
+						),
+						array(
+							'key' => 'event_end_date',
+							'value' => $now_time - 86399,
+							'compare' => '>=',
+							'type' => 'NUMERIC',
+						),
+					),
                     'tax_query' => array(
                         array(
                             'taxonomy' => 'event_topic',
@@ -101,8 +143,6 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                             'terms' => $filter,
                         )
                     ),
-                    'orderby'=> 'ID',
-                    'order' => 'DESC',
                 ) );
                 $latest_publication = new WP_Query( array(
                     'posts_per_page' => 1,

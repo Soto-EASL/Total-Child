@@ -939,14 +939,23 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-events-li:last-child {
     margin-bottom: 0;
 }
-.easl-event-li-red {
-    color: #dc214e;
-}
 .easl-event-li-green {
     color: #0b9490;
 }
+.easl-event-li-blue {
+    color: #165291;
+}
+.easl-event-li-red {
+    color: #de2a57;
+}
+.easl-event-li-teal {
+    color: #189790;
+}
 .easl-event-li-orrange {
-    color: #eb6018;
+    color: #f26827;
+}
+.easl-event-li-gray {
+    color: #7e6a73;
 }
 .easl-event-li-yellow {
     color: #f9bc49;
@@ -976,23 +985,27 @@ body .wpb_single_image a.easl-vc-image-over:after {
     transform: translateY(-50%);
 }
 
-.easl-event-li-red .events-li-date {
-    border-color: #dc214e;
-}
 .easl-event-li-green .events-li-date {
     border-color: #0b9490;
 }
-.easl-event-li-yellow .events-li-date {
-    border-color: #f9bc49;
+
+.easl-event-li-blue .events-li-date{
+    border-color: #165291;
+}
+.easl-event-li-red .events-li-date{
+    border-color: #de2a57;
+}
+.easl-event-li-teal .events-li-date{
+    border-color: #189790;
 }
 .easl-event-li-orrange .events-li-date {
-    border-color: #eb6018;
+    border-color: #f26827;
 }
-.easl-events-li h3:hover + .events-li-date,
-.easl-events-li .events-li-date:hover,
-.easl-events-li .events-li-date:active {
-    color: #71c5e8;
-    border-color: #71c5e8;
+.easl-event-li-gray .events-li-date {
+    border-color: #7e6a73;
+}
+.easl-event-li-yellow .events-li-date {
+    border-color: #f9bc49;
 }
 .eld-day {
     display: block;
@@ -1028,8 +1041,21 @@ body .wpb_single_image a.easl-vc-image-over:after {
     padding: 0;
     font-family: inherit;
 }
-.easl-events-li h3 a:hover,
-.easl-events-li h3 a:active {
+.easl-events-li .ell-name,
+.easl-events-li .events-li-date,
+.easl-events-li:hover h3 a{
+    -webkit-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+}
+.easl-events-li:hover .ell-name,
+.easl-events-li:hover .events-li-date,
+.easl-events-li:hover .events-li-date:active {
+    color: #71c5e8;
+    border-color: #71c5e8;
+}
+.easl-events-li:hover h3 a,
+.easl-events-li:hover h3 a:active {
     color: #71c5e8;
 }
 

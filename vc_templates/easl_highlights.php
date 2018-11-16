@@ -265,8 +265,32 @@ $color_list = [
                         <?php
                         $organisation = easl_event_get_organisations();
                         $country = easl_event_get_countries();
-
-                        $latest_event = new WP_Query('post_type=event&posts_per_page=1');
+						$now_time = time();
+                        $latest_event = new WP_Query(
+							array(
+								'post_type' => EASL_Event_Config::get_event_slug(),
+								'post_status' => 'publish',
+								'posts_per_page' => 1,
+								'order' => 'ASC',
+								'orderby' => 'meta_value_num',
+								'meta_key' => 'event_start_date',
+								'meta_query' => array(
+									'relation' => 'OR',
+									array(
+										'key' => 'event_start_date',
+										'value' => $now_time - 86399,
+										'compare' => '>=',
+										'type' => 'NUMERIC',
+									),
+									array(
+										'key' => 'event_end_date',
+										'value' => $now_time - 86399,
+										'compare' => '>=',
+										'type' => 'NUMERIC',
+									),
+								)
+							)
+						);
 
                         if($latest_event->have_posts()):
                             while ($latest_event->have_posts()):

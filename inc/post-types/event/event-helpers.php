@@ -91,6 +91,62 @@ function easl_meeting_type_name($id = null){
 	return $types[0]->name;
 }
 
+function easl_get_event_location($id = null, $event_location_display_format = ''){
+	if(!$id){
+		$id = get_the_ID();
+	}
+	$event_location = array();
+	$event_location_venue = get_post_meta(get_the_ID(), 'event_location_venue', true);
+	$event_location_city = get_post_meta(get_the_ID(), 'event_location_city', true);
+	$event_location_country = get_post_meta(get_the_ID(), 'event_location_country', true);
+	if(!$event_location_display_format){
+		$event_location_display_format = get_post_meta(get_the_ID(), 'event_location_display_format', true);
+	}
+	if(!in_array( $event_location_display_format, array('venue|city,contury', 'venue,Country', 'venue', 'city,contury' ))) {
+		$event_location_display_format = 'venue|city,contury';
+	}
+
+	$event_location_display = array();
+
+
+	if('venue|city,contury' == $event_location_display_format){
+		if($event_location_venue){
+			$event_location_display[] = $event_location_venue;
+		}
+		if($event_location_city){
+			$event_location[] = $event_location_city;
+		}
+		if($event_location_country){
+			$event_location[] = easl_event_map_country_key($event_location_country );
+		}
+		if(count($event_location > 0)){
+			$event_location_display[] = implode(', ', $event_location);
+		}
+		$event_location_display = implode( ' | ', $event_location_display );
+	}elseif('venue,Country' == $event_location_display_format){
+		if($event_location_venue){
+			$event_location_display[] = $event_location_venue;
+		}
+		if($event_location_country){
+			$event_location_display[] = easl_event_map_country_key($event_location_country );
+		}
+		$event_location_display = implode( ', ', $event_location_display );
+	}elseif('venue' == $event_location_display_format){
+		$event_location_display = $event_location_venue;
+	}elseif('city,contury' == $event_location_display_format){
+		if($event_location_city){
+			$event_location_display[] = $event_location_city;
+		}
+		if($event_location_country){
+			$event_location_display[] = easl_event_map_country_key($event_location_country );
+		}
+		$event_location_display = implode( ', ', $event_location_display );
+	}else{
+		$event_location_display = '';
+	}
+	return $event_location_display;
+}
+
 function easl_event_db_countries(){
 	global $wpdb;
 	$meta_table = _get_meta_table( 'post' );
