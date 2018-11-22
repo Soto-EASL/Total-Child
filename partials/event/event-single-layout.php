@@ -35,8 +35,11 @@ if( function_exists('get_field')){
 	$event_submit_abstract_url = trim(get_field('event_submit_abstract_url'));
 	$event_register_url = trim(get_field('event_register_url'));
 	$event_poster_image = get_field('event_poster_image');
+	$event_poster_text_source = get_field('event_poster_text_source');
+	$event_poster_custom_text = get_field('event_poster_custom_text');
 	$poster_download_link = get_field('poster_download_link');
 	$event_organisers = trim(get_field('event_organisers'));
+	$event_google_map = get_field('event_google_map');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -58,8 +61,22 @@ if( function_exists('get_field')){
 	$event_register_url = trim(get_post_meta(get_the_ID(), 'event_register_url', true));
 	$event_poster_image = wp_get_attachment_image_src(get_post_meta(get_the_ID(), 'event_poster_image', true), 'full');
 	$event_poster_image = $event_poster_image ? $event_poster_image[0] : '';
+	$event_poster_text_source = get_post_meta(get_the_ID(), 'event_poster_text_source', true);
+	$event_poster_custom_text = get_post_meta(get_the_ID(), 'event_poster_custom_text', true);
 	$poster_download_link = get_post_meta(get_the_ID(), 'poster_download_link', true);
 	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
+	$event_google_map = get_post_meta(get_the_ID(), 'event_google_map', true);
+}
+if(!in_array($event_poster_text_source, array('default', 'no', 'custom') )) {
+	$event_poster_text_source = 'default';
+}
+$event_poster_text = '';
+if($event_poster_text_source == 'no') {
+	$event_poster_text = '';
+}elseif($event_poster_text_source == 'custom'){
+	$event_poster_text = trim($event_poster_custom_text);
+}else{
+	$event_poster_text = trim(wpex_get_mod('event_poster_text'));
 }
 
 $event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
@@ -451,30 +468,37 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 						</div>
 						<?php endif; ?>
 						<?php if($event_poster_image || $poster_download_link): ?>
-                        <div class="event-poster-image-box event-image-box-column event-image-box-bg">
+                        <div class="event-poster-image-box event-sidebar-item event-image-box-bg">
 							<?php if($event_poster_image): ?>
                             <div class="eib-image">
                                 <img alt="" src="<?php echo $event_poster_image;?>"/>
                             </div>
 							<?php endif; ?>
-                            <div class="eib-text">
-                                <h3 class="easl-text-gray">Help us to inform the liver community by downloading the poster, printing it and placing it on your institute's notice board or forwarding it to your local network:</h3>
-                                <?php if($poster_download_link && !empty($poster_download_link['url'])): ?>
-								<p>
-									<a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button" href="<?php echo esc_url($poster_download_link['url']);?>" <?php if($poster_download_link['target']){ echo 'target="'. esc_attr($poster_download_link['target']) .'"';} ?> download>
-										<?php if(!empty($poster_download_link['title'])){echo esc_html($poster_download_link['title']);}{_e('Download Poster', 'total-child'); } ?>
-									</a>
-                                </p>
-								<?php endif; ?>
-                            </div>
+							<?php if($event_poster_text): ?>
+							<h3 class="easl-text-gray">
+								<?php
+								echo wp_kses( $event_poster_text, array(
+									'br' => array(), 
+									'span' => array(
+										'style' => array(), 
+										'class' => array(),
+									)
+								) );
+								?>
+							</h3>
+							<?php endif; ?>
+							<?php if($poster_download_link && !empty($poster_download_link['url'])): ?>
+							<a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button" href="<?php echo esc_url($poster_download_link['url']);?>" <?php if($poster_download_link['target']){ echo 'target="'. esc_attr($poster_download_link['target']) .'"';} ?> download>
+								<?php if(!empty($poster_download_link['title'])){echo esc_html($poster_download_link['title']);}{_e('Download Poster', 'total-child'); } ?>
+							</a>
+							<?php endif; ?>
                         </div>
 						<?php endif; ?>
-                        <div class="event-image-box-column event-image-box-bg">
-							<?php if(get_field('event_google_map')): ?>
+						<?php if($event_google_map): ?>
+                        <div class="event-google-map-box event-sidebar-item event-image-box-bg">
                             <div class="eib-image">
-                                <iframe src="<?php echo get_field('event_google_map');?>" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <iframe src="<?php echo $event_google_map;?>" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                             </div>
-							<?php endif; ?>
                             <div class="eib-text">
 								<?php if(get_field('event_address')): ?>
                                 <p style="color:#004b87;font-family: 'KnockoutHTF51Middleweight';font-size: 21px;"><?php echo get_field('event_address');?></p>
@@ -488,7 +512,7 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 								<?php endif; ?>
                             </div>
                         </div>
-
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

@@ -3221,7 +3221,7 @@ body.single-event {
 }
 
 .event-sidebar-item {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 .event-sidebar-item-inner {
     padding: 20px 17px;
@@ -3393,6 +3393,9 @@ ul.event-links-list li:before{
 }
 .event-image-box-full-button {
     display: block;
+}
+.event-sidebar-item > :last-child {
+    margin-bottom: 0;
 }
 .event-social-share-section {
     
