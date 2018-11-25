@@ -2790,7 +2790,51 @@ body .vc_tta.vc_general .vc_tta-panels-container .vc_tta-panels .vc_tta-panel .v
     line-height: 16px;
     padding: 16px 20px 14px 16px;
 }
-
+body.wpb-js-composer .vc_tta.easl-accordion-type-2 .vc_tta-panel .vc_tta-panel-heading {
+    background: transparent!important;
+    border: 0 none!important;
+    margin-bottom: 0!important;
+}
+body.wpb-js-composer .vc_tta.easl-accordion-type-2 .vc_tta-panel.vc_active .vc_tta-panel-heading,
+body.wpb-js-composer .vc_tta.easl-accordion-type-2 .vc_tta-panel.vc_active .vc_tta-panel-heading:hover {
+    background: transparent;
+    border: 0 none;
+    margin-bottom: 0;
+}
+body .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-panels-container .vc_tta-panels .vc_tta-panel .vc_tta-panel-title > a{
+    border-top: 1px solid #acacac;
+    border-radius: 0;
+    background-color: transparent;
+    color: #004b87;
+    font-size: 18px;
+    line-height: 1.4em;
+    padding: 20px 20px 20px 0;
+}
+body .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-panels-container .vc_tta-panels .vc_tta-panel:last-child:not(.vc_active) .vc_tta-panel-title > a{
+    border-bottom: 1px solid #acacac;
+}
+body .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-panels-container .vc_tta-panels .vc_tta-panel.vc_active .vc_tta-panel-title > a,
+body .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-panels-container .vc_tta-panels .vc_tta-panel:hover .vc_tta-panel-title > a {
+    background-color: transparent;
+    color: #004b87;
+}
+body.wpb-js-composer .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-controls-icon-position-right .vc_tta-controls-icon {
+    right: 0;
+}
+body.wpb-js-composer .vc_tta.vc_general.easl-accordion-type-2 .vc_active .vc_tta-panel-heading .vc_tta-controls-icon:after, 
+body.wpb-js-composer .vc_tta.vc_general.easl-accordion-type-2 .vc_active .vc_tta-panel-heading .vc_tta-controls-icon:before, 
+body.wpb-js-composer .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-controls-icon:after,
+body.wpb-js-composer .vc_tta.vc_general.easl-accordion-type-2 .vc_tta-controls-icon:before{
+        border-color: #62cff5!important;
+}
+.easl-accordion-type-2 .vc_tta-panel .wpb_text_column {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+}
+.easl-accordion-type-2 .vc_tta-panel .wpb_text_column p:last-child {
+    margin-bottom: 0;
+}
 body .vc_tta.vc_general .vc_tta-panels-container .vc_tta-panels .vc_tta-panel.vc_active .vc_tta-panel-title > a,
 body .vc_tta.vc_general .vc_tta-panels-container .vc_tta-panels .vc_tta-panel:hover .vc_tta-panel-title > a {
     background-color: #004b87;
@@ -3017,6 +3061,17 @@ body.wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-controls-ic
 .wpex-pagination ul li .page-numbers.prev:hover,
 .wpex-pagination ul li .page-numbers.next:hover{
     color: #004b87;
+}
+
+body .sidebar-box .widget-title {
+    border-bottom: 1px solid #004b87;
+    color: #004b87;
+    text-align: left;
+    line-height: 1.5em;
+    font-size: 21px;
+    font-weight: 400;
+    margin: 0 0 20px;
+    padding: 0;
 }
 
 /* Post Type: Event */
