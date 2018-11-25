@@ -26,21 +26,22 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php';
 
 function easl_vc_shortcodes_lean_maps(){
-	vc_lean_map( 'easl_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-button.php' );
-	vc_lean_map( 'easl_button_grid', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-button-grid.php' );
-	vc_lean_map( 'easl_gbutton', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-gbutton.php' );
-	vc_lean_map( 'easl_events', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-events.php' );
-	vc_lean_map( 'easl_events_calendar', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-events-calendar.php' );
-	vc_lean_map( 'easl_news', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-news.php' );
-	vc_lean_map( 'easl_carousel', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-carousel.php' );
-	vc_lean_map( 'easl_carousel_item', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-carousel-item.php' );
-	vc_lean_map( 'easl_yi_fellowship', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-yifellowship.php' );
-	vc_lean_map( 'easl_mentors', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-mentors.php' );
-	vc_lean_map( 'easl_mentors_table', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-mentors-table.php' );
-	vc_lean_map( 'easl_cag_members', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-cag-members.php' );
-	vc_lean_map( 'easl_menu_stacked_content', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-menu-stacked-content.php' );
-	vc_lean_map( 'easl_card_button', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-card-button.php' );
-	vc_lean_map( 'easl_staffs', null, get_stylesheet_directory() . '/inc/shortcodes/map-easl-staffs.php' );
+	vc_lean_map( 'easl_button', null, get_theme_file_path('inc/shortcodes/config/easl-button.php') );
+	vc_lean_map( 'easl_button_grid', null, get_theme_file_path('inc/shortcodes/config/easl-button-grid.php'));
+	vc_lean_map( 'easl_gbutton', null, get_theme_file_path('inc/shortcodes/config/easl-gbutton.php') );
+	vc_lean_map( 'easl_events', null, get_theme_file_path() . 'inc/shortcodes/config/easl-events.php' );
+	vc_lean_map( 'easl_events_calendar', null, get_theme_file_path('inc/shortcodes/config/easl-events-calendar.php') );
+	vc_lean_map( 'easl_news', null, get_theme_file_path('inc/shortcodes/config/easl-news.php') );
+	vc_lean_map( 'easl_carousel', null, get_theme_file_path('inc/shortcodes/config/easl-carousel.php') );
+	vc_lean_map( 'easl_carousel_item', null, get_theme_file_path('inc/shortcodes/config/easl-carousel-item.php' ));
+	vc_lean_map( 'easl_yi_fellowship', null, get_theme_file_path('inc/shortcodes/config/easl-yifellowship.php') );
+	vc_lean_map( 'easl_mentors', null, get_theme_file_path('inc/shortcodes/config/easl-mentors.php') );
+	vc_lean_map( 'easl_mentors_table', null, get_theme_file_path('inc/shortcodes/config/easl-mentors-table.php' ));
+	vc_lean_map( 'easl_cag_members', null, get_theme_file_path('inc/shortcodes/config/easl-cag-members.php') );
+	vc_lean_map( 'easl_menu_stacked_content', null, get_theme_file_path('inc/shortcodes/config/easl-menu-stacked-content.php' ));
+	vc_lean_map( 'easl_card_button', null, get_theme_file_path('inc/shortcodes/config/easl-card-button.php' ));
+	vc_lean_map( 'easl_staffs', null, get_theme_file_path('inc/shortcodes/config/easl-staffs.php') );
+	vc_lean_map( 'easl_staffs', null, get_theme_file_path('inc/shortcodes/config/easl-scientific-publication.php') );
 
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
