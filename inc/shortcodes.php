@@ -41,7 +41,7 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_menu_stacked_content', null, get_theme_file_path('/inc/shortcodes/config/easl-menu-stacked-content.php' ));
 	vc_lean_map( 'easl_card_button', null, get_theme_file_path('/inc/shortcodes/config/easl-card-button.php' ));
 	vc_lean_map( 'easl_staffs', null, get_theme_file_path('/inc/shortcodes/config/easl-staffs.php') );
-	vc_lean_map( 'easl_staffs', null, get_theme_file_path('/inc/shortcodes/config/easl-scientific-publication.php') );
+	vc_lean_map( 'easl_scientific_publication', null, get_theme_file_path('/inc/shortcodes/config/easl-scientific-publication.php') );
 
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

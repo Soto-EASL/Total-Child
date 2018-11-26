@@ -1910,6 +1910,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .sp-content {
     margin-left: 155px;
 }
+.sp-has-no-thumb .sp-content {
+    margin-left: 0;
+}
 .sp-meta {
     color: #b6b6b6;
     font-size: 14px;

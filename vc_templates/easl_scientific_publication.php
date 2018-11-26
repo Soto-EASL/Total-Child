@@ -14,10 +14,23 @@ if (!defined('ABSPATH')) {
  * @var $this SC_LL_Video_Box
  */
 
-$title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = '';
-$atts = vc_map_get_attributes( 'easl_scientific_publication', $atts );
+$title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = $css = '';
+$hide_topic = $include_categories = '';
 
-extract($atts);
+$atts = vc_map_get_attributes( $this->getShortcode(), $atts );
+extract( $atts );
+
+
+$class_to_filter = 'wpb_easl_scientific_publication wpb_content_element';
+$class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
+$css_class		 = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings[ 'base' ], $atts );
+$wrapper_attributes = array();
+if (!empty($el_id)) {
+    $wrapper_attributes[] = 'id="' . esc_attr($el_id) . '"';
+}
+if ( $css_class ) {
+	$wrapper_attributes[] = 'class="' . esc_attr( $css_class ) . '"';
+}
 
 wp_enqueue_style('easl-scientific-publication-style',
     get_stylesheet_directory_uri() . '/assets/css/easl_scientific_publication.css');
@@ -157,8 +170,7 @@ $take_me_to = '<h4 style="font-size: 18px">Take me to:</h4>'.
         : '');
 
 
-$top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row-fluid easl-scientific-publication-container" 
-style="background-color:#ffffff !important; padding-top: 30px; margin-bottom: 30px;border: 3px solid #004b87;">'.
+$top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row-fluid easl-scientific-publication-container">'.
     $filter_by_topic.
 	'<div class="wpb_column vc_column_container vc_col-sm-8">'.
 		'<div class="vc_column-inner ">'.
@@ -237,67 +249,8 @@ if( is_array($filter_ec_filter_topics) && count($filter_ec_filter_topics) > 0 &&
 
 $easl_query = new WP_Query( $atts );
 
-
-$rows = '';
 $topic_label = 'Topic:';
 $topic_delimiter = ' | ';
-if ( $easl_query->have_posts() ) :
-    while ( $easl_query->have_posts() ) {
-
-        // Get post from query
-        $easl_query->the_post();
-        $topic_str = '';
-        $topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
-        if($topics){
-            foreach ($topics as $topic){
-                $topic_str .= $topic->name.' ';
-
-            }
-        }
-        if($hide_topic === "true"){
-            $topic_str = '';
-            $topic_label = '';
-            $topic_delimiter = '';
-        }
-        $image = has_post_thumbnail( get_the_ID() ) ?
-            wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
-        $image_src = $image ? $image[0] : '';
-
-
-        $excerpt = $hide_excerpt === "true" ? '' : get_the_excerpt();
-        $read_more_link =  $deny_detail_page === "true" ? get_field('link_to_journal_hepatology') : get_permalink();
-        $target = $deny_detail_page === "true" ? 'target="_blank"' : '';
-
-        $rows .= '<article class="scientific-publication clr">'.
-                    '<div class="sp-thumb">'.
-                        '<a href="' . $read_more_link . '" title="" '.$target.'>'.($image_src ? '<img alt="" src="'.$image_src.'"/>' : '').'</a>'.
-                    '</div>'.
-                    '<div class="sp-content">'.
-                        '<div class="color-delimeter filter-bg-'.easl_get_events_topic_color().'" style="padding-left: 10px;">'.
-                            '<p class="sp-meta">'.
-                                '<span class="sp-meta-date">'.get_field('publication_date').'</span>'.
-                                '<span class=sp-meta-sep">'.$topic_delimiter.'</span>'.
-                                '<span class="sp-meta-type">'.$topic_label.'</span>'.
-                                '<span class="sp-meta-value">'.$topic_str.'</span>'.
-                            '</p>'.
-                            '<h3>'.
-                                '<a href="' . $read_more_link . '" '.$target.'>'.get_the_title().'</a>'.
-                            '</h3>'.
-                        '</div>'.
-                        '<p class="sp-excerpt">'.$excerpt.'</p>'.
-                        '<a class="easl-button" href="' . $read_more_link . '" '.$target.'>Read More</a>'.
-                    '</div>'.
-                '</article>';
-
-
-
-    }
-else:
-    $rows .= $has_filter ? 'Nothing has been found' : 'content is coming soon';
-
-endif;
-
-
 $arrow_style = wpex_get_mod( 'pagination_arrow' );
 $arrow_style = $arrow_style ? esc_attr( $arrow_style ) : 'angle';
 
@@ -324,33 +277,86 @@ $args = array(
     'add_args'           => false,
 );
 
-$pagination = '<div class="easl-ec-pagination-container" style="display: flex">'.
-    paginate_links($args) .
-    '</div>';
+$pagination = '<div class="easl-ec-pagination-container" style="display: flex">' . paginate_links($args) . '</div>';
 
-$class_to_filter = 'wpb_easl_scientific_publication wpb_content_element ';
-//$class_to_filter .= vc_shortcode_custom_css_class($css, ' ') . $this->getExtraClass($el_class);
-$css_class = '';//apply_filters(VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts);
+$not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming soon';
+?>
+<div <?php echo implode( ' ', $wrapper_attributes ); ?>>
+	<?php if($title){  wpb_widget_title(array('title' => $title, 'extraclass' => 'wpb_easl_widget_heading')); } ?>
+	<div class="easl-scientific-publication-wrap">
+		<?php if($top_filter): ?>
+		<form class="publication-filter" action="" method="get" style="background: #fff; border: 3px solid #004b87; padding: 30px 15px; margin-bottom: 30px;">
+			<?php echo $top_filter; ?>
+		</form>
+		<?php endif; ?>
+		<?php echo $pagination; ?>
+		<div class="easl-scientific-publication-inner">
+			<?php 
+			if ( $easl_query->have_posts() ){
+				while ( $easl_query->have_posts() ):
+					$easl_query->the_post();
+					$topic_str = '';
+					$topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
+					if($topics){
+						foreach ($topics as $topic){
+							$topic_str .= $topic->name.' ';
+
+						}
+					}
+					if($hide_topic === "true"){
+						$topic_str = '';
+						$topic_label = '';
+						$topic_delimiter = '';
+					}
+					$image = has_post_thumbnail( get_the_ID() ) ?
+						wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
+					$image_src = $image ? $image[0] : '';
 
 
-$html = '<div class="easl-scientific-publication-wrap">'.
-            '<form class="publication-filter" action="" method="get">' . $top_filter . '</form>'.
-			 $pagination .
-			'<div class="easl-scientific-publication-inner">'.
-			 $rows .
-			'</div>'.
-			$pagination .
-		'</div>';
-
-$wrapper_attributes = array();
-if (!empty($el_id)) {
-    $wrapper_attributes[] = 'id="' . esc_attr($el_id) . '"';
-}
-$output = '
-	<div ' . implode(' ', $wrapper_attributes) . ' class="' . esc_attr(trim($css_class)) . '" style="padding-left:15px; padding-right:15px;">
-		' . wpb_widget_title(array('title' => $title, 'extraclass' => 'wpb_easl_widget_heading')) . '
-			' . $html . '
+					$excerpt = $hide_excerpt === "true" ? '' : get_the_excerpt();
+					$read_more_link =  $deny_detail_page === "true" ? get_field('link_to_journal_hepatology') : get_permalink();
+					$target = $deny_detail_page === "true" ? 'target="_blank"' : '';
+					$publication_date = get_field('publication_date');
+					?>
+					<article class="scientific-publication <?php if(!$image_src){echo 'sp-has-no-thumb';} ?> clr">
+						<?php if($image_src): ?>
+						<div class="sp-thumb">
+							<a href="<?php echo $read_more_link;?>" title="" <?php $target ?>>
+								<img alt="" src="<?php echo $image_src; ?>"/>
+							</a>
+						</div>
+						<?php endif; ?>
+						<div class="sp-content">
+							<div class="color-delimeter filter-bg-<?php echo easl_get_events_topic_color();?>" style="padding-left: 10px;">
+								<p class="sp-meta">
+									<?php if($publication_date): ?>
+									<span class="sp-meta-date"><?php echo $publication_date; ?></span>
+									<?php endif; ?>
+									<?php if($topic_delimiter): ?>
+									<span class=sp-meta-sep"><?php echo $topic_delimiter; ?></span>
+									<?php endif; ?>
+									<?php if($topic_label): ?>
+									<span class="sp-meta-type"><?php echo $topic_label; ?></span>
+									<?php endif; ?>
+									<?php if($topic_str): ?>
+									<span class="sp-meta-value"><?php echo $topic_str; ?></span>
+									<?php endif; ?>
+								</p>
+								<h3><a href="<?php echo $read_more_link; ?>" <?php echo $target; ?>><?php the_title(); ?></a></h3>
+							</div>
+							<p class="sp-excerpt"><?php echo $excerpt; ?></p>
+							<a class="easl-button" href="<?php echo $read_more_link; ?>" <?php echo $target; ?>>Read More</a>
+						</div>
+					</article>
+			<?php
+				endwhile;
+				wp_reset_query();
+				
+			}else{ 
+			?>
+			<div class="easl-no-scientific-publication"><?php echo $not_found_text; ?></div>
+			<?php } ?>
+		</div>
+		<?php echo $pagination; ?>
 	</div>
-';
-
-echo $output;
+</div>
