@@ -3071,6 +3071,7 @@ body .sidebar-box .widget-title {
     color: #004b87;
     text-align: left;
     line-height: 1.5em;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 21px;
     font-weight: 400;
     margin: 0 0 20px;
@@ -4616,8 +4617,48 @@ ul.suggestions{
     font-weight: 700;
     font-size: 13px;
 }
-
-/* Single Event */
+/* Single News */
+.single-post #content-wrap {
+    padding-top: 50px;
+}
+.single-post #sidebar {
+    margin-top: -8px;
+}
+.single-post .easl-news-list-meta {
+    font-size: 18px;
+}
+.single-post-title {
+    color: #004b87;
+    text-align: left;
+    line-height: 1.25em;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    margin: 0 0 20px;
+    padding: 0;
+}
+.single-post #post-media {
+    margin-bottom: 25px;
+}
+.single-post .page-header-title {
+    position: relative;
+}
+.page-header-title .easl-title-back-link {
+    font-size: 16px;
+    line-height: 16px;
+    position: absolute;
+    top: -21px;
+    left: 0;
+    color: #fff;
+}
+.page-header-title .easl-title-back-link .fa {
+    color: #71c5e8;
+}
+.page-header-title .easl-title-back-link:hover {
+    color: #71c5e8;
+    text-decoration: none;
+}
+    /* Single Event */
 .single-event .page-header.easl-page-header-no-bg {
     background-image: url('images/events-header.jpg');
 }
@@ -5168,14 +5209,14 @@ ul.suggestions{
     -ms-flex: 1;
     flex: 1;
 }
-.easl-news-list-entry .easl-news-list-meta {
+.easl-news-list-meta {
     font-family: "KnockoutHTF31JuniorMiddlewt", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
     line-height: 1em;
     color: #666;
     margin-bottom: 8px;
 }
-.easl-news-list-entry .easl-news-list-meta a{
+.easl-news-list-meta a{
     color: #666;
     text-decoration: none;
 }

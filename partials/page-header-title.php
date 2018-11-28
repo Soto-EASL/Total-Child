@@ -1,0 +1,64 @@
+<?php
+/**
+ * Returns the post title
+ *
+ * @package Total WordPress theme
+ * @subpackage Partials
+ * @version 4.3
+ */
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// Define title args
+$args = array();
+
+// Check if singular
+$is_singular = is_singular();
+$post_type   = $is_singular ? get_post_type() : '';
+$instance    = $post_type ? 'singular_' . $post_type : '';
+
+// Single post markup
+if ( 'post' == $post_type ) {
+	$blog_single_header = wpex_get_mod( 'blog_single_header', 'custom_text' );
+	if ( 'custom_text' == $blog_single_header || 'first_category' == $blog_single_header ) {
+		$args['html_tag'] = 'span';
+		$args['schema_markup'] = '';
+	}
+}
+
+// Singular CPT
+elseif ( $is_singular && ! in_array( $post_type, array( 'page', 'attachment' ) ) ) {
+	$args['html_tag'] = 'span';
+	$args['schema_markup'] = '';
+}
+
+// Apply filters
+$args = apply_filters( 'wpex_page_header_title_args', $args, $instance );
+
+// Parse args to prevent empty attributes and extract
+extract( wp_parse_args( $args, array(
+	'html_tag'      => 'h1',
+	'string'        => wpex_title(),
+	'schema_markup' => wpex_get_schema_markup( 'headline' )
+) ) );
+
+// If string is empty return
+if ( empty( $string ) ) {
+	return;
+}
+
+// Sanitize
+$html_tag = wp_strip_all_tags( $html_tag );
+
+// Output title
+echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . '>';
+	if(is_single()){
+		$page_id = wpex_get_mod( 'blog_page', 5626);
+		echo '<a class="easl-title-back-link" href="'. get_the_permalink($page_id) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
+	}
+	echo '<span>' . wp_kses_post( $string ) . '</span>';
+
+echo '</' . $html_tag . '>';

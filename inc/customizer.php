@@ -7,6 +7,12 @@ function easl_customizer_panels($panels) {
 	return $panels;
 }
 add_filter('wpex_customizer_panels', 'easl_customizer_panels');
+
+function easl_blog_single_custom_block($single_blocks) {
+	$single_blocks['date_source']  = __( 'Date - Source', 'total-child' );
+    return $single_blocks;
+}
+add_filter('wpex_blog_single_blocks', 'easl_blog_single_custom_block');
 // Add settings for 
 function easl_customizer_sections($sections) {
     $sections['wpex_header_general']['settings'][] = array(
