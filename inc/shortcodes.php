@@ -24,8 +24,10 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-annual-reports.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider-item.php';
+//require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider.php';
+//require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider-item.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel-item.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-news-list.php';
 
 function easl_vc_shortcodes_lean_maps(){
@@ -45,8 +47,10 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_card_button', null, get_theme_file_path('/inc/shortcodes/config/easl-card-button.php' ));
 	vc_lean_map( 'easl_staffs', null, get_theme_file_path('/inc/shortcodes/config/easl-staffs.php') );
 	vc_lean_map( 'easl_scientific_publication', null, get_theme_file_path('/inc/shortcodes/config/easl-scientific-publication.php') );
-	vc_lean_map( 'easl_s3d_slider', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider.php') );
-	vc_lean_map( 'easl_s3d_slider_item', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider-item.php') );
+	//vc_lean_map( 'easl_s3d_slider', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider.php') );
+	//vc_lean_map( 'easl_s3d_slider_item', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider-item.php') );
+	vc_lean_map( 'easl_3d_carousel', null, get_theme_file_path('/inc/shortcodes/config/easl-3d-carousel.php') );
+	vc_lean_map( 'easl_3d_carousel_item', null, get_theme_file_path('/inc/shortcodes/config/easl-3d-carousel-item.php') );
 	vc_lean_map( 'easl_news_list', null, get_theme_file_path('/inc/shortcodes/config/easl-news-list.php') );
 
 }

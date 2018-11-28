@@ -5302,6 +5302,40 @@ ul.suggestions{
     margin-left: 5px;
 }
 
+/* Shortcode: EASL_3D_Carousel */
+.easl-3dcarousel-wrap .bee3D--parent {
+    position: relative;
+    margin-top: 48px;
+    width: 100%;
+    height: 454px;
+}
+.easl-3dcarousel-wrap .bee3D--effect__carousel .bee3D--after-2,
+.easl-3dcarousel-wrap .bee3D--effect__carousel .bee3D--before-2{
+    opacity: 0;
+}
+.easl-3dcarousel .bee3D--slide {
+}
+.easl-3dcarousel-slide-title {
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    top: -20px;
+    font-size: 14px;
+    line-height: 1em;
+    color: #fff;
+    text-align: center;
+    left: 0;
+    width: 100%;;
+}
+.easl-3dcarousel-slide-title a{
+    color: #fff;
+    text-decoration: none;
+}
+.easl-3dcarousel-slide-title a:hover{
+    color: #71c5e8;
+    text-decoration: none;
+}
+
+
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
