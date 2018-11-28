@@ -23,7 +23,7 @@ extract( $atts );
 
 $icon_html = '';
 if($button_icon){
-	$icon_html = '<img src="'. get_stylesheet_directory_uri() . '/images/button-icon-' . $button_icon .'.png" alt="icon"/>';
+	$icon_html = '<img src="'. get_stylesheet_directory_uri() . '/images/button-icons/' . $button_icon .'.png" alt="icon"/>';
 }
 
 $button_text = '';

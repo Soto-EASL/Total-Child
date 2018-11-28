@@ -21,6 +21,7 @@ function easl_vc_button_icons(){
 	return array(
 		__( 'No Icon', 'total' ) => '',
 		__( 'Download Blue', 'total' ) => 'download-blue',
+		__( 'EILF Globe', 'total' ) => 'eilf-globe',
 		__( 'Speech Buble Blue', 'total' ) => 'speech-bubble-blue',
 	);
 }
