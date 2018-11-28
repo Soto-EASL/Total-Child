@@ -52,6 +52,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_3d_carousel', null, get_theme_file_path('/inc/shortcodes/config/easl-3d-carousel.php') );
 	vc_lean_map( 'easl_3d_carousel_item', null, get_theme_file_path('/inc/shortcodes/config/easl-3d-carousel-item.php') );
 	vc_lean_map( 'easl_news_list', null, get_theme_file_path('/inc/shortcodes/config/easl-news-list.php') );
-
+	vc_lean_map( 'easl_slide_decks', null, get_theme_file_path('/inc/shortcodes/config/easl-slide-decks.php') );
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

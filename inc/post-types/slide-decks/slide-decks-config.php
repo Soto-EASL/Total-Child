@@ -4,6 +4,8 @@ class Slide_Decks_Config {
 
     protected static $slugs = array(
         'slide_decks' => 'slide_decks',
+	    'category'  => 'slide_decks_category',
+	    'topic' => 'slide_decks_topic'
     );
 
     /**
@@ -24,11 +26,22 @@ class Slide_Decks_Config {
         return self::$slugs['slide_decks'];
     }
 
+	public static function get_slug(){
+		return self::$slugs['slide_decks'];
+	}
+	public static function get_category_slug(){
+		return self::$slugs['category'];
+	}
+
+	public static function get_topic_slug(){
+		return self::$slugs['topic'];
+	}
+
     /**
      * Register post type.
      */
     public static function register_post_type() {
-        register_post_type( self::get_slide_decks_slug(), array(
+        register_post_type( self::get_slug(), array(
             'labels' => array(
                 'name' => __( 'Slide Decks', 'total' ),
                 'singular_name' => __( 'Slide Decks', 'total' ),
@@ -41,19 +54,16 @@ class Slide_Decks_Config {
                 'not_found' => __( 'No Items Found', 'total' ),
                 'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
             ),
-            'public' => true,
+            'public' => false,
+            'show_ui' => true,
             'capability_type' => 'post',
             'has_archive' => false,
             'menu_position' => 20,
-            'rewrite' => array( 'slug' => self::get_slide_decks_slug(), 'with_front' => false ),
+            'rewrite' => false,
             'supports' => array(
                 'title',
-                'editor',
                 'excerpt',
                 'thumbnail',
-                'comments',
-                'custom-fields',
-                'revisions',
                 'author',
                 'page-attributes',
             ),
@@ -82,12 +92,12 @@ class Slide_Decks_Config {
             'show_ui' => true,
             'show_tagcloud' => true,
             'hierarchical' => true,
-            'rewrite' => array( 'slug' => 'slide-decks-category', 'with_front' => false ),
-            'query_var' => true
+            'rewrite' => false,
+            'query_var' => false
         ) );
 
         // Register the staff category taxonomy
-        register_taxonomy( 'slide_decks_category', array( 'slide_decks' ), $args );
+        register_taxonomy( self::get_category_slug(), array( self::get_slug() ), $args );
 
     }
 
@@ -118,11 +128,11 @@ class Slide_Decks_Config {
             'show_admin_column' => true,
             'show_tagcloud' => false,
             'hierarchical' => true,
-            'rewrite' => array( 'slug' => 'slide_decks_topic', 'with_front' => false ),
-            'query_var' => true,
+            'rewrite' => false,
+            'query_var' => false,
         );
 
-        register_taxonomy( 'slide_decks_topic', array( 'slide_decks'  ), $args );
+        register_taxonomy( self::get_topic_slug(), array( self::get_slug()  ), $args );
     }
 
     public static function meta_array( $types ) {

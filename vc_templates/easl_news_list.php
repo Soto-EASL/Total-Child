@@ -185,7 +185,7 @@ $news_query = new WP_Query( $query_args );
 						?>
                     </div>
 					<?php if ( $news_query->max_num_pages ): ?>
-                        <div class="easl-news-list-pagination">
+                        <div class="easl-news-list-pagination easl-list-pagination">
 							<?php echo paginate_links( array(
 								'total'     => $news_query->max_num_pages,
 								'current'   => $paged,
