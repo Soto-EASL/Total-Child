@@ -204,46 +204,7 @@ $news_query = new WP_Query( $query_args );
                 <div class="easl-col-inner">
                     <div class="sidebar-box widget">
                         <h2 class="widget-title"><?php _e( 'Past EASL Newsletters', 'total-child' ); ?></h2>
-                        <div class="easl-widget-newsletters">
-                            <ul class="easl-newsletters-list">
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">October
-                                        #1 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">September
-                                        #1 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">July
-                                        #2 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">July
-                                        #1 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">June
-                                        #3 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">June
-                                        #2 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">June
-                                        #1 2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">May #1
-                                        2018</a>
-                                </li>
-                                <li>
-                                    <a href="https://mailchi.mp/easloffice/newsletter-2018-10-19" target="_blank">March
-                                        #1 2018</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <?php get_template_part('partials/newsletter/list'); ?>
                     </div>
                 </div>
             </div>

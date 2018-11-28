@@ -13,6 +13,7 @@ require_once EASL_INC_DIR . 'post-types/event/event-config.php';
 require_once EASL_INC_DIR . 'customizer.php';
 require_once EASL_INC_DIR . 'total-extend.php';
 require_once EASL_INC_DIR . 'shortcodes.php';
+require_once EASL_INC_DIR . 'widgets.php';
 require_once EASL_INC_DIR . 'post-types/fellowship/fellowship-config.php';
 require_once EASL_INC_DIR . 'post-types/associations/associations-config.php';
 require_once EASL_INC_DIR . 'post-types/publication/publication-config.php';
