@@ -1964,6 +1964,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     display: flex;
     padding: 0 5px;
     margin: 5px 0;
+    flex-direction: column;
 }
 .easl-button-grid-wrapper .easl-gbtn-wrap .easl-col-inner {
     display: flex;
@@ -1973,11 +1974,11 @@ body .wpb_single_image a.easl-vc-image-over:after {
     color: #004b87;
     display: block;
     font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 16px;
     text-decoration: none;
-    padding: 23px 10px;
+    padding: 23px 5px;
     text-align: center;
     -webkit-box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
     box-shadow: 0 0 4px 0 rgba(0,0,0,.2);
