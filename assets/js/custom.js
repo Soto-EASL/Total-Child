@@ -479,7 +479,14 @@
                $t.removeClass('tbb-hidden').addClass('tbb-shown'); 
             }
         });
-        
+
+
+        $('.easl-news-list-filter-form').on('click', '.ecs-icon', function (e) {
+            $('.easl-news-list-filter-form').submit();
+        });
+        $('.easl-news-list-filter-form').on('change', 'select',function () {
+            $('.easl-news-list-filter-form').submit();
+        });
         // Stuff to be done when windows resize
         $(window).resize(function(){
         });

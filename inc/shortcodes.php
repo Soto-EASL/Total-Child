@@ -26,6 +26,7 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider-item.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-news-list.php';
 
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_theme_file_path('/inc/shortcodes/config/easl-button.php') );
@@ -46,6 +47,7 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_scientific_publication', null, get_theme_file_path('/inc/shortcodes/config/easl-scientific-publication.php') );
 	vc_lean_map( 'easl_s3d_slider', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider.php') );
 	vc_lean_map( 'easl_s3d_slider_item', null, get_theme_file_path('/inc/shortcodes/config/easl-storyline-3d-slider-item.php') );
+	vc_lean_map( 'easl_news_list', null, get_theme_file_path('/inc/shortcodes/config/easl-news-list.php') );
 
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
