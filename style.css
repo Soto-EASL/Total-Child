@@ -5368,7 +5368,7 @@ ul.suggestions{
 .easl-sdrow-color-gray .easl-slide-deck-item-meta-title {
     border-color: #7e6a73;
 }
-.easl-sdrow-yellow .easl-slide-deck-item-meta-title {
+easl-sdrow-color-yellow .easl-slide-deck-item-meta-title {
     border-color: #f9bc49;
 }
 
@@ -5397,9 +5397,9 @@ ul.suggestions{
 .easl-sdrow-color-gray .easl-slide-deck-item-meta-title a {
     color: #7e6a73;
 }
-.easl-sdrow-yellow .sp-meta-type,
-.easl-sdrow-yellow .easl-slide-deck-item-meta-title,
-.easl-sdrow-yellow .easl-slide-deck-item-meta-title a {
+.easl-sdrow-color-yellow .sp-meta-type,
+.easl-sdrow-color-yellow .easl-slide-deck-item-meta-title,
+.easl-sdrow-color-yellow .easl-slide-deck-item-meta-title a {
     color: #f9bc49;
 }
 
@@ -5423,8 +5423,8 @@ ul.suggestions{
 .easl-sdrow-color-gray .easl-slide-deck-item-content .easl-button:active {
     background-color: #7e6a73;
 }
-.easl-sdrow-yellow .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-yellow .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-button:hover,
+.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-button:active {
     background-color: #f9bc49;
 }
 
