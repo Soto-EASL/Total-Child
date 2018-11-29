@@ -714,7 +714,9 @@ body #site-navigation .dropdown-menu a {
 }
 #site-navigation .dropdown-menu >.current-menu-item >a,
 #site-navigation .dropdown-menu >.current-menu-parent >a,
+#site-navigation .dropdown-menu >.current-page-parent >a,
 #site-navigation .dropdown-menu >.current-menu-ancestor >a,
+#site-navigation .dropdown-menu >.current-page-ancestor >a,
 .single-post #site-navigation .dropdown-menu >.menu-item-5668 >a,
 .single-event #site-navigation .dropdown-menu >.menu-item-166 >a,
 .single-publication #site-navigation .dropdown-menu >.menu-item-2019 >a {
