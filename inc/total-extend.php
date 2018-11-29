@@ -454,3 +454,40 @@ function easl_util_sc_title_icon( $atts, $content = null ) {
 }
 
 add_shortcode( 'easl_title_icon', 'easl_util_sc_title_icon' );
+
+function easl_vcex_change_shortcode_parameter() {
+	vc_add_param( 'vcex_post_type_carousel', array(
+			'type' => 'vcex_ofswitch',
+			'std' => 'true',
+			'heading' => __( 'Enable Posts Link', 'total' ),
+			'param_name' => 'easl_title_link',
+			'group' => __( 'Title', 'total' ),
+	) );
+}
+add_action( 'vc_after_init', 'easl_vcex_change_shortcode_parameter', 50 );
+
+function easl_vcex_post_type_carousel_title($title_output, $atts ) {
+	if(empty($atts['easl_title_link']) || ('true' == $atts['easl_title_link'])){
+		return $title_output;
+	}
+	$heading_style = vcex_inline_style( array(
+		'margin'         => $atts['content_heading_margin'],
+		'text_transform' => $atts['content_heading_transform'],
+		'font_size'      => $atts['content_heading_size'],
+		'font_weight'    => $atts['content_heading_weight'],
+		'line_height'    => $atts['content_heading_line_height'],
+	) );
+
+	$content_heading_color = vcex_inline_style( array(
+		'color' => $atts['content_heading_color'],
+	) );
+
+	$title_output = '<div class="wpex-carousel-entry-title entry-title"' . $heading_style . '>';
+	$title_output .= '<span ' . $content_heading_color . '>';
+	$title_output .= esc_html( $atts['post_title'] );
+	$title_output .= '</span>';
+
+	$title_output .= '</div>';
+	return $title_output;
+}
+add_filter('vcex_post_type_carousel_title', 'easl_vcex_post_type_carousel_title', 10, 2);
