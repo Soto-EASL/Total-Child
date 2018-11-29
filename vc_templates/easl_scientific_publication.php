@@ -20,6 +20,13 @@ $hide_topic = $include_categories = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
+if($include_categories) {
+	$include_categories = explode(',', $include_categories);
+}
+if(!$include_categories) {
+	$include_categories = array();
+}
+
 
 $class_to_filter = 'wpb_easl_scientific_publication wpb_content_element';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
@@ -132,14 +139,13 @@ if($hide_topic === "false"){
 $current_year = (new DateTime())->format('Y');
 $the_year = 2010;
 $option = '';
-for ($current_year = (new DateTime())->format('Y'); $current_year >= $the_year ; $current_year--){
-    $selected_attr = '';
-    if($current_year == (int)$filter_ecf_year){
-        $selected_attr = 'selected';
-    }
-    $option .= '<option value="'.$current_year.'" '.$selected_attr.'>'.$current_year.'</option>';
 
+$years_dd = $this->get_years($include_categories, $filter_ec_filter_topics);
+$filter_ecf_year = absint($filter_ecf_year);
+foreach ( $years_dd as $year ){
+	$option .= '<option value="' . $year . '" ' . selected( $year, $filter_ecf_year, false )  . '>' . $year . '</option>';
 }
+
 global $wp;
 $current_page = home_url( $wp->request );
 
@@ -209,14 +215,25 @@ $top_filter .= '</div>';
 
 $atts['post_type'] = 'publication';
 $atts['paged'] = $paged;
-$atts['tax_query'] = array(
-    array(
-        'taxonomy'=> 'publication_category',
-        'field' => 'id',
-        'terms' => explode(',', $include_categories),
-    ),
-);
-
+$atts['tax_query'] = array();
+if(count($include_categories) > 0) {
+	$atts['tax_query'] = array(
+		array(
+			'taxonomy'=> 'publication_category',
+			'field' => 'id',
+			'terms' => $include_categories,
+		),
+	);
+}
+if( is_array($filter_ec_filter_topics) && count($filter_ec_filter_topics) > 0 && $filter_ec_filter_topics[0] != '') {
+	$atts['tax_query']['relation'] = 'AND';
+	$atts['tax_query'][] =  array(
+		'taxonomy' => 'publication_topic',
+		'field' => 'id',
+		'terms' => $filter_ec_filter_topics,
+		'operator' => 'IN',
+	);
+}
 if($filter_ecf_search){
     $atts['s'] = $filter_ecf_search;
 }
@@ -234,21 +251,15 @@ if($filter_ecf_year && ($filter_ecf_year != '') ){
 
     );
 }
-if( is_array($filter_ec_filter_topics) && count($filter_ec_filter_topics) > 0 && $filter_ec_filter_topics[0] != '') {
-    $atts['tax_query']['relation'] = 'AND';
-    $atts['tax_query'][] =  array(
-        'taxonomy' => 'publication_topic',
-        'field' => 'id',
-        'terms' => $filter_ec_filter_topics,
-        'operator' => 'IN',
-    );
-}
 
 
 //$css_animation = $this->getCSSAnimation($css_animation);
 
 $easl_query = new WP_Query( $atts );
 
+if(isset($_GET['mmm'])){
+	var_dump($easl_query->request);die();
+}
 $topic_label = 'Topic:';
 $topic_delimiter = ' | ';
 $arrow_style = wpex_get_mod( 'pagination_arrow' );

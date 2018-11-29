@@ -5,6 +5,56 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'EASL_VC_Scientific_Publication' ) ) {
 
 	class EASL_VC_Scientific_Publication extends WPBakeryShortCode {
+		public function get_sanitized_int_aray($input_array) {
+			if(!is_array($input_array)){
+				return array();
+			}
+			$return = array();
+			foreach ($input_array as $item){
+				$s_item = absint($item);
+				if($s_item){
+					$return[] = $s_item;
+				}
+			}
+			return $return;
+		}
+		public function get_years($cateogry = array(), $topics = array()) {
+			global $wpdb;
+			$cateogry = $this->get_sanitized_int_aray($cateogry);
+			$topics = $this->get_sanitized_int_aray($topics);
+
+			$cat_join = $cat_where = $topic_join = $topic_where = '';
+			if(count($cateogry) > 0){
+				$cat_join = " LEFT JOIN {$wpdb->term_relationships} ON ({$wpdb->posts}.ID = {$wpdb->term_relationships}.object_id)";
+				$cat_where = " {$wpdb->term_relationships}.term_taxonomy_id IN (". implode(',', $cateogry) .")";
+			}
+			if(count($topics) > 0){
+				$topic_join = " LEFT JOIN {$wpdb->term_relationships} AS tt_topic  ON ({$wpdb->posts}.ID = tt_topic.object_id)";
+				$topic_where = " tt_topic.term_taxonomy_id IN (". implode(',', $topics) .") ";
+			}
+			$sql  = "SELECT DISTINCT {$wpdb->postmeta}.meta_value AS year FROM {$wpdb->posts}";
+			$sql .= "{$cat_join}{$topic_join}";
+			$sql .= " INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) ";
+			$sql .= " WHERE (1=1)";
+			if($cat_where && $topic_where){
+				$sql .=" AND ({$cat_where} AND {$topic_where})";
+			}else{
+				$sql .= "AND {$cat_where}{$topic_where}";
+			}
+			$sql .= " AND ({$wpdb->postmeta}.meta_key = 'publication_date') ";
+			$sql .= " AND ({$wpdb->posts}.post_type = 'publication') AND ({$wpdb->posts}.post_status = 'publish') ORDER BY {$wpdb->postmeta}.meta_value DESC";
+
+			$years = $wpdb->get_col($sql);
+			if(!$years || !is_array($years)){
+				$years = array();
+			}
+			if(isset($_GET['mmm'])) {
+				var_dump($sql);
+				var_dump($years);
+				die();
+			}
+			return $years;
+		}
 		/**
 		 * Suggest Publication Categories for autocomplete
 		 *
