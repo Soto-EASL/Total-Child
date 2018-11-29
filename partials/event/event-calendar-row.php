@@ -184,7 +184,7 @@ $event_topics_name = easl_event_topics_name($event_id);
 					<?php endif; ?>
 					<?php if($event_online_programme_url): ?>
 					<li class="ec-links-program">
-						<a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>" target="_blank">>
+						<a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>" target="_blank">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
@@ -194,7 +194,7 @@ $event_topics_name = easl_event_topics_name($event_id);
 					<?php endif; ?>
 					<?php if($event_notification_url && ('past' != $event_time_type)): ?>
 					<li class="ec-links-notify">
-						<a class="event-link-item" href="<?php echo esc_url($event_notification_url);?>" target="_blank">>
+						<a class="event-link-item" href="<?php echo esc_url($event_notification_url);?>" target="_blank">
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon envelope"></span>
                             </span>
