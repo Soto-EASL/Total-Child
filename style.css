@@ -5463,7 +5463,89 @@ easl-sdrow-color-yellow .easl-slide-deck-item-meta-title {
     font-size: 27px;
     font-weight: 700;
 }
+/* Utility: easl-sc-title-icon */
+.easl-sc-title-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+.easl-sc-title-icon-hasicon {
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+.easl-sc-title-icon-block {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+.easl-sc-title-icon:last-child {
+    margin-right: 0;
+    margin-bottom: 0;
+}
 
+.easl-sc-title-icon-fellowship {
+    background-image: url('images/title-icons/fellowship.png');
+    min-height: 45px;
+    padding-left: 50px;
+}
+.easl-sc-title-icon-mentorship {
+    background-image: url('images/title-icons/mentorship.png');
+    min-height: 45px;
+    padding-left: 50px;
+}
+.easl-sc-title-icon-groups {
+    background-image: url('images/title-icons/groups.png');
+    min-height: 45px;
+    padding-left: 50px;
+}
+.easl-sc-title-icon-awards {
+    background-image: url('images/title-icons/awards.png');
+    min-height: 45px;
+    padding-left: 50px;
+}
+.easl-sc-title-icon-ueg{
+    background-image: url(images/title-icons/ueg.jpg);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.easl-sc-title-icon-science{
+    background-image: url(images/title-icons/science.png);
+    background-position: 0px 0px !important;
+    padding-left: 60px !important;
+}
+.easl-sc-title-icon-education{
+    background-image: url(images/title-icons/education.png);
+    background-position: 0px 0px !important;
+    padding-left: 60px !important;
+}
+.easl-sc-title-icon-advocacy{
+    background-image: url(images/title-icons/advocacy.png);
+    background-position: 0px 0px !important;
+    padding-left: 70px !important;
+}
+.easl-sc-title-icon-aleh{
+    background-image: url(images/icons/ALEH.png);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.easl-sc-title-icon-aasld{
+    background-image: url(images/icons/AASLD-Logo-Vertical-CMYK.png);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.easl-sc-title-icon-apasl{
+    background-image: url(images/icons/APASL-logo-2.png);
+    min-height: 118px;
+    padding-left: 164px;
+    line-height: 118px;
+}
+.easl-sc-title-icon-bursaries{
+    background-image: url(images/icons/bursaries.png);
+    background-position: 0px -50px !important;
+    padding-left: 80px !important;
+}
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {

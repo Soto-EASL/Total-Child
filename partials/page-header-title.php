@@ -53,12 +53,25 @@ if ( empty( $string ) ) {
 // Sanitize
 $html_tag = wp_strip_all_tags( $html_tag );
 
+$allow_html_shortcode = false;
+if(is_page()){
+	$custom_title = trim(get_post_meta(get_the_ID(), 'wpex_post_title', true));
+	$allow_settings = get_post_meta(get_the_ID(), 'easl_title_allow_shortcode_html', true);
+	if($custom_title && 'enable' == $allow_settings){
+		$allow_html_shortcode = true;
+	}
+}
+
 // Output title
 echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . '>';
 	if(is_single()){
 		$page_id = wpex_get_mod( 'blog_page', 5626);
 		echo '<a class="easl-title-back-link" href="'. get_the_permalink($page_id) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
 	}
-	echo '<span>' . wp_kses_post( $string ) . '</span>';
+	if($allow_html_shortcode){
+		echo do_shortcode($string);
+	}else{
+		echo '<span>' . wp_kses_post( $string ) . '</span>';
+	}
 
 echo '</' . $html_tag . '>';
