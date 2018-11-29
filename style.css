@@ -1497,7 +1497,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 
 .ec-links-icon {
     display: inline-block;
-    margin: 0 0 6px;
+    margin: 0;
     height: 24px;
 }
 .ec-links-icon .fa {
@@ -4418,186 +4418,153 @@ ul.suggestions{
     border-radius: 0;
 }
 .ec-links-icon.info{
-    width: 33px;
-    height: 33px;
+    background-image: url("images/events-icons/info.png");
+    width: 32px;
+    height: 32px;
 }
 .ec-links-icon.laptop{
-    width: 40px;
-    height: 25px;
+    background-image: url("images/events-icons/website.png");
+    width: 38px;
+    height: 23px;
 }
 .ec-links-icon.clock {
-    width: 30px;
+    background-image: url("images/events-icons/clock.png");
+    width: 29px;
     height: 32px;
 }
 .ec-links-icon.list {
-    width: 30px;
+    background-image: url("images/events-icons/programme.png");
+    width: 29px;
     height: 32px;
     border: none;
 }
 .ec-links-icon.envelope {
-    width: 30px;
-    height: 22px;
+    background-image: url("images/events-icons/envelope.png");
+    width: 29px;
+    height: 20px;
 }
 .ec-links-icon.calendar {
+    background-image: url("images/events-icons/calendar.png");
     width: 32px;
     height: 36px;
 }
 .ec-icons .ec-icons-nav .icon-wrapper{
     height: 46px;
+    line-height: 46px;
     display: inline-block;
 }
 
-
 .easl-ec-row-yellow .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
-    background-position: -70px -34px;
+    background-position: -70px -35px;
 }
 .easl-ec-row-yellow .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
-    background-position: -78px -23px;
+    background-position: -80px -25px;
 }
 .easl-ec-row-yellow .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
-    background-position: -61px -35px;
+    background-position: -62px -35px;
 }
 .easl-ec-row-yellow .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
-    background-position: -61px -34px;
+    background-position: -62px -34px;
 }
 .easl-ec-row-yellow .ec-links-icon.envelope{
-    background-image: url("images/events-icons/envelope.png");
-    background-position: -61px -20px;
+    background-position: -62px -22px;
 }
 .easl-ec-row-yellow .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: -72px -41px;
 }
 
-
 .easl-ec-row-teal .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
-    background-position: 0px -34px;
+    background-position: 0px -35px;
 }
 .easl-ec-row-teal .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
-    background-position: 0px -23px;
+    background-position: 0px -25px;
 }
 .easl-ec-row-teal .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
     background-position: 0px -35px;
 }
 .easl-ec-row-teal .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
     background-position: 0px -34px;
 }
 .easl-ec-row-teal .ec-links-icon.envelope{
-    background-image: url("images/events-icons/envelope.png");
-    background-position: 0px -20px;
+    background-position: 0px -22px;
 }
 .easl-ec-row-teal .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: 0px -41px;
 }
 
 .easl-ec-row-red .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
-    background-position: -34px 0px;
+    background-position: -35px 0px;
 }
 .easl-ec-row-red .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
-    background-position: -38px 0px;
+    background-position: -40px 0px;
 }
 .easl-ec-row-red .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
     background-position: -31px 0px;
 }
 .easl-ec-row-red .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
     background-position: -31px 0px;
 }
 .easl-ec-row-red .ec-links-icon.envelope{
-    background-image: url("images/events-icons/envelope.png");
     background-position: -31px 0px;
 }
 .easl-ec-row-red .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: -36px 0px;
 }
 
 .easl-ec-row-blue .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
     background-position: 0px 0px;
 }
 .easl-ec-row-blue .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
     background-position: 0px 0px;
 }
 .easl-ec-row-blue .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
     background-position: 0px 0px;
 }
 .easl-ec-row-blue .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
     background-position: 0px 0px;
 }
 .easl-ec-row-blue .ec-links-icon.envelope{
-    background-image: url("images/events-icons/envelope.png");
     background-position: 0px 0px;
 }
 .easl-ec-row-blue .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: 0px 0px;
 }
 
-
 .easl-ec-row-orrange .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
     background-position: -70px 0px;
 }
 .easl-ec-row-orrange .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
-    background-position: -78px 0px;
+    background-position: -80px 0px;
 }
 .easl-ec-row-orrange .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
-    background-position: -61px 0px;
+    background-position: -62px 0px;
 }
 .easl-ec-row-orrange .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
-    background-position: -61px 0px;
+    background-position: -62px 0px;
 }
 .easl-ec-row-orrange .ec-links-icon.envelope{
-    background-image: url("images/events-icons/envelope.png");
-    background-position: -61px 0px;
+    background-position: -62px 0px;
 }
 .easl-ec-row-orrange .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: -72px 0px;
 }
 
-
 .easl-ec-row-gray .ec-links-icon.info{
-    background-image: url("images/events-icons/info.png");
     background-position: -35px -35px;
 }
 .easl-ec-row-gray .ec-links-icon.laptop{
-    background-image: url("images/events-icons/website.png");
-    background-position: -38px -23px;
+    background-position: -40px -25px;
 }
 .easl-ec-row-gray .ec-links-icon.clock{
-    background-image: url("images/events-icons/clock.png");
     background-position: -31px -35px;
 }
 .easl-ec-row-gray .ec-links-icon.list{
-    background-image: url("images/events-icons/programme.png");
     background-position: -31px -34px;
 }
 .easl-ec-row-gray .ec-links-icon.envelope {
-    background-image: url("images/events-icons/envelope.png");
-    background-position: -31px -20px
+    background-position: -31px -22px
 }
 .easl-ec-row-gray .ec-links-icon.calendar{
-    background-image: url("images/events-icons/calendar.png");
     background-position: -36px -41px;
 }
 
