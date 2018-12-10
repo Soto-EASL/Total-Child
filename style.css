@@ -397,6 +397,112 @@ body a {
 .easl-custom-select .ecs-list li:hover {
     background: #f0f0f0;
 }
+.easl-dropdown {
+    position: relative;
+    font-size: 14px;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.easl-dropdown-label {
+    background-color: #f0f0f0;
+    color: #004b87;
+    display: block;
+    padding: 8px 22px;
+    line-height: 1.4em;
+    position: relative;
+    z-index: 2;
+}
+.easl-dropdown-label::after {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    content: "\f107";
+    display: block;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'FontAwesome';
+    color: #78cdf2;
+    z-index: 2;
+}
+.easl-dropdown ul {
+    position: absolute;
+    display: none;
+    box-shadow: 0px 0px 8px -2px rgba(0, 0, 0, 0.3);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    top: 100%;
+    width: 100%;
+    margin-top: -1px;
+}
+.easl-dropdown:hover ul {
+    display: block;
+    background-color: #fff;
+}
+.easl-dropdown ul li {
+    background-color: #fff;
+    border-bottom: 1px solid #dedede;
+    margin: 0;
+    padding: 0;
+    transition: background-color .25s;
+    position: relative;
+}
+.easl-dropdown ul li.easl-active,
+.easl-dropdown ul li:hover{
+    background-color: #f0f0f0;
+}
+.easl-dropdown-label::before,
+.easl-dropdown ul li::before {
+    content: "";
+    background-color: transparent;
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    bottom: 8px;
+    width: 4px;
+    z-index: 0;
+}
+.easl-dropdown-label.easl-color-lightblue::before,
+.easl-dropdown ul li.easl-color-lightblue::before {
+    background-color: #71c4e8;
+}
+.easl-dropdown-label.easl-color-blue::before,
+.easl-dropdown ul li.easl-color-blue::before {
+    background-color: #165291;
+}
+.easl-dropdown-label.easl-color-red::before,
+.easl-dropdown ul li.easl-color-red::before {
+    background-color: #de2a57;
+}
+.easl-dropdown-label.easl-color-orrange::before,
+.easl-dropdown ul li.easl-color-orrange::before {
+    background-color: #f26827;
+}
+.easl-dropdown-label.easl-color-teal::before,
+.easl-dropdown ul li.easl-color-teal::before {
+    background-color: #189790;
+}
+.easl-dropdown-label.easl-color-gray::before,
+.easl-dropdown ul li.easl-color-gray::before{
+    background-color: #7e6a73;
+}
+.easl-dropdown-label.easl-color-yellow::before,
+.easl-dropdown ul li.easl-color-yellow::before {
+    background-color: #f9bc49;
+}
+
+.easl-dropdown ul li a {
+    text-decoration: none;
+}
+.easl-dropdown ul li span {
+    color: #004b87;
+    display: block;
+    font-size: .95em;
+    line-height: 1.4em;
+    padding: 8px 22px;
+}
+
 .entry h1,
 .entry h2,
 .entry h3,
@@ -2872,6 +2978,113 @@ body.wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-controls-ic
 body.wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-controls-icon:before {
 	border-color: #fff;
 }
+
+/* Widgets */
+.easl-recent-items-topics {
+    margin-bottom: 20px;
+}
+.easl-recent-items-list ul{
+    margin: 0;
+    list-style: none;
+}
+.easl-recent-items-list ul li{
+    border-bottom: 1px solid #104f85;
+}
+.easl-recent-items-list ul li:last-child{
+    border-bottom: none;
+}
+.easl-recent-items-list li a{
+    display: block;
+    padding: 8px 12px;
+    position: relative;
+    color: #104f85;
+}
+.easl-recent-items-list li a:hover {
+    text-decoration: none;
+}
+.easl-recent-items-list li a::after{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    content: "\f105";
+    display: block;
+    font-size: 20px;
+    font-family: 'FontAwesome';
+    color: #78cdf2;
+    -webkit-transition: color 0.25s linear;
+    -moz-transition: color 0.25s linear;
+    transition: color 0.25s linear;
+}
+
+.easl-recent-items-list li a::before{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    bottom: 10px;
+    width: 4px;
+    content: '';
+}
+.easl-recent-items-list ul li.easl-color-lightblue a:hover,
+.easl-recent-items-list ul li.easl-color-lightblue a:active,
+.easl-recent-items-list li.easl-color-lightblue a:hover::after {
+    color: #71c4e8;
+}
+.easl-recent-items-list ul li.easl-color-blue a:hover,
+.easl-recent-items-list ul li.easl-color-blue a:active,
+.easl-recent-items-list li.easl-color-blue a:hover::after  {
+    color: #165291;
+}
+.easl-recent-items-list ul li.easl-color-red a:hover,
+.easl-recent-items-list ul li.easl-color-red a:active,
+.easl-recent-items-list li.easl-color-red a:hover::after  {
+    color: #de2a57;
+}
+.easl-recent-items-list ul li.easl-color-orrange a:hover,
+.easl-recent-items-list ul li.easl-color-orrange a:active,
+.easl-recent-items-list li.easl-color-orrange a:hover::after  {
+    color-color: #f26827;
+}
+.easl-recent-items-list ul li.easl-color-teal a:hover,
+.easl-recent-items-list ul li.easl-color-teal a:active,
+.easl-recent-items-list li.easl-color-teal a:hover::after {
+    color: #189790;
+}
+.easl-recent-items-list ul li.easl-color-gray a:hover,
+.easl-recent-items-list ul li.easl-color-gray a:active,
+.easl-recent-items-list li.easl-color-gray a:hover::after {
+    color: #7e6a73;
+}
+.easl-recent-items-list ul li.easl-color-yellow a:hover,
+.easl-recent-items-list ul li.easl-color-yellow a:active,
+.easl-recent-items-list li.easl-color-yellow a:hover::after {
+    color: #f9bc49;
+}
+
+.easl-recent-items-list ul li.easl-color-lightblue a::before {
+    background-color: #71c4e8;
+}
+.easl-recent-items-list ul li.easl-color-blue a::before {
+    background-color: #165291;
+}
+.easl-recent-items-list ul li.easl-color-red a::before {
+    background-color: #de2a57;
+}
+.easl-recent-items-list ul li.easl-color-orrange a::before {
+    background-color: #f26827;
+}
+.easl-recent-items-list ul li.easl-color-teal a::before {
+    background-color: #189790;
+}
+.easl-recent-items-list ul li.easl-color-gray a::before{
+    background-color: #7e6a73;
+}
+.easl-recent-items-list ul li.easl-color-yellow a::before {
+    background-color: #f9bc49;
+}
+
+
 /*Footer*/
 #footer {
 	font-family: KnockoutHTF51Middleweight;
