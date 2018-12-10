@@ -130,6 +130,7 @@ while ($noimg_news_query->have_posts()){
 }
 wp_reset_query();
 unset($noimg_news_query);
+$next_img_pos = $next_noimg_pos = 0;
 ?>
 <div <?php echo implode( ' ', $wrapper_attributes ); ?> class="<?php echo esc_attr( trim( $css_class ) ) ; ?>">
 	<?php echo wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_easl_news_heading' ) ); ?>
@@ -138,8 +139,32 @@ unset($noimg_news_query);
 			<div class="easl-news-col easl-col easl-col-3">
 				<div class="easl-col-inner">
 					<?php
-					if(!empty($img_news_items[0])){
-						echo $img_news_items[0];
+					if(!empty($img_news_items[$next_img_pos])){
+						echo $img_news_items[$next_img_pos];
+						$next_img_pos++;
+					}else{
+						if(!empty($noimg_news_items[$next_noimg_pos])){
+							echo $noimg_news_items[$next_noimg_pos];
+							$next_noimg_pos++;
+						}
+						if(!empty($noimg_news_items[$next_noimg_pos])){
+							echo $noimg_news_items[$next_noimg_pos];
+							$next_noimg_pos++;
+						}
+                    }
+					?>
+				</div>
+			</div>
+			<div class="easl-news-col easl-col easl-col-3">
+				<div class="easl-col-inner">
+					<?php
+					if(!empty($noimg_news_items[$next_noimg_pos])){
+						echo $noimg_news_items[$next_noimg_pos];
+						$next_noimg_pos++;
+					}
+					if(!empty($noimg_news_items[$next_noimg_pos])){
+						echo $noimg_news_items[$next_noimg_pos];
+						$next_noimg_pos++;
 					}
 					?>
 				</div>
@@ -147,20 +172,18 @@ unset($noimg_news_query);
 			<div class="easl-news-col easl-col easl-col-3">
 				<div class="easl-col-inner">
 					<?php
-					if(!empty($noimg_news_items[0])){
-						echo $noimg_news_items[0];
-					}
-					if(!empty($noimg_news_items[1])){
-						echo $noimg_news_items[1];
-					}
-					?>
-				</div>
-			</div>
-			<div class="easl-news-col easl-col easl-col-3">
-				<div class="easl-col-inner">
-					<?php
-					if(!empty($img_news_items[1])){
-						echo $img_news_items[1];
+					if(!empty($img_news_items[$next_img_pos])){
+						echo $img_news_items[$next_img_pos];
+						$next_img_pos++;
+					}else{
+						if(!empty($noimg_news_items[$next_noimg_pos])){
+							echo $noimg_news_items[$next_noimg_pos];
+							$next_noimg_pos++;
+						}
+						if(!empty($noimg_news_items[$next_noimg_pos])){
+							echo $noimg_news_items[$next_noimg_pos];
+							$next_noimg_pos++;
+						}
 					}
 					?>
 				</div>
