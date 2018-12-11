@@ -30,6 +30,9 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel-item.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-news-list.php';
 
+
+require_once get_stylesheet_directory() . '/inc/shortcodes/utility/easl-toggle.php';
+
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_theme_file_path('/inc/shortcodes/config/easl-button.php') );
 	vc_lean_map( 'easl_button_grid', null, get_theme_file_path('/inc/shortcodes/config/easl-button-grid.php'));

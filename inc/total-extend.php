@@ -266,6 +266,21 @@ function easl_vc_add_params() {
 			'group'      => __( 'Over Image Link', 'total' ),
 		),
 	) );
+	$tour_styles = WPBMap::getParam('vc_tta_tour', 'style');
+	$tour_styles = $tour_styles['value'];
+	$tour_styles[__( 'EASL Flat', 'total-child' )] = 'easl-flat';
+	vc_update_shortcode_param('vc_tta_tour', array(
+		'param_name' => 'style',
+		'value' => $tour_styles
+	));
+
+	$toggle_styles = WPBMap::getParam('vc_toggle', 'style');
+	$toggle_styles = $toggle_styles['value'];
+	$toggle_styles[__( 'EASL Toggle', 'total-child' )] = 'easl-toggle';
+	vc_update_shortcode_param('vc_toggle', array(
+		'param_name' => 'style',
+		'value' => $toggle_styles
+	));
 }
 
 add_action( 'vc_after_init', 'easl_vc_add_params', 40 );
@@ -277,6 +292,7 @@ function easl_total_post_types( $post_types ) {
 
 	return $post_types;
 }
+
 
 function easl_page_header_title_table_wrap_open() {
 	if ( is_singular( 'event' ) && 'background-image' != wpex_page_header_style() ) {
@@ -491,3 +507,8 @@ function easl_vcex_post_type_carousel_title($title_output, $atts ) {
 	return $title_output;
 }
 add_filter('vcex_post_type_carousel_title', 'easl_vcex_post_type_carousel_title', 10, 2);
+
+function easl_wpb_toggle_heading($heading, $data) {
+	return '<h4>'. $data['title'] .'</h4>';
+}
+add_filter('wpb_toggle_heading', 'easl_wpb_toggle_heading', 20, 2);
