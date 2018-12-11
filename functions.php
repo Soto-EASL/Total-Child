@@ -19,6 +19,7 @@ require_once EASL_INC_DIR . 'post-types/associations/associations-config.php';
 require_once EASL_INC_DIR . 'post-types/publication/publication-config.php';
 require_once EASL_INC_DIR . 'post-types/annual-reports/annual-reports-config.php';
 require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
+require_once EASL_INC_DIR . 'post-types/newsletter/newsletter-config.php';
 
 function easl_theme_setup(){
 	load_theme_textdomain('total-child');
