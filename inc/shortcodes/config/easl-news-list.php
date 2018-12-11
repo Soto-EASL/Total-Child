@@ -3,6 +3,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 
+$newsletter_years = EASL_Newsletter_Config::get_years();
+$nl_years = array(__('All Year', 'total-child') => '');
+foreach($newsletter_years as $y){
+	$nl_years['' + $y] = '' + $y;
+}
+
 return array(
 	'name' => __( 'EASL News List', 'total-child' ),
 	'base' => 'easl_news_list',
@@ -26,11 +32,46 @@ return array(
 		),
 		array(
 			'type'			 => 'textfield',
-			'heading'		 => __( 'Number of news', 'total' ),
+			'heading'		 => __( 'Number of news', 'total-child' ),
 			'param_name'	 => 'limit',
 			'value'			 => '6',
-			'description'	 => __( 'Enter the limit of news to show. Leave empty to show all.', 'total' ),
+			'description'	 => __( 'Enter the limit of news to show. Leave empty to show all.', 'total-child' ),
 			'group'			 => __( 'Query', 'total-child' ),
+		),
+		// Newsletter
+		array(
+			'type' => 'vcex_ofswitch',
+			'std' => 'true',
+			'heading' => __( 'Display Newsletters?', 'total-child' ),
+			'param_name' => 'display_newsletters',
+			'group' => __( 'Newsletters', 'total' ),
+			'description' => __( 'Enable to display newsletter.', 'total-child' ),
+		),
+		array(
+			'type'			 => 'textfield',
+			'heading'		 => __( 'Column Title', 'total-chid' ),
+			'param_name'	 => 'nl_title',
+			'value'			 => '',
+			'description'	 => __( 'Enter the title of newsletters column.', 'total-chid' ),
+			'group'			 => __( 'Newsletters', 'total-child' ),
+			'dependency' => array( 'element' => 'display_newsletters', 'value' => array( 'true' ) ),
+		),
+		array(
+			'type'			 => 'textfield',
+			'heading'		 => __( 'Number of newsletter', 'total-chid' ),
+			'param_name'	 => 'nl_limit',
+			'value'			 => '',
+			'description'	 => __( 'Enter the limit of newsletters to show. Leave empty to show all.', 'total-chid' ),
+			'group'			 => __( 'Newsletters', 'total-child' ),
+			'dependency' => array( 'element' => 'display_newsletters', 'value' => array( 'true' ) ),
+		),
+		array(
+			'type' => 'dropdown',
+			'heading' => __( 'Year', 'total-child' ),
+			'param_name' => 'nl_year',
+			'group' => __( 'Newsletters', 'total-child' ),
+			'value' => $nl_years,
+			'dependency' => array( 'element' => 'display_newsletters', 'value' => array( 'true' ) ),
 		),
 		array(
 			'type' => 'css_editor',

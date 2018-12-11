@@ -16,6 +16,10 @@ $el_class      = '';
 $css           = '';
 $css_animation = '';
 $limit = '';
+$display_newsletters = '';
+$nl_title = '';
+$nl_limit = '';
+$nl_year = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -200,14 +204,42 @@ $news_query = new WP_Query( $query_args );
 					<?php endif; ?>
                 </div>
             </div>
+            <?php if('true' == $display_newsletters): ?>
             <div class="easl-col easl-col-4 easl-news-list-newsletters">
                 <div class="easl-col-inner">
                     <div class="sidebar-box widget">
+                        <?php if($nl_title): ?>
                         <h2 class="widget-title"><?php _e( 'Past EASL Newsletters', 'total-child' ); ?></h2>
-                        <?php get_template_part('partials/newsletter/list'); ?>
+                        <?php endif; ?>
+                        <?php
+                        $nl_limit = !empty( $nl_limit ) ? absint($nl_limit): -1;
+                        $query_args = array(
+	                        'post_type'      => EASL_Newsletter_Config::get_slug(),
+	                        'post_status'    => 'publish',
+	                        'orderby'        => 'date',
+	                        'order'          => 'DESC',
+	                        'posts_per_page' => $nl_limit,
+                        );
+                        if($nl_year) {
+	                        $query_args['year'] = $nl_year;
+                        }
+                        $newsletter_query = new WP_Query($query_args);
+                        if($newsletter_query->have_posts()){
+	                        echo '<div class="easl-newsletters-list"><ul>';
+	                        while ($newsletter_query->have_posts()){
+		                        $newsletter_query->the_post();
+		                        get_template_part('partials/newsletter/list');
+	                        }
+	                        echo '</div></ul>';
+	                        wp_reset_query();
+                        }else{
+	                        echo '<p class="easl-not-found">'.  __('No newsletter found', 'total-child') .'</p>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
