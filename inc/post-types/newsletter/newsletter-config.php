@@ -57,6 +57,16 @@ class EASL_Newsletter_Config {
 			),
 		) );
 	}
+
+	public static function get_years() {
+		global $wpdb;
+		$post_type = self::get_slug();
+		$years = $wpdb->get_col( "SELECT DISTINCT YEAR( post_date ) AS year FROM {$wpdb->posts} WHERE post_type = '{$post_type}' AND post_status = 'publish' ORDER BY post_date DESC" );
+		if(!$years || !is_array($years)){
+			$years = array();
+		}
+		return $years;
+	}
 }
 
 new EASL_Newsletter_Config;
