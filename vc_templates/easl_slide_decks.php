@@ -67,8 +67,8 @@ $is_custom_topic = false;
 
 $taxonomies = get_terms( array(
     'taxonomy'   => Slide_Decks_Config::get_topic_slug(),
-    'hide_empty' => false,
-    'orderby'    => 'term_id',
+    'hide_empty' => true,
+    'orderby'    => 'name',
     'order'      => 'ASC',
     'fields'     => 'id=>name',
 ) );

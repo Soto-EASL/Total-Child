@@ -215,7 +215,7 @@ $color_list = [
                                                     $topics = get_terms( array(
                                                         'taxonomy' => EASL_Event_Config::get_topic_slug(),
                                                         'hide_empty' => false,
-                                                        'orderby' => 'term_id',
+                                                        'orderby' => 'name',
                                                         'order' => 'ASC',
                                                         'fields' => 'all',
                                                     ) );

@@ -82,6 +82,12 @@ $taxonomy_string = '';
 $is_custom_topic = false;
 if($hide_topic === "false"){
     $taxonomies = get_categories(['taxonomy' => 'publication_topic']);
+	$taxonomies = get_terms( array(
+		'taxonomy' => Publication_Config::get_topic_slug(),
+		'hide_empty' => true,
+		'orderby' => 'name',
+		'order' => 'ASC',
+	) );
     if($taxonomies){
         foreach ($taxonomies as $taxonomy){
             $bg_color ='';
@@ -306,16 +312,10 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 			if ( $easl_query->have_posts() ){
 				while ( $easl_query->have_posts() ):
 					$easl_query->the_post();
-					$topic_str = '';
-					$topics = wp_get_post_terms(get_the_ID(), 'publication_topic' );
-					if($topics){
-						foreach ($topics as $topic){
-							$topic_str .= $topic->name.' ';
-
-						}
-					}
+					$topics = '';
+					$topics = easl_publications_topics_name(get_the_ID(), false, ' - ');
 					if($hide_topic === "true"){
-						$topic_str = '';
+						$topics = '';
 						$topic_label = '';
 						$topic_delimiter = '';
 					}
@@ -329,7 +329,7 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 					$target = $deny_detail_page === "true" ? 'target="_blank"' : '';
 					$publication_date = get_field('publication_date');
 					?>
-					<article class="scientific-publication <?php if(!$image_src){echo 'sp-has-no-thumb';} ?> clr">
+					<article class="scientific-publication <?php if(!$image_src){echo 'sp-has-no-thumb';} ?> easl-sprow-color-<?php echo easl_get_publication_topic_color(); ?> clr">
 						<?php if($image_src): ?>
 						<div class="sp-thumb">
 							<a href="<?php echo $read_more_link;?>" title="" <?php $target ?>>
@@ -337,8 +337,8 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 							</a>
 						</div>
 						<?php endif; ?>
-						<div class="sp-content">
-							<div class="color-delimeter filter-bg-<?php echo easl_get_events_topic_color();?>" style="padding-left: 10px;">
+						<div class="scientific-publication-content  sp-content">
+							<div class="sp-item-meta-title">
 								<p class="sp-meta">
 									<?php if($publication_date): ?>
 									<span class="sp-meta-date"><?php echo $publication_date; ?></span>
@@ -346,11 +346,9 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 									<?php if($topic_delimiter): ?>
 									<span class=sp-meta-sep"><?php echo $topic_delimiter; ?></span>
 									<?php endif; ?>
-									<?php if($topic_label): ?>
+									<?php if($topics): ?>
 									<span class="sp-meta-type"><?php echo $topic_label; ?></span>
-									<?php endif; ?>
-									<?php if($topic_str): ?>
-									<span class="sp-meta-value"><?php echo $topic_str; ?></span>
+									<span class="sp-meta-value"><?php echo $topics; ?></span>
 									<?php endif; ?>
 								</p>
 								<h3><a href="<?php echo $read_more_link; ?>" <?php echo $target; ?>><?php the_title(); ?></a></h3>

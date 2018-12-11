@@ -42,8 +42,15 @@ function easl_get_events_topic_color($id = null){
 	if(!$id){
 		$id = get_the_ID();
 	}
-	$topics = wp_get_post_terms($id, EASL_Event_Config::get_topic_slug());
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, EASL_Event_Config::get_topic_slug(), $args);
 if( !$topics || is_wp_error( $topics )){
+		return 'blue';
+	}
+	if(count($topics) > 1) {
 		return 'blue';
 	}
 	$topic_color = get_term_meta($topics[0]->term_id, 'easl_tax_color', true);
@@ -56,8 +63,15 @@ function easl_get_slide_decks_topic_color($id = null){
 	if(!$id){
 		$id = get_the_ID();
 	}
-	$topics = wp_get_post_terms($id, Slide_Decks_Config::get_topic_slug());
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, Slide_Decks_Config::get_topic_slug(), $args);
 	if( !$topics || is_wp_error( $topics )){
+		return 'blue';
+	}
+	if(count($topics) > 1) {
 		return 'blue';
 	}
 	$topic_color = get_term_meta($topics[0]->term_id, 'easl_tax_color', true);
@@ -71,8 +85,15 @@ function easl_get_publication_topic_color($id = null){
 	if(!$id){
 		$id = get_the_ID();
 	}
-	$topics = wp_get_post_terms($id, Publication_Config::get_topic_slug());
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, Publication_Config::get_topic_slug(), $args);
 	if( !$topics || is_wp_error( $topics )){
+		return 'blue';
+	}
+	if(count($topics) > 1) {
 		return 'blue';
 	}
 	$topic_color = get_term_meta($topics[0]->term_id, 'easl_tax_color', true);
@@ -86,7 +107,32 @@ function easl_event_topics_name($id = null, $first = true, $seperator = ', '){
 	if(!$id){
 		$id = get_the_ID();
 	}
-	$topics = wp_get_post_terms($id, EASL_Event_Config::get_topic_slug());
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, EASL_Event_Config::get_topic_slug(), $args);
+	if( !$topics || is_wp_error( $topics )){
+		return '';
+	}
+	if($first){
+		return $topics[0]->name;
+	}
+	$topic_names = array();
+	foreach ($topics as $topic){
+		$topic_names[] = $topic->name;
+	}
+	return implode( $seperator, $topic_names );
+}
+function easl_publications_topics_name($id = null, $first = true, $seperator = ', '){
+	if(!$id){
+		$id = get_the_ID();
+	}
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, Publication_Config::get_topic_slug(), $args);
 	if( !$topics || is_wp_error( $topics )){
 		return '';
 	}

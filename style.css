@@ -2064,6 +2064,87 @@ body .wpb_single_image a.easl-vc-image-over:after {
     margin: 0 0 10px;
     padding: 0;
 }
+
+.sp-item-meta-title {
+    border-left: 5px solid #165291;
+    padding-left: 10px;
+}
+
+.easl-sprow-color-blue .sp-item-meta-title {
+    border-color: #165291;
+}
+.easl-sprow-color-red .sp-item-meta-title {
+    border-color: #de2a57;
+}
+.easl-sprow-color-teal .sp-item-meta-title {
+    border-color: #189790;
+}
+.easl-sprow-color-orrange .sp-item-meta-title {
+    border-color: #f26827;
+}
+.easl-sprow-color-gray .sp-item-meta-title {
+    border-color: #7e6a73;
+}
+easl-sprow-color-yellow .sp-item-meta-title {
+    border-color: #f9bc49;
+}
+
+.easl-sprow-color-blue .sp-meta-type,
+.easl-sprow-color-blue .sp-item-meta-title,
+.easl-sprow-color-blue .sp-item-meta-title h3 {
+    color: #165291;
+}
+.easl-sprow-color-red .sp-meta-type,
+.easl-sprow-color-red .sp-item-meta-title,
+.easl-sprow-color-red .sp-item-meta-title a {
+    color: #de2a57;
+}
+.easl-sprow-color-teal .sp-meta-type,
+.easl-sprow-color-teal .sp-item-meta-title,
+.easl-sprow-color-teal .sp-item-meta-title a {
+    color: #189790;
+}
+.easl-sprow-color-orrange .sp-meta-type,
+.easl-sprow-color-orrange .sp-item-meta-title,
+.easl-sprow-color-orrange .sp-item-meta-title a {
+    color: #f26827;
+}
+.easl-sprow-color-gray .sp-meta-type,
+.easl-sprow-color-gray .sp-item-meta-title,
+.easl-sprow-color-gray .sp-item-meta-title a {
+    color: #7e6a73;
+}
+.easl-sprow-color-yellow .sp-meta-type,
+.easl-sprow-color-yellow .sp-item-meta-title,
+.easl-sprow-color-yellow .sp-item-meta-title a {
+    color: #f9bc49;
+}
+
+.easl-sprow-color-blue .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-blue .scientific-publication-content .easl-button:active {
+    background-color: #165291;
+}
+.easl-sprow-color-red .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-red .scientific-publication-content .easl-button:active {
+    background-color: #de2a57;
+}
+.easl-sprow-color-teal .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-teal .scientific-publication-content .easl-button:active {
+    background-color: #189790;
+}
+.easl-sprow-color-orrange .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-orrange .scientific-publication-content .easl-button:active {
+    background-color: #f26827;
+}
+.easl-sprow-color-gray .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-gray .scientific-publication-content .easl-button:active {
+    background-color: #7e6a73;
+}
+.easl-sprow-color-yellow .scientific-publication-content .easl-button:hover,
+.easl-sprow-color-yellow .scientific-publication-content .easl-button:active {
+    background-color: #f9bc49;
+}
+
 /* VC Shortcode: EASL Button Grid */
 .easl-button-grid-wrapper.easl-row {
     margin: -5px -5px 0;
