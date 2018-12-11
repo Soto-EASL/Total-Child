@@ -544,6 +544,9 @@ function easl_body_classes($classes){
 	if( is_singular('event')) {
 		$classes[] = 'event-color-' . easl_get_events_topic_color($post_id);
 	}
+	if( is_singular(Publication_Config::get_publication_slug())) {
+		$classes[] = 'publication-color-' . easl_get_publication_topic_color($post_id);
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'easl_body_classes' );
