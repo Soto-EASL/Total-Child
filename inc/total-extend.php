@@ -59,6 +59,7 @@ function easl_vc_button_grid_icons() {
 		__( 'ID card', 'total' )         => 'id-card',
 		__( 'Hepatocytes', 'total' )     => 'hepatocytes',
 		__( 'Two faces', 'total' )       => 'two-faces',
+		__( 'Scroll', 'total' )       => 'scroll',
 	);
 }
 

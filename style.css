@@ -2360,6 +2360,10 @@ easl-sprow-color-yellow .sp-item-meta-title {
 .easl-gbtn-two-faces {
     background-image: url("images/icons/two-faces.png");
 }
+.scroll-icon,
+.easl-gbtn-scroll {
+    background-image: url("images/icons/scroll.png");
+}
 
 .easl-gbtn-text {
     display: block;
