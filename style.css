@@ -2373,6 +2373,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-gbtn-scroll {
     background-image: url("images/icons/scroll.png");
 }
+.livertree-icon,
+.easl-gbtn-livertree {
+    background-image: url("images/icons/livertree.png");
+}
 
 .easl-gbtn-text {
     display: block;

@@ -60,6 +60,7 @@ function easl_vc_button_grid_icons() {
 		__( 'Hepatocytes', 'total' )     => 'hepatocytes',
 		__( 'Two faces', 'total' )       => 'two-faces',
 		__( 'Scroll', 'total' )       => 'scroll',
+		__( 'LiverTree', 'total' )       => 'livertree',
 	);
 }
 
