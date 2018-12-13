@@ -52,7 +52,7 @@ $topics_list = '
 	';
 $topics = get_terms( array(
 	'taxonomy' => EASL_Event_Config::get_topic_slug(),
-	'hide_empty' => true,
+	'hide_empty' => false,
 	'orderby' => 'name',
 	'order' => 'ASC',
 	'fields' => 'id=>name',
