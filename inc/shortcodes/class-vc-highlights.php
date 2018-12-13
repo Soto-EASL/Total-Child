@@ -122,18 +122,27 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
 					'orderby' => 'meta_value_num',
 					'meta_key' => 'event_start_date',
 					'meta_query' => array(
-						'relation' => 'OR',
+						'relation' => 'AND',
 						array(
-							'key' => 'event_start_date',
-							'value' => $now_time - 86399,
-							'compare' => '>=',
+							'key' => 'event_organisation',
+							'value' => 1,
+							'compare' => '=',
 							'type' => 'NUMERIC',
 						),
 						array(
-							'key' => 'event_end_date',
-							'value' => $now_time - 86399,
-							'compare' => '>=',
-							'type' => 'NUMERIC',
+							'relation' => 'OR',
+							array(
+								'key' => 'event_start_date',
+								'value' => $now_time - 86399,
+								'compare' => '>=',
+								'type' => 'NUMERIC',
+							),
+							array(
+								'key' => 'event_end_date',
+								'value' => $now_time - 86399,
+								'compare' => '>=',
+								'type' => 'NUMERIC',
+							),
 						),
 					),
                     'tax_query' => array(
@@ -144,6 +153,47 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                         )
                     ),
                 ) );
+                if(!in_array('general-hepatology', $filter) && !$latest_event->have_posts()){
+	                $latest_event = new WP_Query( array(
+		                'post_type' => EASL_Event_Config::get_event_slug(),
+		                'post_status'=> 'publish',
+		                'posts_per_page' => 1,
+		                'order' => 'ASC',
+		                'orderby' => 'meta_value_num',
+		                'meta_key' => 'event_start_date',
+		                'meta_query' => array(
+			                'relation' => 'AND',
+			                array(
+				                'key' => 'event_organisation',
+				                'value' => 1,
+				                'compare' => '=',
+				                'type' => 'NUMERIC',
+			                ),
+			                array(
+				                'relation' => 'OR',
+				                array(
+					                'key' => 'event_start_date',
+					                'value' => $now_time - 86399,
+					                'compare' => '>=',
+					                'type' => 'NUMERIC',
+				                ),
+				                array(
+					                'key' => 'event_end_date',
+					                'value' => $now_time - 86399,
+					                'compare' => '>=',
+					                'type' => 'NUMERIC',
+				                ),
+			                ),
+		                ),
+		                'tax_query' => array(
+			                array(
+				                'taxonomy' => 'event_topic',
+				                'field' => 'slug',
+				                'terms' => array('general-hepatology'),
+			                )
+		                ),
+	                ) );
+                }
                 $latest_publication = new WP_Query( array(
                     'posts_per_page' => 1,
                     'post_type' => 'publication',
