@@ -11,6 +11,9 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+$publication_link_to_file = get_field('publication_link_to_file');
+
 $image = has_post_thumbnail( get_the_ID() ) ?
     wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
 $image_src = $image ? $image[0] : '';
@@ -23,6 +26,9 @@ if($topics){
 
     }
 }
+
+$topic_color = easl_get_publication_topic_color(get_the_ID());
+
 wp_enqueue_script('publication-detailed-item-script',
     get_stylesheet_directory_uri() . '/assets/js/publication_detailed.js',
     ['jquery'],
@@ -30,12 +36,8 @@ wp_enqueue_script('publication-detailed-item-script',
     true);
 
 ?>
-<style>
-    .text-decoration-none:hover {
-        text-decoration: none;
-    }
-</style>
-<article id="single-blocks" class="single-publication-article entry clr">
+
+<article id="single-blocks" class="single-publication-article entry easl-color-<?php echo $topic_color; ?> clr">
     <div class="publication-main-section">
         <div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex">
             <div class="wpb_column vc_column_container vc_col-sm-9">
@@ -55,25 +57,17 @@ wp_enqueue_script('publication-detailed-item-script',
                             <div class="wpb_column vc_column_container vc_col-sm-8">
                                 <div class="vc_column-inner">
                                     <div class="pub-content">
-                                        <div class="color-delimeter filter-bg-<?php echo easl_get_events_topic_color();?>"
-                                             style="padding-left: 0px; margin-bottom: 30px; border-left:none;">
-                                            <div class="pub-meta" style="margin-bottom: 20px;">
-                                                <p class="sp-meta">
-                                                    <span class="sp-meta-date"><?php echo get_field('publication_date');?></span>
-                                                    <span class=sp-meta-sep"> | </span>
-                                                    <span class="sp-meta-type">Topic:</span>
-                                                    <span class="sp-meta-value"><?php echo $topic_str;?></span>
-                                                </p>
-                                            </div>
-                                            <h3 class="pub-section-title" style="font-size: 26px;
-    line-height: 30px;
-    margin: 0 0 0px;"><?php echo get_the_title();?></h3>
-                                        </div>
-
+                                        <p class="sp-meta">
+                                            <span class="sp-meta-date"><?php echo get_field('publication_date');?></span>
+                                            <span class=sp-meta-sep"> | </span>
+                                            <span class="sp-meta-type">Topic:</span>
+                                            <span class="sp-meta-value"><?php echo $topic_str;?></span>
+                                        </p>
+                                        <h3 class="single-publication-title"><?php echo get_the_title();?></h3>
                                         <div class="pub-description">
                                             <?php the_content();?>
                                         </div>
-                                        <?php if(get_field('publication_link_to_file')):?>
+                                        <?php if($publication_link_to_file):?>
                                             <style>
                                                 .easl-button-wide-short {
                                                     padding: 8px;
@@ -86,8 +80,7 @@ wp_enqueue_script('publication-detailed-item-script',
                                             <div class="wpb_column vc_column_container vc_col-sm-12">
                                                 <div class="vc_column-inner " style="margin-bottom: 40px;">
                                                     <div class="wpb_wrapper">
-                                                        <a href="<?php echo get_field('publication_link_to_file')['url']?>"
-                                                           target="_blank" class="easl-button easl-button-wide-short"><?php echo get_field('publication_link_to_file')['title']?></a>
+                                                        <a href="<?php echo $publication_link_to_file['url']?>" target="_blank" class="easl-button easl-button-wide-short"><?php echo get_field('publication_link_to_file')['title']?></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,61 +91,12 @@ wp_enqueue_script('publication-detailed-item-script',
                                             <div class="wpb_column vc_column_container vc_col-sm-12">
                                                 <div class="vc_column-inner " style="margin-bottom: 0">
                                                     <div class="wpb_wrapper">
-                                                        <div style="float: left;margin-right: 20px;font-family: 'KnockoutHTF51Middleweight';
-    font-size: 16px;
-    font-weight: normal;color:#104f85;">Share this page</div>
-                                                        <div class="wpex-social-share position-horizontal style-custom display-block" style="margin-bottom: 0"
-                                                             data-source="<?php echo get_bloginfo('url')?>"
-                                                             data-url="<?php the_permalink();?>"
-                                                             data-title="<?php the_title();?>"
-                                                             data-specs="menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600">
-                                                            <ul class="clr">
-                                                                <li class="wpex-twitter">
-                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/tw.png');
-background-repeat: no-repeat;
-background-position: top left;
-background-size: cover;
-height: 25px;
-    width: 30px;
-    display: block;">
-
-                                                                    </a>
-                                                                </li>
-                                                                <li class="wpex-facebook">
-                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/f.png');
-background-repeat: no-repeat;background-position: top left; background-size: cover;
-height: 25px;
-    width: 30px;
-    display: block;">
-
-                                                                    </a>
-                                                                </li>
-                                                                <li class="wpex-linkedin">
-                                                                    <a role="button" tabindex="1" style="background-image: url('/wp-content/themes/Total-Child/images/title-icons/in.png');
-background-repeat: no-repeat;background-position: top left; background-size: cover;
-height: 25px;
-    width: 30px;
-    display: block;">
-                                                                    </a>
-                                                                </li>
-
-                                                            </ul>
-                                                        </div>
+                                                        <?php easl_social_share_icons(); ?>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php echo do_shortcode('[vcex_social_share style="custom" sites="%5B%7B%22site%22%3A%22twitter%22%7D%2C%7B%22site%22%3A%22facebook%22%7D%2C%7B%22site%22%3A%22linkedin%22%7D%5D"]');?>
                                     </div>
-                                    <style>
-                                        .wpex-social-share,
-                                        .hidden{
-                                            display: none;
-                                        }
-                                        .display-block{
-                                            display: block;
-                                        }
-                                    </style>
                                 </div>
                             </div>
                         </div>

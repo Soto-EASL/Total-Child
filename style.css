@@ -502,6 +502,9 @@ body a {
     line-height: 1.4em;
     padding: 8px 22px;
 }
+.display-block{
+    display: block;
+}
 
 .entry h1,
 .entry h2,
@@ -3935,9 +3938,6 @@ ul.event-links-list li:before{
 
 
 /* Post Type: Publication */
-body.single-publication {
-    /*background-color: #f3f3ee !important;*/
-}
 .single-publication .page-header.background-image-page-header .page-header-title {
     color: #fff;
 }
@@ -3951,7 +3951,12 @@ body.single-publication {
     margin-top: 2px;
 }
 .pub-meta .sp-meta {
-    margin: 0 0 8px;
+    margin: 0 0 20px;
+}
+.pub-content  .single-publication-title {
+    font-size: 26px;
+    line-height: 30px;
+    margin: 0 0 0px;
 }
 .pub-content .pub-section-title {
     font-size: 26px;
@@ -3979,6 +3984,32 @@ body.single-publication {
 }
 .pub-download-item .easl-button {
     padding: 10px 25px;
+}
+
+
+.publication-color-blue .sp-meta-type,
+.publication-color-blue .single-publication-title {
+    color: #165291;
+}
+.publication-color-red .sp-meta-type,
+.publication-color-red .single-publication-title {
+    color: #de2a57;
+}
+.publication-color-teal .sp-meta-type,
+.publication-color-teal .single-publication-title {
+    color: #189790;
+}
+.publication-color-orrange .sp-meta-type,
+.publication-color-orrange .single-publication-title {
+    color: #f26827;
+}
+.publication-color-gray .sp-meta-type,
+.publication-color-gray .single-publication-title {
+    color: #7e6a73;
+}
+.publication-color-yellow .sp-meta-type,
+.publication-color-yellow .single-publication-title {
+    color: #f9bc49;
 }
 
 /* Industry Partnership */
@@ -5324,68 +5355,23 @@ ul.suggestions{
     background-color: #f9bc49;
 }
 
+/* Social Shares */
+.easl-social-share-icons{}
 
-.event-color-blue .social-share li a:hover .hexagon {
-    background-color: #165291;
+.wpex-social-share:not(.easl-social-share) {
+    display: none;
 }
-.event-color-red .social-share li a:hover .hexagon {
-    background-color: #de2a57;
+.easl-social-share-icons h5 {
+    display: inline-block;
+    margin-right: 20px;
+    font-family: 'KnockoutHTF51Middleweight';
+    font-size: 16px;
+    font-weight: normal;
+    color: #104f85;
 }
-.event-color-teal .social-share li a:hover .hexagon {
-    background-color: #189790;
+.easl-social-share-icons .easl-social-share {
+    display: inline-block;
 }
-.event-color-orrange .social-share li a:hover .hexagon {
-    background-color: #f26827;
-}
-.event-color-gray .social-share li a:hover .hexagon {
-    background-color: #7e6a73;
-}
-.event-color-yellow .social-share li a:hover .hexagon {
-    background-color: #f9bc49;
-}
-
-.event-color-blue .social-share li a:hover .hexagon::before {
-    border-right-color: #165291;
-}
-.event-color-red .social-share li a:hover .hexagon::before {
-    border-right-color: #de2a57;
-}
-.event-color-teal .social-share li a:hover .hexagon::before {
-    border-right-color: #189790;
-}
-.event-color-orrange .social-share li a:hover .hexagon::before {
-    border-right-color: #f26827;
-}
-.event-color-gray .social-share li a:hover .hexagon::before {
-    border-right-color: #7e6a73;
-}
-.event-color-yellow .social-share li a:hover .hexagon::before {
-    border-right-color: #f9bc49;
-}
-
-.event-color-blue .social-share li a:hover .hexagon::after {
-    border-left-color: #165291;
-}
-.event-color-red .social-share li a:hover .hexagon::after {
-    border-left-color: #de2a57;
-}
-.event-color-teal .social-share li a:hover .hexagon::after {
-    border-left-color: #189790;
-}
-.event-color-orrange .social-share li a:hover .hexagon::after {
-    border-left-color: #f26827;
-}
-.event-color-gray .social-share li a:hover .hexagon::after {
-    border-left-color: #7e6a73;
-}
-.event-color-yellow .social-share li a:hover .hexagon::after {
-    border-left-color: #f9bc49;
-}
-
-.wpex-social-share {
-     display: none;
- }
-
 .social-share li a {
       color: #fff !important;
       position: relative;
@@ -5447,9 +5433,65 @@ ul.suggestions{
 .social-share li a:hover .hexagon:after {
     border-left-color: #dc234e;
 }
-.display-block{
-    display: block;
+
+
+.easl-color-blue .social-share li a:hover .hexagon {
+    background-color: #165291;
 }
+.easl-color-red .social-share li a:hover .hexagon {
+    background-color: #de2a57;
+}
+.easl-color-teal .social-share li a:hover .hexagon {
+    background-color: #189790;
+}
+.easl-color-orrange .social-share li a:hover .hexagon {
+    background-color: #f26827;
+}
+.easl-color-gray .social-share li a:hover .hexagon {
+    background-color: #7e6a73;
+}
+.easl-color-yellow .social-share li a:hover .hexagon {
+    background-color: #f9bc49;
+}
+
+.easl-color-blue .social-share li a:hover .hexagon::before {
+    border-right-color: #165291;
+}
+.easl-color-red .social-share li a:hover .hexagon::before {
+    border-right-color: #de2a57;
+}
+.easl-color-teal .social-share li a:hover .hexagon::before {
+    border-right-color: #189790;
+}
+.easl-color-orrange .social-share li a:hover .hexagon::before {
+    border-right-color: #f26827;
+}
+.easl-color-gray .social-share li a:hover .hexagon::before {
+    border-right-color: #7e6a73;
+}
+.easl-color-yellow .social-share li a:hover .hexagon::before {
+    border-right-color: #f9bc49;
+}
+
+.easl-color-blue .social-share li a:hover .hexagon::after {
+    border-left-color: #165291;
+}
+.easl-color-red .social-share li a:hover .hexagon::after {
+    border-left-color: #de2a57;
+}
+.easl-color-teal .social-share li a:hover .hexagon::after {
+    border-left-color: #189790;
+}
+.easl-color-orrange .social-share li a:hover .hexagon::after {
+    border-left-color: #f26827;
+}
+.easl-color-gray .social-share li a:hover .hexagon::after {
+    border-left-color: #7e6a73;
+}
+.easl-color-yellow .social-share li a:hover .hexagon::after {
+    border-left-color: #f9bc49;
+}
+
 
 /* VC Shortcode: EASL News List */
 .easl-news-list-filter {

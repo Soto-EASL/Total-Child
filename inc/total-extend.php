@@ -513,3 +513,10 @@ function easl_wpb_toggle_heading($heading, $data) {
 	return '<h4>'. $data['title'] .'</h4>';
 }
 add_filter('wpb_toggle_heading', 'easl_wpb_toggle_heading', 20, 2);
+
+/**
+ * Display Social Share Icons
+ */
+function easl_social_share_icons(){
+	include get_theme_file_path('partials/social-shares-icons.php');
+}

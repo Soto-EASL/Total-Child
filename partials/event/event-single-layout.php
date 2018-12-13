@@ -144,9 +144,10 @@ $event_meeting_type_name = easl_meeting_type_name(get_the_ID());
 $about_easl_school_title = wpex_get_mod('about_easl_schools_title');
 $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 
+$topic_color = easl_get_events_topic_color(get_the_ID());
 ?>
 
-<article id="single-blocks" class="single-event-article entry clr">
+<article id="single-blocks" class="single-event-article entry easl-color-<?php echo $topic_color; ?> clr">
 	<div class="event-top-section">
 		<div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex">
 			<div class="wpb_column vc_column_container vc_col-sm-7">
@@ -523,30 +524,9 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
         <div class="wpb_column vc_column_container vc_col-sm-12">
             <div class="vc_column-inner " style="margin-bottom: 0">
                 <div class="wpb_wrapper">
-                    <div style="float: left;margin-right: 20px;font-family: 'KnockoutHTF51Middleweight';
-    font-size: 16px;
-    font-weight: normal;color:#104f85;">Share this page</div>
-                    <div class="wpex-social-share position-horizontal style-custom display-block" style="margin-bottom: 0"
-                         data-source="<?php echo get_bloginfo('url')?>"
-                         data-url="<?php the_permalink();?>"
-                         data-title="<?php the_title();?>"
-                         data-specs="menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600">
-                        <ul class="clr social-share">
-                            <li class="wpex-twitter">
-                                <a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            </li>
-                            <li class="wpex-facebook">
-                                <a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            </li>
-                            <li class="wpex-linkedin">
-                                <a href=""><span class="hexagon"></span><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </li>
-
-                        </ul>
-                    </div>
+	                <?php easl_social_share_icons(); ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php echo do_shortcode('[vcex_social_share style="custom" sites="%5B%7B%22site%22%3A%22twitter%22%7D%2C%7B%22site%22%3A%22facebook%22%7D%2C%7B%22site%22%3A%22linkedin%22%7D%5D"]');?>
 </article><!-- #single-blocks -->
