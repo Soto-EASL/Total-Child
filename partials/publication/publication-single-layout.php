@@ -68,14 +68,6 @@ wp_enqueue_script('publication-detailed-item-script',
                                             <?php the_content();?>
                                         </div>
                                         <?php if($publication_link_to_file):?>
-                                            <style>
-                                                .easl-button-wide-short {
-                                                    padding: 8px;
-                                                    display: block;
-                                                    text-align: center;
-                                                    width: 100%;
-                                                }
-                                            </style>
                                         <div class="vc_row wpb_row vc_row-fluid">
                                             <div class="wpb_column vc_column_container vc_col-sm-12">
                                                 <div class="vc_column-inner " style="margin-bottom: 40px;">

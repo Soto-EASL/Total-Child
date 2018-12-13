@@ -157,6 +157,12 @@ body a {
     text-align: center;
     width: 100%;
 }
+.easl-button-wide-short {
+     padding: 8px;
+     display: block;
+     text-align: center;
+     width: 100%;
+ }
 .easl-button-wide-small {
     padding: 10px 15px;
     display: block;
@@ -4010,6 +4016,31 @@ ul.event-links-list li:before{
 .publication-color-yellow .sp-meta-type,
 .publication-color-yellow .single-publication-title {
     color: #f9bc49;
+}
+
+.publication-color-blue .publication-sidebar .easl-button:hover,
+.publication-color-blue .publication-sidebar .easl-button:active {
+    background: #165291;
+}
+.publication-color-red .publication-sidebar .easl-button:hover,
+.publication-color-red .publication-sidebar .easl-button:active {
+    background: #de2a57;
+}
+.publication-color-teal .publication-sidebar .easl-button:hover,
+.publication-color-teal .publication-sidebar .easl-button:active {
+    background: #189790;
+}
+.publication-color-orrange .publication-sidebar .easl-button:hover,
+.publication-color-orrange .publication-sidebar .easl-button:active {
+    background: #f26827;
+}
+.publication-color-gray .publication-sidebar .easl-button:hover,
+.publication-color-gray .publication-sidebar .easl-button:active {
+    background: #7e6a73;
+}
+.publication-color-yellow .publication-sidebar .easl-button:hover,
+.publication-color-yellow .publication-sidebar .easl-button:active {
+    background: #f9bc49;
 }
 
 /* Industry Partnership */
