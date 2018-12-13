@@ -4525,7 +4525,12 @@ a.button:hover{
 .social_buttons_widget{
     position: fixed;
     right: 0;
-    top: 30%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
     z-index: 99999;
 }
 .social_buttons_widget a.social-btn{
