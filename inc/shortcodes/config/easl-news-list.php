@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $newsletter_years = EASL_Newsletter_Config::get_years();
 $nl_years = array(__('All Year', 'total-child') => '');
 foreach($newsletter_years as $y){
-	$nl_years['' + $y] = '' + $y;
+	$nl_years[(string)$y] = (string)$y;
 }
 
 return array(
