@@ -21,7 +21,6 @@ $topics_lis = '';
 if(is_array($topics) && count($topics) > 0):
 	foreach ($topics as $topic) {
 		$topic_color = 'blue';
-		$topics      = wp_get_post_terms( $id, EASL_Event_Config::get_topic_slug() );
 		$topic_color = get_term_meta( $topic->term_id, 'easl_tax_color', true );
 		if ( ! $topic_color ) {
 			$topic_color = 'blue';
