@@ -9,17 +9,11 @@ if ( ! defined( 'EASL_HOME_URL' ) ) {
 }
 
 require_once EASL_INC_DIR . 'custom-tax-news-source.php';
-require_once EASL_INC_DIR . 'post-types/event/event-config.php';
+require_once EASL_INC_DIR . 'post-types/post-types.php';
 require_once EASL_INC_DIR . 'customizer.php';
 require_once EASL_INC_DIR . 'total-extend.php';
 require_once EASL_INC_DIR . 'shortcodes.php';
 require_once EASL_INC_DIR . 'widgets.php';
-require_once EASL_INC_DIR . 'post-types/fellowship/fellowship-config.php';
-require_once EASL_INC_DIR . 'post-types/associations/associations-config.php';
-require_once EASL_INC_DIR . 'post-types/publication/publication-config.php';
-require_once EASL_INC_DIR . 'post-types/annual-reports/annual-reports-config.php';
-require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
-require_once EASL_INC_DIR . 'post-types/newsletter/newsletter-config.php';
 
 function easl_theme_setup(){
 	load_theme_textdomain('total-child');
