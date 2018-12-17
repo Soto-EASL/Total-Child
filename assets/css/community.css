@@ -163,9 +163,11 @@ ul.vcex-filter-links li.active a{
     transform: translateY(-50%);
     color: #62cff5;
 }
+.easl-staff-details-content .easl-member-profile .sp-thumb {
+    margin-top: 8px;
+}
 .easl-member-profile-name{
     font-size: 21px !important;
-    margin-top: -8px !important;
     padding-bottom: 5px !important;
 }
 .easl-back-link-chevron{
