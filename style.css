@@ -6005,7 +6005,152 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     -ms-transform: rotate(225deg) translate(-25%,-25%);
     transform: rotate(225deg) translate(-25%,-25%);
 }
+/* Shortcode: ILC details*/
+.easl-ilc-details-filter {
+    width: 140px;
+    margin-bottom: 25px;
+}
+.easl-ilc-details-filter .easl-dropdown {
+    z-index: 9999;
+}
+.easl-ilc-details-filter .easl-dropdown-label,
+.easl-dropdown ul li span{
+    padding-left: 15px;
+}
+.easl-ilc-details-filter h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    line-height: 1em;
+}
+.easl-ilc-details-buttons {
+    margin-bottom: 25px;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button {
+    background-color: #004b87;
+    display: block;
+    padding: 13px 35px 10px 15px;
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: "KnockoutHTF31JuniorMiddlewt", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button:hover {
+    text-decoration: none;
+    background: #71c5e8;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button span {
+    display: block;
+    font-size: 17px;
+    line-height: 18px;
+    margin-bottom: 2px;
+    position: relative;
+    z-index: 2;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button::after{
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    content: "\f105";
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'FontAwesome';
+    color: #71c5e8;
+    -webkit-transition: color 0.25s linear;
+    -moz-transition: color 0.25s linear;
+    transition: color 0.25s linear;
+}
 
+.easl-ilc-details-buttons  .easl-ilc-details-button::before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 32px;
+    height: 36px;
+    background-image: url(images/hepatocyte-logo.png);
+    background-repeat: no-repeat;
+    background-position: 0 2px;
+    background-size: 115%;
+    opacity: 0.35;
+    transition: opacity 0.25s linear;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button:hover::after {
+    color: #fff;
+}
+.easl-ilc-details-buttons  .easl-ilc-details-button:hover::before {
+    opacity: 1;
+}
+
+.easl-ilc-details-debriefs > h3 {
+    font-size: 24px;
+}
+.easl-ytpl-player-wrap {
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%;
+    margin-bottom: 25px;
+}
+.easl-ytpl-player-wrap iframe {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item {
+
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item a {
+    position: relative;
+    display: block;
+}
+.easl-yt-playlist .wpex-carousel.owl-carousel .owl-item .easl-ytpl-thumbs-item img {
+    width: 100%;
+    display: block;;
+    position: relative;
+    z-index: 1;
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item span {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    top: 50%;
+    left: 10px;
+    right: 10px;
+    text-align: center;
+    transform: translateY(-50%);
+    transition: all .25s;
+    z-index: 3;
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    z-index: 2;
+    transition: all .25s;
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item a:hover::after {
+    opacity: .44;
+}
+.easl-yt-playlist .easl-ytpl-thumbs-item a:hover span {
+    opacity: 1;
+    visibility: visible;
+}
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
@@ -6125,6 +6270,12 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 }
 @media only screen and (max-width: 767px) {
     .header-two-aside {}
+    .easl-ilc-details-buttons > .easl-col{
+        margin-bottom: 20px;
+    }
+    .easl-ilc-details-buttons > .easl-col:last-child {
+        margin-bottom: 0;
+    }
 }
 @media only screen and (max-width: 640px) {
     .header-two-aside {}

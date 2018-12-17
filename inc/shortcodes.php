@@ -29,6 +29,7 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel-item.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-news-list.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-ilc-details.php';
 
 
 require_once get_stylesheet_directory() . '/inc/shortcodes/utility/easl-toggle.php';
@@ -56,5 +57,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_3d_carousel_item', null, get_theme_file_path('/inc/shortcodes/config/easl-3d-carousel-item.php') );
 	vc_lean_map( 'easl_news_list', null, get_theme_file_path('/inc/shortcodes/config/easl-news-list.php') );
 	vc_lean_map( 'easl_slide_decks', null, get_theme_file_path('/inc/shortcodes/config/easl-slide-decks.php') );
+	vc_lean_map( 'easl_ilc_details', null, get_theme_file_path('/inc/shortcodes/config/easl-ilc-details.php') );
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

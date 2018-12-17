@@ -51,6 +51,32 @@ class EASL_ILC_Config {
 			),
 		) );
 	}
+
+	/**
+	 * Get ilc dropdown data
+	 * @return array
+	 */
+	public static function get_ilcs() {
+		$ilcs_dd = array();
+		$ilcs = get_posts( array(
+			'post_type'      => EASL_ILC_Config::get_slug(),
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'order' => 'DESC',
+			'orderby' => 'title',
+		));
+		if(!$ilcs) {
+			return array();
+		}
+		foreach ($ilcs as $ilc) {
+			$ilcs_dd[] = array(
+				'label' => get_the_title($ilc->ID),
+				'value' => $ilc->post_name,
+				'id' => $ilc->ID
+			);
+		}
+		return $ilcs_dd;
+	}
 }
 
 new EASL_ILC_Config();
