@@ -71,6 +71,7 @@ $event_args = array(
 	'meta_key' => 'event_start_date',
 );
 
+$meta_query = array();
 $meta_query_date = array();
 if('upcoming' == $event_type){
 	$meta_query_date[] = array(
