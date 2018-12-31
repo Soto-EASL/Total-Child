@@ -40,6 +40,7 @@ if( function_exists('get_field')){
 	$poster_download_link = get_field('poster_download_link');
 	$event_organisers = trim(get_field('event_organisers'));
 	$event_google_map = get_field('event_google_map');
+	$event_highlights = get_field('event_highlights');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -66,6 +67,7 @@ if( function_exists('get_field')){
 	$poster_download_link = get_post_meta(get_the_ID(), 'poster_download_link', true);
 	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
 	$event_google_map = get_post_meta(get_the_ID(), 'event_google_map', true);
+	$event_highlights = get_post_meta(get_the_ID(), 'event_highlights', true);
 }
 if(!in_array($event_poster_text_source, array('default', 'no', 'custom') )) {
 	$event_poster_text_source = 'default';
@@ -145,6 +147,12 @@ $about_easl_school_title = wpex_get_mod('about_easl_schools_title');
 $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 
 $topic_color = easl_get_events_topic_color(get_the_ID());
+
+$event_highlights = wp_parse_args($event_highlights, array(
+    'section_title' => '',
+    'cover_image' => '',
+    'pdf_url' => '',
+));
 ?>
 
 <article id="single-blocks" class="single-event-article entry easl-color-<?php echo $topic_color; ?> clr">
@@ -317,21 +325,23 @@ $topic_color = easl_get_events_topic_color(get_the_ID());
                             </ul>
                             <div style="clear: both"></div>
                         </div>
-						<?php if($event_why_attend): ?>
-                        <div class="event-text-block">
-							<?php if($event_why_attend_title): ?>
-                            <h3><?php echo esc_html($event_why_attend_title); ?></h3>
-							<?php endif; ?>
-                            <?php echo do_shortcode($event_why_attend);?>
-                        </div>
-						<?php endif; ?>
-						<?php if($event_who_should_attend): ?>
-                        <div class="event-text-block">
-							<?php if($event_who_should_attend_title): ?>
-                            <h3><?php echo esc_html($event_who_should_attend_title); ?></h3>
-							<?php endif; ?>
-                            <?php echo do_shortcode($event_who_should_attend);?>
-                        </div>
+                        <?php if($event_time_type != 'past'): ?>
+                            <?php if($event_why_attend): ?>
+                            <div class="event-text-block">
+                                <?php if($event_why_attend_title): ?>
+                                <h3><?php echo esc_html($event_why_attend_title); ?></h3>
+                                <?php endif; ?>
+                                <?php echo do_shortcode($event_why_attend);?>
+                            </div>
+                            <?php endif; ?>
+                            <?php if($event_who_should_attend): ?>
+                            <div class="event-text-block">
+                                <?php if($event_who_should_attend_title): ?>
+                                <h3><?php echo esc_html($event_who_should_attend_title); ?></h3>
+                                <?php endif; ?>
+                                <?php echo do_shortcode($event_who_should_attend);?>
+                            </div>
+                            <?php endif; ?>
 						<?php endif; ?>
 						<?php if($event_topic_covered): ?>
                         <div class="event-text-block">
@@ -340,6 +350,18 @@ $topic_color = easl_get_events_topic_color(get_the_ID());
 							<?php endif; ?>
                             <?php echo do_shortcode($event_topic_covered);?>
                         </div>
+						<?php endif; ?>
+						<?php if($event_time_type == 'past' && $event_highlights['cover_image'] && $event_highlights['pdf_url']): ?>
+                            <div class="event-text-block">
+								<?php if($event_highlights['section_title'] ): ?>
+                                    <h3><?php echo esc_html($event_highlights['section_title']); ?></h3>
+								<?php endif; ?>
+                                <div class="event-highlights-cover">
+                                    <a href="<?php echo esc_url( $event_highlights['pdf_url']); ?>" target="_blank">
+                                        <img src="<?php echo esc_url( $event_highlights['cover_image']); ?>" alt="">
+                                    </a>
+                                </div>
+                            </div>
 						<?php endif; ?>
 						<?php if($event_sections && is_array( $event_sections) && count($event_sections) > 0): ?>
                         <div class="event-sections">
