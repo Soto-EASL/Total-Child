@@ -544,8 +544,8 @@ body a {
 .easl-section-title,
 body .vcex-heading.easl-section-title {
     color: #00468a;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 28px;
-    font-weight: 700;
     line-height: 38px;
     margin: 0 0 25px 0;
     border-bottom: 2px solid #c1c5c7;
@@ -746,6 +746,9 @@ body #site-navigation-wrap {
 	width: 160px;
     padding: 7px 0 0;
 }
+.mz-loggedout-buttons.header-aside-buttons {
+    width: 330px;
+}
 .header-aside-buttons a {
 	background: #62cff5;
 	display: block;
@@ -761,6 +764,17 @@ body #site-navigation-wrap {
 .header-aside-buttons .become-a-member-button {
     background: #78cdf2;
 }
+.mz-loggedout-buttons.header-aside-buttons .become-a-member-button {
+    display: inline-block;
+    width: 160px;
+}
+.mz-buttonsep {
+    display: block;
+    height: 1px;
+}
+.easl-scrolled .mz-buttonsep {
+    display: none;
+}
 .header-aside-buttons a:hover,
 .header-aside-buttons a:active,
 .header-aside-buttons a:hover,
@@ -772,6 +786,11 @@ body #site-navigation-wrap {
 .easl-scrolled .header-aside-buttons {
     width: 330px;
 }
+.easl-scrolled .header-aside-buttons.mz-loggedout-buttons {
+    width: 500px;
+}
+
+
 .easl-scrolled .header-aside-buttons a {
     display: inline-block;
     width: 160px;
