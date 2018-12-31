@@ -149,7 +149,6 @@ $about_easl_school_content = wpex_get_mod('about_easl_schools_content');
 $topic_color = easl_get_events_topic_color(get_the_ID());
 
 $event_highlights = wp_parse_args($event_highlights, array(
-    'section_title' => '',
     'cover_image' => '',
     'pdf_url' => '',
 ));
@@ -353,9 +352,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 						<?php endif; ?>
 						<?php if($event_time_type == 'past' && $event_highlights['cover_image'] && $event_highlights['pdf_url']): ?>
                             <div class="event-text-block">
-								<?php if($event_highlights['section_title'] ): ?>
-                                    <h3><?php echo esc_html($event_highlights['section_title']); ?></h3>
-								<?php endif; ?>
+                                    <h3><?php _e('Event Highlights' ,'total-child') ?></h3>
                                 <div class="event-highlights-cover">
                                     <a href="<?php echo esc_url( $event_highlights['pdf_url']); ?>" target="_blank">
                                         <img src="<?php echo esc_url( $event_highlights['cover_image']); ?>" alt="">
