@@ -24,6 +24,7 @@ if( function_exists('get_field')){
 	$event_topic_covered = trim(get_field('event_topic_covered'));
 	$key_dates = get_field('event_key_deadline_row');
 	$event_organisers = trim(get_field('event_organisers'));
+	$event_highlights = get_field('event_highlights');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
 	$event_website_url = get_post_meta(get_the_ID(), 'event_website_url', true);
@@ -32,6 +33,7 @@ if( function_exists('get_field')){
 	$event_topic_covered = trim(get_post_meta(get_the_ID(), 'event_topic_covered', true));
 	$key_dates = get_post_meta(get_the_ID(), 'event_key_deadline_row', true);
 	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
+	$event_highlights = get_post_meta(get_the_ID(), 'event_highlights', true);
 }
 
 $now_time = time() - 86399;
@@ -114,6 +116,11 @@ if($row_count % 2 == 0){
 
 $event_topics_name = easl_event_topics_name($event_id);
 
+$event_highlights = wp_parse_args($event_highlights, array(
+	'section_title' => '',
+	'cover_image' => '',
+	'pdf_url' => '',
+));
 ?>
 
 
@@ -171,6 +178,16 @@ $event_topics_name = easl_event_topics_name($event_id);
 							<span class="ec-link-text">Visit<br/>Website</span>
 						</a>
 					</li>
+					<?php endif; ?>
+					<?php if($event_time_type == 'past' && $event_highlights['pdf_url']): ?>
+                        <li class="ec-links-highlights">
+                            <a class="event-link-item" href="<?php echo esc_url($event_highlights['pdf_url']); ?>" target="_blank">
+                            <span class="icon-wrapper">
+                                <span class="ec-links-icon list"></span>
+                            </span>
+                                <span class="ec-link-text">Event<br/>Highlights</span>
+                            </a>
+                        </li>
 					<?php endif; ?>
 					<?php if($key_dates): ?>
 					<li class="ec-links-deadline">
