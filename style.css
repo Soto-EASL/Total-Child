@@ -2055,7 +2055,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .sp-content {
     margin-left: 155px;
 }
-.sp-has-no-thumb .sp-content {
+.HIDEFORNOW_sp-has-no-thumb .sp-content {
     margin-left: 0;
 }
 .sp-meta {
