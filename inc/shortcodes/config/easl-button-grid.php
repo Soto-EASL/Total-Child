@@ -9,7 +9,7 @@ return array(
 	'is_container' => true,
 	'show_settings_on_create' => false,
 	'as_parent' => array(
-		'only' => 'easl_gbutton, easl_button',
+		'only' => 'easl_gbutton',
 	),
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Button Grid', 'total' ),

@@ -7,6 +7,9 @@ return array(
 	'name' => __( 'EASL Grid Button', 'total' ),
 	'base' => 'easl_gbutton',
 	'is_container' => false,
+	'as_child' => array(
+		'only' => 'easl_button_grid',
+	),
 	'show_settings_on_create' => true,
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Grid Button', 'total' ),
