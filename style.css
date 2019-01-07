@@ -3967,6 +3967,49 @@ ul.event-links-list li:before{
 
 
 /* Post Type: Publication */
+/* Single Event */
+.single-publication .page-header.easl-page-header-no-bg {
+    background-image: url('images/events-header.jpg');
+}
+
+.publication-color-blue .page-header.easl-page-header-no-bg {
+    background-color: #165291;
+    background-image: url('images/events-header-blue.jpg');
+}
+.publication-color-red .page-header.easl-page-header-no-bg {
+    background-color: #de2a57;
+    background-image: url('images/events-header-red.jpg');
+}
+.publication-color-teal .page-header.easl-page-header-no-bg {
+    background-color: #189790;
+    background-image: url('images/events-header-teal.jpg');
+}
+.publication-color-orrange .page-header.easl-page-header-no-bg {
+    background-color: #f26827;
+    background-image: url('images/events-header-orange.jpg');
+}
+.publication-color-gray .page-header.easl-page-header-no-bg {
+    background-color: #7e6a73;
+    background-image: url('images/events-header.jpg');
+}
+.publication-color-yellow .page-header.easl-page-header-no-bg {
+    background-color: #f9bc49;
+    background-image: url('images/events-header-yellow.jpg');
+}
+.single-publication .page-header.easl-page-header-no-bg {
+    background-size: cover!important;
+    background-position: 50% 0!important;
+    width: 100%;
+    border: none;
+    background-color: #000;
+    padding: 0;
+}
+.single-publication .page-header.easl-page-header-no-bg .page-header-table {
+    height: 220px;
+}
+.single-publication .page-header.easl-page-header-no-bg .page-header-title{
+
+}
 .single-publication .page-header.background-image-page-header .page-header-title {
     color: #fff;
 }
@@ -5030,7 +5073,7 @@ ul.suggestions{
     color: #71c5e8;
     text-decoration: none;
 }
-    /* Single Event */
+/* Single Event */
 .single-event .page-header.easl-page-header-no-bg {
     background-image: url('images/events-header.jpg');
 }

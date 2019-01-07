@@ -43,7 +43,7 @@ if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 $output = '';
-if($button_text_html){
+if($button_text_html && 'permanently-hidden' != $el_class){
 	$output = '
 		<div ' . implode( ' ', $wrapper_attributes ) . ' class="easl-gbtn-wrap easl-col ' . esc_attr( trim( $css_class ) ) . '">
 			<div class="easl-col-inner">

@@ -81,6 +81,20 @@ function easl_get_slide_decks_topic_color($id = null){
 	return $topic_color;
 }
 
+function easl_publication_topic_id($id = null){
+	if(!$id){
+		$id = get_the_ID();
+	}
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, Publication_Config::get_topic_slug(), $args);
+	if( !$topics || is_wp_error( $topics )){
+		return '';
+	}
+	return $topics[0]->term_id;
+}
 function easl_get_publication_topic_color($id = null){
 	if(!$id){
 		$id = get_the_ID();

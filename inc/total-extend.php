@@ -368,12 +368,31 @@ function easl_get_events_page_header_bg( $event_id ) {
 
 	return $bg[0];
 }
+function easl_get_publication_page_header_bg( $pub_id ) {
+	$term_id = easl_publication_topic_id( $pub_id );
+	if ( ! $term_id ) {
+		return '';
+	}
+	$bg = '';
+	if ( function_exists( 'get_field' ) ) {
+		$bg = get_field( 'event_header_image', 'event_type_' . $term_id );
+	}
+	if ( ! $bg ) {
+		return '';
+	}
+	$bg = wp_get_attachment_image_src( $bg, 'full' );
+	if ( ! $bg ) {
+		return '';
+	}
+
+	return $bg[0];
+}
 
 function easl_page_header_style( $style ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_style();
 	}
-	if ( ! is_singular( 'event' ) || 'background-image' == $style ) {
+	if ( ! is_singular( 'event', Publication_Config::get_publication_slug() ) || 'background-image' == $style ) {
 		return $style;
 	}
 	$term_id = easl_meeting_type_id( get_queried_object_id() );
@@ -398,7 +417,7 @@ function easl_page_header_title_height( $height ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_height();
 	}
-	if ( is_singular( 'event' ) ) {
+	if ( is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
 		return 220;
 	}
 
@@ -412,7 +431,7 @@ function easl_page_header_overlay_style( $style ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_overlay_style();
 	}
-	if ( is_singular( 'event' ) ) {
+	if ( is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
 		return '';
 	}
 
@@ -429,6 +448,9 @@ function easl_page_header_bg( $image, $post_id ) {
 	}
 	if ( is_singular( 'event' ) ) {
 		$cusotm_bg = easl_get_events_page_header_bg( $post_id );
+	}
+	if ( is_singular( Publication_Config::get_publication_slug() ) ) {
+		$cusotm_bg = easl_get_publication_page_header_bg( $post_id );
 	}
 	if ( $cusotm_bg ) {
 		return $cusotm_bg;
