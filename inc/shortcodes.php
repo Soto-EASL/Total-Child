@@ -1,6 +1,8 @@
 <?php
 
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-button.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-generic-button.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-generic-button-container.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-button-grid.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-gbutton.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-events.php';
@@ -36,6 +38,8 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/utility/easl-toggle.p
 
 function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_button', null, get_theme_file_path('/inc/shortcodes/config/easl-button.php') );
+	vc_lean_map( 'easl_generic_button', null, get_theme_file_path('/inc/shortcodes/config/easl-generic-button.php') );
+	vc_lean_map( 'easl_generic_button_container', null, get_theme_file_path('/inc/shortcodes/config/easl-generic-button-container.php') );
 	vc_lean_map( 'easl_button_grid', null, get_theme_file_path('/inc/shortcodes/config/easl-button-grid.php'));
 	vc_lean_map( 'easl_gbutton', null, get_theme_file_path('/inc/shortcodes/config/easl-gbutton.php') );
 	vc_lean_map( 'easl_events', null, get_theme_file_path() . '/inc/shortcodes/config/easl-events.php' );

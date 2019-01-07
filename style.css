@@ -83,6 +83,9 @@ body a {
 }
 
 /*EASL Common*/
+.easl-content-center {
+    text-align: center;
+}
 
 .easl-st-collapse:not(.easl-st-collapse-show) {
 	display: none;
@@ -122,6 +125,110 @@ body a {
 .easl-box-shadow {
     -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
+}
+
+/*EASL Generic Button*/
+.easl-generic-button {
+    background: #104f85;
+    color: #fff;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 7px 15px;
+    display: inline-block;
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+    line-height: 1.65;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: inherit;
+    text-decoration: none !important;
+    max-width: 100%;
+    transition: 0.15s all ease;
+}
+.easl-generic-button.easl-size-medium {
+    font-size: 16px;
+    padding: 10px 20px;
+}
+.easl-generic-button.easl-size-large {
+    font-size: 18px;
+    padding: 14px 28px;
+}
+.easl-generic-button.easl-size-fullwidth {
+    display: block;
+    font-size: 18px;
+    padding: 14px 28px;
+    text-align: center;
+}
+.easl-generic-button.easl-align-left {
+    float: left;
+    margin-right: 15px;
+}
+.easl-generic-button.easl-align-right {
+    float: right;
+}
+.easl-generic-button.easl-color-blue {
+    background-color: #104f85;
+}
+.easl-generic-button.easl-color-lightblue {
+    background-color: #80c4e5;
+}
+.easl-generic-button.easl-color-red {
+    background-color: #de2a57;
+}
+.easl-generic-button.easl-color-teal {
+    background-color: #189790;
+}
+.easl-generic-button.easl-color-orange {
+    background-color: #f26827;
+}
+.easl-generic-button.easl-color-gray {
+    background-color: #7e6a73;
+}
+.easl-generic-button.easl-color-yellow {
+    background-color: #f9bc49;
+}
+.easl-generic-button-icon {
+    margin-left: 10px;
+    font-size: 0.85em;
+}
+
+.easl-generic-button:hover,
+.easl-generic-button:focus {
+    background: #80c4e5;
+}
+.easl-generic-button.easl-color-lightblue:hover,
+.easl-generic-button.easl-color-lightblue:focus {
+    background: #104f85;
+}
+
+.easl-generic-buttons-wrap {
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.easl-align-left {
+    justify-content: flex-start;
+}
+.easl-align-right {
+    justify-content: flex-end;
+}
+.easl-align-center {
+    justify-content: center;
+}
+.easl-align-space_between {
+    justify-content: space-between;
+}
+.easl-generic-buttons-wrap .easl-generic-button {
+    margin: 0 7px 14px;
+}
+.easl-generic-buttons-wrap .easl-generic-button:first-child {
+    margin-left: 0;
+}
+.easl-generic-buttons-wrap .easl-generic-button:last-child {
+    margin-right: 0;
 }
 
 .easl-button {
