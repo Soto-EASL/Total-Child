@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name' => __( 'EASL Button', 'total' ),
+	'name' => __( 'Callout Button with Icon', 'total' ),
 	'base' => 'easl_button',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Button', 'total' ),
