@@ -8,7 +8,7 @@ return array(
 		'title' => esc_html__( 'Event Data', 'total' ),
 		'settings' => array(
 			'location_venue' => array(
-				'title' => esc_html__( 'Location - Venu Name', 'total' ),
+				'title' => esc_html__( 'Location - Venue Name', 'total' ),
 				'id' => $prefix . 'location_venue',
 				'type' => 'text',
 				'description' => esc_html__( 'Enter the venue of the event.', 'total' ),
@@ -17,7 +17,7 @@ return array(
 				'title' => esc_html__( 'Location - City', 'total' ),
 				'id' => $prefix . 'location_city',
 				'type' => 'text',
-				'description' => esc_html__( 'Enter the city of the event location.', 'total' ),
+				'description' => esc_html__( 'Enter the city of the event.', 'total' ),
 			),
 			'location_country' => array(
 				'title' => esc_html__( 'Location - Country', 'total' ),
@@ -43,7 +43,7 @@ return array(
                 'title'=> esc_html__('Programme', 'total'),
                 'id' => $prefix . 'programme',
                 'type' => 'select',
-                'description' => esc_html__('Select the sourse of programme', 'total'),
+                'description' => esc_html__('Select the source of programme.', 'total'),
                 'options' => easl_event_get_programme(),
             ),
 			'start_date' => array(
@@ -82,20 +82,13 @@ return array(
                 'title' => esc_html__( 'Submit Abstract', 'total' ),
                 'id' => $prefix . 'submit_abstract_url',
                 'type' => 'text',
-                'description' => esc_html__( 'Enter the Submit Abstract URL.', 'total' ),
+                'description' => esc_html__( 'Enter the Abstract Submission URL.', 'total' ),
             ),
             'register' => array(
                 'title' => esc_html__( 'Register', 'total' ),
                 'id' => $prefix . 'register_url',
                 'type' => 'text',
-                'description' => esc_html__( 'Enter the Register URL.', 'total' ),
-            ),
-            'display_sponsorship_sidebar' => array(
-                'title' => esc_html__( 'Display Sponsorship Sidebar?', 'total' ),
-                'id' => $prefix . 'display_sponsorship_sidebar',
-                'type' => 'checkbox',
-                'value' => 'on' ,
-
+                'description' => esc_html__( 'Enter the Registration URL.', 'total' ),
             ),
             'sponsorship_Link_url' => array(
                 'title' => esc_html__( 'Sponsorship Link URL', 'total' ),
@@ -104,24 +97,12 @@ return array(
                 'description' => esc_html__( 'Enter Sponsorship Link URL.', 'total' ),
 
             ),
-            'bursary_available' => array(
-                'title' => esc_html__( 'Bursary Available?', 'total' ),
-                'id' => $prefix . 'bursary_available',
-                'type' => 'checkbox',
-                'value' => 'on',
-            ),
             'bursary_Link_url' => array(
                 'title' => esc_html__( 'Bursary Link URL', 'total' ),
                 'id' => $prefix . 'bursary__url',
                 'type' => 'text',
                 'description' => esc_html__( 'Enter Bursary Link URL.', 'total' ),
 
-            ),
-            'press_ivited' => array(
-                'title' => esc_html__( 'Press Invited?', 'total' ),
-                'id' => $prefix . 'press_ivited',
-                'type' => 'checkbox',
-                'value' => 'on',
             ),
             'press_Link_url' => array(
                 'title' => esc_html__( 'Press Link URL', 'total' ),
