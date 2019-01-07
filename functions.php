@@ -63,7 +63,7 @@ function easl_footer_scripts(){
  * Make the main menu displayable for the mobile menu
  * Stripping all column alias and classes.
  */
-//add_filter('wp_nav_menu_objects', 'easl_nav_menu_objs', 11, 2);
+add_filter('wp_nav_menu_objects', 'easl_nav_menu_objs', 11, 2);
 function easl_nav_menu_objs($sorted_menu_items, $args){
     if(empty($args->theme_location)){
         return $sorted_menu_items;
