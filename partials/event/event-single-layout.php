@@ -504,17 +504,13 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             </div>
 							<?php endif; ?>
 							<?php if($event_poster_text): ?>
-							<h3 class="easl-text-gray">
-								<?php
-								echo wp_kses( $event_poster_text, array(
+							<p><?php echo wp_kses( $event_poster_text, array(
 									'br' => array(), 
 									'span' => array(
 										'style' => array(), 
 										'class' => array(),
 									)
-								) );
-								?>
-							</h3>
+								) ); ?></p>
 							<?php endif; ?>
 							<?php if($poster_download_link && !empty($poster_download_link['url'])): ?>
 							<a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button" href="<?php echo esc_url($poster_download_link['url']);?>" <?php if($poster_download_link['target']){ echo 'target="'. esc_attr($poster_download_link['target']) .'"';} ?> download>
@@ -530,7 +526,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             </div>
                             <div class="eib-text">
 								<?php if(get_field('event_address')): ?>
-                                <p style="color:#004b87;font-family: 'KnockoutHTF51Middleweight';font-size: 21px;"><?php echo get_field('event_address');?></p>
+                                <p><?php echo get_field('event_address');?></p>
 								<?php endif; ?>
 								<?php if(get_field('event_google_map_view_on_map')): ?>
                                 <p>
