@@ -149,30 +149,30 @@ function register_custom_sidebar(){
         'name' => ( 'Social Buttons' ),
         'id' => 'social_buttons',
         'description' => ( 'Widgets in this area will be shown on all posts and pages.' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="sidebar-box widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '',
-        'after_title'   => '',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
     ) );
 
     register_sidebar( array(
         'name' => ( 'Archive Reports' ),
         'id' => 'archive-reports',
         'description' => ( 'Widgets in this area will be shown on all posts and pages.' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="sidebar-box widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '',
-        'after_title'   => '',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
     ) );
 
     register_sidebar( array(
         'name' => ( 'Fellowship Detail Sidebar' ),
         'id' => 'fellowship-detail-sidebar',
         'description' => ( 'Widgets in this area will be shown on fellowship post type detail page.' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'before_widget' => '<div id="%1$s" class="sidebar-box widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '',
-        'after_title'   => '',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
     ) );
 }
 add_action('widgets_init','register_custom_sidebar');
