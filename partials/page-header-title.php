@@ -64,9 +64,19 @@ if(is_page()){
 
 // Output title
 echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . '>';
-	if(is_single()){
-		$page_id = wpex_get_mod( 'blog_page', 5626);
+	$back_url = '';
+	if(is_singular(EASL_Event_Config::get_event_slug())){
+		$back_url = wpex_get_mod( 'event_header_back_button', '');
+	}elseif(is_singular(Fellowship_Config::get_fellowship_slug())){
+		$back_url = wpex_get_mod( 'fellowship_header_back_button', '');
+	}elseif(is_singular(Publication_Config::get_publication_slug())){
+		$back_url = wpex_get_mod( 'publications_header_back_button', '');
+	}elseif(is_single()){
+		$back_url = get_the_permalink(wpex_get_mod( 'blog_page', 5626));
 		echo '<a class="easl-title-back-link" href="'. get_the_permalink($page_id) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
+	}
+	if($back_url){
+		echo '<a class="easl-title-back-link" href="'. esc_url($back_url) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
 	}
 	if($allow_html_shortcode){
 		echo do_shortcode($string);

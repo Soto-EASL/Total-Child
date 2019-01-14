@@ -4,6 +4,14 @@ function easl_customizer_panels($panels) {
 		'title' => __('Events', 'total-child'),
 		'condition' => true,
 	);
+	$panels['fellowship'] = array(
+		'title' => __('Fellowship', 'total-child'),
+		'condition' => true,
+	);
+	$panels['publications'] = array(
+		'title' => __('Publications', 'total-child'),
+		'condition' => true,
+	);
 	return $panels;
 }
 add_filter('wpex_customizer_panels', 'easl_customizer_panels');
@@ -69,7 +77,46 @@ function easl_customizer_sections($sections) {
 					'label' => __('Event Poster Text', 'total-child'),
 					'type' => 'textarea',
 				),
-			)
+			),
+			array(
+				'id' => 'event_header_back_button',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('Header Back Button URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
+		)
+	);
+	$sections['easl_fellowship_single'] = array(
+		'title' => __( 'Single', 'total' ),
+		'panel' => 'wpex_fellowship',
+		'settings' => array(
+			array(
+				'id' => 'fellowship_header_back_button',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('Header Back Button URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
+		)
+	);
+	$sections['easl_publications_single'] = array(
+		'title' => __( 'Single', 'total' ),
+		'panel' => 'wpex_publications',
+		'settings' => array(
+			array(
+				'id' => 'publications_header_back_button',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('Header Back Button URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
 		)
 	);
 	// Footer Newsletter Section
@@ -125,6 +172,50 @@ function easl_customize_controls_print_styles() {
 		font-family: "dashicons";
 	}
 	#accordion-panel-wpex_events > h3:before { content: "\f145" }
+
+    #accordion-panel-wpex_fellowship > h3:before {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        line-height: 1;
+        font-family: dashicons;
+        text-decoration: inherit;
+        font-weight: 400;
+        font-style: normal;
+        vertical-align: top;
+        text-align: center;
+        -webkit-transition: color .1s ease-in 0;
+        transition: color .1s ease-in 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #298cba;
+        margin-right: 10px;
+        font-family: "dashicons";
+    }
+    #accordion-panel-wpex_fellowship > h3:before { content: "\f109" }
+
+    #accordion-panel-wpex_publications > h3:before {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+        line-height: 1;
+        font-family: dashicons;
+        text-decoration: inherit;
+        font-weight: 400;
+        font-style: normal;
+        vertical-align: top;
+        text-align: center;
+        -webkit-transition: color .1s ease-in 0;
+        transition: color .1s ease-in 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #298cba;
+        margin-right: 10px;
+        font-family: "dashicons";
+    }
+    #accordion-panel-wpex_publications > h3:before { content: "\f491" }
 </style>
 	<?php
 }
