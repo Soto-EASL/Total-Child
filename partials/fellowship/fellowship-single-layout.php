@@ -22,6 +22,12 @@ $second_aplication_period_start = get_field('second_aplication_period_start') ? 
 $second_aplication_period_finish = get_field('second_aplication_period_finish') ? date("d-M", strtotime(get_field('second_aplication_period_finish'))) : '';
 
 
+$application_guidelines= get_field('application_guidelines');
+$read_application_guidelines = get_field('read_application_guidelines');
+if(!$read_application_guidelines){
+	$read_application_guidelines = $application_guidelines;
+}
+
 ?>
 
 
@@ -50,15 +56,15 @@ $second_aplication_period_finish = get_field('second_aplication_period_finish') 
                                             <?php else:?>Application Period: <?php echo $first_aplication_period_start.' - '. $first_aplication_period_finish;?><?php endif;?></h2>
                                     </div>
                                 </div>
-
+                                <?php if($application_guidelines): ?>
                                 <div class="wpb_content_element item">
                                     <div class="wpb_wrapper pdf-guideline">
-                                        <a href="<?php echo get_field('read_application_guidelines');?>" download class="application-guidelines-link">
-                                        <img class="application-guidelines-link-image" src="/wp-content/themes/Total-Child/images/title-icons/pdf-icon.png" alt="">
+                                        <a href="<?php echo esc_url($application_guidelines);?>" download class="application-guidelines-link">
+                                        <img class="application-guidelines-link-image" src="<?php echo get_stylesheet_directory_uri(); ?>/images/title-icons/pdf-icon.png" alt="">
                                         <span class="application-guidelines-link-text">Application Guidelines</span></a>
                                     </div>
-
                                 </div>
+                                <?php endif; ?>
                                 <div class="wpb_content_element item apply-here">
                                     <div class="wpb_wrapper">
                                         <a href="#" class="vcex-button theme-button inline animate-on-hover apply-fellowship-btn">
@@ -100,17 +106,19 @@ $second_aplication_period_finish = get_field('second_aplication_period_finish') 
                 </div>
 
                 <div class="vc_empty_space" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                <?php if($read_application_guidelines): ?>
                 <div class="vc_row wpb_row vc_row-fluid vc_row-o-equal-height vc_row-flex no-bottom-margins">
                     <div class="wpb_column vc_column_container vc_col-sm-6">
                         <div class="vc_column-inner ">
                             <div class="wpb_wrapper">
-                                <a href="<?php echo get_field('read_application_guidelines');?>" target="_blank"
+                                <a href="<?php echo esc_url($read_application_guidelines);?>" target="_blank"
                                    class="vcex-button theme-button inline animate-on-hover read-application-guidelines">
-                                    <span class="theme-button-inner">Read the application guidelines before applying</span>
+                                    <span class="theme-button-inner"><?php _e('Read the application guidelines before applying', 'total-child') ?></span>
                                 </a>
                             </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                     <div class="wpb_column vc_column_container vc_col-sm-3">
                         <div class="vc_column-inner ">
                             <div class="wpb_wrapper">
