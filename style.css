@@ -6176,11 +6176,11 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 }
 /* Shortcode: ILC details*/
 .easl-ilc-details-filter {
-    width: 140px;
     margin-bottom: 25px;
 }
 .easl-ilc-details-filter .easl-dropdown {
     z-index: 9999;
+    width: 145px;
 }
 .easl-ilc-details-filter .easl-dropdown-label,
 .easl-dropdown ul li span{

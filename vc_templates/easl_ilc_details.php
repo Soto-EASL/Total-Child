@@ -46,11 +46,15 @@ if($ilc_object):
 	if(function_exists('get_field')){
 		$congress_material_url = get_field('congress_materials', $ilc_object->ID);
 		$congress_report_pdf = get_field('congress_report_pdf', $ilc_object->ID);
+		$downloadable_congress_report = get_field('downloadable_congress_report', $ilc_object->ID);
+		$congress_report_new_tab = get_field('congress_report_new_tab', $ilc_object->ID);
 		$daily_news = get_field('daily_news', $ilc_object->ID);
 		$debriefs = get_field('debriefs', $ilc_object->ID);
 	}else{
 		$congress_material_url = get_post_meta($ilc_object->ID, 'congress_materials', true);
 		$congress_report_pdf = get_post_meta($ilc_object->ID, 'congress_report_pdf', true);
+		$downloadable_congress_report = get_post_meta($ilc_object->ID, 'downloadable_congress_report', true);
+		$congress_report_new_tab = get_post_meta($ilc_object->ID, 'congress_report_new_tab', true);
 		$daily_news = get_post_meta($ilc_object->ID, 'daily_news', true);
 		$debriefs = get_post_meta($ilc_object->ID, 'debriefs', true);
 	}
@@ -58,6 +62,12 @@ if($ilc_object):
 	if($debriefs){
 		wp_enqueue_script('easl-yt-playlist', get_theme_file_uri('assets/js/yt-playlist.js'), array('jquery'), null, true);
 	}
+	if($downloadable_congress_report) {
+		$downloadable_congress_report = ' download="download"';
+    }
+	if($congress_report_new_tab) {
+		$congress_report_new_tab = ' target="_blank"';
+    }
 ?>
 <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
 	<div class="easl-ilc-details">
@@ -88,7 +98,7 @@ if($ilc_object):
 			<?php if($congress_report_pdf): ?>
 			<div class="easl-col easl-col-3">
 				<div class="easl-col-inner">
-					<a class="easl-ilc-details-button" target="_blank" href="<?php echo esc_url($congress_report_pdf); ?>" download="download"><?php _e('<span>Congress</span> Report', 'total-child'); ?></a>
+					<a class="easl-ilc-details-button" href="<?php echo esc_url($congress_report_pdf); ?>"<?php echo $downloadable_congress_report.$congress_report_new_tab; ?>><?php _e('<span>Congress</span> Report', 'total-child'); ?></a>
 				</div>
 			</div>
 			<?php endif;  ?>
