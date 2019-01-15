@@ -2531,7 +2531,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .easl-carousel-item .easl-carousel-title a{
     position: relative;
-    padding-right: 8px;
+    padding-right: 12px;
 }
 .easl-carousel-item .easl-carousel-title a:after {
     content: "\f105";
