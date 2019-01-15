@@ -6321,6 +6321,14 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     visibility: visible;
 }
 
+.easl-message-box-no-icon.vc_message_box {
+    padding: 1em;
+    border-radius: 0;
+}
+.easl-message-box-no-icon.vc_message_box  .vc_message_box-icon {
+    display: none!important;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
         padding: 0 12px;
