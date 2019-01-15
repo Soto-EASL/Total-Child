@@ -170,6 +170,30 @@ if($event_number) {
 	wp_reset_query();
 }
 
+
+if($fellowship_number) {
+	$query_args = array(
+		'post_type'      => Fellowship_Config::get_fellowship_slug(),
+		'post_status'    => 'publish',
+		'orderby'        => 'menu_order',
+		'order'          => 'ASC',
+		'posts_per_page' => $fellowship_number,
+	);
+	$fellowship_posts = new WP_Query( $query_args );
+	while ( $fellowship_posts->have_posts() ) {
+		$fellowship_posts->the_post();
+		$post           = get_post();
+		$merged_items[] = array(
+			'id'        => get_the_ID(),
+			'date'      => $post->post_date,
+			'title'     => get_the_title(),
+			'permalink' => get_the_permalink(),
+			'color'     => $current_item_color ? $current_item_color : 'blue',
+		);
+	}
+	wp_reset_query();
+}
+
 if(count($merged_items) > 0):
 ?>
 <div class="easl-recent-items-list">

@@ -19,6 +19,7 @@ if ( ! class_exists( 'EASL_Recent_Items_Widget' ) ) {
 			$event_number = ! empty( $instance['event_number'] ) ? absint($instance['event_number']) : '';
 			$event_easl_only = isset( $instance['event_easl_only'] ) ? $instance['event_easl_only'] : 'no';
 			$event_show_default_empty = isset( $instance['event_show_default_empty'] ) ? $instance['event_show_default_empty'] : 'no';
+			$fellowship_number = ! empty( $instance['fellowship_number'] ) ? absint($instance['fellowship_number']) : '';
 			echo $args['before_widget'];
 			// Display widget title
 			if ( $title ) {
@@ -40,12 +41,13 @@ if ( ! class_exists( 'EASL_Recent_Items_Widget' ) ) {
 			$instance['event_number'] = ! empty( $new_instance['event_number'] ) ? absint($new_instance['event_number']) : '';
 			$instance['event_easl_only'] = ! empty( $new_instance['event_easl_only'] ) ? 'yes' : 'no';
 			$instance['event_show_default_empty'] = ! empty( $new_instance['event_show_default_empty'] ) ? 'yes' : 'no';
+			$instance['fellowship_number'] = ! empty( $new_instance['fellowship_number'] ) ? absint($new_instance['fellowship_number']) : '';
 
 			return $instance;
 		}
 
 		function form( $instance ) {
-			$show_filter = $title = $news_number = $event_number = $publication_number = $event_easl_only = $event_show_default_empty = '';
+			$show_filter = $title = $news_number = $event_number = $publication_number = $event_easl_only = $event_show_default_empty = $fellowship_number = '';
 			extract( wp_parse_args( ( array ) $instance, array(
 				'title' => '',
 				'show_filter' => 'yes',
@@ -54,6 +56,7 @@ if ( ! class_exists( 'EASL_Recent_Items_Widget' ) ) {
 				'event_number' => 1,
 				'event_easl_only' => 'no',
 				'event_show_default_empty' => 'no',
+				'fellowship_number' => 0,
 			) ) ); ?>
 
 			<p>
@@ -126,6 +129,21 @@ if ( ! class_exists( 'EASL_Recent_Items_Widget' ) ) {
                        value="1" <?php checked('yes', $event_show_default_empty, true); ?>/>
                 <label for="<?php echo esc_attr( $this->get_field_id( 'event_show_default_empty' ) ); ?>"><?php esc_html_e( 'Show events from General Hepatology topic if there is no event for a filtered topic.', 'total-child' ); ?></label>
 
+            </p>
+            <h4><?php _e('Fellowship Query', 'total-child'); ?></h4>
+            <p>
+                <label for="<?php echo esc_attr( $this->get_field_id( 'fellowship_number' ) ); ?>"><?php esc_html_e( 'Fellowship Number', 'total-child' ); ?>
+                    :</label>
+                <select id="<?php echo esc_attr( $this->get_field_id( 'fellowship_number' ) ); ?>"
+                        name="<?php echo esc_attr( $this->get_field_name( 'fellowship_number' ) ); ?>">
+                    <option value=""><?php _e('Hide', 'total-child'); ?></option>
+                    <option value="1" <?php selected(1, $fellowship_number, true); ?>>1</option>
+                    <option value="2" <?php selected(2, $fellowship_number, true); ?>>2</option>
+                    <option value="3" <?php selected(3, $fellowship_number, true); ?>>3</option>
+                    <option value="4" <?php selected(4, $fellowship_number, true); ?>>4</option>
+                    <option value="5" <?php selected(5, $fellowship_number, true); ?>>5</option>
+                    <option value="6" <?php selected(6, $fellowship_number, true); ?>>6</option>
+                </select>
             </p>
 			<?php
 		}
