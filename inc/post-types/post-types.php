@@ -12,3 +12,4 @@ require_once EASL_INC_DIR . 'post-types/annual-reports/annual-reports-config.php
 require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
 require_once EASL_INC_DIR . 'post-types/newsletter/newsletter-config.php';
 require_once EASL_INC_DIR . 'post-types/ilc/ilc-config.php';
+require_once EASL_INC_DIR . 'post-types/staff/staff-config.php';

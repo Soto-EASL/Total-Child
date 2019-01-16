@@ -32,6 +32,7 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-3d-carousel-item.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-news-list.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-ilc-details.php';
+require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-bgtext-box.php';
 
 
 require_once get_stylesheet_directory() . '/inc/shortcodes/utility/easl-toggle.php';
@@ -64,5 +65,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_slide_decks', null, get_theme_file_path('/inc/shortcodes/config/easl-slide-decks.php') );
 	vc_lean_map( 'easl_ilc_details', null, get_theme_file_path('/inc/shortcodes/config/easl-ilc-details.php') );
 	vc_lean_map( 'easl_national_associations', null, get_theme_file_path('/inc/shortcodes/config/easl-national-associations.php') );
+	vc_lean_map( 'easl_bgtext_box', null, get_theme_file_path('/inc/shortcodes/config/easl-bgtext-box.php') );
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );

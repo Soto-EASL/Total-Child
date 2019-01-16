@@ -83,6 +83,15 @@ body a {
 }
 
 /*EASL Common*/
+.easl-text-left {
+    text-align: left;
+}
+.easl-text-center {
+    text-align: center;
+}
+.easl-text-right {
+    text-align: right;
+}
 .easl-content-center {
     text-align: center;
 }
@@ -6379,6 +6388,48 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 }
 .nas-loading .associations-content-block-response {
     opacity: 0;
+}
+/*Shortcode EASL Background Ttext Box*/
+.easl-bgtext-box {
+    background-color: #104f85;
+    padding: 15px 20px;
+    color: #fff;
+}
+
+.easl-bgtext-box.easl-bg-color-blue {
+    background-color: #104f85;
+    color: #fff;
+}
+.easl-bgtext-box.easl-bg-color-lightblue {
+    background-color: #80c4e5;
+}
+.easl-bgtext-box.easl-bg-color-red {
+    background-color: #de2a57;
+}
+.easl-bgtext-box.easl-bg-color-teal {
+    background-color: #189790;
+}
+.easl-bgtext-box.easl-bg-color-orange {
+    background-color: #f26827;
+}
+.easl-bgtext-box.easl-bg-color-gray {
+    background-color: #7e6a73;
+}
+.easl-bgtext-box.easl-bg-color-light-gray {
+    background-color: #f5f5f5;
+    color: #004b87;
+}.easl-bgtext-box.easl-bg-color-light-yellow {
+     background-color: #f9bc49;
+     color: #004b87;
+ }
+.easl-bgtext-box .easl-bgtext-box-text {
+    color: inherit;
+    font-family: "KnockoutHTF31JuniorMiddlewt" , Helvetica, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 29px;
+    margin: 0;
+    padding: 0;
 }
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
