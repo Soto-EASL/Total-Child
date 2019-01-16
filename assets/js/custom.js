@@ -487,11 +487,36 @@
         $('.easl-news-list-filter-form').on('change', 'select',function () {
             $('.easl-news-list-filter-form').submit();
         });
+        // National Association
+        $body.on('click', '.national-associations-menu-item', function (e) {
+            e.preventDefault();
+            var $this = $(this), $con = $this.closest('.nas-container');
+            var cat = $this.data('term');
+            if($this.hasClass('nas-current')) {
+                return false;
+            }
+            $('.national-associations-menu-item.nas-current', $con).removeClass('nas-current');
+            $this.addClass('nas-current');
+            $con.removeClass('nas-loaded').addClass('nas-loading');
+            $.post(ajaxurl.ajaxurl, {
+                'action': 'get_national_associations_func',
+                'category': cat
+            }, function (response) {
+                $('.associations-content-block-response', $con).html(response);
+                $con.removeClass('nas-loading').addClass('nas-loaded');
+                history.pushState({id: 'nas', html: $con.html() }, document.title, $this.attr('href'));
+            });
+        });
         // Stuff to be done when windows resize
         $(window).resize(function(){
         });
         $(window).scroll( function() {
             easlScrollEvent();
         } );
+        window.onpopstate = function(event) {
+            if(event.state.id && event.state.id === 'nas'){
+                $('.nas-container').html(event.state.html);
+            }
+        };
     });
 })(jQuery);

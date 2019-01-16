@@ -1,62 +1,41 @@
 <?php
 
-$taxonomies = get_categories(['taxonomy' => 'associations_category']);
-$menu = '';
-$counter = 0;
-$first_point = '';
+$page_link = remove_query_arg('nas_id');
 
-foreach ($taxonomies as $taxonomy):
-    if($counter < 1){
-        $first_point = $taxonomy->term_id;
-    }
-    $current_country = $counter < 1 ? 'current-country' : '';
-    $menu .= '<div class="menu-item-block"><a style="color: #004b87;" class="national-associations-menu-item '.$current_country.'" href="#" data-term="'. $taxonomy->term_id.'">'. $taxonomy->name.' <i class="fa fa-angle-right"></i></a></div>';
-    $counter++;
-endforeach;
+$current_country_id = !empty($_GET['nas_id']) ? absint($_GET['nas_id']) : '';
 
-$the_associations = new WP_Query( array(
-    'posts_per_page' => -1,
-    'post_type' => 'associations',
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'associations_category',
-            'field' => 'term_id',
-            'terms' => $first_point,
+$the_associations = false;
+if($current_country_id){
+    $the_associations = new WP_Query( array(
+        'posts_per_page' => -1,
+        'post_type' => 'associations',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'associations_category',
+                'field' => 'term_id',
+                'terms' => array($current_country_id),
+            )
         )
-    )
-) );
-
+    ) );
+}
 
 ?>
-<style>
-    .menu-item-block {
-        display: block;
-        width: 50%;
-        float: left;
-    }
-    .associations-thumb {
-        width: 20%;
-        margin-right: 25px;
-    }
-    .associations-content-block{
-        background-color: #efefef;
-    }
-    .current-country{
-        font-weight: 700;
-    }
-</style>
-<div class="vc_row wpb_row vc_row-fluid">
-    <div class="wpb_column vc_column_container vc_col-sm-6">
-        <div class="vc_column-inner ">
-            <div class="wpb_wrapper">
-                <?php echo $menu;?>
-            </div>
+<div class="nas-container easl-row easl-row-same-height-col<?php if ( $the_associations && $the_associations->have_posts() ){echo ' nas-loaded';} ?>">
+    <div class="easl-col easl-col-2">
+        <div class="easl-col-inner nas-country-lists clr">
+            <?php
+            $countries = get_categories(['taxonomy' => 'associations_category']);
+            foreach ($countries as $country):
+             ?>
+                <div class="menu-item-block"><a class="national-associations-menu-item<?php if($current_country_id === $country->term_id){echo ' nas-current';} ?>" href="<?php echo add_query_arg(array('nas_id' => $country->term_id), $page_link); ?>" data-term="<?php echo $country->term_id; ?>"><?php echo  $country->name; ?> <i class="fa fa-angle-right"></i></a></div>
+            <?php endforeach ?>
         </div>
     </div>
-    <div class="wpb_column vc_column_container vc_col-sm-6 ">
-        <div class="vc_column-inner associations-content-block">
-            <div class="wpb_wrapper associations-content-block-response" style="padding: 15px">
-                <?php if ( $the_associations->have_posts() ):
+    <div class="easl-col easl-col-2">
+        <div class="easl-col-inner associations-content-block">
+            <div class="associations-content-block-response">
+                <?php
+                if ( $the_associations && $the_associations->have_posts() ):
                     while ($the_associations->have_posts()) :
                         $the_associations->the_post();
                         $image = has_post_thumbnail( get_the_ID() ) ?
@@ -76,8 +55,8 @@ $the_associations = new WP_Query( array(
                         </div>
                     <?php endwhile;?>
                 <?php endif;?>
-
             </div>
+            <div class="easl-sd-load-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
         </div>
     </div>
 </div>

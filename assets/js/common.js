@@ -35,17 +35,4 @@ jQuery(function($) {
         $('.easl-mentors-table-show-more').find('.theme-button-inner').text('Show more');
     });
 
-    $(document).on('click', '.national-associations-menu-item', function (e) {
-        e.preventDefault();
-        var cat = $(this).data('term');
-        $('.national-associations-menu-item').removeClass('current-country');
-        $(this).addClass('current-country');
-        $.post(ajaxurl.ajaxurl, {
-            'action': 'get_national_associations_func',
-            'category': cat
-        }, function (response) {
-            $('.associations-content-block-response').html(response);
-        });
-    });
-
 });
