@@ -48,11 +48,6 @@ if ( !class_exists( 'EASL_VC_Scientific_Publication' ) ) {
 			if(!$years || !is_array($years)){
 				$years = array();
 			}
-			if(isset($_GET['mmm'])) {
-				var_dump($sql);
-				var_dump($years);
-				die();
-			}
 			return $years;
 		}
 		/**
