@@ -74,21 +74,21 @@ class EASL_Award_Config {
 		// Define args and apply filters for child theming
 		$args = array(
 			'labels' => array(
-				'name' => __( 'Award Group', 'total-child' ),
-				'singular_name' => __( 'Award Group', 'total-child' ),
-				'menu_name' => __( 'Award Group', 'total' ),
-				'search_items' => __( 'Search Award Groups', 'total-child' ),
-				'popular_items' => __( 'Popular Award Groups', 'total-child' ),
-				'all_items' => __( 'All Award Groups', 'total-child' ),
-				'parent_item' => __( 'Parent Award Group', 'total-child' ),
-				'parent_item_colon' => __( 'Parent Award Group:', 'total-child' ),
-				'edit_item' => __( 'Edit Award Group', 'total-child' ),
-				'update_item' => __( 'Update Award Group', 'total-child' ),
-				'add_new_item' => __( 'Add New Award Group', 'total-child' ),
-				'new_item_name' => __( 'New Award Group Name', 'total-child' ),
-				'separate_items_with_commas' => __( 'Separate award group with commas', 'total-child' ),
-				'add_or_remove_items' => __( 'Add or remove award groups', 'total-child' ),
-				'choose_from_most_used' => __( 'Choose from the most used award groups', 'total-child' ),
+				'name' => __( 'Award Type', 'total-child' ),
+				'singular_name' => __( 'Award Type', 'total-child' ),
+				'menu_name' => __( 'Award Type', 'total' ),
+				'search_items' => __( 'Search Award Types', 'total-child' ),
+				'popular_items' => __( 'Popular Award Types', 'total-child' ),
+				'all_items' => __( 'All Award Types', 'total-child' ),
+				'parent_item' => __( 'Parent Award Type', 'total-child' ),
+				'parent_item_colon' => __( 'Parent Award Type:', 'total-child' ),
+				'edit_item' => __( 'Edit Award Type', 'total-child' ),
+				'update_item' => __( 'Update Award Type', 'total-child' ),
+				'add_new_item' => __( 'Add New Award Type', 'total-child' ),
+				'new_item_name' => __( 'New Award Type Name', 'total-child' ),
+				'separate_items_with_commas' => __( 'Separate award types with commas', 'total-child' ),
+				'add_or_remove_items' => __( 'Add or remove award type', 'total-child' ),
+				'choose_from_most_used' => __( 'Choose from the most used award types', 'total-child' ),
 			),
 			'public' => false,
 			'show_in_nav_menus' => false,
@@ -145,7 +145,7 @@ class EASL_Award_Config {
 	}
 	public static function register_tax(){
 		self::register_award_group();
-		self::register_award_year();
+		//self::register_award_year();
 	}
 
 	public static function hide_on_edit_screen($style) {
@@ -162,6 +162,36 @@ class EASL_Award_Config {
 		$style .= implode(', ', $hide) . ' {display: none;}';
 
 		return $style;
+	}
+	public static function get_years($type = false, $limit = -1, $past_only = false) {
+		if(!$type) {
+			return array();
+		}
+		global $wpdb;
+		$post_type = EASL_Award_Config::get_slug();
+
+		$sql  = "SELECT DISTINCT ym.meta_value AS year FROM {$wpdb->posts}";
+		$sql .= " INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) ";
+		$sql .= " INNER JOIN {$wpdb->postmeta} AS ym ON ( {$wpdb->posts}.ID = ym.post_id ) ";
+		$sql .= " WHERE (1=1)";
+		$sql .= $wpdb->prepare(" AND (({$wpdb->postmeta}.meta_key = 'award_type') AND ({$wpdb->postmeta}.meta_value = %d))", $type);
+		if($past_only){
+			$current_year = (int)date("Y");
+			$sql .= " AND ((ym.meta_key = 'award_year') AND (ym.meta_value < {$current_year})) ";
+		}else{
+			$sql .= " AND (ym.meta_key = 'award_year') ";
+		}
+		$sql .= " AND ({$wpdb->posts}.post_type = '{$post_type}') AND ({$wpdb->posts}.post_status = 'publish') ORDER BY ym.meta_value DESC";
+		if($limit > 0) {
+			$sql .= $wpdb->prepare(" LIMIT %d", $limit);
+		}
+
+		$years = $wpdb->get_col($sql);
+
+		if(!$years || !is_array($years)){
+			return array();
+		}
+		return $years;
 	}
 }
 new EASL_Award_Config();

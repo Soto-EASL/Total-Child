@@ -6453,6 +6453,40 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     padding: 0;
 }
 
+/*Shortcode : EASL Yearly Aardees*/
+.easl-yearly-awardees-row {
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 20px;
+}
+.easl-yearly-awardees-year {
+    margin-bottom: 20px;
+}
+.easl-yearly-awardees-year span {
+    background-color: #454545;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 1em;
+    padding: 10px 25px;
+    text-align: left;
+}
+.easl-yearly-award-thumb img {
+
+}
+.easl-yearly-awardee-image img {
+    width: 254px;
+    max-width: 100%;
+    height: auto;
+}
+.easl-yearly-awardees-peoples .easl-yearly-awardee-title {
+    color: #104e85;
+    font-family: KnockoutHTF51Middleweight;
+    font-size: 19px;
+    line-height: 1.4em;
+    margin: 0;
+    padding: 0;
+}
+
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
