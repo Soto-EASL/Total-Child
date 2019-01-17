@@ -5710,6 +5710,27 @@ ul.suggestions{
     border-left-color: #f9bc49;
 }
 
+/*Single Fellowship*/
+.single-fellowship #sidebar{
+    position: relative;
+    z-index: 1;
+    margin-top: -15px;
+}
+.single-fellowship #sidebar::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 25px;
+    left: -10px;
+    right: -10px;
+    z-index: 1;
+    top: -10px;
+    background: #fff;
+}
+.single-fellowship #sidebar-inner{
+    position: relative;
+    z-index: 2;
+ }
 
 /* VC Shortcode: EASL News List */
 .easl-news-list-filter {
@@ -6431,6 +6452,7 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     margin: 0;
     padding: 0;
 }
+
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
