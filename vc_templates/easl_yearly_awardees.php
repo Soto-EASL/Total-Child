@@ -20,6 +20,7 @@ $people_per_row = '';
 $display_thumb  = '';
 $award_type     = '';
 $year_num       = '';
+$past_year_only = '';
 $people_order   = '';
 $people_orderby = '';
 
@@ -89,10 +90,11 @@ switch ( $people_per_row ) {
 $award_type = absint( $award_type );
 
 $year_num = absint( $year_num );
+$past_year_only = 'true' == $past_year_only;
 
 $avaiable_years = array();
 if ( $year_num > 0 ) {
-	$avaiable_years = EASL_Award_Config::get_years( $award_type, $year_num, false );
+	$avaiable_years = EASL_Award_Config::get_years( $award_type, $year_num, $past_year_only );
 }
 $do_auery   = true;
 $query_args = array(
@@ -110,6 +112,15 @@ if ( count( $avaiable_years ) > 0 ) {
 			'key'     => 'award_year',
 			'value'   => $avaiable_years,
 			'compare' => 'IN',
+		)
+	);
+}elseif($past_year_only){
+	$query_args['meta_query'] = array(
+		'relation' => 'AND',
+		array(
+			'key'     => 'award_year',
+			'value'   => date("Y"),
+			'compare' => '<',
 		)
 	);
 }

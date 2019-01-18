@@ -73,6 +73,13 @@ return array(
 			'group' => __( 'Query', 'total-child' ),
 		),
 		array(
+			'type'		 => 'vcex_ofswitch',
+			'std'		 => 'false',
+			'heading'	 => __( 'Past Years Only', 'total-child' ),
+			'param_name' => 'past_year_only',
+			'group'		 => __( 'Query', 'total-child' ),
+		),
+		array(
 			'type' => 'dropdown',
 			'heading' => __( 'People Order', 'total-child' ),
 			'param_name' => 'people_order',
