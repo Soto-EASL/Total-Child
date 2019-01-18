@@ -464,18 +464,17 @@ function easl_vc_tab_list_newline($html) {
 add_filter('vc-tta-get-params-tabs-list', 'easl_vc_tab_list_newline', 10);
 
 function easl_posts_pagination_display($display, $post_type) {
-	$response = false;
-	switch ($post_type){
-        case 'publication':
-        case 'annual_reports':
-        case 'slide_decks':
-        case 'associations':
-            $response = false;
-            break;
-        default:
-            $response = $display;
+    $post_types_to_hide = array(
+        'publication',
+        'annual_reports',
+        'slide_decks',
+        'associations',
+	    Fellowship_Config::get_fellowship_slug(),
+    );
+    if(in_array($post_type, $post_types_to_hide)){
+        return false;
     }
-	return $response;
+	return $display;
 }
 add_filter( 'wpex_has_next_prev', 'easl_posts_pagination_display', 10, 2 );
 

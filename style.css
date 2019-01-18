@@ -5711,6 +5711,53 @@ ul.suggestions{
 }
 
 /*Single Fellowship*/
+.fellowship-topbar {
+    background-color: #104f85;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 10px 20px;
+}
+.app-period-title {
+    color: #fff;
+    margin: 0;
+    font-size: 21px;
+    font-family: 'KnockoutHTF51Middleweight';
+    font-weight: 400;
+}
+.app-period-title span {
+    display: inline-block;
+    vertical-align: top;
+}
+.app-period-title span:not(:last-child) {
+    margin-right: 5px;
+}
+.fellowship-application-guidelines:not(:last-child) {
+    margin: 0 15px;
+}
+.fellowship-application-guidelines .application-guidelines-link {
+    background-image: url('images/pdf-icon.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    color: #fff;
+    display: inline-block;
+    font-family: 'KnockoutHTF51Middleweight';
+    min-height: 33px;
+    padding-top: 6px;
+    padding-left: 40px;
+    text-decoration: none;
+}
+.fellowhip-buttons-wrap {
+    margin-bottom: 30px;
+}
+.fellowship-apply-button {
+    text-transform: uppercase;
+}
+
 .single-fellowship #sidebar{
     position: relative;
     z-index: 1;

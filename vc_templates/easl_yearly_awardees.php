@@ -68,21 +68,22 @@ switch ( $people_orderby ) {
 	default:
 		$peoples_args['orderby'] = 'post__in';
 }
+$people_col_width = '';
 switch ( $people_per_row ) {
 	case '1':
-		$vc_col_width = 'vc_col-sm-12';
+		$people_col_width = 'vc_col-sm-12';
 		break;
 	case '2':
-		$vc_col_width = 'vc_col-sm-6';
+		$people_col_width = 'vc_col-sm-6';
 		break;
 	case '3':
-		$vc_col_width = 'vc_col-sm-4';
+		$people_col_width = 'vc_col-sm-4';
 		break;
 	case '4':
-		$vc_col_width = 'vc_col-sm-3';
+		$people_col_width = 'vc_col-sm-3';
 		break;
 	default:
-		$vc_col_width = 'vc_col-sm-4';
+		$people_col_width = 'vc_col-sm-4';
 }
 
 $award_type = absint( $award_type );
@@ -91,7 +92,7 @@ $year_num = absint( $year_num );
 
 $avaiable_years = array();
 if ( $year_num > 0 ) {
-	$avaiable_years = EASL_Award_Config::get_years( $award_type, $year_num, true );
+	$avaiable_years = EASL_Award_Config::get_years( $award_type, $year_num, false );
 }
 $do_auery   = true;
 $query_args = array(
@@ -135,79 +136,11 @@ if ( $award_query && $award_query->have_posts() ):
 	?>
     <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
 		<?php
-		while ( $award_query->have_posts() ):
+		while ( $award_query->have_posts() ){
 			$award_query->the_post();
-			$award_thumb = '';
-			if ( 'true' == $display_thumb && has_post_thumbnail() ) {
-				$award_thumb = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' );
-				$award_thumb = $award_thumb ? $award_thumb[0] : '';
-			}
-			?>
-            <div class="easl-yearly-awardees-row">
-                <div class="easl-yearly-awardees-year"><span><?php echo get_field( 'award_year' ); ?></span></div>
-				<?php
-				$awardees         = get_field( 'awardees' );
-
-				if ( $awardees && count( $awardees ) > 0 ):
-					$peoples_args['post__in'] = $awardees;
-					$people_query = new WP_Query( $peoples_args );
-					if ( $people_query->have_posts() ):
-						?>
-                        <div class="easl-yearly-awardees-peoples vc_row wpb_row vc_inner vc_row-fluid">
-							<?php
-							while ( $people_query->have_posts() ):
-								$people_query->the_post();
-								$image      = has_post_thumbnail( get_the_ID() ) ?
-									wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
-								$avatar_src = $image ? $image[0] : get_stylesheet_directory_uri() . '/images/default-avatar.png';
-
-								$awardee_profile_link = get_field( 'recognition_awardee_profile_link' );
-								?>
-                                <div class="wpb_column vc_column_container <?php echo $vc_col_width; ?>">
-                                    <div class="vc_column-inner ">
-                                        <div class="wpb_wrapper">
-                                            <div class="easl-yearly-awardee-image">
-												<?php if ( $awardee_profile_link && trim( $awardee_profile_link['url'] ) ): ?>
-                                                <a href="<?php echo esc_url( trim( $awardee_profile_link['url'] ) ); ?>" <?php if ( $awardee_profile_link['target'] ) {
-													echo 'target="' . esc_attr( $awardee_profile_link['target'] ) . '"';
-												} ?>>
-													<?php endif; ?>
-                                                    <img src="<?php echo $avatar_src; ?>" alt=""/>
-													<?php if ( $awardee_profile_link ): ?></a><?php endif; ?>
-                                            </div>
-
-                                            <h5 class="easl-yearly-awardee-title">
-												<?php if ( $awardee_profile_link && trim( $awardee_profile_link['url'] ) ): ?>
-                                                <a href="<?php echo esc_url( trim( $awardee_profile_link['url'] ) ); ?>" <?php if ( $awardee_profile_link['target'] ) {
-													echo 'target="' . esc_attr( $awardee_profile_link['target'] ) . '"';
-												} ?>>
-													<?php endif; ?>
-													<?php echo the_title(); ?>
-													<?php if ( $awardee_profile_link ): ?></a><?php endif; ?>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                </div>
-							<?php endwhile; ?>
-                            <?php if($award_thumb): ?>
-                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                <div class="vc_column-inner ">
-                                    <div class="wpb_wrapper">
-                                        <div class="easl-yearly-award-thumb">
-                                            <img src="<?php echo $award_thumb; ?>" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php endif; ?>
-                        </div>
-						<?php
-						wp_reset_query();
-					endif;
-					?>
-				<?php endif; ?>
-            </div>
-		<?php endwhile; ?>
+			include locate_template('partials/award/year-row.php');
+        }
+        ?>
     </div>
 	<?php
 	wp_reset_query();
