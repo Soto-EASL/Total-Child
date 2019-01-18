@@ -68,7 +68,7 @@ if($application_period_formatted) {
 	<?php endif; ?>
 	<?php if($apply_url): ?>
         <div class="fellowship-apply-button">
-            <a class="easl-generic-button easl-color-lightblue easl-size-small" href="<?php echo esc_url( $apply_url ); ?>"><?php _e('Apply Here', 'total-child'); ?><span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>
+            <a class="easl-generic-button easl-color-lightblue easl-size-small" href="<?php echo esc_url( $apply_url ); ?>" target="_blank"><?php _e('Apply Here', 'total-child'); ?><span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>
         </div>
 	<?php endif; ?>
 </div>
