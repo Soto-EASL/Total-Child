@@ -5751,11 +5751,17 @@ ul.suggestions{
     padding-left: 40px;
     text-decoration: none;
 }
+.fellowship-application-guidelines .application-guidelines-link:hover {
+    color: #dc214e;
+}
 .fellowhip-buttons-wrap {
     margin-bottom: 30px;
 }
 .fellowship-apply-button {
     text-transform: uppercase;
+}
+.fellowship-apply-button .easl-generic-button:hover {
+    background: #dc214e;
 }
 
 .single-fellowship #sidebar{
