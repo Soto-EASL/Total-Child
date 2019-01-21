@@ -41,7 +41,7 @@ class EASL_Award_Config {
 	public static function register_post_type() {
 		register_post_type( self::get_slug(), array(
 			'labels' => array(
-				'name' => __( 'Award', 'total-child' ),
+				'name' => __( 'Awards', 'total-child' ),
 				'singular_name' => __( 'Award', 'total-child' ),
 				'add_new' => __( 'Add New', 'total-child' ),
 				'add_new_item' => __( 'Add New Award', 'total-child' ),

@@ -33,7 +33,7 @@ class EASL_Newsletter_Config {
 	public static function register_post_type() {
 		register_post_type( self::get_slug(), array(
 			'labels' => array(
-				'name' => __( 'Newsletter', 'total' ),
+				'name' => __( 'Newsletters', 'total' ),
 				'singular_name' => __( 'Newsletter', 'total' ),
 				'add_new' => __( 'Add New', 'total' ),
 				'add_new_item' => __( 'Add New Newsletter', 'total' ),

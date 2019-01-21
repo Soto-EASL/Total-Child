@@ -62,16 +62,16 @@ class EASL_Event_Config {
 	public static function register_post_type() {
 		register_post_type( self::get_event_slug(), array(
 			'labels' => array(
-				'name' => __( 'Event', 'total' ),
+				'name' => __( 'Events', 'total' ),
 				'singular_name' => __( 'Event', 'total' ),
 				'add_new' => __( 'Add New', 'total' ),
-				'add_new_item' => __( 'Add New Item', 'total' ),
-				'edit_item' => __( 'Edit Item', 'total' ),
-				'new_item' => __( 'Add New Item', 'total' ),
-				'view_item' => __( 'View Item', 'total' ),
-				'search_items' => __( 'Search Items', 'total' ),
-				'not_found' => __( 'No Items Found', 'total' ),
-				'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
+				'add_new_item' => __( 'Add New Event', 'total' ),
+				'edit_item' => __( 'Edit Event', 'total' ),
+				'new_item' => __( 'Add New Event', 'total' ),
+				'view_item' => __( 'View Event', 'total' ),
+				'search_items' => __( 'Search Events', 'total' ),
+				'not_found' => __( 'No Events Found', 'total' ),
+				'not_found_in_trash' => __( 'No Events Found In Trash', 'total' )
 			),
 			'public' => true,
 			'capability_type' => 'post',

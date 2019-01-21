@@ -40,16 +40,16 @@ class Publication_Config {
     public static function register_post_type() {
         register_post_type( 'publication', array(
             'labels' => array(
-                'name' => 'Publication',
+                'name' => 'Publications',
                 'singular_name' => 'Publication',
                 'add_new' => __( 'Add New', 'total' ),
-                'add_new_item' => __( 'Add New Item', 'total' ),
-                'edit_item' => __( 'Edit Item', 'total' ),
-                'new_item' => __( 'Add New Item', 'total' ),
-                'view_item' => __( 'View Item', 'total' ),
-                'search_items' => __( 'Search Items', 'total' ),
-                'not_found' => __( 'No Items Found', 'total' ),
-                'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
+                'add_new_item' => __( 'Add New Publication', 'total' ),
+                'edit_item' => __( 'Edit Publication', 'total' ),
+                'new_item' => __( 'Add New Publication', 'total' ),
+                'view_item' => __( 'View Publication', 'total' ),
+                'search_items' => __( 'Search Publications', 'total' ),
+                'not_found' => __( 'No Publications Found', 'total' ),
+                'not_found_in_trash' => __( 'No Publications Found In Trash', 'total' )
             ),
             'public' => true,
             'capability_type' => 'post',
