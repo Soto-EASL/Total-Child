@@ -17,9 +17,6 @@ class WPEX_Associations_Config {
      */
     public function __construct() {
 
-        // Helper functions
-        //require_once WPEX_FRAMEWORK_DIR .'post-types/staff/staff-helpers.php';
-
         // Adds the staff post type
         add_action( 'init', array( 'WPEX_Associations_Config', 'register_post_type' ), 0 );
 
@@ -28,34 +25,14 @@ class WPEX_Associations_Config {
         add_action( 'init', array( 'WPEX_Associations_Config', 'register_categories' ), 0 );
 
 
-        // Add staff VC modules
-        add_filter( 'vcex_builder_modules', array( 'WPEX_Associations_Config', 'vc_modules' ) );
-
         /*-------------------------------------------------------------------------------*/
         /* -  Admin only actions/filters
         /*-------------------------------------------------------------------------------*/
         if ( is_admin() ) {
-
-            // Adds columns in the admin view for taxonomies
-            add_filter( 'manage_edit-staff_columns', array( 'WPEX_Associations_Config', 'edit_columns' ) );
-            add_action( 'manage_staff_posts_custom_column', array( 'WPEX_Associations_Config', 'column_display' ), 10, 2 );
-
             // Allows filtering of posts by taxonomy in the admin view
             add_action( 'restrict_manage_posts', array( 'WPEX_Associations_Config', 'tax_filters' ) );
 
-            // Create Editor for altering the post type arguments
-            add_action( 'admin_menu', array( 'WPEX_Associations_Config', 'add_page' ) );
-            add_action( 'admin_init', array( 'WPEX_Associations_Config','register_page_options' ) );
-            add_action( 'admin_notices', array( 'WPEX_Associations_Config', 'setting_notice' ) );
-
             add_filter( 'wpex_main_metaboxes_post_types', array( 'WPEX_Associations_Config', 'meta_array' ), 20 );
-            //add_action( 'admin_print_styles-staff_page_wpex-staff-editor', array( 'WPEX_Staff_Config','css' ) );
-
-            // Add new image sizes tab
-            //add_filter( 'wpex_image_sizes_tabs', array( 'WPEX_Staff_Config', 'image_sizes_tabs' ), 10 );
-
-            // Add gallery metabox to staff
-            //add_filter( 'wpex_gallery_metabox_post_types', array( 'WPEX_Staff_Config', 'add_gallery_metabox' ), 20 );
 
         }
 
@@ -143,6 +120,7 @@ class WPEX_Associations_Config {
             ),
             'public' => true,
             'show_in_nav_menus' => true,
+            'show_admin_column' => true,
             'show_ui' => true,
             'show_tagcloud' => true,
             'hierarchical' => true,
@@ -541,21 +519,6 @@ class WPEX_Associations_Config {
 
     <?php }
 
-    /**
-     * Post Type Editor CSS
-     *
-     * @since 3.3.0
-     */
-    public static function css() { ?>
-
-        <style type="text/css">
-            #wpex-dashicon-select { max-width: 800px; }
-            #wpex-dashicon-select a { display: inline-block; margin: 2px; padding: 0; width: 32px; height: 32px; line-height: 32px; text-align: center; }
-            #wpex-dashicon-select a .dashicons,
-            #wpex-dashicon-select a .dashicons-before:before { line-height: inherit; }
-        </style>
-
-    <?php }
 
     /**
      * Registers a new custom associations sidebar.
@@ -626,48 +589,6 @@ class WPEX_Associations_Config {
     }
 
     /**
-     * Adds a "associations" tab to the image sizes admin panel
-     *
-     * @since 3.3.2
-     */
-    public static function image_sizes_tabs( $array ) {
-        $array['associations'] = wpex_get_associations_name();
-        return $array;
-    }
-
-    /**
-     * Adds image sizes for the associations to the image sizes panel.
-     *
-     * @since 2.0.0
-     */
-    public static function add_image_sizes( $sizes ) {
-        $obj            = get_post_type_object( 'associations' );
-        $post_type_name = $obj->labels->singular_name;
-        $sizes['associations_entry'] = array(
-            'label'   => sprintf( esc_html__( '%s Entry', 'total' ), $post_type_name ),
-            'width'   => 'associations_entry_image_width',
-            'height'  => 'associations_entry_image_height',
-            'crop'    => 'associations_entry_image_crop',
-            'section' => 'associations',
-        );
-        $sizes['associations_post'] = array(
-            'label'   => sprintf( esc_html__( '%s Post', 'total' ), $post_type_name ),
-            'width'   => 'associations_post_image_width',
-            'height'  => 'associations_post_image_height',
-            'crop'    => 'associations_post_image_crop',
-            'section' => 'associations',
-        );
-        $sizes['associations_related'] = array(
-            'label'   => sprintf( esc_html__( '%s Post Related', 'total' ), $post_type_name ),
-            'width'   => 'associations_related_image_width',
-            'height'  => 'associations_related_image_height',
-            'crop'    => 'associations_related_image_crop',
-            'section' => 'associations',
-        );
-        return $sizes;
-    }
-
-    /**
      * Disables the next/previous links if disabled via the customizer.
      *
      * @since 2.0.0
@@ -693,16 +614,6 @@ class WPEX_Associations_Config {
             }
         }
         return $args;
-    }
-
-    /**
-     * Adds the associations post type to the gallery metabox post types array.
-     *
-     * @since 2.0.0
-     */
-    public static function add_gallery_metabox( $types ) {
-        $types[] = 'associations';
-        return $types;
     }
 
     /**
@@ -812,16 +723,6 @@ class WPEX_Associations_Config {
             }
         }
         return $data;
-    }
-
-    /**
-     * Add custom VC modules
-     *
-     * @since 3.5.3
-     */
-    public static function vc_modules( $modules ) {
-
-        return $modules;
     }
 
     public static function meta_array( $types ) {
