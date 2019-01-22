@@ -27,16 +27,16 @@ class Fellowship_Config {
     public static function register_post_type() {
         register_post_type( self::get_fellowship_slug(), array(
             'labels' => array(
-                'name' => __( 'Fellowship', 'total' ),
+                'name' => __( 'Fellowships', 'total' ),
                 'singular_name' => __( 'Fellowship', 'total' ),
                 'add_new' => __( 'Add New', 'total' ),
-                'add_new_item' => __( 'Add New Item', 'total' ),
-                'edit_item' => __( 'Edit Item', 'total' ),
-                'new_item' => __( 'Add New Item', 'total' ),
-                'view_item' => __( 'View Item', 'total' ),
-                'search_items' => __( 'Search Items', 'total' ),
-                'not_found' => __( 'No Items Found', 'total' ),
-                'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
+                'add_new_item' => __( 'Add New Fellowship', 'total' ),
+                'edit_item' => __( 'Edit Fellowship', 'total' ),
+                'new_item' => __( 'Add New Fellowship', 'total' ),
+                'view_item' => __( 'View Fellowships', 'total' ),
+                'search_items' => __( 'Search Fellowships', 'total' ),
+                'not_found' => __( 'No Fellowships Found', 'total' ),
+                'not_found_in_trash' => __( 'No Fellowships Found In Trash', 'total' )
             ),
             'public' => true,
             'capability_type' => 'post',
