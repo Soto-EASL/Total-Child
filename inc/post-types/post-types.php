@@ -13,6 +13,7 @@ require_once EASL_INC_DIR . 'post-types/slide-decks/slide-decks-config.php';
 require_once EASL_INC_DIR . 'post-types/newsletter/newsletter-config.php';
 require_once EASL_INC_DIR . 'post-types/ilc/ilc-config.php';
 require_once EASL_INC_DIR . 'post-types/award/award-config.php';
+require_once EASL_INC_DIR . 'post-types/secretary-generals/secretary-generals-config.php';
 
 function easl_change_pt_labels_post($labels) {
 	$labels = array(
@@ -76,6 +77,7 @@ function easl_menu_order($menu_order) {
 		'edit.php?post_type=page', // Pages
 		'edit.php?post_type=publication', // Publications
 		'edit.php?post_type=staff', // People
+		'edit.php?post_type=secretary_generals', // Secretary General
 		'edit.php?post_type=slide_decks', // Slide Decks
 	);
 	foreach ($front_end_menus as $menu_id) {

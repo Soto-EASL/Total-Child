@@ -6539,6 +6539,22 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     margin: 0;
     padding: 0;
 }
+/*Shortcode:: EASL Secretary Generals Carousel*/
+.sec-genral-details .sec-gen-year {
+    font-size: 18px;
+    line-height: 1em;
+    margin: 0 0 10px;
+    text-align: center;
+}
+.sec-genral-details .sec-gen-name {
+    font-size: 18px;
+    line-height: 1em;
+    margin: 0 0 15px;
+    text-align: center;
+}
+.sec-gen-image {
+    text-align: center;
+}
 
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
