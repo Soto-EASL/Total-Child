@@ -27,10 +27,10 @@ return array(
 		),
 		array(
 			'type'			 => 'textfield',
-			'heading'		 => __( 'Number of history', 'total-child' ),
+			'heading'		 => __( 'Number of Secretary Generals', 'total-child' ),
 			'param_name'	 => 'limit',
 			'value'			 => '',
-			'description'	 => __( 'Enter the limit of history to show. Leave empty to show all.', 'total-child' ),
+			'description'	 => __( 'Enter the limit of secretary generals to show. Leave empty to show all.', 'total-child' ),
 			'group'			 => __( 'Query', 'total-child' ),
 		),
 		array(
