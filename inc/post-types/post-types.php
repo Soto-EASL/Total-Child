@@ -14,6 +14,7 @@ require_once EASL_INC_DIR . 'post-types/newsletter/newsletter-config.php';
 require_once EASL_INC_DIR . 'post-types/ilc/ilc-config.php';
 require_once EASL_INC_DIR . 'post-types/award/award-config.php';
 require_once EASL_INC_DIR . 'post-types/secretary-generals/secretary-generals-config.php';
+require_once EASL_INC_DIR . 'post-types/easl-history/easl-history-config.php';
 
 function easl_change_pt_labels_post($labels) {
 	$labels = array(
@@ -70,6 +71,7 @@ function easl_menu_order($menu_order) {
 		'edit.php?post_type=event', // Events
 		'edit.php?post_type=fellowship', // Fellowship
 		'revslider', // Home page sliders
+		'edit.php?post_type=easl_history', // History
 		'edit.php?post_type=ilc', // ILC
 		'edit.php?post_type=associations', // National Associations
 		'edit.php',// News/posts

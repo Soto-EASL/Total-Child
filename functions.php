@@ -305,12 +305,10 @@ add_action('wp_enqueue_scripts', 'func_scripts', 10);
 add_shortcode('timeline_slide', 'timefunc');
 // [timeline_slide category_name="history"]
 function timefunc($atts) {
-    $a = $atts['category_name'];
 
     $the_query = new WP_Query( array(
-        'post_type' => 'post',
+        'post_type' => EASL_History_Config::get_slug(),
         'posts_per_page' => -1,
-        'category_name' => $a,
         'meta_key' => 'history_year',
         'orderby' => 'meta_value',
         'order' => 'DESC',
