@@ -6555,7 +6555,281 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 .sec-gen-image {
     text-align: center;
 }
+/*Shortcode: History slider*/
+#timeline {
+    width: 100%;
+    max-width: 1125px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+#dates {
+    width: calc( 100% - 200px );
+    height: 60px;
+    margin: 0;
+    float: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+#dates li {
+    list-style: none;
+    flex: 1 1 auto;
+    width: 100px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    background-color: #80c4e5;
+    position: relative;
+}
+#dates li::before{
+    content: '';
+    width: 100%;
+    height: 2px;
+    display: block;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+}
+#dates li:first-child::before{
+    content: '';
+    width: 90%;
+    height: 2px;
+    display: block;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    margin-top: -1px;
+}
+#dates li:last-child::before{
+    content: '';
+    width: 90%;
+    height: 2px;
+    display: block;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    margin-top: -1px;
+}
+#dates a {
+    line-height: 50px;
+    width: 100%;
+    display: block;
+    height: 100%;
+}
+#dates a.selected{
+    font-size: 50px;
+    position: absolute;
+    top: -42px;
+    left: 0;
+    color: #80c4e5;
+    font-family: "KnockoutHTF51Middleweight";
+}
+#dates li:first-child a.selected,
+#dates li:last-child a.selected,
+#dates li:first-child a,
+#dates li:last-child a{
+    color: transparent;
+}
 
+#dates a.selected:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    position: absolute;
+    top: 57px;
+    left: 50%;
+    margin-left: -10px;
+}
+#dates li:first-child a.selected:before{
+    left: 10%;
+}
+#dates li:last-child a.selected:before{
+    left: auto;
+    right: 10%;
+}
+#dates a:hover{
+    text-decoration: none;
+}
+
+#issues {
+    width: 100%;
+    height: 358px;
+    overflow: hidden;
+    margin-bottom: 60px;
+
+}
+#issues li {
+    width: 562.5px;
+    max-width: 562.5px;
+    height: 350px;
+    list-style: none;
+    float: left;
+}
+#issues li.selected img {
+    -webkit-transform: scale(0.9,0.85);
+    transform: scale(0.9,0.85);
+}
+#issues li img {
+    float: left;
+    margin: 0px 15px 0px 0px;
+    background: transparent;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)"; /* IE 8 */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE 6 & 7 */
+    zoom: 1;
+    -webkit-transition: all 2s ease-in-out;
+    transition: all 2s ease-in-out;
+    -webkit-transform: scale(0.9,0.85);
+    transform: scale(0.9,0.85);
+}
+#issues li h1 {
+    font-size: 30px;
+    margin: 20px 0 0;
+}
+#issues li p {
+    font-size: 14px;
+    margin-right: 70px;
+    font-weight: normal;
+    line-height: 22px;
+}
+
+#grad_left,
+#grad_right {
+    width: 100px;
+    height: 350px;
+    position: absolute;
+    top: 0;
+}
+#grad_left {
+    left: 0;
+}
+#grad_right {
+    right: 0;
+}
+
+#next,
+#prev {
+    position: absolute;
+    top: 0;
+    font-size: 70px;
+    width: 22px;
+    color: #135389;
+}
+#next:hover,
+#prev:hover {
+}
+#next {
+    right: 0;
+}
+#prev {
+    right: 100px;
+}
+#next.disabled,
+#prev.disabled {
+    opacity: 0.2;
+}
+
+.timeline-value{
+    width: 100px;
+    background-color: #135289;
+    color: #ffffff;
+    line-height: 50px;
+    font-size: 24px;
+    text-align: center;
+    font-family: "KnockoutHTF51Middleweight";
+}
+#years{
+    display: none;
+}
+.slider-block{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+#dates{
+    display: none;
+}
+.slider-wrapper-block{
+    width: calc( 100% - 200px);
+    padding: 24px 5%;
+    background-color: #80c4e5;
+}
+.easl-history-slide-wrap .ui-slider-horizontal {
+    height: 2px;
+}
+.easl-history-slide-wrap .ui-widget.ui-widget-content {
+    border: 1px solid #ffffff;
+}
+.easl-history-slide-wrap .ui-slider-horizontal .ui-slider-handle {
+    top: -.55em;
+    margin-left: -.6em;
+}
+.easl-history-slide-wrap  .wpb_alert p:last-child,
+.easl-history-slide-wrap  .wpb_text_column :last-child,
+.easl-history-slide-wrap  .wpb_text_column p:last-child,
+.easl-history-slide-wrap .wpb_alert p:last-child,
+.easl-history-slide-wrap .wpb_text_column :last-child,
+.easl-history-slide-wrap .wpb_text_column p:last-child {
+    margin-bottom: 0;
+}
+.easl-history-slide-wrap .ui-state-default,
+.easl-history-slide-wrap .ui-state-active,
+.easl-history-slide-wrap .ui-widget-content .ui-state-default,
+.easl-history-slide-wrap .ui-widget-header .ui-state-default,
+.easl-history-slide-wrap .ui-button,
+.easl-history-slide-wrap  .ui-button.ui-state-disabled:hover,
+.easl-history-slide-wrap  .ui-button.ui-state-disabled:active {
+    border: 1px solid #c5c5c5;
+    background: #f6f6f6;
+    font-weight: normal;
+    color: #454545;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+#custom-handle {
+    border: none;
+    background: transparent;
+    font-weight: normal;
+    width: 100px;
+    height: 50px;
+    top: -83px !important;
+    color: #80c4e5;
+    font-size: 50px;
+    font-family: "KnockoutHTF51Middleweight";
+}
+#custom-handle:before{
+    content: '';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    position: absolute;
+    top: 73px;
+    left: 38%;
+    margin-left: -10px;
+}
+#issues h4{
+    margin-bottom: 0;
+}
+#issues img{
+    border: 1px solid #e3e3e3;
+}
+.history-slider-logo{
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid #80c4e5;
+    background-image: url('images/title-icons/history-slider-logo.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
 
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {

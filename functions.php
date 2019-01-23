@@ -180,12 +180,6 @@ add_action('widgets_init','register_custom_sidebar');
 
 
 function func_styles() {
-    if (is_page(sanitize_title('history'))) {
-        wp_enqueue_style('jquery-ui-lib-style',
-            get_stylesheet_directory_uri() . '/assets/lib/jquery-ui-1.12.1.custom/jquery-ui.css');
-        wp_enqueue_style('history-timeline-slider-style',
-            get_stylesheet_directory_uri() . '/assets/css/history_timeline_slider.css');
-    }
     if(is_singular('fellowship')){
         wp_enqueue_style('fellowship-detail-slider-style',
             get_stylesheet_directory_uri() . '/assets/css/fellowship-detail.css');
@@ -206,14 +200,7 @@ function func_styles() {
         wp_enqueue_style('mentorships-style',
             get_stylesheet_directory_uri() . '/assets/css/mentorships.css');
     }
-//    if (is_page(sanitize_title('community'))) {
-//        wp_enqueue_style('community-style',
-//            get_stylesheet_directory_uri() . '/assets/css/community.css');
-//    }
-//    if (is_page(sanitize_title('governingboard'))) {
-//        wp_enqueue_style('governingboard-style',
-//            get_stylesheet_directory_uri() . '/assets/css/community.css');
-//    }
+
     if (is_page(sanitize_title('join-the-community'))) {
         wp_enqueue_style('join-the-community-style',
             get_stylesheet_directory_uri() . '/assets/css/join-community.css');
@@ -257,38 +244,6 @@ function func_scripts() {
     wp_localize_script('common-script', 'ajaxurl', array(
         'ajaxurl' => admin_url('admin-ajax.php')
     ));
-    if (is_page(sanitize_title('history'))) {
-        wp_enqueue_script('simple-jquery-timeline-Plugin',
-            get_stylesheet_directory_uri() . '/assets/lib/Simple-jQuery-Timeline-Plugin-Timelinr/js/jquery.timelinr-0.9.7.js',
-            ['jquery'],
-            false,
-            true);
-        wp_enqueue_script('jquery-ui-lib-script',
-            get_stylesheet_directory_uri() . '/assets/lib/jquery-ui-1.12.1.custom/jquery-ui.js',
-            ['jquery'],
-            false,
-            true);
-
-        wp_enqueue_script('history-timeline-slider-script',
-            get_stylesheet_directory_uri() . '/assets/js/history_timeline_slider.js',
-            ['jquery', 'simple-jquery-timeline-Plugin', 'jquery-ui-lib-script'],
-            false,
-            true);
-    }
-//    if (is_page(sanitize_title('community'))) {
-//        wp_enqueue_script('community-script',
-//            get_stylesheet_directory_uri() . '/assets/js/community.js',
-//            ['jquery'],
-//            false,
-//            true);
-//    }
-//    if (is_page(sanitize_title('governingboard'))) {
-//        wp_enqueue_script('governingboard-script',
-//            get_stylesheet_directory_uri() . '/assets/js/community.js',
-//            ['jquery'],
-//            false,
-//            true);
-//    }
     if (is_page(sanitize_title('join-the-community'))) {
         wp_enqueue_script('join-the-community-script',
             get_stylesheet_directory_uri() . '/assets/js/join-community.js',
