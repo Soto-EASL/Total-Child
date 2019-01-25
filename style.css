@@ -6831,6 +6831,17 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     background-size: auto;
 }
 
+/* Shortcode:: EASL Membership Categories */
+.easl-membership-category-wrap .wpb_easl_widget_heading {
+    font-family: "KnockoutHTF51Middleweight";
+    font-size: 30px;
+    line-height: 34px;
+    margin: 0 0 20px;
+}
+.easl-membership-category-content strong {
+    color: #004b87;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
         padding: 0 12px;

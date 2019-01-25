@@ -15,6 +15,7 @@ require_once EASL_INC_DIR . 'post-types/ilc/ilc-config.php';
 require_once EASL_INC_DIR . 'post-types/award/award-config.php';
 require_once EASL_INC_DIR . 'post-types/secretary-generals/secretary-generals-config.php';
 require_once EASL_INC_DIR . 'post-types/easl-history/easl-history-config.php';
+require_once EASL_INC_DIR . 'post-types/membership-category/membership-category-config.php';
 
 function easl_change_pt_labels_post($labels) {
 	$labels = array(
@@ -73,6 +74,7 @@ function easl_menu_order($menu_order) {
 		'revslider', // Home page sliders
 		'edit.php?post_type=easl_history', // History
 		'edit.php?post_type=ilc', // ILC
+		'edit.php?post_type=membership_category', // Membership Categories
 		'edit.php?post_type=associations', // National Associations
 		'edit.php',// News/posts
 		'edit.php?post_type=newsletter', // Newsletters
@@ -93,3 +95,4 @@ function easl_menu_order($menu_order) {
 
 }
 add_filter( 'menu_order', 'easl_menu_order' );
+//2246,1397,1399,1391,1393,1388,1395
