@@ -180,10 +180,6 @@ add_action('widgets_init','register_custom_sidebar');
 
 
 function func_styles() {
-    if (is_page(sanitize_title('awardees'))) {
-        wp_enqueue_style('awardees-style',
-            get_stylesheet_directory_uri() . '/assets/css/awardees.css');
-    }
     if (is_page(sanitize_title('mentorships'))) {
         wp_enqueue_style('mentorships-style',
             get_stylesheet_directory_uri() . '/assets/css/mentorships.css');
