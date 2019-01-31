@@ -136,6 +136,25 @@ body a {
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .2);
 }
 
+.easl-list-bullet {
+    list-style: none;
+    margin: 0 0 20px;
+}
+.easl-list-bullet li {
+    position: relative;
+    padding-left: 15px;
+
+}
+.easl-list-bullet li::before {
+    content: "\f111";
+    font-family: fontAwesome;
+    font-size: 5px;
+    color: #004b87;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
 /*EASL Generic Button*/
 .easl-generic-button {
     background: #104f85;
@@ -5763,7 +5782,46 @@ ul.suggestions{
 .fellowship-apply-button .easl-generic-button:hover {
     background: #dc214e;
 }
-
+.fellowship-details-image-title {
+    display: flex;
+    min-height: 1px;
+    margin-bottom: 30px;
+}
+.fellowship-details-image {
+    width: 175px;
+}
+.fellowship-details-image img {
+    display: block;
+    margin: 0;
+}
+.fellowship-detials-title-term {
+    display: flex;
+    min-height: 1px;
+    flex-direction: column;
+}
+.fellowship-detials-title {
+    flex: 1;
+    font-family: 'KnockoutHTF51Middleweight';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 38px;
+    line-height: 44px;
+    color: #104e85;
+}
+.fellowship-detials-terms {
+    margin-bottom: 7px;
+}
+.fellowship-detials-terms span {
+    font-family: 'KnockoutHTF51Middleweight';
+    font-size: 16px;
+    color: #004b87;
+    background: #f5f5f5;
+    display: inline-block;
+    padding: 7px 14px;
+}
+.fellowship-details-content {
+    margin-bottom: 34px;
+}
 .single-fellowship #sidebar{
     position: relative;
     z-index: 1;
