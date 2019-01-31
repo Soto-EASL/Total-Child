@@ -201,10 +201,6 @@ function func_styles() {
         wp_enqueue_style('join-the-community-style',
             get_stylesheet_directory_uri() . '/assets/css/join-community.css');
     }
-    if (is_page(sanitize_title('fellowships'))) {
-        wp_enqueue_style('fellowships-style',
-            get_stylesheet_directory_uri() . '/assets/css/young-investigators-fellowships.css');
-    }
     if (is_page(sanitize_title('national-associations')) ||
         is_page(sanitize_title('professor-andrew-k-burroughs')) ||
         is_page(sanitize_title('professor-jean-pierre-benhamou')) ||

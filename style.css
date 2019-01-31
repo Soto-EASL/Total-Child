@@ -2613,7 +2613,6 @@ body .wpb_single_image a.easl-vc-image-over:after {
     position: relative;
 }
 .yif-thumb a img {
-    border: 2px solid #71c5e8;
     position: relative;
     z-index: 1;
     width: 100%;
