@@ -1,6 +1,11 @@
 (function($){
     var $body;
-    
+
+    function setCardBlockHeight(){
+        var $this = $('.easl-card-block');
+        var w = $this.width();
+        $this.height( (w * 0.5625) + 'px');
+    }
     function easlStickyHeader(){
         if( $(window).scrollTop() <= 0 ){
             $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled')
@@ -498,7 +503,7 @@
             $('.national-associations-menu-item.nas-current', $con).removeClass('nas-current');
             $this.addClass('nas-current');
             $con.removeClass('nas-loaded').addClass('nas-loading');
-            $.post(ajaxurl.ajaxurl, {
+            $.post(EASLSETTINGS.ajaxUrl, {
                 'action': 'get_national_associations_func',
                 'category': cat
             }, function (response) {
@@ -507,8 +512,38 @@
                 history.pushState({id: 'nas', html: $con.html() }, document.title, $this.attr('href'));
             });
         });
-        // Stuff to be done when windows resize
+        $body.on('click', '.sign-up-news', function () {
+            $('.footer-newsletter').show();
+        });
+        $body.on('click', '.footer-newsletter .fa-times-circle', function () {
+            $('.footer-newsletter').hide();
+        });
+        $body.on('click', '.easl-mentors-table-show-more', function (e) {
+            var $this = $(this);
+            e.preventDefault();
+            if($this.hasClass('unshown')){
+                $('.easl-mentors-table-row.old-rows').removeClass('hidden');
+                $('.easl-mentors-table-show-more.unshown').removeClass('unshown').addClass('shown');
+                $('.easl-mentors-table-show-more').find('.theme-button-inner').text('Show less');
+            }
+            if($this.hasClass('shown')){
+                $('.easl-mentors-table-row.old-rows').addClass('hidden');
+                $('.easl-mentors-table-show-more.unshown').removeClass('shown').addClass('unshown');
+                $('.easl-mentors-table-show-more').find('.theme-button-inner').text('Show more');
+            }
+        });
+
+        setCardBlockHeight();
+
+        var easlResizeTimeout;
         $(window).resize(function(){
+            if ( !easlResizeTimeout ) {
+                easlResizeTimeout = setTimeout(function() {
+                    easlResizeTimeout = null;
+                    // Stuff to be done when windows resize
+                    setCardBlockHeight();
+                }, 66);
+            }
         });
         $(window).scroll( function() {
             easlScrollEvent();

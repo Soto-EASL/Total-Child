@@ -215,28 +215,6 @@ function func_styles() {
 add_action('wp_head', 'func_styles', 25);
 
 
-function func_scripts() {
-    wp_enqueue_script('common-script',
-        get_stylesheet_directory_uri() . '/assets/js/common.js',
-        ['jquery'],
-        false,
-        true);
-    wp_localize_script('common-script', 'ajaxurl', array(
-        'ajaxurl' => admin_url('admin-ajax.php')
-    ));
-    if (is_page(sanitize_title('join-the-community'))) {
-        wp_enqueue_script('join-the-community-script',
-            get_stylesheet_directory_uri() . '/assets/js/join-community.js',
-            ['jquery'],
-            false,
-            true);
-    }
-
-
-}
-add_action('wp_enqueue_scripts', 'func_scripts', 10);
-
-
 add_shortcode('timeline_slide', 'timefunc');
 // [timeline_slide category_name="history"]
 function timefunc($atts) {
