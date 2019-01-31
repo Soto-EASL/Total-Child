@@ -378,39 +378,6 @@ function wpse_100726_extra_atts( $atts, $item, $args )
     return $atts;
 }
 
-add_action( 'wp_ajax_get_membership_categories_func', 'get_membership_categories' );
-add_action( 'wp_ajax_nopriv_get_membership_categories_func', 'get_membership_categories' );
-function get_membership_categories(){
-    $category = $_POST['category'];
-    $the_query = new WP_Query( array(
-        'post_type' => 'post',
-        'posts_per_page' => -1,
-        'category_name' => $category,
-    ) );
-    $row = '';
-
-    if ( $the_query->have_posts() ){
-        while ( $the_query->have_posts() ){
-            $the_query->the_post();
-
-            $row .= get_the_content();
-        }
-    } else {
-        $row .= 'there is not any post yet';
-    }
-    ob_start();
-    ?>
-    <div class="membership-categories-block-wrapper">
-        <?php echo $row;?>
-    </div>
-    <?php
-    $html = ob_get_contents();
-    ob_end_clean();
-    echo $html;
-    die();
-
-}
-
 function easl_vc_tab_list_newline($html) {
 	return str_replace('--NL--', '<br/>', $html);
 }
