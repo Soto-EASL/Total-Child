@@ -180,10 +180,6 @@ add_action('widgets_init','register_custom_sidebar');
 
 
 function func_styles() {
-    if (is_page(sanitize_title('liver-network'))) {
-        wp_enqueue_style('liver-network-style',
-            get_stylesheet_directory_uri() . '/assets/css/liver-network.css');
-    }
     if (is_page(sanitize_title('awardees'))) {
         wp_enqueue_style('awardees-style',
             get_stylesheet_directory_uri() . '/assets/css/awardees.css');
