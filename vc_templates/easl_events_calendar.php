@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this EASL_VC_Events_Calendar
  */
 $event_number = $event_type = $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = '';
+$enable_related_links = $relink_title = $related_links = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -43,6 +44,33 @@ wp_enqueue_style(
 		'jquery-ui-datepicker-style',
 		'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css'
 );
+
+$related_links_data = array();
+if($enable_related_links){
+	$related_links_data = $this->get_related_links_data($related_links);
+}
+$related_links_html = '';
+if($enable_related_links){
+	$related_links_html .= '<div class="easl-ec-related-links-wrap">' . "\n\t";
+	$related_links_html .= '<h4 class="easl-ec-related-links-title">'. $relink_title .'</h4>' . "\n\t";
+	$related_links_html .= '<ul class="easl-ec-related-links">' . "\n\t\t";
+	foreach($related_links_data as $rel_link) {
+		$link_attributes = array();
+		$link_attributes[] = 'href="' . trim( $rel_link['url'] ) . '"';
+		if ( ! empty( $rel_link['target'] ) ) {
+			$link_attributes[] = 'target="' . esc_attr( trim( $rel_link['target'] ) ) . '"';
+		}
+		if ( ! empty( $rel_link['rel'] ) ) {
+			$link_attributes[] = 'rel="' . esc_attr( trim( $rel_link['rel'] ) ) . '"';
+		}
+		$link_attributes = implode( ' ', $link_attributes );
+		$related_links_html .= '<li><a '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="fa fa-angle-right"></span></span></a></li>' . "\n\t";
+	}
+	$related_links_html .= '</ul>' . "\n";
+	$related_links_html .= '</div>';
+}
+
+
 $topics_list = '
 	<li>
 		<label class="easl-custom-checkbox easl-cb-all csic-light-blue">
@@ -220,16 +248,9 @@ $top_filter = '
 								</div>
 							</div>
 						</div>
-						<div class="easl-col easl-col-3 ecf-submit-event">
-							<div class="easl-col-inner" style="border-left: 2px solid #004b87;">
-								<h4>Submit your proposal</h4>
-								
-								<ul class="submit-proposal">
-								    <li><a href="mailto:easloffice@easloffice.eu">EASL Endorsement or Sponsorship requests <i class="fa fa-angle-right"></i></a></li>
-								    <li><a href="mailto:easloffice@easloffice.eu">Announce my Event <i class="fa fa-angle-right"></i></a></li>
-								    <li><a href="mailto:easloffice@easloffice.eu">Call for Proposal <i class="fa fa-angle-right"></i></a></li>
-                                </ul>
-								
+						<div class="easl-col easl-col-3 ec-related-links-col">
+							<div class="easl-col-inner">
+								' . $related_links_html . '
 							</div>
 						</div>
 					</div>
@@ -237,6 +258,7 @@ $top_filter = '
 			</div>
 		</div>
 	</div>
+	<div class="easl-ec-related-links-mob">' . $related_links_html. '</div>
 	';
 
 $now_time = time();

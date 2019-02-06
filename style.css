@@ -1558,8 +1558,35 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .easl-ecf-reset {
 }
+.ec-related-links-col {
+    border-left: 2px solid #004b87;
+}
+.easl-ec-related-links-wrap .easl-ec-related-links-title {
 
-
+}
+.easl-ec-related-links-wrap .easl-ec-related-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.easl-ec-related-links li {
+    padding: 12px 0;
+    list-style: none;
+    border-bottom: 1px solid #dedede;
+}
+.easl-ec-related-links li:last-child {
+    border-bottom: 0 none;
+}
+.easl-ec-related-links li a {
+    color: #004b87;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.easl-ec-related-links li a .fa {
+    margin-left: 5px;
+}
 
 
 .easl-events-calendar-inner {
@@ -7048,6 +7075,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .easl-row-same-height-col > .easl-col > .easl-col-inner {
         width: 100%;
     }
+    /*Shortcode: Events Calendar*/
+    .easl-ec-related-links-mob {
+        display: none;
+    }
 }
 @media only screen and (max-width: 767px) {
     .header-two-aside {}
@@ -7056,6 +7087,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
     .easl-ilc-details-buttons > .easl-col:last-child {
         margin-bottom: 0;
+    }
+    /*Shortcode: Events Calendar*/
+    .ec-related-links-col {
+        display: none;
     }
 }
 @media only screen and (max-width: 640px) {

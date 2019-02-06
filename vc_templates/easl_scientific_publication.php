@@ -11,7 +11,7 @@ if (!defined('ABSPATH')) {
  * @var $el_id
  * @var $css
  * Shortcode class
- * @var $this SC_LL_Video_Box
+ * @var $this EASL_VC_Scientific_Publication
  */
 
 $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = $css = '';

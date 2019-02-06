@@ -249,6 +249,32 @@ if( class_exists('WPBakeryShortCode') ){
 			));
 			die();
 		}
+		public function get_related_links_data( $rlinks_param ) {
+			$related_links_data = array();
+			if ( strlen( $rlinks_param ) > 0 ) {
+				$related_links_data = vc_param_group_parse_atts( $rlinks_param );
+			}
+			if ( empty( $related_links_data ) ) {
+				$related_links_data = array();
+			}
+			$parsed_links_data = array();
+			foreach ( $related_links_data as $link ) {
+				if ( empty( $link[ 'rlink' ] ) ) {
+					continue;
+				}
+				$p_link = $this->parse_url( $link[ 'rlink' ] );
+				if ( strlen( $p_link[ 'url' ] ) > 0 ) {
+					$parsed_links_data[] = $p_link;
+				}
+			}
+			return $parsed_links_data;
+		}
+
+		public function parse_url( $link ) {
+			//parse link
+			$link = ( '||' === $link ) ? '' : $link;
+			return vc_build_link( $link );
+		}
 	}
 }
 

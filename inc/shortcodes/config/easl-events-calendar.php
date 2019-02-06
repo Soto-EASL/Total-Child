@@ -48,6 +48,49 @@ return array(
 			'param_name' => 'el_class',
 			'description' => __( 'Style particular content element differently - add a class name and refer to it in custom CSS.', 'js_composer' ),
 		),
+		// Related Link
+		array(
+			'type'			 => 'vcex_ofswitch',
+			'std'			 => 'true',
+			'heading'		 => __( 'Enable', 'total-child' ),
+			'param_name'	 => 'enable_related_links',
+			'group'			 => __( 'Related Links', 'total-child' ),
+		),
+		array(
+			'type'		 => 'textfield',
+			'heading'	 => __( 'Title', 'total-child' ),
+			'param_name' => 'relink_title',
+			'value'		 => 'Related Links',
+			'group'		 => __( 'Related Links', 'total-child' ),
+			'dependency' => array(
+				'element'	 => 'enable_related_links',
+				'value'		 => array( 'true' ),
+			),
+		),
+		array(
+			'type'		 => 'param_group',
+			'heading'	 => __( 'Related Links', 'total-child' ),
+			'param_name' => 'related_links',
+			'group'		 => __( 'Related Links', 'total-child' ),
+			'dependency' => array(
+				'element'	 => 'enable_related_links',
+				'value'		 => array( 'true' ),
+			),
+			'value'		 => urlencode( json_encode( array(
+				array(
+					'rlink' => '',
+				),
+			) ) ),
+			'params'	 => array(
+				array(
+					'type'			 => 'vc_link',
+					'value'			 => '',
+					'param_name'	 => 'rlink',
+					'heading'		 => __( 'Related link data', 'total-child' ),
+					'admin_label'	 => true,
+				),
+			),
+		),
 		array(
 			'type' => 'css_editor',
 			'heading' => __( 'CSS box', 'js_composer' ),
