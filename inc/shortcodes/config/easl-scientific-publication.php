@@ -165,7 +165,6 @@ return array(
 			'heading'		 => __( 'Enable', 'total-child' ),
 			'param_name'	 => 'enable_related_links',
 			'group'			 => __( 'Related Links', 'total-child' ),
-			'description'	 => __( 'Hide Excerpt.', 'total-child' ),
 		),
 		array(
 			'type'		 => 'textfield',
