@@ -992,6 +992,23 @@ body #site-navigation .dropdown-menu a {
     color: #ffffff;
     background-color: #71c5e8;
 }
+
+.wpex-bars {
+    width: 28px;
+}
+.wpex-bars>span,
+.wpex-bars>span::before,
+.wpex-bars>span::after {
+    background: #104f85;
+    height: 3px;
+}
+.wpex-bars>span::before {
+    top: -8px;
+}
+.wpex-bars>span::after {
+    bottom: -8px;
+}
+
 /*Header title*/
 .page-header {
     margin-bottom: 0;
@@ -6987,6 +7004,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         clear: none;
         padding-top: 0;
         text-align: right;
+        margin-right: 40px;
+    }
+    body.wpex-mobile-toggle-menu-icon_buttons #mobile-menu {
+
     }
 }
 
