@@ -1,6 +1,11 @@
 (function($){
     var $body;
-
+    function easlIsMobile(){
+        if(typeof window.matchMedia === 'function'){
+            return window.matchMedia("(max-width: 767px)").matches;
+        }
+        return $(window).width() <= 767;
+    }
     function setCardBlockHeight(){
         var $this = $('.easl-card-block');
         var w = $this.width();
@@ -61,16 +66,32 @@
         this.requestData = JSON.stringify(this.getFilters());
     };
     EventCalendar.prototype.addListeners = function(){
+        var ob = this;
         $(':input', this.$filterCon).on('change', $.proxy(this, 'filter'));
         if("undefined" !== typeof $.fn.appear){ 
             $('.easl-ec-load-more', this.$wrap).appear($.proxy(this, 'scrollLoadNow'), {one: false});
         }
         $(".easl-ecf-reset", this.$filterCon).on('click', $.proxy(this, 'resetFilter'));
+        $(".ec-mob-showhide-filter", this.$filterCon).on('click', function(event){
+            var $t = $(this);
+            event.preventDefault();
+            console.log(easlIsMobile());
+            if(!easlIsMobile()){
+                return false;
+            }
+            if($t.hasClass('easl-active')){
+                $t.removeClass('easl-active');
+                ob.$filterCon.css('max-height', '');
+            }else{
+                $t.addClass('easl-active');
+                ob.$filterCon.css('max-height', ob.$filterCon.find('.easl-ec-filter').outerHeight(true) + 36);
+            }
+        });
     };
     EventCalendar.prototype.showFilterValidateMessage = function(){
         alert(this.filterValdiateMessage.join("\n"));
     };
-    
+
     EventCalendar.prototype.resetFilter = function(){
         this.resettingFilter = true;
         $('.ec-filter-topics .easl-custom-checkbox', this.$filterCon).not('.easl-cb-all').each(function(){
@@ -549,6 +570,9 @@
             easlScrollEvent();
         } );
         window.onpopstate = function(event) {
+            if(event.state.id && event.state.id === 'nas'){
+                $('.nas-container').html(event.state.html);
+            }
             if(event.state.id && event.state.id === 'nas'){
                 $('.nas-container').html(event.state.html);
             }

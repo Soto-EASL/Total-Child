@@ -111,12 +111,9 @@ jQuery(function($) {
 
     $(document).on('click', '.easl-msc-content-wrap .easl-staff-details-button', function (e) {
         e.preventDefault();
-        var staff_id = $(this).data('target');
+        var staff_id = $(this).data('target'), staff_href = $(this).attr('href');
         if(!staff_id){
             return false;
-        }
-        if($(this).attr('href')){
-            window.location.hash = $(this).attr('href');
         }
         !$(this).hasClass('sd-next-prev') && $mscContentWrap.data('easlscrollpos', document.documentElement.scrollTop);
         $mscContentWrap.addClass('easl-show-staff-details easl-staff-details-loading');
@@ -127,7 +124,7 @@ jQuery(function($) {
         mscLoadStaffDetailsHTML(staff_id);
         $mscContentWrap.removeClass('easl-staff-details-loaded');
         var $staffDetailWrap = $('.easl-staff-details-wrap', $mscContentWrap);
-        $.post(ajaxurl.ajaxurl, {
+        $.post(EASLSETTINGS.ajaxUrl, {
             'action': 'get_staff_profile',
             'staff_id': staff_id
         }, function (response) {
@@ -136,6 +133,7 @@ jQuery(function($) {
                 .addClass('easl-staff-details-loaded');
             if(response){
                 $('.easl-staff-details-content', $staffDetailWrap).html(response);
+                staff_href && history.pushState({id: 'staff_details', html: response, staffID: staff_id }, document.title, staff_href);
             }
         });
     });

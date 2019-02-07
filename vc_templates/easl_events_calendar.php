@@ -139,40 +139,6 @@ foreach($countries as $country_code => $country_name){
 }
 
 $top_filter = '
-<style>
-    .entry ul.submit-proposal{
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .submit-proposal li{
-        padding: 12px 0;
-        list-style: none;
-        border-bottom: 1px solid #dedede;
-    }
-    .submit-proposal li:last-child{
-    border-bottom: none;
-    }
-    .submit-proposal li a{
-        color: #004b87;
-        font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 16px;
-    }
-    .easl-custom-select .ecs-list {
-        display: none;
-        background: #fff;
-        border: 1px solid #e3e0e0;
-        position: absolute;
-        left: 0;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        list-style: none;
-        z-index: 10;
-    }
-</style>
 	<div class="easl-ec-filter-container">
 		<div class="easl-ec-filter easl-row">
 			<div class="easl-col easl-col-4 ec-filter-showme">
@@ -181,6 +147,9 @@ $top_filter = '
 					<ul class="ec-filter-topics">
 						'. $topics_list .'
 					</ul>
+					<div class="easl-filter-reset-mobwrap ec-hide-desktop">
+						<button class="easl-ecf-reset"><i class="fa fa-times-circle"></i> Clear Filters</button>
+					</div>
 				</div>   
 			</div>
 			<div class="easl-col easl-col-3-4">
@@ -192,19 +161,13 @@ $top_filter = '
 					<div class="easl-row">
 						<div class="easl-col easl-col-2-3">
 							<div class="easl-col-inner">
-							    <div class="vc_row wpb_row vc_row-fluid no-bottom-margins">
-                        <div class="wpb_column vc_column_container vc_col-sm-12">
-                            <div class="vc_column-inner ">
-                                <div class="wpb_wrapper">
-                                    <div class="wpb_text_column wpb_content_element ">
-                                        <div class="wpb_wrapper">
-                                            <h2 style="margin-bottom: 10px;">Filter by:</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+							    <h2 class="ec-hide-mob" style="margin-bottom: 10px;">Filter by:</h2>
+							    <div class="ec-hide-desktop" style="margin-bottom: 5px;">
+							    	<button class="ec-mob-showhide-filter">
+							    		<span class="ec-mob-show-filter">Show Filters</span>
+							    		<span class="ec-mob-hide-filter">Hide Filters</span>
+							    	</button>
+							    </div>
 								<div class="ec-filter-fields">
 								    <div class="ec-filter-field-wrap">
 										<div class="ecf-events-types" style="margin-bottom: 15px">
@@ -232,23 +195,18 @@ $top_filter = '
 											</select>
 										</div>
 									</div>
-									<div class="ec-filter-field-wrap">
+									<div class="ec-filter-field-wrap ec-hide-mob">
 										
 									</div>
-									<div class="ec-filter-field-wrap" style="margin-bottom:0;margin-top: 34px;">
+									<div class="ec-filter-field-wrap ec-hide-mob" style="margin-bottom:0;margin-top: 34px;">
 										<div class="easl-filter-reset-wrap">
-											<button class="easl-button easl-button-small easl-ecf-reset"
-											style="color: #004b87;
-                                            background: #ffffff;
-                                            padding: 0;
-                                            font-size: 14px;
-                                            "><i class="fa fa-times-circle"></i> Clear Filters</button>
+											<button class="easl-ecf-reset"><i class="fa fa-times-circle"></i> Clear Filters</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="easl-col easl-col-3 ec-related-links-col">
+						<div class="easl-col easl-col-3 ec-related-links-col ec-hide-mob">
 							<div class="easl-col-inner">
 								' . $related_links_html . '
 							</div>
@@ -258,7 +216,7 @@ $top_filter = '
 			</div>
 		</div>
 	</div>
-	<div class="easl-ec-related-links-mob">' . $related_links_html. '</div>
+	<div class="easl-ec-related-links-mob ec-hide-desktop">' . $related_links_html. '</div>
 	';
 
 $now_time = time();

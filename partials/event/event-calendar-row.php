@@ -136,15 +136,17 @@ $event_highlights = wp_parse_args($event_highlights, array(
 			<header class="ec-head">
 				<?php if($event_topics_name || $event_organisers): ?>
 				<p class="ec-meta">
-					<?php if($event_topics_name): ?>
-					<span class="ec-meta-type">Topic:</span> <span class="ec-meta-value"><?php echo $event_topics_name; ?></span>
-					<?php endif; ?>
-					<?php if($event_topics_name && $event_organisers): ?>
-					<span class="ec-meta-sep"> | </span>
-					<?php endif; ?>
-					<?php if( $event_organisers): ?>
-					<span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo esc_html($event_organisers); ?></span>
-					<?php endif; ?>
+                    <span class="ec-meta-inner">
+                        <?php if($event_topics_name): ?>
+                        <span class="ec-meta-type">Topic:</span> <span class="ec-meta-value"><?php echo $event_topics_name; ?></span>
+                        <?php endif; ?>
+                        <?php if($event_topics_name && $event_organisers): ?>
+                        <span class="ec-meta-sep"> | </span>
+                        <?php endif; ?>
+                        <?php if( $event_organisers): ?>
+                        <span class="ec-meta-type">Organisers:</span> <span class="ec-meta-value"><?php echo esc_html($event_organisers); ?></span>
+                        <?php endif; ?>
+                    </span>
 				</p>
 				<?php endif; ?>
 				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -166,7 +168,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon info"></span>
                             </span>
-							<span class="ec-link-text">More<br/>Information</span>
+							<span class="ec-link-text"> More <br/>Information</span>
 						</a>
 					</li>
 					<?php if($event_website_url): ?>
@@ -175,7 +177,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon laptop"></span>
                             </span>
-							<span class="ec-link-text">Visit<br/>Website</span>
+							<span class="ec-link-text"> Visit <br/>Website</span>
 						</a>
 					</li>
 					<?php endif; ?>
@@ -185,7 +187,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
-                                <span class="ec-link-text">Event<br/>Highlights</span>
+                                <span class="ec-link-text"> Event <br/>Highlights</span>
                             </a>
                         </li>
 					<?php endif; ?>
@@ -195,7 +197,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon clock"></span>
                             </span>
-							<span class="ec-link-text">Key<br/>Deadlines</span>
+							<span class="ec-link-text"> Key <br/>Deadlines</span>
 						</a>
 					</li>
 					<?php endif; ?>
@@ -205,7 +207,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon list"></span>
                             </span>
-							<span class="ec-link-text">Scientific<br/>Programme</span>
+							<span class="ec-link-text"> Scientific <br/>Programme</span>
 						</a>
 					</li>
 					<?php endif; ?>
@@ -215,7 +217,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             <span class="icon-wrapper">
                                 <span class="ec-links-icon envelope"></span>
                             </span>
-							<span class="ec-link-text">Get<br/>Notified</span>
+							<span class="ec-link-text"> Get <br/>Notified</span>
 						</a>
 					</li>
 					<?php endif; ?>
@@ -226,7 +228,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 								<span class="icon-wrapper">
 									<span class="ec-links-icon calendar"></span>
 								</span>
-								<span class="ec-link-text">Add to<br/>Calendar</span>
+								<span class="ec-link-text"> Add to <br/>Calendar</span>
 							</span>
 							<span class="start"><?php echo date('Y-m-d', $event_start_date); ?></span>
 							<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
