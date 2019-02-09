@@ -556,6 +556,16 @@
 
         setCardBlockHeight();
 
+        $('.read-more-btn').on('click', function(e){
+            e.preventDefault();
+            var target = $(this).data('target');
+            if(typeof target === 'undefined'){
+                return false;
+            }
+            target = $('.' + target);
+            target.length && $('.' + target).slideToggle(200);
+        });
+
         var easlResizeTimeout;
         $(window).resize(function(){
             if ( !easlResizeTimeout ) {
