@@ -6958,6 +6958,18 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     color: #004b87;
 }
 
+/*Cookie Consent*/
+.cookie-notice-container .easl-cookie-consent-button {
+    border: 1px solid #71c5e8;
+    display: inline-block;
+    padding: 2px 10px;
+    text-decoration: none;
+}
+.cookie-notice-container .easl-cookie-consent-button:hover,
+.cookie-notice-container .easl-cookie-consent-button:active {
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
         padding: 0 12px;
