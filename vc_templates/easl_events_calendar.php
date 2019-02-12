@@ -84,6 +84,7 @@ $topics = get_terms( array(
 	'orderby' => 'name',
 	'order' => 'ASC',
 	'fields' => 'id=>name',
+	'exclude' => array(787),
 ) );
 
 if( !is_array($topics)){
@@ -323,6 +324,7 @@ if(count($meta_query) > 0){
 $tax_query = array();
 // Topic
 if( is_array($topics_req) && count($topics_req) > 0){
+	$topics_req[] = 787;
 	$tax_query[] = array(
 		'taxonomy' => EASL_Event_Config::get_topic_slug(),
 		'field' => 'term_id',

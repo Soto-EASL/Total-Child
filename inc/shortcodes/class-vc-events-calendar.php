@@ -103,6 +103,7 @@ if( class_exists('WPBakeryShortCode') ){
 			$tax_query = array();
 			// Topic
 			if( is_array($topics) && count($topics) > 0){
+			    $topics[] = 787;
 				$tax_query[] = array(
 					'taxonomy' => EASL_Event_Config::get_topic_slug(),
 					'field' => 'term_id',
