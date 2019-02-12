@@ -76,10 +76,10 @@ if ( $mc_query->have_posts() ) {
 		if($become_member_link || $renew_membership_link){
 			$html .= '<div class="easl-generic-buttons-wrap easl-align-left">';
 			if($become_member_link) {
-				$html .= '<a class="easl-generic-button easl-color-lightblue easl-size-small easl-align-inline" target="_blank" href="' . esc_url($become_member_link) . '">'. __('Become a Member', 'total-child') .'<span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>';
+				$html .= '<a class="easl-generic-button easl-color-lightblue easl-size-small easl-align-inline" target="_blank" href="' . esc_url($become_member_link) . '">'. __('Become a Member', 'total-child') .'<span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
 			}
 			if($renew_membership_link) {
-				$html .= '<a class="easl-generic-button easl-color-lightblue easl-size-small easl-align-inline" target="_blank" href="' . esc_url($renew_membership_link) . '">'. __('Renew Membership', 'total-child') .'<span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>';
+				$html .= '<a class="easl-generic-button easl-color-lightblue easl-size-small easl-align-inline" target="_blank" href="' . esc_url($renew_membership_link) . '">'. __('Renew Membership', 'total-child') .'<span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
 			}
 			$html .= '</div>';
 		}

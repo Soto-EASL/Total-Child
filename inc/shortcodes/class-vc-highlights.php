@@ -45,7 +45,7 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                 'base' => 'easl_highlights',
                 'category' => __( 'EASL', 'total' ),
                 'description' => __( 'EASL Highlights', 'total' ),
-                'icon' => 'vcex-icon fa fa-users',
+                'icon' => 'vcex-iconticon ticon-users',
                 'php_class_name' => 'EASL_VC_YI_Fellowship',
                 'params' => array(
                     vc_map_add_css_animation(),
@@ -258,7 +258,7 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                                                 <span class="eld-day"><?php echo $begining_date->format('d'); ?></span>
                                                 <span class="eld-mon"><?php echo $begining_date->format('M'); ?></span>
                                                 <span class="eld-year"><?php echo $begining_date->format('Y'); ?></span>
-                                                <i class="fa fa-play" aria-hidden="true"></i>
+                                                <i class="ticon ticon-play" aria-hidden="true"></i>
                                             </a>
                                             <p class="el-location">
                                                 <span class="ell-name">Clinical School</span>

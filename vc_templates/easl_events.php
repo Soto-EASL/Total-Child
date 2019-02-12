@@ -188,7 +188,7 @@ if($event_query->have_posts()){
 					<span class="eld-day"><?php echo $event_start_date[0]; ?></span>
 					<span class="eld-mon"><?php echo strtoupper( $event_start_date[1] ); ?></span>
 					<span class="eld-year"><?php echo $event_start_date[2]; ?></span>
-					<i class="fa fa-play" aria-hidden="true"></i>
+					<i class="ticon ticon-play" aria-hidden="true"></i>
 				</a>
 				<?php if($event_meeting_type_name || $event_location_display): ?>
 				<p class="el-location">

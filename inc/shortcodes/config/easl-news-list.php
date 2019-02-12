@@ -14,7 +14,7 @@ return array(
 	'base' => 'easl_news_list',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL News', 'total-child' ),
-	'icon' => 'vcex-icon fa fa-list-alt',
+	'icon' => 'vcex-iconticon ticon-list-alt',
 	'php_class_name' => 'EASL_VC_News_List',
 	'params' => array(
 		vc_map_add_css_animation(),

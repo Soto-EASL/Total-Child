@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_yi_fellowship',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL YI Fellowship', 'total' ),
-	'icon' => 'vcex-icon fa fa-users',
+	'icon' => 'vcex-iconticon ticon-users',
 	'php_class_name' => 'EASL_VC_YI_Fellowship',
 	'params' => array(
 		vc_map_add_css_animation(),

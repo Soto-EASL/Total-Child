@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_news',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL News', 'total' ),
-	'icon' => 'vcex-icon fa fa-list-alt',
+	'icon' => 'vcex-iconticon ticon-list-alt',
 	'php_class_name' => 'EASL_VC_News',
 	'params' => array(
 		array(

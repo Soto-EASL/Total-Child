@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_slide_decks',
 	'category' => __( 'EASL', 'total-child' ),
 	'description' => __( 'EASL Slide Decks', 'total-child' ),
-	'icon' => 'vcex-icon fa fa-users',
+	'icon' => 'vcex-iconticon ticon-users',
 	'php_class_name' => 'EASL_VC_Slide_Decks',
 	'params' => array(
 		vc_map_add_css_animation(),

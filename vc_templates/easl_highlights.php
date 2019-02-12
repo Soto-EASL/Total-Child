@@ -324,7 +324,7 @@ $color_list = [
                                         <span class="eld-day"><?php echo $begining_date->format('d'); ?></span>
                                         <span class="eld-mon"><?php echo $begining_date->format('M'); ?></span>
                                         <span class="eld-year"><?php echo $begining_date->format('Y'); ?></span>
-                                        <i class="fa fa-play" aria-hidden="true"></i>
+                                        <i class="ticon ticon-play" aria-hidden="true"></i>
                                     </a>
                                     <p class="el-location">
                                         <span class="ell-name">Clinical School</span>

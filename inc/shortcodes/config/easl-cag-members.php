@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_cag_members',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL CAG Members', 'total' ),
-	'icon' => 'vcex-icon fa fa-users',
+	'icon' => 'vcex-iconticon ticon-users',
 	'php_class_name' => 'EASL_VC_CAG_Members',
 	'params' => array(
 		vc_map_add_css_animation(),

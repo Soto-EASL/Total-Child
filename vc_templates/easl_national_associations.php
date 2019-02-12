@@ -27,7 +27,7 @@ if($current_country_id){
             $countries = get_categories(['taxonomy' => 'associations_category']);
             foreach ($countries as $country):
              ?>
-                <div class="menu-item-block"><a class="national-associations-menu-item<?php if($current_country_id === $country->term_id){echo ' nas-current';} ?>" href="<?php echo add_query_arg(array('nas_id' => $country->term_id), $page_link); ?>" data-term="<?php echo $country->term_id; ?>"><?php echo  $country->name; ?> <i class="fa fa-angle-right"></i></a></div>
+                <div class="menu-item-block"><a class="national-associations-menu-item<?php if($current_country_id === $country->term_id){echo ' nas-current';} ?>" href="<?php echo add_query_arg(array('nas_id' => $country->term_id), $page_link); ?>" data-term="<?php echo $country->term_id; ?>"><?php echo  $country->name; ?> <i class="ticon ticon-angle-right"></i></a></div>
             <?php endforeach ?>
         </div>
     </div>
@@ -56,7 +56,7 @@ if($current_country_id){
                     <?php endwhile;?>
                 <?php endif;?>
             </div>
-            <div class="easl-sd-load-icon"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>
+            <div class="easl-sd-load-icon"><i class="ticon ticon-spinner ticon-pulse ticon-5x ticon-fw"></i></div>
         </div>
     </div>
 </div>

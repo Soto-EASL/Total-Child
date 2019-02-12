@@ -130,7 +130,7 @@ wp_enqueue_script('publication-detailed-item-script',
                                            padding-left: 38px;"><span
                                             class="theme-button-inner">Download Slide Deck<span
                                                 class="vcex-icon-wrap theme-button-icon-right"><span
-                                                    class="fa fa-angle-right"></span></span></span></a>
+                                                    class="ticon ticon-angle-right"></span></span></span></a>
                             </div>
                             <?php endif;?>
                         <?php else:?>

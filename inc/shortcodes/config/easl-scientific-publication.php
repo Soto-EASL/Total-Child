@@ -9,7 +9,7 @@ return array(
 	'base'			 => 'easl_scientific_publication',
 	'category'		 => __( 'EASL', 'total-child' ),
 	'description'	 => __( 'EASL Scientific Publication', 'total-child' ),
-	'icon'			 => 'vcex-icon fa fa-book',
+	'icon'			 => 'vcex-iconticon ticon-book',
 	'php_class_name' => 'EASL_VC_Scientific_Publication',
 	'params'		 => array(
 		vc_map_add_css_animation(),

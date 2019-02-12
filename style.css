@@ -1294,7 +1294,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .events-li-date:active {
     text-decoration: none;
 }
-.events-li-date .fa {
+.events-li-date .ticon {
     position: absolute;
     right: -14px;
     font-size: 16px;
@@ -1342,7 +1342,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     font-size: 15px;
     line-height: 15px;
 }
-.events-li-date .fa {
+.events-li-date .ticon {
     position: absolute;
     right: -14px;
     font-size: 16px;
@@ -1600,7 +1600,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     color: #71c5e8;
     text-decoration: none;
 }
-.easl-ec-related-links li a .fa {
+.easl-ec-related-links li a .ticon {
     margin-left: 5px;
     color: #71c5e8;
 }
@@ -1721,17 +1721,17 @@ body .wpb_single_image a.easl-vc-image-over:after {
     line-height: 15px;
     font-weight: 400;
 }
-.ec-dates .fa {
+.ec-dates .ticon {
     position: absolute;
     font-size: 16px;
     line-height: 16px;
     top: 50%;
     transform: translateY(-50%);
 }
-.easl-ec-row-left .ec-dates .fa {
+.easl-ec-row-left .ec-dates .ticon {
     right: -14px;
 }
-.easl-ec-row-right .ec-dates .fa {
+.easl-ec-row-right .ec-dates .ticon {
     left: -14px;
     margin-top: 1px;
     transform: translateY(-50%) rotate(180deg);
@@ -1828,7 +1828,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     margin: 0;
     height: 24px;
 }
-.ec-links-icon .fa {
+.ec-links-icon .ticon {
     font-size: 24px;
     line-height: 24px;
 }
@@ -1838,14 +1838,14 @@ body .wpb_single_image a.easl-vc-image-over:after {
     border-radius: 50%;
     border: 1px solid;
 }
-.ec-links-more .ec-links-icon .fa {
+.ec-links-more .ec-links-icon .ticon {
     font-size: 16px;
 }
 .ec-links-program .ec-links-icon {
     width: 27px;
     border: 1px solid;
 }
-.ec-links-program .ec-links-icon .fa {
+.ec-links-program .ec-links-icon .ticon {
     font-size: 17px;
 }
 .ec-link-text {
@@ -2128,8 +2128,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
     transform: translate(-50%, -50%);
     text-rendering: auto;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-animation: fa-spin 1s infinite steps(8);
-    animation: fa-spin 1s infinite steps(8);
+    -webkit-animation: ticon-spin 1s infinite steps(8);
+    animation: ticon-spin 1s infinite steps(8);
 }
 .easl-ec-filter-loading .easl-events-calendar-bottom {
     opacity: 0;
@@ -2142,7 +2142,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     text-align: center;
     margin: 15px 0 0;
 }
-.easl-ec-load-icon .fa{
+.easl-ec-load-icon .ticon {
     color: #afafaf;
 }
 .easl-ec-load-text {
@@ -3434,13 +3434,13 @@ body.wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-controls-ic
     font-size: 17px;
     color: #fff;
 }
-.footer-contacts a .fa-mobile {
+.footer-contacts a .ticon-mobile {
 	font-size: 32px;
 	vertical-align: middle;
 	margin-right: 7px;
 	margin-left: 4px;
 }
-.footer-contacts a .fa-envelope-o {
+.footer-contacts a .ticon-envelope-o {
 	font-size: 21px;
 	vertical-align: middle;
 	margin-right: 4px;
@@ -3963,7 +3963,7 @@ ul.event-links-list li:before{
     top: 0;
     width: 32px;
 }
-.event-link-icon .fa{
+.event-link-icon .ticon {
     font-size: 32px;
     line-height: 32px;
 }
@@ -3973,11 +3973,11 @@ ul.event-links-list li:before{
     padding: 5px;
     line-height: 16px;
 }
-.event-link-program .event-link-icon .fa {
+.event-link-program .event-link-icon .ticon {
     font-size: 20px;
     line-height: 20px;
 }
-.event-link-map .event-link-icon .fa {
+.event-link-map .event-link-icon .ticon {
     margin-left: 9px;
 }
 .event-link-text {
@@ -4402,7 +4402,7 @@ ul.event-links-list li:before{
 .social-share li a:hover .hexagon:after {
     border-left-color: #004b87;
 }
-.social-share li a .fa {
+.social-share li a .ticon {
     position: relative;
     z-index: 2;
     font-size: 14px;
@@ -4821,7 +4821,7 @@ a.button:hover{
     left: 50%;
     z-index: 999;
 }
-.footer-newsletter .fa-times-circle{
+.footer-newsletter .ticon-times-circle{
     color: #f4524d;
     position: absolute;
     top: -20px;
@@ -4883,7 +4883,7 @@ a.easl-card-btn:hover{
     text-decoration: none;
     margin-top: 15px;
 }
-.easl-card-text .fa{
+.easl-card-text .ticon {
     margin-left: 10px;
 }
 .easl-card-btn-icon-wrapper{
@@ -5259,7 +5259,7 @@ ul.suggestions{
     left: 0;
     color: #fff;
 }
-.page-header-title .easl-title-back-link .fa {
+.page-header-title .easl-title-back-link .ticon {
     color: #71c5e8;
 }
 .page-header-title .easl-title-back-link:hover {
@@ -5457,7 +5457,7 @@ ul.suggestions{
     font-weight: bold;
     text-decoration: none;
 }
-.event-text-block .toggle-box-button .fa {
+.event-text-block .toggle-box-button .ticon {
     font-weight: 700;
 }
 .event-text-block .toggle-box-button:hover,
@@ -5472,32 +5472,32 @@ ul.suggestions{
 
 .event-color-blue .event-text-block .toggle-box-button:hover,
 .event-color-blue .event-text-block .toggle-box-button:active,
-.event-color-blue .event-text-block .toggle-box-button .fa {
+.event-color-blue .event-text-block .toggle-box-button .ticon {
     color: #165291;
 }
 .event-color-red .event-text-block .toggle-box-button:hover,
 .event-color-red .event-text-block .toggle-box-button:active,
-.event-color-red .event-text-block .toggle-box-button .fa {
+.event-color-red .event-text-block .toggle-box-button .ticon {
     color: #de2a57;
 }
 .event-color-teal .event-text-block .toggle-box-button:hover,
 .event-color-teal .event-text-block .toggle-box-button:active,
-.event-color-teal .event-text-block .toggle-box-button .fa {
+.event-color-teal .event-text-block .toggle-box-button .ticon {
     color: #189790;
 }
 .event-color-orrange .event-text-block .toggle-box-button:hover,
 .event-color-orrange .event-text-block .toggle-box-button:active,
-.event-color-orrange .event-text-block .toggle-box-button .fa {
+.event-color-orrange .event-text-block .toggle-box-button .ticon {
     color: #f26827;
 }
 .event-color-gray .event-text-block .toggle-box-button:hover,
 .event-color-gray .event-text-block .toggle-box-button:active,
-.event-color-gray .event-text-block .toggle-box-button .fa {
+.event-color-gray .event-text-block .toggle-box-button .ticon {
     color: #7e6a73;
 }
 .event-color-yellow .event-text-block .toggle-box-button:hover,
 .event-color-yellow .event-text-block .toggle-box-button:active,
-.event-color-yellow .event-text-block .toggle-box-button .fa {
+.event-color-yellow .event-text-block .toggle-box-button .ticon {
     color: #f9bc49;
 }
 
@@ -6181,7 +6181,7 @@ easl-sdrow-color-yellow .easl-slide-deck-item-meta-title {
     border: 0 none;
     position: relative;
 }
-.easl-list-pagination .page-numbers a .fa {
+.easl-list-pagination .page-numbers a .ticon {
     font-size: 27px;
     font-weight: 700;
 }
@@ -7314,7 +7314,7 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         padding-left: 0;
     }
 
-    .easl-ec-row .ec-dates .fa {
+    .easl-ec-row .ec-dates .ticon {
         left: -14px;
         right: auto;
         margin-top: 1px;

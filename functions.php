@@ -280,8 +280,8 @@ function timefunc($atts) {
         <ul id="dates">
             <?php echo $dates;?>
         </ul>
-        <a href="#" id="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-        <a href="#" id="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        <a href="#" id="next"><i class="ticon ticon-angle-right" aria-hidden="true"></i></a>
+        <a href="#" id="prev"><i class="ticon ticon-angle-left" aria-hidden="true"></i></a>
         <div class="slider-block">
             <div class="timeline-value"><?php echo max($year_list);?></div>
             <div class="slider-wrapper-block">

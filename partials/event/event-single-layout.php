@@ -273,8 +273,8 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             </div>
                             <p>
 								<a href="#" class="toggle-box-button tbb-hidden" data-target="#event-more-description">
-									<span class="tbb-shown-text">Show more <i class="fa fa-angle-down"></i></span>
-									<span class="tbb-hidden-text">Show less <i class="fa fa-angle-up"></i></span>
+									<span class="tbb-shown-text">Show more <i class="ticon ticon-angle-down"></i></span>
+									<span class="tbb-hidden-text">Show less <i class="ticon ticon-angle-up"></i></span>
 								</a>
 							</p>
 							<?php endif; ?>
@@ -285,7 +285,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 								<?php if($event_online_programme_url): ?>
                                 <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
                                     <a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url );?>" style="display: inline-block" target="_blank">
-                                        <span class="event-link-icon"><i class="fa fa-list-ul" aria-hidden="true"></i></span>
+                                        <span class="event-link-icon"><i class="ticon ticon-list-ul" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Scientific Programme</span>
                                     </a>
                                 </li>
@@ -294,7 +294,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                                 <li class="event-link-calendar" style="float: left;border: none;margin-right: 40px">
 									<div title="Add to Calendar" class="addeventatc">
 										<span class="event-link-item" href="" style="display: inline-block">
-											<span class="event-link-icon"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i></span>
+											<span class="event-link-icon"><i class="ticon ticon-calendar-plus-o" aria-hidden="true"></i></span>
 											<span class="event-link-text">Add to Calendar</span>
 										</span>
 										<span class="start"><?php echo date('Y-m-d', $event_start_date); ?></span>
@@ -308,7 +308,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 								<?php if($event_notification_url && ('past' != $event_time_type)): ?>
                                 <li class="event-link-notify" style="float: left;border: none;margin-right: 40px">
                                     <a class="event-link-item" href="<?php echo esc_url($event_notification_url);?>" style="display: inline-block" target="_blank">
-                                        <span class="event-link-icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                                        <span class="event-link-icon"><i class="ticon ticon-envelope-o" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Get Notified</span>
                                     </a>
                                 </li>
@@ -316,7 +316,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 								<?php if($event_website_url): ?>
                                 <li class="event-link-website" style="float: left;border: none;margin-right: 40px">
                                     <a class="event-link-item" href="<?php echo esc_url( $event_website_url); ?>" style="display: inline-block" target="_blank">
-                                        <span class="event-link-icon"><i class="fa fa-tv" aria-hidden="true"></i></span>
+                                        <span class="event-link-icon"><i class="ticon ticon-tv" aria-hidden="true"></i></span>
                                         <span class="event-link-text">Visit Website</span>
                                     </a>
                                 </li>

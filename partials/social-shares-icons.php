@@ -25,13 +25,13 @@ wp_enqueue_script( 'wpex-social-share' );
 	<div class="wpex-social-share easl-social-share" <?php echo wpex_parse_attrs( $data_attrs ); ?>>
 		<ul class="social-share clr">
 			<li class="wpex-twitter">
-				<a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				<a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="ticon ticon-twitter" aria-hidden="true"></i></a>
 			</li>
 			<li class="wpex-facebook">
-				<a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				<a role="button" tabindex="1" href=""><span class="hexagon"></span><i class="ticon ticon-facebook" aria-hidden="true"></i></a>
 			</li>
 			<li class="wpex-linkedin">
-				<a href=""><span class="hexagon"></span><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+				<a href=""><span class="hexagon"></span><i class="ticon ticon-linkedin" aria-hidden="true"></i></a>
 			</li>
 		</ul>
 	</div>

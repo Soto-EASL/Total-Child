@@ -42,7 +42,7 @@ if ( $content || ( wpex_get_mod( 'main_search', true ) && 'two' == $header_style
 						<input type="hidden" name="lang" value="<?php echo( ICL_LANGUAGE_CODE ); ?>"/>
 					<?php endif; ?>
 					<button type="submit" value="" id="header-two-search-submit">
-						<span class="fa fa-search"></span>
+						<span class="ticon ticon-search"></span>
 					</button>
 				</form><!-- #header-two-searchform -->
 			</div><!-- #header-two-search -->

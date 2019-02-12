@@ -9,7 +9,7 @@ return array(
 	'base' => 'easl_secretary_general_carousel',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'Display secretary generals as a carousel.', 'total-child' ),
-	'icon' => 'vcex-icon fa fa-files-o',
+	'icon' => 'vcex-iconticon ticon-files-o',
 	'php_class_name' => 'EASL_VC_Secretary_Generals_Carousel',
 	'params' => array(
 		vc_map_add_css_animation(),

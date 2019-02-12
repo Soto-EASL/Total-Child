@@ -32,7 +32,7 @@ if($button_icon){
 
 $button_text_html = '';
 if($button_text){
-    $button_text =  '<div class="easl-card-text">' . $button_text . '<i class="fa fa-angle-right"></i></div>';
+    $button_text =  '<div class="easl-card-text">' . $button_text . '<i class="ticon ticon-angle-right"></i></div>';
 }
 
 if($button_text || $button_icon){

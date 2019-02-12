@@ -73,10 +73,10 @@ echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . 
 		$back_url = wpex_get_mod( 'publications_header_back_button', '');
 	}elseif(is_single()){
 		$back_url = get_the_permalink(wpex_get_mod( 'blog_page', 5626));
-		echo '<a class="easl-title-back-link" href="'. get_the_permalink($page_id) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
+		echo '<a class="easl-title-back-link" href="'. get_the_permalink($page_id) .'"><span class="ticon ticon-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
 	}
 	if($back_url){
-		echo '<a class="easl-title-back-link" href="'. esc_url($back_url) .'"><span class="fa fa-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
+		echo '<a class="easl-title-back-link" href="'. esc_url($back_url) .'"><span class="ticon ticon-angle-left" aria-hidden="true"></span> ' . __('Back', 'total-child') . '</a>';
 	}
 	if($allow_html_shortcode){
 		echo do_shortcode($string);

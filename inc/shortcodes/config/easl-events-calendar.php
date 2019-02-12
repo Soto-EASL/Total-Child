@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_events_calendar',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Events Calendar', 'total' ),
-	'icon' => 'vcex-icon fa fa-calendar',
+	'icon' => 'vcex-iconticon ticon-calendar',
 	'php_class_name' => 'EASL_VC_Events_Calendar',
 	'params' => array(
 		array(

@@ -94,99 +94,99 @@ function easl_social_profile_options_list() {
 	return array(
 		'facebook'    => array(
 			'label'      => 'Facebook',
-			'icon_class' => 'fa fa-facebook',
+			'icon_class' => 'ticon ticon-facebook',
 		),
 		'twitter'     => array(
 			'label'      => 'Twitter',
-			'icon_class' => 'fa fa-twitter',
+			'icon_class' => 'ticon ticon-twitter',
 		),
 		'linkedin'    => array(
 			'label'      => 'LinkedIn',
-			'icon_class' => 'fa fa-linkedin',
+			'icon_class' => 'ticon ticon-linkedin',
 		),
 		'youtube'     => array(
 			'label'      => 'Youtube',
-			'icon_class' => 'fa fa-youtube',
+			'icon_class' => 'ticon ticon-youtube',
 		),
 		'googleplus'  => array(
 			'label'      => 'Google Plus',
-			'icon_class' => 'fa fa-google-plus',
+			'icon_class' => 'ticon ticon-google-plus',
 		),
 		'pinterest'   => array(
 			'label'      => 'Pinterest',
-			'icon_class' => 'fa fa-pinterest',
+			'icon_class' => 'ticon ticon-pinterest',
 		),
 		'dribbble'    => array(
 			'label'      => 'Dribbble',
-			'icon_class' => 'fa fa-dribbble',
+			'icon_class' => 'ticon ticon-dribbble',
 		),
 		'etsy'        => array(
 			'label'      => 'Etsy',
-			'icon_class' => 'fa fa-etsy',
+			'icon_class' => 'ticon ticon-etsy',
 		),
 		'vk'          => array(
 			'label'      => 'VK',
-			'icon_class' => 'fa fa-vk',
+			'icon_class' => 'ticon ticon-vk',
 		),
 		'instagram'   => array(
 			'label'      => 'Instagram',
-			'icon_class' => 'fa fa-instagram',
+			'icon_class' => 'ticon ticon-instagram',
 		),
 		'flickr'      => array(
 			'label'      => 'Flickr',
-			'icon_class' => 'fa fa-flickr',
+			'icon_class' => 'ticon ticon-flickr',
 		),
 		'skype'       => array(
 			'label'      => 'Skype',
-			'icon_class' => 'fa fa-skype',
+			'icon_class' => 'ticon ticon-skype',
 		),
 		'whatsapp'    => array(
 			'label'      => 'Whatsapp',
-			'icon_class' => 'fa fa-whatsapp',
+			'icon_class' => 'ticon ticon-whatsapp',
 		),
 		'vimeo'       => array(
 			'label'      => 'Vimeo',
-			'icon_class' => 'fa fa-vimeo-square',
+			'icon_class' => 'ticon ticon-vimeo-square',
 		),
 		'vine'        => array(
 			'label'      => 'Vine',
-			'icon_class' => 'fa fa-vine',
+			'icon_class' => 'ticon ticon-vine',
 		),
 		'spotify'     => array(
 			'label'      => 'Spotify',
-			'icon_class' => 'fa fa-spotify',
+			'icon_class' => 'ticon ticon-spotify',
 		),
 		'xing'        => array(
 			'label'      => 'Xing',
-			'icon_class' => 'fa fa-xing',
+			'icon_class' => 'ticon ticon-xing',
 		),
 		'yelp'        => array(
 			'label'      => 'Yelp',
-			'icon_class' => 'fa fa-yelp',
+			'icon_class' => 'ticon ticon-yelp',
 		),
 		'tripadvisor' => array(
 			'label'      => 'Tripadvisor',
-			'icon_class' => 'fa fa-tripadvisor',
+			'icon_class' => 'ticon ticon-tripadvisor',
 		),
 		'houzz'       => array(
 			'label'      => 'Houzz',
-			'icon_class' => 'fa fa-houzz',
+			'icon_class' => 'ticon ticon-houzz',
 		),
 		'twitch'      => array(
 			'label'      => 'Twitch',
-			'icon_class' => 'fa fa-twitch',
+			'icon_class' => 'ticon ticon-twitch',
 		),
 		'rss'         => array(
 			'label'      => __( 'RSS', 'total' ),
-			'icon_class' => 'fa fa-rss',
+			'icon_class' => 'ticon ticon-rss',
 		),
 		'email'       => array(
 			'label'      => __( 'Email', 'total' ),
-			'icon_class' => 'fa fa-envelope',
+			'icon_class' => 'ticon ticon-envelope',
 		),
 		'phone'       => array(
 			'label'      => __( 'Phone', 'total' ),
-			'icon_class' => 'fa fa-phone',
+			'icon_class' => 'ticon ticon-phone',
 		),
 	);
 }

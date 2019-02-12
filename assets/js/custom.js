@@ -536,7 +536,7 @@
         $body.on('click', '.sign-up-news', function () {
             $('.footer-newsletter').show();
         });
-        $body.on('click', '.footer-newsletter .fa-times-circle', function () {
+        $body.on('click', '.footer-newsletter .ticon-times-circle', function () {
             $('.footer-newsletter').hide();
         });
         $body.on('click', '.easl-mentors-table-show-more', function (e) {

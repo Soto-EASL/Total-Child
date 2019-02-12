@@ -45,7 +45,7 @@
                     autoplay: false,
                     items: 5,
                     margin: 8,
-                    navText            : [ '<span class="fa fa-chevron-left"><span>', '<span class="fa fa-chevron-right"></span>' ],
+                    navText            : [ '<span class="ticon ticon-chevron-left"><span>', '<span class="ticon ticon-chevron-right"></span>' ],
                     responsive: {
                         0: {
                             items: 2

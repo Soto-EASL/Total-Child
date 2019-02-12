@@ -13,7 +13,7 @@ return array(
 	),
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Storylne 3D Slider Item', 'total' ),
-	'icon' => 'vcex-icon fa fa-picture-o',
+	'icon' => 'vcex-iconticon ticon-picture-o',
 	'php_class_name' => 'EASL_VC_S3D_Slider_Item',
 	'params' => array(
 		array(

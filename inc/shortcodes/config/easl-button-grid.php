@@ -13,7 +13,7 @@ return array(
 	),
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Button Grid', 'total' ),
-	//'icon' => 'vcex-icon fa fa-th',
+	//'icon' => 'vcex-iconticon ticon-th',
 	'php_class_name' => 'EASL_VC_Button_Grid',
 	'js_view' => 'VcColumnView',
 	'params' => array(

@@ -171,7 +171,7 @@ if($enable_related_links){
 			$link_attributes[] = 'rel="' . esc_attr( trim( $rel_link['rel'] ) ) . '"';
 		}
 		$link_attributes = implode( ' ', $link_attributes );
-		$related_links_html .= '<a class="animate-on-hover wpex-dhover-0 publication-filter-button" '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="vcex-icon-wrap theme-button-icon-right"><span class="fa fa-angle-right"></span></span></span></a>' . $br;
+		$related_links_html .= '<a class="animate-on-hover wpex-dhover-0 publication-filter-button" '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="vcex-icon-wrap theme-button-icon-right"><span class="ticon ticon-angle-right"></span></span></span></a>' . $br;
 	}
 	$related_links_html .= '</div>';
 }
@@ -186,7 +186,7 @@ $top_filter = '<div class="vc_row wpb_row '.$no_bottom_margins.' vc_inner vc_row
 						'<div class="easl-col-inner" >'.
 							'<div class="ec-filter-search">'.
 								'<input type="text" name="ecf_search" value="'.($filter_ecf_search ? $filter_ecf_search : '').'" placeholder="Search for publication"/>'.
-								'<span class="ecs-icon"><i class="fa fa-search" aria-hidden="true"></i></span>'.
+								'<span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>'.
 							'</div>'.
 							'<h4 style="font-size: 21px">Filter Publications:</h4>'.
 
@@ -263,8 +263,8 @@ $arrow_style = wpex_get_mod( 'pagination_arrow' );
 $arrow_style = $arrow_style ? esc_attr( $arrow_style ) : 'angle';
 
 // Arrows with RTL support
-$prev_arrow = is_rtl() ? 'fa fa-' . $arrow_style . '-right' : 'fa fa-' . $arrow_style . '-left';
-$next_arrow = is_rtl() ? 'fa fa-' . $arrow_style . '-left' : 'fa fa-' . $arrow_style . '-right';
+$prev_arrow = is_rtl() ? 'ticon ticon-' . $arrow_style . '-right' : 'ticon ticon-' . $arrow_style . '-left';
+$next_arrow = is_rtl() ? 'ticon ticon-' . $arrow_style . '-left' : 'ticon ticon-' . $arrow_style . '-right';
 // Previous text
 $prev_text = '<span class="' . $prev_arrow . '" aria-hidden="true"></span><span class="screen-reader-text">' . esc_html__( 'Previous', 'total' ) . '</span>';
 // Next text

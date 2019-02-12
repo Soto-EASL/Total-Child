@@ -153,7 +153,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 				<p class="ec-dates" href="">
                     <span class="ecd-day"><?php echo $event_date_days; ?></span>
                     <span class="ecd-mon"><?php echo date('M', $event_start_date); ?></span>
-                    <span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="fa fa-play" aria-hidden="true"></i></p>
+                    <span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="ticon ticon-play" aria-hidden="true"></i></p>
 			</header>
 			<p class="ec-location">
 				<span class="ec-loc-name"><?php echo easl_meeting_type_name($event_id); ?></span>

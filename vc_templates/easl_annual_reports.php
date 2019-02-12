@@ -49,7 +49,7 @@ if ( $annual_reports->have_posts() ) {
 									'style="color:#ffffff;width:100%;font-family:KnockoutHTF51Middleweight;" download>'.
 										'<span class="theme-button-inner">'.
 											'<span class="vcex-icon-wrap theme-button-icon-left">'.
-												'<span class="fa fa-download"></span>'.
+												'<span class="ticon ticon-download"></span>'.
 											'</span>Download PDF</span>'.
 									'</a>'.
 								'</div>'.
@@ -61,7 +61,7 @@ if ( $annual_reports->have_posts() ) {
                                     'target="_blank" style="width:100%;font-family:KnockoutHTF51Middleweight;">'.
 										'<span class="theme-button-inner">'.
 											'<span class="vcex-icon-wrap theme-button-icon-left">'.
-												'<span class="fa fa-newspaper-o"></span>'.
+												'<span class="ticon ticon-newspaper-o"></span>'.
 											'</span>View Online</span>'.
 									'</a>'.
 								'</div>'.
@@ -81,7 +81,7 @@ if ( $annual_reports->have_posts() ) {
 								'class="vcex-button theme-txt-link inline animate-on-hover" '.
 								'target="_blank" style="color:#114f85;">'.
 								'<span class="theme-button-inner">'.get_the_title().'<span class="vcex-icon-wrap theme-button-icon-right">'.
-								'<span class="fa fa-angle-right"></span></span></span></a>'.
+								'<span class="ticon ticon-angle-right"></span></span></span></a>'.
 							'</div>'.
 						'</div>'.
 					'</div>';

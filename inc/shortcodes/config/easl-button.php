@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_button',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Button', 'total' ),
-	'icon' => 'vcex-icon fa fa-external-link-square',
+	'icon' => 'vcex-iconticon ticon-external-link-square',
 	'php_class_name' => 'EASL_VC_Button',
 	'params' => array(
 		array(

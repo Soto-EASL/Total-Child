@@ -11,7 +11,7 @@ return array(
 	'show_settings_on_create'	 => true,
 	'category'					 => __( 'EASL', 'total' ),
 	'description'				 => __( 'EASL Staff List', 'total' ),
-	'icon'						 => 'vcex-icon fa fa-users',
+	'icon'						 => 'vcex-iconticon ticon-users',
 	'php_class_name'			 => 'EASL_VC_Staffs',
 	'params'					 => array(
 		array(

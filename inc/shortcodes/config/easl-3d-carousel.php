@@ -13,7 +13,7 @@ return array(
 	),
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL 3D Carousel ', 'total' ),
-	//'icon' => 'vcex-icon fa fa-th',
+	//'icon' => 'vcex-iconticon ticon-th',
 	'php_class_name' => 'EASL_VC_3D_Carousel',
 	'js_view' => 'VcColumnView',
 	'params' => array(

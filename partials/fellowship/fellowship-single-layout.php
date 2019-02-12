@@ -70,7 +70,7 @@ if ( $application_period_formatted ) {
         <div class="fellowship-apply-button">
             <a class="easl-generic-button easl-color-lightblue easl-size-small"
                href="<?php echo esc_url( $apply_url ); ?>" target="_blank"><?php _e( 'Apply Here', 'total-child' ); ?>
-                <span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>
+                <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
         </div>
 	<?php endif; ?>
 </div>
@@ -94,11 +94,11 @@ if ( $application_period_formatted ) {
 	<?php if ( $read_application_guidelines ): ?>
         <a class="easl-generic-button easl-color-blue easl-size-medium"
            href="<?php echo esc_url( $read_application_guidelines ); ?>"><?php _e( 'Read the application guidelines before applying', 'total-child' ) ?>
-            <span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>
+            <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
 	<?php endif; ?>
     <a class="easl-generic-button easl-color-lightblue easl-size-medium"
        href="/join-the-community/"><?php _e( 'Join the Community', 'total-child' ) ?><span
-                class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span></a>
+                class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
 </div>
 <?php
 // List Past fellowship awardees
@@ -172,7 +172,7 @@ if ( $award_query && $award_query->have_posts() ):
                href="<?php echo esc_url( $show_more_link['url'] ); ?>"<?php if ( $show_more_link['target'] == '_blank' ) {
 				echo ' target="_blank"';
 			} ?>><?php echo esc_html( $show_more_link['title'] ); ?><span class="easl-generic-button-icon"><span
-                            class="fa fa-chevron-right"></span></span></a>
+                            class="ticon ticon-chevron-right"></span></span></a>
         </div>
 	<?php
 	endif;

@@ -24,7 +24,7 @@ a.button {
     color: #004b87;
     font-family: "KnockoutHTF51Middleweight";
 }
-.membership .fa-angle-right::before{
+.membership .ticon-angle-right::before{
     color: #004b87;
 }
 .entry ul, .entry ol {

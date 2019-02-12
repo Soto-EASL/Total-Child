@@ -64,7 +64,7 @@ if($enable_related_links){
 			$link_attributes[] = 'rel="' . esc_attr( trim( $rel_link['rel'] ) ) . '"';
 		}
 		$link_attributes = implode( ' ', $link_attributes );
-		$related_links_html .= '<li><a '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="fa fa-angle-right"></span></span></a></li>' . "\n\t";
+		$related_links_html .= '<li><a '. $link_attributes .' href="'. esc_url($rel_link['url']) .'">'. $rel_link['title'] .'<span class="ticon ticon-angle-right"></span></span></a></li>' . "\n\t";
 	}
 	$related_links_html .= '</ul>' . "\n";
 	$related_links_html .= '</div>';
@@ -148,7 +148,7 @@ $top_filter = '
 						'. $topics_list .'
 					</ul>
 					<div class="easl-filter-reset-mobwrap ec-hide-desktop">
-						<button class="easl-ecf-reset"><i class="fa fa-times-circle"></i> Clear Filters</button>
+						<button class="easl-ecf-reset"><i class="ticon ticon-times-circle"></i> Clear Filters</button>
 					</div>
 				</div>   
 			</div>
@@ -156,7 +156,7 @@ $top_filter = '
 				<div class="easl-col-inner">
 					<div class="ec-filter-search">
 						<input type="text" name="ecf_search" value="" placeholder="Search"/>
-						<span class="ecs-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+						<span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>
 					</div>
 					<div class="easl-row">
 						<div class="easl-col easl-col-2-3">
@@ -200,7 +200,7 @@ $top_filter = '
 									</div>
 									<div class="ec-filter-field-wrap ec-hide-mob" style="margin-bottom:0;margin-top: 34px;">
 										<div class="easl-filter-reset-wrap">
-											<button class="easl-ecf-reset"><i class="fa fa-times-circle"></i> Clear Filters</button>
+											<button class="easl-ecf-reset"><i class="ticon ticon-times-circle"></i> Clear Filters</button>
 										</div>
 									</div>
 								</div>
@@ -387,7 +387,7 @@ $html = '<div class="easl-events-calendar-wrap" '. implode( ' ', $event_wrapper_
 				<div class="easl-ec-row easl-ec-row-ball"><span></span></div>
 				<div class="easl-ec-load-more">
 					<div class="easl-ec-load-icon">
-						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+						<i class="ticon ticon-spinner ticon-pulse ticon-3x ticon-fw"></i>
 					</div>
 					<p class="easl-ec-load-text">Loading More</p>
 				</div>

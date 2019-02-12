@@ -13,7 +13,7 @@ return array(
 	'show_settings_on_create' => true,
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Grid Button', 'total' ),
-	'icon' => 'vcex-icon fa fa-external-link-square',
+	'icon' => 'vcex-iconticon ticon-external-link-square',
 	'php_class_name' => 'EASL_VC_GButton',
 	'params' => array(
 		array(

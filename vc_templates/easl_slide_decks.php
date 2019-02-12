@@ -147,7 +147,7 @@ $top_filter = '<div class="vc_row wpb_row no-bottom-margins vc_inner vc_row-flui
               '<div class="easl-col-inner" >'.
               '<div class="ec-filter-search">'.
               '<input type="text" name="sd_search" value="'.($filter_sd_search ? $filter_sd_search : '').'" placeholder="Search for slide decks"/>'.
-              '<span class="ecs-icon"><i class="fa fa-search" aria-hidden="true"></i></span>'.
+              '<span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>'.
               '</div>'.
               '<h4 style="font-size: 21px">Filter Slide Decks:</h4>'.
 
@@ -214,8 +214,8 @@ $paginatio_html =  paginate_links( array(
 	'end_size'  => 3,
 	'mid_size'  => 5,
 	'prev_next' => true,
-	'prev_text' => '<span class="fa fa-angle-left" aria-hidden="true"></span>',
-	'next_text' => '<span class="fa fa-angle-right" aria-hidden="true"></span>',
+	'prev_text' => '<span class="ticon ticon-angle-left" aria-hidden="true"></span>',
+	'next_text' => '<span class="ticon ticon-angle-right" aria-hidden="true"></span>',
 	'type'      => 'list',
 ) );
 

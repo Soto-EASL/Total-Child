@@ -92,7 +92,7 @@ $news_query = new WP_Query( $query_args );
                             <input type="text" name="nsearch" value="<?php if ( $search_req ) {
 								echo esc_attr( $search_req );
 							} ?>" placeholder="Search for title or keyword"/>
-                            <span class="ecs-icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            <span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>
                         </div>
                     </div>
                 </div>
@@ -196,8 +196,8 @@ $news_query = new WP_Query( $query_args );
 								'end_size'  => 3,
 								'mid_size'  => 5,
 								'prev_next' => true,
-								'prev_text' => '<span class="fa fa-angle-left" aria-hidden="true"></span>',
-								'next_text' => '<span class="fa fa-angle-right" aria-hidden="true"></span>',
+								'prev_text' => '<span class="ticon ticon-angle-left" aria-hidden="true"></span>',
+								'next_text' => '<span class="ticon ticon-angle-right" aria-hidden="true"></span>',
 								'type'      => 'list',
 							) ); ?>
                         </div>

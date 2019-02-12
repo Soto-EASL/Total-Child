@@ -58,7 +58,7 @@ if($title && $url) {
 	$icon_html = '';
 
 	if ( $show_arrow == 'true' ) {
-		$icon_html = '<span class="easl-generic-button-icon"><span class="fa fa-chevron-right"></span></span>';
+		$icon_html = '<span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span>';
 	}
 
 
@@ -85,7 +85,7 @@ if($title && $url) {
 
 	if ( $downloadable == 'true' ) {
 		$wrapper_attributes[] = 'download="download"';
-		$icon_html = '<span class="easl-generic-button-icon"><span class="fa fa-download"></span></span>';
+		$icon_html = '<span class="easl-generic-button-icon"><span class="ticon ticon-download"></span></span>';
 	}
 
 	$wrapper_attributes[] = 'href="' . esc_url( $url ) . '"';

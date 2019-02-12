@@ -13,7 +13,7 @@ return array(
 	),
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'Diplay a list of Buttons.', 'total' ),
-	//'icon' => 'vcex-icon fa fa-th',
+	//'icon' => 'vcex-iconticon ticon-th',
 	'php_class_name' => 'EASL_VC_Generic_Button_Container',
 	'js_view' => 'VcColumnView',
 	'params' => array(
