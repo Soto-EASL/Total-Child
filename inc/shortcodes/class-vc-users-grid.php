@@ -43,7 +43,7 @@ if ( ! class_exists( 'EASL_Users_Grid_Shortcode' ) ) {
 				'description' => __( 'Displays a grid of users', 'total' ),
 				'base' => 'easl_users_grid',
 				'category' => __( 'EASL', 'total' ),
-				'icon' => 'vcex-users-grid vcex-iconticon ticon-users',
+				'icon' => 'vcex-users-grid vcex-icon ticon ticon-users',
 				'params' => array(
 					// General
 					array(

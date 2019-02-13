@@ -72,7 +72,7 @@ if ( ! class_exists( 'EASL_Post_Type_Grid_Shortcode' ) ) {
 				'description' => __( 'EASL Posts grid', 'total' ),
 				'base' => 'easl_post_type_grid',
 				'category' => __( 'EASL', 'total' ),
-				'icon' => 'vcex-post-type-grid vcex-iconticon ticon-files-o',
+				'icon' => 'vcex-post-type-grid vcex-icon ticon ticon-files-o',
 				'params' => array(
 					// General
 					array(

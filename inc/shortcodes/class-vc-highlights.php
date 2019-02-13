@@ -45,7 +45,7 @@ if( !class_exists('EASL_VC_HIGHLIGHTS') ){
                 'base' => 'easl_highlights',
                 'category' => __( 'EASL', 'total' ),
                 'description' => __( 'EASL Highlights', 'total' ),
-                'icon' => 'vcex-iconticon ticon-users',
+                'icon' => 'vcex-icon ticon ticon-users',
                 'php_class_name' => 'EASL_VC_YI_Fellowship',
                 'params' => array(
                     vc_map_add_css_animation(),

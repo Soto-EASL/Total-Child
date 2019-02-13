@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_yearly_awardees',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'List awardees by year', 'total-child' ),
-	'icon' => 'vcex-iconticon ticon-users',
+	'icon' => 'vcex-icon ticon ticon-users',
 	'php_class_name' => 'EASL_VC_Yearly_Awardee',
 	'params' => array(
 		vc_map_add_css_animation(),

@@ -10,7 +10,7 @@ return array(
     'show_settings_on_create' => true,
     'category' => __( 'EASL', 'total' ),
     'description' => __( 'EASL Staff List', 'total' ),
-    'icon' => 'vcex-iconticon ticon-book',
+    'icon' => 'vcex-icon ticon ticon-book',
     'php_class_name' => 'EASL_VC_STAFF_LIST',
     'params' => array(
         vc_map_add_css_animation(),

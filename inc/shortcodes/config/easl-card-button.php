@@ -10,7 +10,7 @@ return array(
     'show_settings_on_create' => true,
     'category' => __( 'EASL', 'total' ),
     'description' => __( 'EASL Card Button', 'total' ),
-    'icon' => 'vcex-iconticon ticon-external-link-square',
+    'icon' => 'vcex-icon ticon ticon-external-link-square',
     'php_class_name' => 'EASL_VC_Card_Button',
     'params' => array(
         array(

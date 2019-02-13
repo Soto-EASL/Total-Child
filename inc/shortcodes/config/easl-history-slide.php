@@ -9,7 +9,7 @@ return array(
 	'base' => 'easl_history_slide',
 	'category' => __( 'EASL', 'total-child' ),
 	'description' => __( 'Display history slide.', 'total-child' ),
-	'icon' => 'vcex-iconticon ticon-files-o',
+	'icon' => 'vcex-icon ticon ticon-files-o',
 	'php_class_name' => 'EASL_VC_History_Slide',
 	'params' => array(
 		vc_map_add_css_animation(),

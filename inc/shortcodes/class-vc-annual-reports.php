@@ -27,7 +27,7 @@ if( !class_exists('EASL_VC_ANNUAL_REPORTS') ){
                 'base' => 'easl_annual_reports',
                 'category' => __( 'EASL', 'total' ),
                 'description' => __( 'EASL Annual Reports', 'total' ),
-                'icon' => 'vcex-iconticon ticon-users',
+                'icon' => 'vcex-icon ticon ticon-users',
                 'php_class_name' => 'EASL_VC_ANNUAL_REPORTS',
                 'params' => array(
                     vc_map_add_css_animation(),

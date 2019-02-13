@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_mentors_table',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'EASL Mentors Table', 'total' ),
-	'icon' => 'vcex-iconticon ticon-users',
+	'icon' => 'vcex-icon ticon ticon-users',
 	'php_class_name' => 'EASL_VC_Mentors_Table',
 	'params' => array(
 		vc_map_add_css_animation(),

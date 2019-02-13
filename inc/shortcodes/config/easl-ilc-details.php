@@ -10,7 +10,7 @@ return array(
 	'base' => 'easl_ilc_details',
 	'category' => __( 'EASL', 'total' ),
 	'description' => __( 'Display details of an ILC.', 'total-child' ),
-	'icon' => 'vcex-skill-bar vcex-iconticon ticon-server',
+	'icon' => 'vcex-skill-bar vcex-icon ticon ticon-server',
 	'php_class_name' => 'EASL_VC_ILC_Details',
 	'params' => array(
 		vc_map_add_css_animation(),

@@ -8,7 +8,7 @@ return array(
 	'base' => 'easl_national_associations',
 	'category' => __( 'EASL', 'total-child' ),
 	'description' => __( 'EASL National Associations', 'total-child' ),
-	'icon' => 'vcex-iconticon ticon-users',
+	'icon' => 'vcex-icon ticon ticon-users',
 	'php_class_name' => 'EASL_VC_National_Associations',
 	'params' => array(
 		vc_map_add_css_animation(),
