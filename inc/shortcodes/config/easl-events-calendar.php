@@ -35,6 +35,13 @@ return array(
 			'param_name' => 'view_all_url',
 			'description' => __( 'Enter URL used as view all events link.', 'js_composer' ),
 		),
+		array(
+			'type' => 'dropdown',
+			'heading' => __( 'All Topic Events', 'js_composer' ),
+			'param_name' => 'all_topic_events',
+			'value' => EASL_VC_Events_Calendar::get_topics_dd_for_vc_map(true),
+			'description' => __( 'Select the Topics events of which will be displayed always.', 'js_composer' ),
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',

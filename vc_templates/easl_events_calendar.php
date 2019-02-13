@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this EASL_VC_Events_Calendar
  */
 $event_number = $event_type = $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = '';
-$enable_related_links = $relink_title = $related_links = '';
+$enable_related_links = $relink_title = $related_links = $all_topic_events = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -78,6 +78,7 @@ $topics_list = '
 		</label>
 	</li>
 	';
+
 $topics = get_terms( array(
 	'taxonomy' => EASL_Event_Config::get_topic_slug(),
 	'hide_empty' => false,
@@ -323,8 +324,11 @@ if(count($meta_query) > 0){
 // Taxonomy query args
 $tax_query = array();
 // Topic
+$all_topic_events = absint($all_topic_events);
 if( is_array($topics_req) && count($topics_req) > 0){
-	$topics_req[] = 787;
+	if($all_topic_events) {
+		$topics_req[] = $all_topic_events;
+	}
 	$tax_query[] = array(
 		'taxonomy' => EASL_Event_Config::get_topic_slug(),
 		'field' => 'term_id',
@@ -357,6 +361,10 @@ if($event_query->max_num_pages <= $paged){
 
 if($css_animation){
 	$event_wrapper_data[] = 'data-cssanimation="'. esc_attr($css_animation) .'"';
+}
+
+if($all_topic_events) {
+	$event_wrapper_data[] = ' data-alltopic="'. $all_topic_events .'"';
 }
 
 $rows = '';

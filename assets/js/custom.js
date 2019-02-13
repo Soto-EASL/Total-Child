@@ -62,6 +62,7 @@
     EventCalendar.prototype.initVars = function (){
         this.cssAnimation = "undefined" !== typeof this.$wrap.data('cssanimation') ? this.$wrap.data('cssanimation') : '';
         this.lastPage = "undefined" !== typeof this.$wrap.data('lastpage') ? this.$wrap.data('lastpage') : false;
+        this.allTopicsID = "undefined" !== typeof this.$wrap.data('alltopic') ? this.$wrap.data('alltopic') : false;
         this.scrollLoad = !this.lastPage;
         this.requestData = JSON.stringify(this.getFilters());
     };
@@ -219,6 +220,7 @@
             data: {
                 action: 'easl_ec_get_events',
                 filters: data,
+                all_topics_id: this.allTopicsID,
                 last_month_text: this.getLastEventsMonth(),
                 row_count: this.getEventCount(),
                 css_animation: this.cssAnimation

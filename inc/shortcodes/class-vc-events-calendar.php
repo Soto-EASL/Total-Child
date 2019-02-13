@@ -2,7 +2,30 @@
 if( class_exists('WPBakeryShortCode') ){
 	class EASL_VC_Events_Calendar extends WPBakeryShortCode {
 		private static $inline_scripts_once = false;
-		
+
+		public static function get_topics_dd_for_vc_map($show_select_item = true) {
+			$topics = get_terms( array(
+				'taxonomy' => EASL_Event_Config::get_topic_slug(),
+				'hide_empty' => false,
+				'orderby' => 'name',
+				'order' => 'ASC',
+				'fields' => 'id=>name',
+			) );
+
+			if($show_select_item){
+				$return = array('Select a topic' => '');
+            }else{
+				$return  = array();
+            }
+			if(!$topics) {
+			    return $return;
+            }
+			foreach($topics as $id=>$name){
+				$return[$name] = $id;
+            }
+			return $return;
+        }
+
 		public function string_to_array( $value ) {
 
 			// Return if value is empty
@@ -56,7 +79,7 @@ if( class_exists('WPBakeryShortCode') ){
 				return '';
 			}
 			
-			$topics = $search = $meeting_type = $location = $form_date = $to_date = $event_type = $event_number = '';
+			$topics = $search = $meeting_type = $location = $form_date = $to_date = $event_type = $event_number = $all_topics_id = '';
 			
 			extract($_REQUEST['filters']);
 			
@@ -73,6 +96,11 @@ if( class_exists('WPBakeryShortCode') ){
 			$row_count = 0;
 			if(isset($_REQUEST['row_count'])){
 				$row_count = absint($_REQUEST['row_count']);
+			}
+			// get row count
+			$all_topics_id = false;
+			if(isset($_REQUEST['all_topics_id'])){
+				$all_topics_id = absint($_REQUEST['all_topics_id']);
 			}
 			
 			// Validate Event Type
@@ -103,7 +131,9 @@ if( class_exists('WPBakeryShortCode') ){
 			$tax_query = array();
 			// Topic
 			if( is_array($topics) && count($topics) > 0){
-			    $topics[] = 787;
+			    if($all_topics_id){
+				    $topics[] = $all_topics_id;
+                }
 				$tax_query[] = array(
 					'taxonomy' => EASL_Event_Config::get_topic_slug(),
 					'field' => 'term_id',
