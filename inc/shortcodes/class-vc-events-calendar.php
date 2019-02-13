@@ -3,6 +3,121 @@ if( class_exists('WPBakeryShortCode') ){
 	class EASL_VC_Events_Calendar extends WPBakeryShortCode {
 		private static $inline_scripts_once = false;
 
+		public static function country_topic_map() {
+		    global $wpdb;
+		    $sql = "";
+		    $sql .= "SELECT GROUP_CONCAT(DISTINCT mc.meta_value ORDER BY mc.meta_value ASC SEPARATOR ',') as countries, terms.term_id";
+		    $sql .= " FROM {$wpdb->posts}";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS mc ON ( {$wpdb->posts}.ID = mc.post_id ) ";
+			$sql .= " INNER JOIN {$wpdb->term_relationships} AS term_relationships ON {$wpdb->posts}.ID = term_relationships.object_id";
+			$sql .= " INNER JOIN {$wpdb->term_taxonomy} AS term_taxonomy USING( term_taxonomy_id )";
+			$sql .= " INNER JOIN {$wpdb->terms} AS terms USING( term_id )";
+			$sql .= $wpdb->prepare(" WHERE {$wpdb->posts}.post_type IN ( '%s' )", EASL_Event_Config::get_event_slug());
+			$sql .= " AND {$wpdb->posts}.post_status = 'publish'";
+			$sql .= $wpdb->prepare(" AND term_taxonomy.taxonomy = '%s'", EASL_Event_Config::get_topic_slug());
+			$sql .= "  AND mc.meta_key = 'event_location_country'";
+			$sql .= " GROUP BY terms.term_id ORDER BY terms.term_id";
+
+			$results = $wpdb->get_results($sql);
+			$return = array();
+			if(!$results) {
+				return array();
+            }
+			foreach ($results as $item){
+			    if($item->countries){
+				    $return[$item->term_id] = array_map('trim', explode(',', $item->countries));
+                }else{
+				    $return[$item->term_id] = array();
+                }
+            }
+			return $return;
+        }
+		public static function country_meeting_type_map() {
+			global $wpdb;
+			$sql = "";
+			$sql .= "SELECT GROUP_CONCAT(DISTINCT mc.meta_value ORDER BY mc.meta_value ASC SEPARATOR ',') as countries, terms.term_id";
+			$sql .= " FROM {$wpdb->posts}";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS mc ON ( {$wpdb->posts}.ID = mc.post_id ) ";
+			$sql .= " INNER JOIN {$wpdb->term_relationships} AS term_relationships ON {$wpdb->posts}.ID = term_relationships.object_id";
+			$sql .= " INNER JOIN {$wpdb->term_taxonomy} AS term_taxonomy USING( term_taxonomy_id )";
+			$sql .= " INNER JOIN {$wpdb->terms} AS terms USING( term_id )";
+			$sql .= $wpdb->prepare(" WHERE {$wpdb->posts}.post_type IN ( '%s' )", EASL_Event_Config::get_event_slug());
+			$sql .= " AND {$wpdb->posts}.post_status = 'publish'";
+			$sql .= $wpdb->prepare(" AND term_taxonomy.taxonomy = '%s'", EASL_Event_Config::get_meeting_type_slug());
+			$sql .= "  AND mc.meta_key = 'event_location_country'";
+			$sql .= " GROUP BY terms.term_id ORDER BY terms.term_id";
+
+			$results = $wpdb->get_results($sql);
+			$return = array();
+			if(!$results) {
+				return array();
+			}
+			foreach ($results as $item){
+				if($item->countries){
+					$return[$item->term_id] = array_map('trim', explode(',', $item->countries));
+				}else{
+					$return[$item->term_id] = array();
+				}
+			}
+			return $return;
+		}
+
+		public static function country_organiser_map() {
+			global $wpdb;
+			$sql = "";
+			$sql .= "SELECT GROUP_CONCAT(DISTINCT mc.meta_value ORDER BY mc.meta_value ASC SEPARATOR ',') as countries, mo.meta_value as organiser_type";
+			$sql .= " FROM {$wpdb->posts}";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS mc ON ( {$wpdb->posts}.ID = mc.post_id ) ";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS mo ON ( {$wpdb->posts}.ID = mo.post_id ) ";
+			$sql .= $wpdb->prepare(" WHERE {$wpdb->posts}.post_type IN ( '%s' )", EASL_Event_Config::get_event_slug());
+			$sql .= " AND {$wpdb->posts}.post_status = 'publish'";
+			$sql .= "  AND mc.meta_key = 'event_location_country'";
+			$sql .= "  AND mo.meta_key = 'event_organisation'";
+			$sql .= " GROUP BY mo.meta_value ORDER BY mo.meta_value";
+
+			$results = $wpdb->get_results($sql);
+			$return = array();
+			if(!$results) {
+				return array();
+			}
+			foreach ($results as $item){
+
+				if($item->countries){
+					$return[$item->organiser_type] = array_map('trim', explode(',', $item->countries));
+				}else{
+					$return[$item->organiser_type] = array();
+				}
+			}
+			return $return;
+		}
+
+		public static function country_past_future_event_map() {
+			global $wpdb;
+			$now_time = time() - 86399;
+			$sql = "";
+			$sql .= "SELECT DISTINCT mc.meta_value as countries";
+			$sql .= " FROM {$wpdb->posts}";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS mc ON ( {$wpdb->posts}.ID = mc.post_id ) ";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS msd ON ( {$wpdb->posts}.ID = msd.post_id ) ";
+			$sql .= " INNER JOIN {$wpdb->postmeta} AS med ON ( {$wpdb->posts}.ID = med.post_id ) ";
+			$sql .= $wpdb->prepare(" WHERE {$wpdb->posts}.post_type IN ( '%s' )", EASL_Event_Config::get_event_slug());
+			$sql .= " AND {$wpdb->posts}.post_status = 'publish'";
+			$sql .= " AND mc.meta_key = 'event_location_country'";
+			$sql .= " AND msd.meta_key = 'event_start_date'";
+			$sql .= " AND med.meta_key = 'event_end_date'";
+			$sql_cond = " AND ( CAST(msd.meta_value AS SIGNED) < {$now_time} AND CAST(med.meta_value AS SIGNED) < {$now_time} )";
+			$sql_orderby = " ORDER BY mc.meta_value";
+
+			$past_countries = $wpdb->get_col($sql . $sql_cond . $sql_orderby);
+
+			$sql_cond = " AND ( CAST(msd.meta_value AS SIGNED) >= {$now_time} OR CAST(med.meta_value AS SIGNED) >= {$now_time} )";
+			$future_countries = $wpdb->get_col($sql . $sql_cond . $sql_orderby);
+			return array(
+			        'past' => $past_countries ? $past_countries : array(),
+			        'future' => $future_countries ? $future_countries : array(),
+            );
+		}
+
 		public static function get_topics_dd_for_vc_map($show_select_item = true) {
 			$topics = get_terms( array(
 				'taxonomy' => EASL_Event_Config::get_topic_slug(),

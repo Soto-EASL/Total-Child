@@ -1,5 +1,34 @@
 (function($){
     var $body;
+    function easlArrayIntersect(a1,a2) {
+        var result = [];
+        for (var i = 0; i < a1.length; i++) {
+            if(result.indexOf(a1[i]) !== -1) {
+                continue;
+            }
+            if(a2.indexOf(a1[i]) === -1) {
+                continue;
+            }
+            result.push(a1[i]);
+        }
+        return result
+    }
+    function easlArrayUnion(a1,a2) {
+        var result = [];
+        for (var i = 0; i < a1.length; i++) {
+            if(result.indexOf(a1[i]) !== -1) {
+                continue;
+            }
+            result.push(a1[i]);
+        }
+        for (var i = 0; i < a2.length; i++) {
+            if(result.indexOf(a2[i]) !== -1) {
+                continue;
+            }
+            result.push(a2[i]);
+        }
+        return result
+    }
     function easlIsMobile(){
         if(typeof window.matchMedia === 'function'){
             return window.matchMedia("(max-width: 767px)").matches;
@@ -49,6 +78,7 @@
         this.resettingFilter = false;
         this.requestData = false;
         this.scrollLoading = false;
+        this.countries = {};
     };
     EventCalendar.prototype.init = function(){
         if($('.easl-ec-filter-container', this.$wrap).length > 0){
@@ -65,6 +95,54 @@
         this.allTopicsID = "undefined" !== typeof this.$wrap.data('alltopic') ? this.$wrap.data('alltopic') : false;
         this.scrollLoad = !this.lastPage;
         this.requestData = JSON.stringify(this.getFilters());
+        var topicsCountries = {
+            all: [],
+            allTopicCountry: "undefined" !== typeof this.$wrap.data('alltopiccountry') ? this.$wrap.data('alltopiccountry') : []
+        };
+        $('[name="ec_filter_topics[]"]', this.$filterCon).each(function(){
+            var $this = $(this), cnt = $this.data('countries');
+            cnt = typeof cnt !== "undefined" ? cnt : [];
+            if($this.val() && cnt.length){
+                $.merge(topicsCountries.all, cnt);
+                topicsCountries[$this.val()] = cnt;
+            }
+        });
+        this.countries.topics = topicsCountries;
+
+        var meetingTypeCountries = {
+            all: []
+        };
+        $('[name="ec_meeting_type"] option', this.$filterCon).each(function(){
+            var $this = $(this), cnt = $this.data('countries');
+            cnt = typeof cnt !== "undefined" ? cnt : [];
+            if($this.val() && cnt.length){
+                meetingTypeCountries.all = easlArrayUnion(meetingTypeCountries.all, cnt);
+                meetingTypeCountries[$this.val()] = cnt;
+            }
+        });
+        this.countries.meetingType = meetingTypeCountries;
+
+        var organizerCountries = {};
+        $('[name="organizer"]', this.$filterCon).each(function(){
+            var $this = $(this), cnt = $this.data('countries');
+            cnt = typeof cnt !== "undefined" ? cnt : [];
+            if($this.val() && cnt.length){
+                organizerCountries[$this.val()] = cnt;
+            }
+        });
+        this.countries.organizer = organizerCountries;
+
+        var pastFutureCountries = {};
+        $('[name="ec_filter_type"]', this.$filterCon).each(function(){
+            var $this = $(this), cnt = $this.data('countries');
+            cnt = typeof cnt !== "undefined" ? cnt : [];
+            if($this.val() && cnt.length){
+                pastFutureCountries[$this.val()] = cnt;
+            }
+        });
+        this.countries.type = pastFutureCountries;
+
+        console.log(this.countries);
     };
     EventCalendar.prototype.addListeners = function(){
         var ob = this;
@@ -153,11 +231,59 @@
         data.event_number = 5;
         return data;
     };
+    EventCalendar.prototype.updateCountryDropdown = function(data){
+        var countries = [];
+        if(data.topics) {
+            for(var i=0; i < data.topics.length; i++) {
+                if(this.countries.topics[data.topics[i]]){
+                    countries = easlArrayUnion(countries, this.countries.topics[data.topics[i]]);
+                }
+            }
+        }else{
+            countries = this.countries.topics.all;
+        }
+        countries = easlArrayUnion( countries, this.countries.topics.allTopicCountry);
+
+        if(data.meeting_type && this.countries.meetingType[data.meeting_type]) {
+            countries = easlArrayIntersect(countries, this.countries.meetingType[data.meeting_type]);
+        }
+
+        if(data.organizer && this.countries.organizer[data.organizer]) {
+            countries = easlArrayIntersect(countries, this.countries.organizer[data.organizer]);
+        }
+
+        if(data.event_type && this.countries.type[data.event_type]) {
+            countries = easlArrayIntersect(countries, this.countries.type[data.event_type]);
+        }
+
+        if( (countries.length === 0 ) || (data.location && countries.indexOf(data.location) === -1) ){
+            data.location = '';
+            $('.easl-custom-select-filter-location .ec-cs-label', this.$filterCon).html($('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).first().addClass('easl-active').html());
+            $('.easl-custom-select-filter-location select option').prop('selected', false).first().prop('selected', true);
+        }
+        if(countries.length === 0 ){
+            $('.easl-custom-select-filter-location .ec-cs-label', this.$filterCon).html($('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).first().addClass('easl-active').html());
+            $('.easl-custom-select-filter-location select option').prop('selected', false).first().prop('selected', true);
+            $('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).not(':first-child').addClass('easl-hide');
+        }else{
+            $('.easl-custom-select-filter-location .ecs-list li').not(':first-child').each(function () {
+                var val = $(this).data('value');
+                if(val && countries.indexOf(val) !== -1) {
+                    $(this).removeClass('easl-hide');
+                }else{
+                    $(this).addClass('easl-hide');
+                }
+            });
+        }
+
+        return data;
+    };
     EventCalendar.prototype.filter = function(){
         if(this.resettingFilter){
             return;
         }
         var data = this.getFilters();
+        data = this.updateCountryDropdown(data);
         if(this.filterValdiateError){
             this.showFilterValidateMessage();
             return false;
@@ -283,11 +409,12 @@
         $('.easl-custom-select').each(function(){
             var $cs = $(this), lis = '', activeLabel = '';
             $('option', $cs).each(function(){
+                var dataval = 'data-value="' + $(this).attr('value') + '"';
                 if($(this).is(':selected')){
                     $cs.find('.ec-cs-label').html($(this).html() );
-                    lis = lis + '<li class="easl-active">' + $(this).html() + '</li>';
+                    lis = lis + '<li class="easl-active" ' + dataval + '>' + $(this).html() + '</li>';
                 }else{
-                    lis = lis + '<li>' + $(this).html() + '</li>';
+                    lis = lis + '<li ' + dataval + '>' + $(this).html() + '</li>';
                 }
             });
             if(lis.length > 0){

@@ -92,7 +92,7 @@ if( !is_array($topics)){
 	$topics = array();
 }
 
-$topic_country_map = easl_get_events_topic_count();
+$topic_country_map = EASL_VC_Events_Calendar::country_topic_map();
 
 foreach($topics as $topic_id => $topic_name){
 	$topic_color = get_term_meta($topic_id, 'easl_tax_color', true);
@@ -123,9 +123,11 @@ $meeting_types = get_terms( array(
 if( !is_array($meeting_types)){
 	$meeting_types = array();
 }
+$meeting_types_country_map = EASL_VC_Events_Calendar::country_meeting_type_map();
 foreach($meeting_types as $meeting_typ_id => $meeting_type_name){
+	$meeting_type_ccs = isset($meeting_types_country_map[$meeting_typ_id]) ? $meeting_types_country_map[$meeting_typ_id] : array();
 	$meeting_type_list .= '
-		<option value="'. $meeting_typ_id .'" '. selected($meeting_typ_id, $meeting_type_req, false) .'>'. esc_html($meeting_type_name) .'</option>
+		<option value="'. $meeting_typ_id .'" data-countries="'. esc_attr( json_encode($meeting_type_ccs)) .'" '. selected($meeting_typ_id, $meeting_type_req, false) .'>'. esc_html($meeting_type_name) .'</option>
 		';
 }
 
@@ -139,6 +141,9 @@ foreach($countries as $country_code => $country_name){
 		<option value="'. $country_code .'">'. esc_html($country_name) .'</option>
 		';
 }
+
+$organizer_country_map = EASL_VC_Events_Calendar::country_organiser_map();
+$past_future_country_map = EASL_VC_Events_Calendar::country_past_future_event_map();
 
 $top_filter = '
 	<div class="easl-ec-filter-container">
@@ -173,8 +178,8 @@ $top_filter = '
 								<div class="ec-filter-fields">
 								    <div class="ec-filter-field-wrap">
 										<div class="ecf-events-types" style="margin-bottom: 15px">
-											<label class="easl-custom-radio"><input type="radio" name="organizer" value="1" checked="checked"/> <span>EASL Organised</span></label>
-											<label class="easl-custom-radio"><input type="radio" name="organizer" value="2"/> <span>Other Events</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="organizer" data-countries="'. esc_attr( json_encode($organizer_country_map[1])) .'" value="1" checked="checked"/> <span>EASL Organised</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="organizer" data-countries="'. esc_attr( json_encode($organizer_country_map[2])) .'" value="2"/> <span>Other Events</span></label>
 										</div>
 									
 										<div class="easl-custom-select easl-custom-select-filter-type">
@@ -186,8 +191,8 @@ $top_filter = '
 									</div>
 									<div class="ec-filter-field-wrap ec-filter-field-location">
 										<div class="ecf-events-types" style="margin-bottom: 15px">
-											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="future" checked="checked"/> <span>Future Events</span></label>
-											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" value="past"/> <span>Past Events</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" data-countries="'. esc_attr( json_encode($past_future_country_map['future'])) .'"  value="future" checked="checked"/> <span>Future Events</span></label>
+											<label class="easl-custom-radio"><input type="radio" name="ec_filter_type" data-countries="'. esc_attr( json_encode($past_future_country_map['past'])) .'" value="past"/> <span>Past Events</span></label>
 										</div>
 									
 										<div class="easl-custom-select easl-custom-select-filter-location">
@@ -365,6 +370,8 @@ if($css_animation){
 
 if($all_topic_events) {
 	$event_wrapper_data[] = ' data-alltopic="'. $all_topic_events .'"';
+	$alltopiccountry = isset($topic_country_map[$all_topic_events]) ? $topic_country_map[$all_topic_events] : array();
+	$event_wrapper_data[] = ' data-alltopiccountry="'. esc_attr( json_encode($alltopiccountry)) .'"';
 }
 
 $rows = '';
