@@ -36,16 +36,7 @@ if ( ! empty( $el_id ) ) {
 $query_args = array(
 	'post_type'      => 'post',
 	'post_status'    => 'publish',
-	'posts_per_page' => 4,
-	'tax_query'      => array(
-		'relation' => 'AND',
-		array(
-			'taxonomy' => 'category',
-			'field'    => 'term_id',
-			'terms'    => array( 23, 24, 34, 35, 36, 37, 38, 39, 88 ),
-			'operator' => 'NOT IN',
-		),
-	),
+	'posts_per_page' => 6,
 	'meta_query' => array(
 		array(
 			'key' => '_thumbnail_id',
@@ -54,140 +45,42 @@ $query_args = array(
 	)
 );
 
-$img_news_query = new WP_Query($query_args);
+$news_query = new WP_Query($query_args);
 
-$img_news_items = array();
-while ($img_news_query->have_posts()){
-	$img_news_query->the_post();
-	if(!has_post_thumbnail()){
-		continue;
-	}
-	$image_args = array(
-		'width'          => 350,
-		'height'         => 170,
-		'crop'           => true,
-		'attachment'     => get_post_thumbnail_id(),
-	);
-	$img_item_html = '<article class="easl-news-item">';
-		$img_item_html .= '<figure><a href="'. get_the_permalink() .'">' . wpex_get_post_thumbnail($image_args) .'</a></figure>';
-		$news_date = wpex_date_format( array(
-			'id'     => get_the_ID(),
-			'format' => 'd/m/y',
-		) );
-		$img_item_html .= '<p class="easl-news-date">'. $news_date .'</p>';
-		$img_item_html .= '<h3><a href="' . get_the_permalink() . '">'. get_the_title() .'</a></h3></p>';
-		$img_item_html .= '<div class="eeasl-news-excerpt">' . wpex_get_excerpt( array( 'length' => 28 ) ) . '</div>';
-	$img_item_html .= '</article>';
-	$img_news_items[] = $img_item_html;
-}
-wp_reset_query();
-unset($img_news_query);
-
-$query_args = array(
-	'post_type'      => 'post',
-	'post_status'    => 'publish',
-	'posts_per_page' => 8,
-	'tax_query'      => array(
-		'relation' => 'AND',
-		array(
-			'taxonomy' => 'category',
-			'field'    => 'term_id',
-			'terms'    => array( 23, 24, 34, 35, 36, 37, 38, 39, 88 ),
-			'operator' => 'NOT IN',
-		),
-	),
-	'meta_query' => array(
-		array(
-			'key' => '_thumbnail_id',
-			'compare' => 'NOT EXISTS'
-		),
-	)
-);
-$noimg_news_query = new WP_Query($query_args);
-
-$noimg_news_items = array();
-while ($noimg_news_query->have_posts()){
-	$noimg_news_query->the_post();
-	if(has_post_thumbnail()){
-		continue;
-	}
-	$image_args = array(
-		'width'          => 350,
-		'height'         => 170,
-		'crop'           => true,
-		'attachment'     => get_post_thumbnail_id(),
-	);
-	$img_item_html = '<article class="easl-news-item">';
-		$news_date = wpex_date_format( array(
-			'id'     => get_the_ID(),
-			'format' => 'd/m/y',
-		) );
-		$img_item_html .= '<p class="easl-news-date">'. $news_date .'</p>';
-		$img_item_html .= '<h3><a href="' . get_the_permalink() . '">'. get_the_title() .'</a></h3></p>';
-		$img_item_html .= '<div class="eeasl-news-excerpt">' . wpex_get_excerpt( array( 'length' => 28 ) ) . '</div>';
-	$img_item_html .= '</article>';
-	$noimg_news_items[] = $img_item_html;
-}
-wp_reset_query();
-unset($noimg_news_query);
-$next_img_pos = $next_noimg_pos = 0;
+if($news_query->have_posts()):
 ?>
 <div <?php echo implode( ' ', $wrapper_attributes ); ?> class="<?php echo esc_attr( trim( $css_class ) ) ; ?>">
 	<?php echo wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_easl_news_heading' ) ); ?>
 	<div class="easl-news-container easl-container">
 		<div class="easl-news-row easl-row">
-			<div class="easl-news-col easl-col easl-col-3">
-				<div class="easl-col-inner">
-					<?php
-					if(!empty($img_news_items[$next_img_pos])){
-						echo $img_news_items[$next_img_pos];
-						$next_img_pos++;
-					}else{
-						if(!empty($noimg_news_items[$next_noimg_pos])){
-							echo $noimg_news_items[$next_noimg_pos];
-							$next_noimg_pos++;
-						}
-						if(!empty($noimg_news_items[$next_noimg_pos])){
-							echo $noimg_news_items[$next_noimg_pos];
-							$next_noimg_pos++;
-						}
-                    }
-					?>
-				</div>
-			</div>
-			<div class="easl-news-col easl-col easl-col-3">
-				<div class="easl-col-inner">
-					<?php
-					if(!empty($noimg_news_items[$next_noimg_pos])){
-						echo $noimg_news_items[$next_noimg_pos];
-						$next_noimg_pos++;
-					}
-					if(!empty($noimg_news_items[$next_noimg_pos])){
-						echo $noimg_news_items[$next_noimg_pos];
-						$next_noimg_pos++;
-					}
-					?>
-				</div>
-			</div>
-			<div class="easl-news-col easl-col easl-col-3">
-				<div class="easl-col-inner">
-					<?php
-					if(!empty($img_news_items[$next_img_pos])){
-						echo $img_news_items[$next_img_pos];
-						$next_img_pos++;
-					}else{
-						if(!empty($noimg_news_items[$next_noimg_pos])){
-							echo $noimg_news_items[$next_noimg_pos];
-							$next_noimg_pos++;
-						}
-						if(!empty($noimg_news_items[$next_noimg_pos])){
-							echo $noimg_news_items[$next_noimg_pos];
-							$next_noimg_pos++;
-						}
-					}
-					?>
-				</div>
-			</div>
+            <?php
+            while ($news_query->have_posts()){
+	            $news_query->the_post();
+	            if(!has_post_thumbnail()){
+		            continue;
+	            }
+	            $image_args = array(
+		            'width'          => 350,
+		            'height'         => 170,
+		            'crop'           => true,
+		            'attachment'     => get_post_thumbnail_id(),
+	            );
+	            ?>
+                <div class="easl-news-col easl-col easl-col-3">
+                    <div class="easl-col-inner">
+                        <article class="easl-news-item">
+                            <figure><a href="<?php the_permalink(); ?>"><?php echo wpex_get_post_thumbnail($image_args); ?></a></figure>
+                            <p class="easl-news-date"><?php echo wpex_date_format(array('id' => get_the_ID(),'format' => 'd/m/y',)); ?></p>
+                            <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+                            <div class="eeasl-news-excerpt"><?php echo wpex_get_excerpt( array( 'length' => 28 ) ); ?></div>
+                        </article>
+                    </div>
+                </div>
+            <?php
+            }
+            wp_reset_query();
+            ?>
 		</div>
 	</div>
 </div>
+<?php endif; ?>
