@@ -7228,6 +7228,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .mz-buttonsep {
         display: none;
     }
+    /*Home Page images box*/
+    .home-page-custom-image-block .vc_single_image-wrapper {
+        height: auto;
+    }
     /* VC Shortcode: EASL Events */
 
     /*Shortcode: Events Calendar*/
