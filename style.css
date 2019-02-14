@@ -166,6 +166,7 @@ body a {
     display: inline-block;
     margin: 0;
     border: 0;
+    border-radius: 0;
     cursor: pointer;
     line-height: 1.65;
     -webkit-appearance: none;
@@ -224,6 +225,8 @@ body a {
 .easl-generic-button:hover,
 .easl-generic-button:focus {
     background: #80c4e5;
+    text-decoration: none;
+    outline: 0;
 }
 .easl-generic-button.easl-color-lightblue:hover,
 .easl-generic-button.easl-color-lightblue:focus {
@@ -7436,7 +7439,107 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         bottom: -2px;
         margin-left: -8px;
     }
-
+    /*Footer*/
+    .site-footer-inner {
+        padding-top: 15px;
+    }
+    .footer-hepatocyte-logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: auto;
+        margin-bottom: 15px;
+    }
+    .footer-hepatocyte-logo img {
+        width: 46px;
+        height: auto;
+        display: block;
+    }
+    .footer-inner-container {
+        margin-left: 0;
+    }
+    #footer-widgets.wpex-row .col {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+    #footer-widgets.wpex-row .col-3 {
+        width: 100%;
+    }
+    #footer-widgets.wpex-row .col-4 {
+        width: 100%;
+        text-align: left;
+    }
+    .footer-widget {
+        padding-bottom: 20px;
+    }
+    .footer-widget .widget-title {
+        margin-bottom: 10px;
+    }
+    .footer-widget .textwidget p:last-child{
+        margin-bottom: 0;
+    }
+    #footer-widgets.wpex-row .col-3 .textwidget p:not(:last-child) {
+        margin-bottom: 15px;
+    }
+    #footer-widgets.wpex-row .col-4 .sign-up-news {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .footer-newsletter {
+        width: 100%;
+        bottom: 0;
+        top: auto;
+        transform: initial;
+        left: 0;
+        z-index: 999991;
+        padding-top: 29px;
+        padding-bottom: 29px;
+        height: auto;
+    }
+    .footer-newsletter .ticon-times-circle {
+        top: 6px;
+        right: 6px;
+    }
+    .footer-newsletter .gform_wrapper .gform_heading {
+        margin: 0 0 15px;
+        padding: 0;
+    }
+    .footer-newsletter .gform_wrapper form {
+        margin: 0;
+    }
+    .footer-newsletter .gform_wrapper .gform_body {
+        padding: 0;
+    }
+    .footer-newsletter .gform_wrapper .gform_heading h3 {
+        margin: 0;
+        padding: 0;
+    }
+    .footer-newsletter .gform_wrapper ul.gform_fields li#field_1_1 {
+        width: 100%;
+    }
+    .footer-newsletter .gform_wrapper ul.gform_fields li#field_1_2 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .footer-newsletter div.ginput_complex.ginput_container.gf_name_has_3 span {
+        display: block;
+        width: 100%;
+        margin: 0 0 15px;
+    }
+    .footer-newsletter .gform_wrapper .gform_footer {
+        width: 100%;
+        padding: 0;
+    }
+    .footer-newsletter .gform_wrapper .gform_footer input.button {
+        height: auto;
+        min-height: 1px!important;
+        display: block;
+        width: 100%!important;
+        line-height: 1em!important;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
 }
 @media only screen and (max-width: 640px) {
     .header-two-aside {}
