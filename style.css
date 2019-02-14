@@ -1211,7 +1211,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     margin-left: 7px;
 }
 /* VC Shortcode: EASL Events */
-.wpb_easl_events_heading {
+.wpb_easl_events .wpb_easl_events_heading {
     border-bottom: 1px solid #004b87;
     color: #004b87;
     margin: -7px 0 25px;
@@ -1222,7 +1222,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     font-weight: 400;
     position: relative;
 }
-.easl-events-all-link {
+.wpb_easl_events .easl-events-all-link {
     background: #71c5e8;
     color: #fff;
     float: right;
@@ -1233,13 +1233,14 @@ body .wpb_single_image a.easl-vc-image-over:after {
     position: absolute;
     right: 0;
     top: 50%;
+    margin-top: -7px;
     transform: translateY(-50%);
 }
-.easl-events-all-link:hover,
-.easl-events-all-link :active {
+.wpb_easl_events .easl-events-all-link:hover,
+.wpb_easl_events .easl-events-all-link :active {
     color: #004b87;
 }
-.easl-events-all-link:after {
+.wpb_easl_events .easl-events-all-link:after {
     content: "\f105";
     display: inline-block;
     font-family: FontAwesome;
@@ -7227,6 +7228,8 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .mz-buttonsep {
         display: none;
     }
+    /* VC Shortcode: EASL Events */
+
     /*Shortcode: Events Calendar*/
     .ec-hide-mob {
         display: none!important;
@@ -7576,5 +7579,9 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
     .wpex-bars {
         width: 22px;
+    }
+    .wpb_easl_events .wpb_easl_events_heading {
+        font-size: 22px;
+        line-height: 22px;
     }
 }
