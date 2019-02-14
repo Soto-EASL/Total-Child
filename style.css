@@ -1228,9 +1228,12 @@ body .wpb_single_image a.easl-vc-image-over:after {
     float: right;
     display: inline-block;
     padding: 5px 8px;
-    margin-top: 4px;
     font-size: 16px;
     line-height: 16px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .easl-events-all-link:hover,
 .easl-events-all-link :active {
