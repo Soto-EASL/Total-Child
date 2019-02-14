@@ -1872,6 +1872,24 @@ body .wpb_single_image a.easl-vc-image-over:after {
     color: #165291;
 }
 
+
+.easl-ec-row-light-blue .ec-head {
+    border-bottom-color: #71c5e8;
+}
+.easl-ec-row-light-blue .ec-head:before {
+    border-color: #71c5e8;
+}
+.easl-ec-row-light-blue .ec-dates {
+    border-color: #71c5e8;
+}
+.easl-ec-row-light-blue .ec-meta-type,
+.easl-ec-row-light-blue .ec-head h3 a,
+.easl-ec-row-light-blue .ec-loc-name,
+.easl-ec-row-light-blue .ec-icons-nav .event-link-item,
+.easl-ec-row-light-blue .ec-dates {
+    color: #71c5e8;
+}
+
 .easl-ec-row-red .ec-head {
     border-bottom-color: #de2a57;
 }
@@ -5262,9 +5280,15 @@ ul.suggestions{
 .page-header-title .easl-title-back-link .ticon {
     color: #71c5e8;
 }
+.event-color-light-blue .page-header-title .easl-title-back-link .ticon {
+    color: #165291;
+}
 .page-header-title .easl-title-back-link:hover {
     color: #71c5e8;
     text-decoration: none;
+}
+.event-color-light-blue .page-header-title .easl-title-back-link:hover {
+    color: #165291;
 }
 /* Single Event */
 .single-event .page-header.easl-page-header-no-bg {
@@ -5274,6 +5298,10 @@ ul.suggestions{
 .event-color-blue .page-header.easl-page-header-no-bg {
     background-color: #165291;
     background-image: url('images/events-header-blue.jpg');
+}
+.event-color-light-blue .page-header.easl-page-header-no-bg {
+    background-color: #165291;
+    background-image: url('images/events-header-light-blue.jpg');
 }
 .event-color-red .page-header.easl-page-header-no-bg {
     background-color: #de2a57;
@@ -5314,6 +5342,10 @@ ul.suggestions{
     border-color: #165291;
     color: #165291;
 }
+.event-color-light-blue .event-dates {
+    border-color: #71c5e8;
+    color: #71c5e8;
+}
 .event-color-red .event-dates {
     border-color: #de2a57;
     color: #de2a57;
@@ -5338,6 +5370,9 @@ ul.suggestions{
 .event-color-blue .event-meta-wrap .event-meta .event-meta-type {
     color: #165291;
 }
+.event-color-light-blue .event-meta-wrap .event-meta .event-meta-type {
+    color: #71c5e8;
+}
 .event-color-red .event-meta-wrap .event-meta .event-meta-type {
     color: #de2a57;
 }
@@ -5356,6 +5391,9 @@ ul.suggestions{
 
 .event-color-blue .event-top-section {
     border-bottom-color: #165291;
+}
+.event-color-light-blue .event-top-section {
+    border-bottom-color: #71c5e8;
 }
 .event-color-red .event-top-section {
     border-bottom-color: #de2a57;
@@ -5410,6 +5448,9 @@ ul.suggestions{
 .event-color-blue .event-links-list li .event-link-item::after  {
     color: #165291;
 }
+.event-color-light-blue .event-links-list li .event-link-item::after  {
+    color: #71c5e8;
+}
 .event-color-red .event-links-list li .event-link-item::after  {
     color: #de2a57;
 }
@@ -5429,6 +5470,10 @@ ul.suggestions{
 .event-color-blue .event-links-list li .event-link-item:hover,
 .event-color-blue .event-links-list li .event-link-item:active {
     color: #165291;
+}
+.event-color-light-blue .event-links-list li .event-link-item:hover,
+.event-color-light-blue .event-links-list li .event-link-item:active {
+    color: #71c5e8;
 }
 .event-color-red .event-links-list li .event-link-item:hover,
 .event-color-red .event-links-list li .event-link-item:active {
@@ -5474,6 +5519,11 @@ ul.suggestions{
 .event-color-blue .event-text-block .toggle-box-button:active,
 .event-color-blue .event-text-block .toggle-box-button .ticon {
     color: #165291;
+}
+.event-color-light-blue .event-text-block .toggle-box-button:hover,
+.event-color-light-blue .event-text-block .toggle-box-button:active,
+.event-color-light-blue .event-text-block .toggle-box-button .ticon {
+    color: #71c5e8;
 }
 .event-color-red .event-text-block .toggle-box-button:hover,
 .event-color-red .event-text-block .toggle-box-button:active,
@@ -5542,6 +5592,11 @@ ul.suggestions{
 .event-color-blue .app-process ul li.active p{
     color: #165291;
 }
+.event-color-light-blue .app-process ul li.active,
+.event-color-light-blue .app-process ul li.active h4,
+.event-color-light-blue .app-process ul li.active p{
+    color: #71c5e8;
+}
 .event-color-red .app-process ul li.active,
 .event-color-red .app-process ul li.active h4,
 .event-color-red .app-process ul li.active p {
@@ -5604,6 +5659,10 @@ ul.suggestions{
 .event-color-blue .event-button:active {
     background-color: #165291;
 }
+.event-color-light-blue .event-button:hover,
+.event-color-light-blue .event-button:active {
+    background-color: #71c5e8;
+}
 .event-color-red .event-button:hover,
 .event-color-red .event-button:active {
     background-color: #de2a57;
@@ -5628,6 +5687,10 @@ ul.suggestions{
 .event-color-blue .easl-image-link:hover span,
 .event-color-blue .easl-image-link:active span{
     background-color: #165291;
+}
+.event-color-light-blue .easl-image-link:hover span,
+.event-color-light-blue .easl-image-link:active span{
+    background-color: #71c5e8;
 }
 .event-color-red .easl-image-link:hover span,
 .event-color-red .easl-image-link:active span {
@@ -5733,6 +5796,9 @@ ul.suggestions{
 .easl-color-blue .social-share li a:hover .hexagon {
     background-color: #165291;
 }
+.easl-color-light-blue .social-share li a:hover .hexagon {
+    background-color: #71c5e8;
+}
 .easl-color-red .social-share li a:hover .hexagon {
     background-color: #de2a57;
 }
@@ -5752,6 +5818,9 @@ ul.suggestions{
 .easl-color-blue .social-share li a:hover .hexagon::before {
     border-right-color: #165291;
 }
+.easl-color-light-blue .social-share li a:hover .hexagon::before {
+    border-right-color: #71c5e8;
+}
 .easl-color-red .social-share li a:hover .hexagon::before {
     border-right-color: #de2a57;
 }
@@ -5770,6 +5839,9 @@ ul.suggestions{
 
 .easl-color-blue .social-share li a:hover .hexagon::after {
     border-left-color: #165291;
+}
+.easl-color-light-blue .social-share li a:hover .hexagon::after {
+    border-left-color: #71c5e8;
 }
 .easl-color-red .social-share li a:hover .hexagon::after {
     border-left-color: #de2a57;
