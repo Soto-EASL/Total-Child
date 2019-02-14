@@ -2213,10 +2213,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     margin-bottom: 40px; 
 }
 .easl-news-item {
-    margin: 0 0 40px;
-}
-.easl-news-item:last-child {
-    margin-bottom: 0;
+    margin: 0;
 }
 .easl-news-item figure {
     display: block;
@@ -2247,6 +2244,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
     color: #666;
     margin: 0;
     padding: 0;
+}
+.eeasl-news-excerpt p:last-child {
+    margin-bottom: 0;
 }
 /* VC Shortcode: EASL Scientific Pubication */
 .easl-scientific-publication-wrap .easl-ec-filter-container {
@@ -7437,6 +7437,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         left: 0;
         bottom: -2px;
         margin-left: -8px;
+    }
+    /* VC Shortcode: EASL News */
+    .easl-news-col {
+        margin-bottom: 25px;
     }
     /*Footer*/
     .site-footer-inner {
