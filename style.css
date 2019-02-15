@@ -7571,8 +7571,42 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .mz-buttonsep {
         display: none;
     }
-    /*Shortcode: Highlights*/
-
+    /* Shortcode: Highlights*/
+    .easl-highlights {
+        border: 0;
+        padding: 0;
+    }
+    .easl-highlights-header {
+        margin-bottom: 20px;
+    }
+    .easl-highlights .easl-highlights-title {
+        font-size: 24px;
+        line-height: 24px;
+    }
+    .easl-highlights-filter {
+        display: none;
+    }
+    .easl-highlights-items {
+        display: block;
+    }
+    .easl-highlights-items > div {
+        width: 100%;
+        padding: 0;
+        border: 0;
+        margin-bottom: 15px;
+    }
+    .easl-highlights-item-title a,
+    .easl-highlights-item-title span {
+        display: block;
+        border-radius: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .easl-events-li h3,
+    .easl-highlights-slide-desks-items li a {
+        font-size: 16px;
+        line-height: 20px;
+    }
     /*Home Page images box*/
     .home-page-custom-image-block .vc_single_image-wrapper {
         height: auto;
