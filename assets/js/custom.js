@@ -384,6 +384,68 @@
             ec.init();
         });
     };
+
+    EASLHighlights = function($el){
+        this.$el = $el;
+        this.$eventWrap = $('.easl-highlights-event-items', this.$el);
+        this.$pubWrap = $('.easl-highlights-publications-item', this.$el);
+        this.$sdWrap = $('.easl-highlights-slide-desks-items', this.$el);
+        this.ajaxURL = EASLSETTINGS.ajaxUrl;
+        this.request = false;
+        this.$filterLabel = $('.easl-highlights-filter-label', this.$el);
+        this.$loader = $('<div class="easl-highlights-loader"><i class="ticon ticon-spinner ticon-pulse ticon-5x ticon-fw"></i></div>').appendTo('.easl-highlights-items', this.$el);
+        this.addEventListener();
+    };
+    EASLHighlights.prototype.addEventListener = function(){
+        $('.easl-highlights-filter-dd li a', this.$el).on('click', $.proxy(this, 'requestItems'));
+    };
+    EASLHighlights.prototype.abortRequest = function(){
+        (typeof this.request === 'object') && this.request.abort();
+    };
+    EASLHighlights.prototype.requestItems = function(event){
+        var $filter = $(event.target),
+            currentColor = this.$filterLabel.data('color'),
+            currentTopic = this.$filterLabel.data('topic'),
+            filterColor = $filter.data('color'),
+            filterTopic = $filter.data('topic');
+        event.preventDefault();
+        if(currentTopic === filterTopic) {
+            return false;
+        }
+        this.$el.addClass('easl-highlights-loading');
+        this.$filterLabel
+            .html($filter.html())
+            .removeClass('easl-color-' + currentColor)
+            .addClass('easl-color-' + filterColor)
+            .data('color', filterColor)
+            .data('topic', filterTopic);
+        this.abortRequest();
+        this.request = $.ajax({
+            url: this.ajaxURL,
+            dataType: 'json',
+            data: {
+                action: 'easl_get_highlights',
+                topic: filterTopic,
+            },
+            success: $.proxy(this, 'loadHightlights')
+        });
+    };
+    EASLHighlights.prototype.loadHightlights = function(data){
+        this.$el.removeClass('easl-highlights-loading');
+        this.request = false;
+        if('OK' !== data.status){
+            return false;
+        }
+        data.items && data.items.events && this.$eventWrap.html(data.items.events);
+        data.items && data.items.publications && this.$pubWrap.html(data.items.publications);
+        data.items && data.items.slide_decks && this.$sdWrap.html(data.items.slide_decks);
+    };
+
+    $.fn.easlHighlights = function(){
+        return this.each(function(){
+            new EASLHighlights($(this));
+        });
+    };
     
     function easlCustomCheckbox(){
         $('.easl-custom-checkbox').each(function(){
@@ -598,6 +660,7 @@
             
         });
         $('.easl-events-calendar-wrap').easlEventCalander();
+        $('.easl-highlights').easlHighlights();
         $(document).on('click', '.show_more_btn', function (e) {
             e.preventDefault();
             $('.event_description').toggle();
@@ -709,10 +772,10 @@
             easlScrollEvent();
         } );
         window.onpopstate = function(event) {
-            if(event.state.id && event.state.id === 'nas'){
+            if(event.state && event.state.id && event.state.id === 'nas'){
                 $('.nas-container').html(event.state.html);
             }
-            if(event.state.id && event.state.id === 'nas'){
+            if(event.state && event.state.id && event.state.id === 'nas'){
                 $('.nas-container').html(event.state.html);
             }
         };

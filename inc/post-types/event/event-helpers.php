@@ -117,6 +117,28 @@ function easl_get_publication_topic_color($id = null){
 	return $topic_color;
 }
 
+function easl_get_slide_deck_topic_color($id = null){
+	if(!$id){
+		$id = get_the_ID();
+	}
+	$args  = array(
+		'orderby' => 'name',
+		'order' => 'ASC',
+	);
+	$topics = wp_get_post_terms($id, Slide_Decks_Config::get_topic_slug(), $args);
+	if( !$topics || is_wp_error( $topics )){
+		return 'blue';
+	}
+	if(count($topics) > 1) {
+		return 'blue';
+	}
+	$topic_color = get_term_meta($topics[0]->term_id, 'easl_tax_color', true);
+	if(!$topic_color) {
+		return 'blue';
+	}
+	return $topic_color;
+}
+
 function easl_event_topics_name($id = null, $first = true, $seperator = ', '){
 	if(!$id){
 		$id = get_the_ID();

@@ -74,5 +74,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_secretary_general_carousel', null, get_theme_file_path('/inc/shortcodes/config/easl-secretary-general-carousel.php') );
 	vc_lean_map( 'easl_history_slide', null, get_theme_file_path('/inc/shortcodes/config/easl-history-slide.php') );
 	vc_lean_map( 'easl_membership_cats', null, get_theme_file_path('/inc/shortcodes/config/easl-membership-cats.php') );
+	vc_lean_map( 'easl_highlights', null, get_theme_file_path('/inc/shortcodes/config/easl-highlights.php') );
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
