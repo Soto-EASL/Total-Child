@@ -88,6 +88,7 @@
         this.$eventsCon = $('.easl-events-calendar-inner', this.$wrap);
         this.initVars();
         this.addListeners();
+        this.updateCountryDropdown(this.getFilters());
     };
     EventCalendar.prototype.initVars = function (){
         this.cssAnimation = "undefined" !== typeof this.$wrap.data('cssanimation') ? this.$wrap.data('cssanimation') : '';
@@ -141,8 +142,6 @@
             }
         });
         this.countries.type = pastFutureCountries;
-
-        console.log(this.countries);
     };
     EventCalendar.prototype.addListeners = function(){
         var ob = this;
@@ -154,7 +153,6 @@
         $(".ec-mob-showhide-filter", this.$filterCon).on('click', function(event){
             var $t = $(this);
             event.preventDefault();
-            console.log(easlIsMobile());
             if(!easlIsMobile()){
                 return false;
             }
