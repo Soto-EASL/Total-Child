@@ -543,3 +543,8 @@ add_filter('wpb_toggle_heading', 'easl_wpb_toggle_heading', 20, 2);
 function easl_social_share_icons(){
 	include get_theme_file_path('partials/social-shares-icons.php');
 }
+
+function easl_before_headder() {
+	get_template_part('partials/header/mobile-top-buttons');
+}
+add_action('wpex_hook_header_before', 'easl_before_headder');
