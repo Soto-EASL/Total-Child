@@ -45,7 +45,7 @@ if ( $logo_img || $overlay_logo ) {
 		$output .= '<a href="' . esc_url( $logo_url ) . '" rel="home" class="main-logo">';
 		
 		$output .= '<img ' . wpex_parse_attrs( $img_attrs ) . ' />';
-		$output .= '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/site-logo-sticky.png" alt="' . esc_attr( $logo_title ) . '" class="logo-img-sticky" />';
+		$output .= '<img src="' . esc_url( get_stylesheet_directory_uri() ) . '/images/easl-logo-small.png" alt="' . esc_attr( $logo_title ) . '" class="logo-img-sticky" />';
 
 		$output .= '</a>';
 	

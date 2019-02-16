@@ -53,11 +53,14 @@
         }
         return result
     }
-    function easlIsMobile(){
-        if(typeof window.matchMedia === 'function'){
-            return window.matchMedia("(max-width: 767px)").matches;
+    function easlIsMobile(w){
+        if(!w) {
+            w = 767;
         }
-        return $(window).width() <= 767;
+        if(typeof window.matchMedia === 'function'){
+            return window.matchMedia("(max-width: " + w +  "px)").matches;
+        }
+        return $(window).width() <= w;
     }
     function setCardBlockHeight(){
         var $this = $('.easl-card-block');
@@ -65,11 +68,17 @@
         $this.height( (w * 0.5625) + 'px');
     }
     function easlStickyHeader(){
-        var headerOffset = jQuery('#site-header').offset().top - bodyOffsetTop;
+        var headerOffset = 0;
+        if(easlIsMobile(600)){
+            headerOffset = $('#header-top-line').offset().top;
+        }else if(easlIsMobile(767)){
+            headerOffset = $('#header-top-line').offset().top - bodyOffsetTop;
+        }
+
         if( $(window).scrollTop() <= headerOffset ){
-            $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled');
+            $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled easl-header-sticky-active');
         }else{
-            $('body').addClass('easl-scrolled').removeClass('easl-scroll-at-top');
+            $('body').addClass('easl-scrolled easl-header-sticky-active').removeClass('easl-scroll-at-top');
         }
         
     }

@@ -546,5 +546,6 @@ function easl_social_share_icons(){
 
 function easl_before_headder() {
 	get_template_part('partials/header/mobile-top-buttons');
+	echo '<div id="header-top-line"></div>';
 }
 add_action('wpex_hook_header_before', 'easl_before_headder');
