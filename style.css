@@ -6691,9 +6691,69 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     margin-bottom: 13px;
 }
 .easl-highlights-publications-item-inner h2 a {
-    color: inherit;
+    color: #004b87;
     text-decoration: none;
 }
+
+.easl-highlights-publications-item-inner.easl-color-light-blue h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-light-blue h2 a:active {
+    color: #71c4e8;
+}
+.easl-highlights-publications-item-inner.easl-color-blue h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-blue h2 a:active {
+    color: #004b87;
+}
+.easl-highlights-publications-item-inner.easl-color-red h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-red h2 a:active {
+    color: #dc224e;
+}
+.easl-highlights-publications-item-inner.easl-color-teal h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-teal h2 a:active {
+    color: #0a9490;
+}
+.easl-highlights-publications-item-inner.easl-color-orrange h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-orrange h2 a:active {
+    color: #f26a29;
+}
+.easl-highlights-publications-item-inner.easl-color-yellow h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-yellow h2 a:active {
+    color: #f8bf3e;
+}
+.easl-highlights-publications-item-inner.easl-color-gray h2 a:hover,
+.easl-highlights-publications-item-inner.easl-color-gray h2 a:active {
+    color: #866c74;
+}
+
+
+.easl-highlights-publications-item-inner.easl-color-light-blue .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-light-blue .easl-generic-button:active {
+    background-color: #71c4e8;
+}
+.easl-highlights-publications-item-inner.easl-color-blue .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-blue .easl-generic-button:active {
+    background-color: #004b87;
+}
+.easl-highlights-publications-item-inner.easl-color-red .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-red .easl-generic-button:active {
+    background-color: #dc224e;
+}
+.easl-highlights-publications-item-inner.easl-color-teal .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-teal .easl-generic-button:active {
+    background-color: #0a9490;
+}
+.easl-highlights-publications-item-inner.easl-color-orrange .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-orrange .easl-generic-button:active {
+    background-color: #f26a29;
+}
+.easl-highlights-publications-item-inner.easl-color-yellow .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-yellow .easl-generic-button:active {
+    background-color: #f8bf3e;
+}
+.easl-highlights-publications-item-inner.easl-color-gray .easl-generic-button:hover,
+.easl-highlights-publications-item-inner.easl-color-gray .easl-generic-button:active {
+    background-color: #866c74;
+}
+
 .easl-highlights-slide-decks {
     padding-left: 15px;
 }
