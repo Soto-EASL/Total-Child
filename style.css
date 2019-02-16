@@ -7548,6 +7548,9 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 }
 
 @media only screen and (min-width: 768px) {
+    .easl-hide-desktop{
+        display: none!important;
+    }
     .easl-row-same-height-col > .easl-col {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -7590,8 +7593,9 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
 }
 @media only screen and (max-width: 767px) {
-
-    .header-two-aside {}
+    .easl-hide-mobile {
+        display: none!important;
+    }
     .easl-ilc-details-buttons > .easl-col{
         margin-bottom: 20px;
     }
@@ -7613,24 +7617,40 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     #site-logo-inner {
          padding: 7px 0 0;
     }
-    .mz-loggedout-buttons.header-aside-buttons,
-    .easl-scrolled .header-aside-buttons.mz-loggedout-buttons{
-        width: 150px;
-        padding: 0;
-    }
-    .mz-loggedout-buttons.header-aside-buttons .become-a-member-button {
-        display: block;
-        width: 100%;
-        font-size: 14px;
-        padding: 10px 10px;
-        margin: 0 0 5px;
-    }
-    .mz-loggedout-buttons.header-aside-buttons .become-a-member-button:last-child {
-        margin-bottom: 0;
+
+    #header-aside{
+        display: none!important;
     }
     .mz-buttonsep {
         display: none;
     }
+    .easl-mobile-top-buttons {
+        background-color: #78cdf2;
+    }
+    .easl-mobile-top-buttons .header-aside-buttons{
+        display: block;
+        margin: 0;
+        padding: 5px 0;
+        text-align: center;
+        width: auto;
+    }
+    .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button {
+        border-right: 1px solid #fff;
+        display: inline-block;
+        font-size: 15px;
+        line-height: 1em;
+        margin: 0;
+        padding: 0 20px;
+        width: auto;
+    }
+    .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button:first-child {
+        padding-left: 0;
+    }
+    .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button:last-child {
+        border-right: 0;
+        padding-right: 0;
+    }
+
     /* Shortcode: Highlights*/
     .easl-highlights {
         border: 0;
@@ -7994,32 +8014,22 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
 }
 @media only screen and (max-width: 640px) {
-    .header-two-aside {}
+
 }
 @media only screen and (max-width: 567px) {
-    .header-two-aside {}
+
 }
 @media only screen and (max-width: 480px) {
-    .header-two-aside {}
+
 }
 @media only screen and (max-width: 479px) {
     body.wpex-mobile-toggle-menu-icon_buttons #site-logo {
         width: 144px;
     }
-    body .header-two-aside {
-        margin-right: 30px;
-    }
-    .header-aside-links {
-        display: none;
-    }
-    .mz-loggedout-buttons.header-aside-buttons,
-    .easl-scrolled .header-aside-buttons.mz-loggedout-buttons {
-        width: 105px;
-    }
-    .mz-loggedout-buttons.header-aside-buttons .become-a-member-button {
-        font-size: 12px;
-        padding: 6px 5px;
-    }
+    .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button {
+         font-size: 14px;
+         padding: 0 8px;
+     }
     .wpex-bars {
         width: 22px;
     }
