@@ -1069,7 +1069,141 @@ body #site-navigation .dropdown-menu a {
 .wpex-bars>span::after {
     bottom: -8px;
 }
-
+.wpex-active .wpex-bars>span {
+    background: #104f85 !important;
+}
+.wpex-active .wpex-bars>span::before,
+.wpex-active .wpex-bars>span::after {
+    transform: none!important;
+}
+/*Mobile Navigation*/
+#sidr-main {
+    padding-left: 44px;
+    background: transparent;
+    padding-bottom: 0;
+    font-family: "KnockoutHTF51Middleweight";
+    font-size: 16px;
+}
+.sidr-class-wpex-close {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    top: 0;
+    background: #fff;
+    width: 44px;
+    height: 86px;
+}
+.sidr-class-wpex-close a {
+    display: block;
+    background: #104f85;
+    height: 3px;
+    width: 28px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 8px;
+    top: 40px;
+    line-height: normal;
+    color: transparent;
+    font-size: 0px;
+    text-decoration: none;
+}
+.sidr-class-wpex-close a::after,
+.sidr-class-wpex-close a::before {
+    background: #104f85;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+}
+.sidr-class-wpex-close a::after {
+    bottom: -7px;
+}
+.sidr-class-wpex-close a::before {
+    top: -7px;
+}
+.sidr-class-menu-main-menu-container {
+    position: absolute;
+    top: 66px;
+    bottom: 48px;
+    left: 44px;
+    right: 0;
+    overflow-y: auto;
+    background: #454545;
+}
+.sidr-class-mobile-menu-searchform {
+    border: 0 none;
+    position: absolute;
+    top: 0;
+    left: 44px;
+    right: 0;
+    background: #454545;
+    height: 66px;
+    z-index: 1;
+}
+.sidr-class-mobile-menu-searchform input {
+    background: #fff;
+    display: block;
+    margin-top: 10px;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    color: #004b87!important;
+    padding: 14px 24px 14px 10px;
+    line-height: 1em;
+    position: relative;
+    z-index: 1;
+}
+.sidr-class-mobile-menu-searchform button {
+    color: #004b87;
+    margin: 0;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: 24px;
+    height: auto;
+    z-index: 2;
+}
+.sidr-class-mobile-menu-searchform button .ticon{
+    margin-right: 10px;
+}
+#sidr-main .sidr-class-dropdown-menu {
+    margin: 0 10px;
+}
+.sidr-class-dropdown-menu li {
+    border-bottom: 1px solid #6a6a6a;
+}
+.sidr-class-dropdown-menu > li:first-child {
+    border-top: 0 none;
+}
+.sidr-class-dropdown-menu li a {
+    color: #fff;
+    padding: 11px 10px 11px 10px;
+}
+.sidr-class-dropdown-menu li.sidr-class-current-menu-item > a {
+    background: #80c4e5;
+}
+.sidr-class-dropdown-menu li ul a {
+    font-size: 14px;
+}
+.sidr-class-mobile-menu-bottom-link {
+    position: absolute;
+    bottom: 0;
+    left: 44px;
+    right: 0;
+    background: #454545;
+    height: 48px;
+    z-index: 1;
+}
+.sidr-class-mobile-menu-bottom-link a {
+    background: #80c4e5;
+    color: #004b87;
+    display: block;
+    padding: 11px 10px;
+    width: 100%;
+    text-align: center;
+}
 /*Header title*/
 .page-header {
     margin-bottom: 0;
@@ -8106,4 +8240,7 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         font-size: 22px;
         line-height: 22px;
     }
+}
+@media only screen and (max-width: 360px) {
+
 }

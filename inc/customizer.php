@@ -45,6 +45,34 @@ function easl_customizer_sections($sections) {
 			),
 		);
 	}
+	// Mobile Menu Settings
+	$sections['wpex_header_mobile_menu']['settings'][] = array(
+		'id' => 'mobile_nav_bottom_menu_title',
+		'transport' => 'partialRefresh',
+		'default' => '',
+		'control' => array(
+			'label' => __('Mobile Menu Bottom Link Title', 'total-child'),
+			'type' => 'text',
+		),
+	);
+	$sections['wpex_header_mobile_menu']['settings'][] = array(
+		'id' => 'mobile_nav_bottom_menu_url',
+		'transport' => 'partialRefresh',
+		'default' => '',
+		'control' => array(
+			'label' => __('Mobile Menu Bottom Link URL', 'total-child'),
+			'type' => 'text',
+		),
+	);
+	$sections['wpex_header_mobile_menu']['settings'][] = array(
+		'id' => 'mobile_nav_bottom_menu_nt',
+		'transport' => 'partialRefresh',
+		'default' => true,
+		'control' => array(
+			'label' => __( 'Open Mobile Menu Bottom Link in new tab', 'total' ),
+			'type' => 'checkbox',
+		),
+	);
 	// Events Section
 	$about_easl_schools_content = '<p>The schools contribute to the training of new generations of hepatologists and are a major element of our association. Aimed at young fellows enrolled in hepatology-oriented departments or more experienced clinicians who want to be exposed to the newest trends in hepatology.</p><p>For selected applicants, EASL will cover transportation costs to attend the school and accommodation during the event (details will be provided individually once the selection process has been done).</p><p>Application is open to young fellows under the age of 35 and/or still in training.</p><p>Approximately 30 places are available for each school and priority is given to registered EASL members during the selection process.</p>';
 	$sections['easl_events_single'] = array(
