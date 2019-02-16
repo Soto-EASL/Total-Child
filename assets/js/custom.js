@@ -1,5 +1,29 @@
+(function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+            || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+}());
 (function($){
-    var $body;
+    var $body, bodyOffsetTop;
     function easlArrayIntersect(a1,a2) {
         var result = [];
         for (var i = 0; i < a1.length; i++) {
@@ -41,17 +65,14 @@
         $this.height( (w * 0.5625) + 'px');
     }
     function easlStickyHeader(){
-        if( $(window).scrollTop() <= 0 ){
-            $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled')
+        var headerOffset = jQuery('#site-header').offset().top - bodyOffsetTop;
+        if( $(window).scrollTop() <= headerOffset ){
+            $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled');
         }else{
             $('body').addClass('easl-scrolled').removeClass('easl-scroll-at-top');
         }
         
     }
-    function easlScrollEvent(){
-        easlStickyHeader();
-    }
-    
     function easlCompareDates(date1, date2){
         date1 = new Date(date1);
         date2 = new Date(date2);
@@ -563,6 +584,7 @@
     });
     $(document).ready(function(){
         $body = $('body');
+        bodyOffsetTop = $body.offset().top;
         easlStickyHeader();
         easlCustomCheckbox();
         easlCustomRadio();
@@ -756,18 +778,31 @@
             target.length && $('.' + target).slideToggle(200);
         });
 
+        function easlResizeEvent(){
+            setCardBlockHeight();
+        }
+        function easlScrollEvent(){
+            easlStickyHeader();
+        }
+
         var easlResizeTimeout;
-        $(window).resize(function(){
-            if ( !easlResizeTimeout ) {
-                easlResizeTimeout = setTimeout(function() {
-                    easlResizeTimeout = null;
-                    // Stuff to be done when windows resize
-                    setCardBlockHeight();
-                }, 66);
+        $(window).resize(function(event){
+            if (easlResizeTimeout) {
+                window.cancelAnimationFrame(easlResizeTimeout);
             }
+            easlResizeTimeout = window.requestAnimationFrame(function () {
+                easlResizeEvent();
+            });
         });
-        $(window).scroll( function() {
-            easlScrollEvent();
+
+        var easlScrollTimeout;
+        $(window).scroll( function(event) {
+            if (easlScrollTimeout) {
+                window.cancelAnimationFrame(easlScrollTimeout);
+            }
+            easlScrollTimeout = window.requestAnimationFrame(function () {
+                easlScrollEvent();
+            });
         } );
         window.onpopstate = function(event) {
             if(event.state && event.state.id && event.state.id === 'nas'){
