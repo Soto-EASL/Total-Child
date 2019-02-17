@@ -19,7 +19,6 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-menu-stacked
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-post-type-grid.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-users-grid.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-card-button.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staff-list.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
