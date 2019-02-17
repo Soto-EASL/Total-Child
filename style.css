@@ -1028,7 +1028,9 @@ body #site-navigation .dropdown-menu a {
     height: 40px;
     line-height: 40px;
 }
-
+body #site-navigation .dropdown-menu ul a.sf-with-ul {
+    padding-right: 25px!important;
+}
 #site-navigation .dropdown-menu > li > a.site-search-toggle {
     position: relative;
 }
@@ -3666,6 +3668,9 @@ body.wpb-js-composer .vc_tta-color-grey.vc_tta-style-classic .vc_tta-controls-ic
     color: #fff;
     font-size: 14px;
     line-height: 1.65em;
+}
+.site-footer a, .site-footer strong {
+    color: #fff;
 }
 .site-footer .widget_nav_menu li {
     border: 0 none;
