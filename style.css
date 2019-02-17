@@ -8407,6 +8407,28 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .vc_row.easl-introduction-row.easl-ir-has-con > .wpb_column:last-child > .vc_column-inner {
         padding: 0;
     }
+    /* VC Shortcode: EASL News List */
+    .easl-news-list-wrap {
+        margin-top: 60px;
+    }
+    .easl-custom-select-filter-source, .easl-custom-select-filter-year {
+        margin-bottom: 15px;
+    }
+    .easl-news-list-entry-has-thumb {
+        display: block;
+    }
+    .easl-news-list-thumb {
+        margin: 0 0 15px;
+        width: 100%;
+        padding: 0;
+        max-width: 100%;
+    }
+    .easl-news-list-result-has-pagination .easl-news-list-con {
+        margin-bottom: 35px;
+    }
+    .easl-news-list-newsletters {
+        margin-top: 40px;
+    }
     /*Footer*/
     .site-footer-inner {
         padding-top: 15px;
@@ -8544,7 +8566,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 
 }
 @media only screen and (max-width: 480px) {
-
+    /* VC Shortcode: EASL News List */
+    .easl-news-list-thumb img {
+        width: 100%;
+    }
 }
 @media only screen and (max-width: 479px) {
     .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button {
