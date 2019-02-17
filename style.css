@@ -8186,6 +8186,19 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         top: 50%;
         transform: translateY(-50%);
     }
+    /* VC Shortcode: Menu Stacked Content */
+    .easl-msc-container {
+        display: block;
+    }
+    .easl-msc-menu-wrap {
+        margin: 0 0 25px;
+        border: 0;
+        width: auto;
+    }
+    .easl-msc-content-wrap {
+        width: auto;
+        padding: 0;
+    }
     /*Introduction Text*/
     .vc_row.easl-introduction-row {
         display: block;
