@@ -382,6 +382,10 @@ function easl_body_classes($classes){
 	if($page_title_color){
 		$classes[] = 'easl-page-title-color-' . $page_title_color;
 	}
+	$extra_body_class = get_post_meta( $post_id, 'easl_extra_body_class', true );
+	if($extra_body_class){
+		$classes[] = $extra_body_class;
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'easl_body_classes' );

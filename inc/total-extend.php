@@ -194,6 +194,12 @@ function easl_social_profile_options_list() {
 add_filter( 'wpex_social_profile_options_list', 'easl_social_profile_options_list' );
 
 function easl_extended_meta( $array, $post ) {
+	$array['main']['settings']['easl_extra_body_class']           = array(
+		'title'       => esc_html__( 'Extra body class', 'total-child' ),
+		'type'        => 'text',
+		'id'          => 'easl_extra_body_class',
+		'description' => esc_html__( 'Add an extra body class for ths page.', 'total-child' ),
+	);
 	$array['title']['settings']['title_icon']           = array(
 		'title'       => esc_html__( 'Title icon', 'total' ),
 		'type'        => 'select',
@@ -205,7 +211,7 @@ function easl_extended_meta( $array, $post ) {
 		'title'       => esc_html__( 'Title Text Color', 'total-child' ),
 		'id'          => 'easl_page_title_color',
 		'type'        => 'select',
-		'description' => esc_html__( 'Allow HTML tags and Shortcodes in custom title.', 'total-child' ),
+		'description' => esc_html__( 'Select a page title color.', 'total-child' ),
 		'options'     => array(
 			''        => esc_html__( 'Default', 'total-child' ),
 			'black' => esc_html__( 'Black', 'total-child' ),
