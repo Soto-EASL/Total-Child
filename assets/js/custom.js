@@ -754,11 +754,12 @@
                 history.pushState({id: 'nas', html: $con.html() }, document.title, $this.attr('href'));
             });
         });
-        $body.on('click', '.sign-up-news', function () {
-            $('.footer-newsletter').show();
+        $body.on('click', '.show-footer-newsletter', function (event) {
+            event.preventDefault();
+            $('.footer-newsletter').toggleClass('easl-active');
         });
-        $body.on('click', '.footer-newsletter .ticon-times-circle', function () {
-            $('.footer-newsletter').hide();
+        $body.on('click', '.close-footer-newsletter', function () {
+            $('.footer-newsletter').removeClass('easl-active');
         });
         $body.on('click', '.easl-mentors-table-show-more', function (e) {
             var $this = $(this);

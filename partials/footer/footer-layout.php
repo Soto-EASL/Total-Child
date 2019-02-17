@@ -36,9 +36,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php endif; ?> 
 <?php if ( wpex_get_mod( 'footer_bottom_newsletter', true ) ) : ?>
 	<div class="footer-newsletter">
-        <i class="ticon ticon-times-circle"></i>
+        <a href="#" class="show-footer-newsletter easl-hide-desktop footer-nl-close-icon"><i class="ticon ticon-times-circle"></i></a>
 		<div class="footer-newsletter-inner container clr">
-			<?php echo do_shortcode( wpex_get_mod( 'footer_bottom_newsletter_sc' ) ); ?> 
+			<?php echo do_shortcode( wpex_get_mod( 'footer_bottom_newsletter_sc' ) ); ?>
+            <a href="#" class="show-footer-newsletter easl-hide-mobile footer-nl-close-button"><?php _e('Cancel', 'total-child'); ?></a>
 		</div>
 	</div>
 <?php endif; ?>

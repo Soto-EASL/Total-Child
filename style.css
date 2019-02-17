@@ -4778,7 +4778,51 @@ ul.event-links-list li:before{
 /*Footer Newsletter*/
 .footer-newsletter {
     background: #004b87;
-    padding: 10px 0;
+    padding: 25px 0;
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+.footer-newsletter.easl-active {
+    display: block;
+}
+body.wpex-responsive .footer-newsletter .footer-newsletter-inner {
+    width: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+.footer-newsletter .footer-nl-close-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #790000;
+    border: 0 none;
+    border-radius: 0;
+    color: #fff;
+    display: inline-block;
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    margin: 0;
+    text-align: center;
+    padding: 10px 35px;
+    height: 38px;
+}
+.footer-newsletter .footer-nl-close-button:hover,
+.footer-newsletter .footer-nl-close-button:active {
+    background: #71c5e8;
+    text-decoration: none;
+}
+.footer-newsletter .footer-nl-close-icon {
+    display: none;
+}
+.sign-up-news{
+    margin-bottom: 40px;
+
 }
 .footer-newsletter .gform_wrapper {
     margin: 0;
@@ -4787,16 +4831,14 @@ ul.event-links-list li:before{
     height: 0;
 }
 .footer-newsletter .gform_wrapper form {
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin: 0 -3px;
+    display: block;
+    margin: 0;
 }
 .footer-newsletter .gform_wrapper .gform_heading{
-    margin: 0;
-    padding: 0 3px;
-    width: auto;
+    margin: 0 0 20px;
+    padding: 0;
+    width: 100%;
+    display: block;
 }
 .footer-newsletter .gform_wrapper h3.gform_title {
     color: #fff;
@@ -4805,41 +4847,29 @@ ul.event-links-list li:before{
     font-weight: 400;
     line-height: 24px;
     margin: 0;
-    padding: 7px 10px 0 0;
+    padding: 0;
 }
 .footer-newsletter .gform_wrapper .gform_body {
-    margin: 0;
-    padding: 0 3px;
+    margin: 0 0 20px;
+    padding: 0;
     width: auto;
-    
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
 }
 .footer-newsletter .gform_wrapper ul.gform_fields {
     width: auto;
     margin: 0;
     padding: 0;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    display: block;
 }
 .footer-newsletter .gform_wrapper ul.gform_fields li.gfield {
     margin: 0;
     padding: 0;
-    
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
 }
 .footer-newsletter .gform_wrapper ul.gform_fields li#field_1_1 {
-    width: 70%;
+    width: 100%;
+    max-width: 100%!important;
 }
 .footer-newsletter .gform_wrapper ul.gform_fields li#field_1_2 {
-    width: 30%;
+    width: 100%;
 }
 .footer-newsletter .gform_wrapper .top_label .gfield_label {
     display: none;
@@ -4847,24 +4877,30 @@ ul.event-links-list li:before{
 .footer-newsletter .gform_wrapper .top_label div.ginput_container {
     width: 100% !important;
     margin: 0 !important;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
 }
 .footer-newsletter  div.ginput_complex.ginput_container.gf_name_has_3 span {
     display: block;
-    margin: 0 6px 0 0;
-    padding: 0;
-    
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
+    margin: 0 0 20px;
+    padding: 0!important;
+    width: 100%;
 }
-.footer-newsletter div.ginput_complex.ginput_container.gf_name_has_3 span.name_prefix {
+.ginput_container_name::after {
+    content: '';
+    display: table;
+    height: 0;
+    clear: both;
+}
+.footer-newsletter div.ginput_complex.ginput_container.gf_name_has_3 span.name_prefix select {
     width: 65px;
-    flex: 0 1 auto;
+}
+.footer-newsletter div.ginput_complex.ginput_container.gf_name_has_3 span.name_first {
+    width: 48%;
+    float: left;
+}
+.footer-newsletter div.ginput_complex.ginput_container.gf_name_has_3 span.name_last {
+    width: 48%;
+    float: left;
+    margin-left: 4%;
 }
 .footer-newsletter .gform_wrapper .field_sublabel_below .ginput_complex.ginput_container label {
     display: none;
@@ -4874,6 +4910,7 @@ ul.event-links-list li:before{
     line-height: 14px;
     padding: 10px 5px;
     height: 38px;
+    border-radius: 0;
 }
 .footer-newsletter .gform_wrapper.gf_browser_gecko select {
     height: 38px;
@@ -5027,28 +5064,6 @@ a.button:hover{
 .EASL-Secretary-Generals .wpex-carousel-entry-media {
     text-align: left;
     padding: 15px;
-}
-.footer-newsletter{
-    position: fixed;
-    width: 50%;
-    height: 300px;
-    transform: translate(-50%, -50%);
-    display: none;
-    top: 50%;
-    left: 50%;
-    z-index: 999;
-}
-.footer-newsletter .ticon-times-circle{
-    color: #f4524d;
-    position: absolute;
-    top: -20px;
-    right: -25px;
-    font-size: 30px;
-    cursor: pointer;
-}
-.sign-up-news{
-    margin-bottom: 40px;
-
 }
 #site-header-inner{
     background-image: url("images/header_decorative.png");
@@ -8240,19 +8255,42 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         margin-bottom: 20px;
     }
     .footer-newsletter {
-        width: 100%;
+        display: block;
         bottom: 0;
-        top: auto;
-        transform: initial;
         left: 0;
-        z-index: 999991;
         padding-top: 29px;
         padding-bottom: 29px;
         height: auto;
+        top: auto;
+        visibility: visible;
+        width: 100%;
+        -webkit-transform: translateX(-100%);
+        -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        -o-transform: translateX(-100%);
+        transform: translateX(-100%);
+        z-index: 999991;
+        -webkit-transition: transform .25s;
+        -moz-transition: transform .25s;
+        -ms-transition: transform .25s;
+        -o-transition: transform .25s;
+        transition: transform .25s;
     }
-    .footer-newsletter .ticon-times-circle {
+    .footer-newsletter.easl-active {
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -o-transform: translateX(0);
+        transform: translateX(0);
+    }
+    .footer-newsletter .footer-nl-close-icon {
+        color: #f4524d;
+        display: block;
+        position: absolute;
         top: 6px;
         right: 6px;
+        text-decoration: none;
+        font-size: 30px;
     }
     .footer-newsletter .gform_wrapper .gform_heading {
         margin: 0 0 15px;
