@@ -8370,6 +8370,13 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         width: auto;
         padding: 0;
     }
+    /* Shortcode: Easl Staffs */
+    .easl-staff-details-top {
+        display: block;
+    }
+    .easl-staff-details-thumb {
+        margin: 0 0 20px;
+    }
     /*Introduction Text*/
     .vc_row.easl-introduction-row {
         display: block;
