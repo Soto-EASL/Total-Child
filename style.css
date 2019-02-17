@@ -8147,6 +8147,8 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
     .ec-filter-field-wrap {
         width: 100%;
+        padding-left: 0!important;
+        padding-right: 0!important;
     }
     .ec-filter-field-wrap .easl-custom-radio {
         margin-right: 20px;
