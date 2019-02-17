@@ -4829,6 +4829,41 @@ ul.event-links-list li:before{
     content: "\f104";
     left: 0;
 }
+.easl-staff-details-top {
+    display: flex;
+    margin-bottom: 30px;
+    min-height: 1px;
+}
+.easl-staff-details-thumb {
+    max-width: 250px;
+    margin: 10px 20px 0 0;
+}
+.easl-staff-details-thumb img {
+    display: block;
+}
+.easl-staff-details-title-contact {
+    flex: 1 1 0;
+}
+.easl-staff-details-title-contact h2 {
+    margin-bottom: 0;
+    font-size: 2.2em;
+    border-bottom: 1px solid #004b87;
+}
+.easl-staff-details-title-contact h4 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+.easl-staff-details-excerpt p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+    margin: 0 0 10px;
+    padding: 0;
+}
+.easl-staff-details-excerpt p:last-child {
+    margin-bottom: 0;
+}
 /* Buttons Grid in column container */
 .easl-button-grid-column-container {}
 
