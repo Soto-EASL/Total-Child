@@ -3,7 +3,7 @@
 /**
  * EASL_VC_Staffs
  */
-if ( !class_exists( 'EASL_VC_Staffs' ) ) {
+if ( class_exists( 'WPBakeryShortCode' ) ) {
 
 	class EASL_VC_Staffs extends WPBakeryShortCode {
 
