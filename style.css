@@ -1665,6 +1665,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
     line-height: 18px;
     font-size: 16px;
     z-index: 2;
+    border: 0;
+    border-radius: 0;
 }
 .ec-filter-search input::-webkit-input-placeholder,
 .ec-filter-search input::-moz-placeholder,
