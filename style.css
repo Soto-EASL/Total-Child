@@ -5290,6 +5290,7 @@ a.easl-card-btn:hover{
 }
 .easl-card-block{
     height: 90px;
+    min-height: 90px;
 }
 .easl-card-btn:hover .easl-card-btn-icon-wrapper{
     background-color: #114f85;
@@ -8428,6 +8429,18 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     }
     .easl-news-list-newsletters {
         margin-top: 40px;
+    }
+    /* Shortcode: Card Button */
+    .easl-card-text {
+        text-align: center;
+    }
+    .easl-card-btn-wrap {
+        text-align: center;
+    }
+    .easl-card-btn-wrap .easl-card-btn {
+        display: inline-block;
+        width: 100%;
+        max-width: 288px;
     }
     /*Footer*/
     .site-footer-inner {

@@ -65,7 +65,11 @@
     function setCardBlockHeight(){
         var $this = $('.easl-card-block');
         var w = $this.width();
-        $this.height( (w * 0.5625) + 'px');
+        if(!easlIsMobile(767)) {
+            $this.height( (w * 0.5625) + 'px');
+        }else{
+            $this.height('auto');
+        }
     }
     function easlStickyHeader(){
         var headerOffset = 0;
