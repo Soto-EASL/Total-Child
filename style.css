@@ -153,7 +153,18 @@ body a {
     left: 0;
     top: 7px;
 }
-
+.custom-margin-0{
+    margin-bottom: 0!important;
+}
+.custom-margin-18{
+    margin-bottom: 18px!important;
+}
+.custom-margin-20{
+    margin-bottom: 20px!important;
+}
+hr.in-the-bottom{
+    margin: 0px 0 40px;
+}
 /*EASL Generic Button*/
 .easl-generic-button {
     background: #104f85;
@@ -4779,7 +4790,45 @@ ul.event-links-list li:before{
 .easl-member-profile-back-link {
     margin: 0 0 15px;
 }
+.easl-member-profile-back-link a {
+    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #004b87;
+    line-height: 1.5em;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+}
+.easl-staff-details-wrap .next-profile,
+.easl-staff-details-wrap .prev-profile {
+    color: #004b87;
+    position: relative;
+}
+.easl-staff-details-wrap .next-profile{
+    float: right;
+    padding-right: 15px;
+}
+.easl-staff-details-wrap .prev-profile {
+    padding-left: 15px;
+}
 
+.easl-staff-details-wrap .next-profile::before,
+.easl-staff-details-wrap .prev-profile::before {
+    color: #62cff5;
+    display: block;
+    font-family: 'FontAwesome';
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.easl-staff-details-wrap .next-profile::before{
+    content: "\f105";
+    right: 0;
+}
+.easl-staff-details-wrap .prev-profile::before{
+    content: "\f104";
+    left: 0;
+}
 /* Buttons Grid in column container */
 .easl-button-grid-column-container {}
 
@@ -7709,6 +7758,11 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     padding-left: 15px;
 }
 
+/*Page: Community*/
+.easl-community-pages .easl-msc-menu-wrap {
+    margin-right: 48px;
+}
+
 @media only screen and (max-width: 1199px) and (min-width: 1100px) {
     #site-navigation .dropdown-menu > li > a {
         padding: 0 12px;
@@ -7958,6 +8012,7 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     .home-page-custom-image-block .vc_single_image-wrapper {
         height: auto;
     }
+
     /* VC Shortcode: EASL Events */
 
     /*Shortcode: Events Calendar*/
@@ -8207,7 +8262,7 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
         display: block;
     }
     .easl-msc-menu-wrap {
-        margin: 0 0 25px;
+        margin: 0 0 25px!important;
         border: 0;
         width: auto;
     }

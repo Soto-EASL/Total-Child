@@ -785,7 +785,7 @@
                 return false;
             }
             target = $('.' + target);
-            target.length && $('.' + target).slideToggle(200);
+            target.length && target.slideToggle(200);
         });
 
         function easlResizeEvent(){
