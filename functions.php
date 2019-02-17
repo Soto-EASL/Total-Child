@@ -191,10 +191,6 @@ add_action('widgets_init','register_custom_sidebar');
 
 
 function func_styles() {
-    if (is_page(sanitize_title('mentorships'))) {
-        wp_enqueue_style('mentorships-style',
-            get_stylesheet_directory_uri() . '/assets/css/mentorships.css');
-    }
     if (is_page(sanitize_title('national-associations')) ||
         is_page(sanitize_title('professor-andrew-k-burroughs')) ||
         is_page(sanitize_title('professor-jean-pierre-benhamou')) ||

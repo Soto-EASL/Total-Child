@@ -165,6 +165,9 @@ body a {
 hr.in-the-bottom{
     margin: 0px 0 40px;
 }
+.easl-title-28 {
+    font-size: 28px!important;
+}
 /*EASL Generic Button*/
 .easl-generic-button {
     background: #104f85;
@@ -7800,7 +7803,41 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 .easl-community-pages .easl-msc-menu-wrap {
     margin-right: 48px;
 }
+/*Page: Mentorships */
+body .mentors-application-title {
+    background-color: #454545;
+    color: #fff;
+    marginL: 0;
+    padding: 5px 15px;
+    font-size: 30px;
+    line-height: 1.5em;
+}
+.mentors-application-button.easl-generic-button {
+    padding: 10px 15px;
+    text-align: left;
+    position: relative;
+    font-size: 16px;
+    line-height: 16px;
+}
+.mentors-application-button  .easl-generic-button-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);;
+    -moz-transform: translateY(-50%);;
+    -ms-transform: translateY(-50%);;
+    -o-transform: translateY(-50%);;
+    transform: translateY(-50%);;
+}
 
+.easl-mentorship-sidebar > .vc_column-inner > .wpb_wrapper {
+    background: #e5e5e5;
+    padding: 0 15px 15px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
 
 /* Terms Popup */
 
