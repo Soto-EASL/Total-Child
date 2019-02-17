@@ -1265,12 +1265,12 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
 .easl-page-title-color-blue .page-header.easl-page-header-no-bg .page-header-title {
     color: #80c4e5;
 }
-.easl-page-title-color-light-black .page-header.background-image-page-header .page-header-title,
-.easl-page-title-color-light-black .page-header.easl-page-header-no-bg .page-header-title {
+.easl-page-title-color-black .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-black .page-header.easl-page-header-no-bg .page-header-title {
     color: #000;
 }
-.easl-page-title-color-light-white .page-header.background-image-page-header .page-header-title,
-.easl-page-title-color-light-white .page-header.easl-page-header-no-bg .page-header-title {
+.easl-page-title-color-white .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-white .page-header.easl-page-header-no-bg .page-header-title {
     color: #fff;
 }
 .page-hedaer-has-title-icon {}

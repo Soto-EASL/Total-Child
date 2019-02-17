@@ -208,7 +208,7 @@ function easl_extended_meta( $array, $post ) {
 		'description' => esc_html__( 'Allow HTML tags and Shortcodes in custom title.', 'total-child' ),
 		'options'     => array(
 			''        => esc_html__( 'Default', 'total-child' ),
-			'white' => esc_html__( 'Black', 'total-child' ),
+			'black' => esc_html__( 'Black', 'total-child' ),
 			'blue'  => esc_html__( 'Blue', 'total-child' ),
 			'light-blue' => esc_html__( 'Light Blue', 'total-child' ),
 			'white' => esc_html__( 'White', 'total-child' ),
