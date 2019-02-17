@@ -1257,6 +1257,22 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
     margin-top: 40px;
     text-align: left;
 }
+.easl-page-title-color-blue .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-blue .page-header.easl-page-header-no-bg .page-header-title {
+    color: #004b87;
+}
+.easl-page-title-color-light-blue .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-blue .page-header.easl-page-header-no-bg .page-header-title {
+    color: #80c4e5;
+}
+.easl-page-title-color-light-black .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-light-black .page-header.easl-page-header-no-bg .page-header-title {
+    color: #000;
+}
+.easl-page-title-color-light-white .page-header.background-image-page-header .page-header-title,
+.easl-page-title-color-light-white .page-header.easl-page-header-no-bg .page-header-title {
+    color: #fff;
+}
 .page-hedaer-has-title-icon {}
 .page-header .page-hedaer-has-title-icon .page-header-title {
     background-repeat: no-repeat;

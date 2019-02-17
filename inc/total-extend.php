@@ -201,6 +201,19 @@ function easl_extended_meta( $array, $post ) {
 		'description' => esc_html__( 'Select a icon to display on left of the title for this page or post.', 'total' ),
 		'options'     => easl_title_icons(),
 	);
+	$array['title']['settings']['page_title_color'] = array(
+		'title'       => esc_html__( 'Title Text Color', 'total-child' ),
+		'id'          => 'easl_page_title_color',
+		'type'        => 'select',
+		'description' => esc_html__( 'Allow HTML tags and Shortcodes in custom title.', 'total-child' ),
+		'options'     => array(
+			''        => esc_html__( 'Default', 'total-child' ),
+			'white' => esc_html__( 'Black', 'total-child' ),
+			'blue'  => esc_html__( 'Blue', 'total-child' ),
+			'light-blue' => esc_html__( 'Light Blue', 'total-child' ),
+			'white' => esc_html__( 'White', 'total-child' ),
+		),
+	);
 	$array['title']['settings']['allow_shortcode_html'] = array(
 		'title'       => esc_html__( 'HTML & Shortcode in Custom Title', 'total-child' ),
 		'id'          => 'easl_title_allow_shortcode_html',

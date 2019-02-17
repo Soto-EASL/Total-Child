@@ -9,7 +9,7 @@ if ( !class_exists( 'EASL_VC_Staffs' ) ) {
 
 		public function enqueue_css_js() {
 
-			wp_enqueue_style( 'easl-staff-list-style', get_stylesheet_directory_uri() . '/assets/css/community.css' );
+			//wp_enqueue_style( 'easl-staff-list-style', get_stylesheet_directory_uri() . '/assets/css/community.css' );
 
 			wp_enqueue_script( 'easl-staff-list-script', get_stylesheet_directory_uri() . '/assets/js/community.js', array( 'jquery' ), false, true );
 		}

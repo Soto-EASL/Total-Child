@@ -378,6 +378,10 @@ function easl_body_classes($classes){
 	if( is_singular(Publication_Config::get_publication_slug())) {
 		$classes[] = 'publication-color-' . easl_get_publication_topic_color($post_id);
 	}
+	$page_title_color = get_post_meta( $post_id, 'easl_page_title_color', true );
+	if($page_title_color){
+		$classes[] = 'easl-page-title-color-' . $page_title_color;
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'easl_body_classes' );
