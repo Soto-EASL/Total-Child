@@ -8569,6 +8569,14 @@ body .mentors-application-title {
     body .mentors-application-title {
         font-size: 24px;
     }
+    /*Shortcode: Staffs*/
+    .easl-staff-item-two-col .easl-staff-item-inner {
+        display: block;
+    }
+    .easl-staff-item-two-col .easl-staff-item-thumb {
+        width: auto;
+        margin: 0 0 10px;
+    }
     /*Footer*/
     .site-footer-inner {
         padding-top: 15px;
