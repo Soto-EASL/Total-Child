@@ -5,7 +5,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name'						 => __( 'EASL Staffs', 'total' ),
+	'name'						 => __( 'EASL Staff', 'total' ),
 	'base'						 => 'easl_staffs',
 	'is_container'				 => false,
 	'show_settings_on_create'	 => true,
@@ -24,7 +24,7 @@ return array(
 			'type'			 => 'textarea_html',
 			'heading'		 => __( 'Introduction', 'js_composer' ),
 			'param_name'	 => 'content',
-			'description'	 => __( 'Enter ingtroduction text.', 'js_composer' ),
+			'description'	 => __( 'Enter introduction text.', 'js_composer' ),
 		),
 		array(
 			'type'		 => 'textfield',
@@ -40,10 +40,10 @@ return array(
 		vcex_vc_map_add_css_animation(),
 		array(
 			'type'			 => 'textfield',
-			'heading'		 => __( 'Number of staffs', 'total' ),
+			'heading'		 => __( 'Number of staff', 'total' ),
 			'param_name'	 => 'staffs_number',
 			'value'			 => '',
-			'description'	 => __( 'Enter the limit of staffs to show. Leave empty to show all.', 'total' ),
+			'description'	 => __( 'Enter the limit of staff to show. Leave empty to show all.', 'total' ),
 			'group'			 => __( 'Query', 'total' ),
 		),
 		array(
@@ -107,7 +107,7 @@ return array(
 		// Staff item Layout
 		array(
 			'type'		 => 'dropdown',
-			'heading'	 => __( 'Staffs per row', 'total' ),
+			'heading'	 => __( 'Staff per row', 'total' ),
 			'param_name' => 'staff_col_width',
 			'std'		 => '2',
 			'value'		 => array(

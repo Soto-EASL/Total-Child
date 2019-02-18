@@ -5,12 +5,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 return array(
-	'name'                    => __( 'EASL Staffs Accordion', 'total-child' ),
-	'base'                    => 'easl_staffs_accordion',
+	'name'                    => __( 'EASL Staff Accordion', 'total-child' ),
+	'base'                    => 'easl_staff_accordion',
 	'is_container'            => false,
 	'show_settings_on_create' => true,
 	'category'                => __( 'EASL', 'total' ),
-	'description'             => __( 'Add staffs in accordion style.', 'total-child' ),
+	'description'             => __( 'Add staff in accordion style.', 'total-child' ),
 	'icon'                    => 'vcex-icon ticon ticon-users',
 	'php_class_name'          => 'EASL_VC_Staffs_Accordion',
 	'params'                  => array(
@@ -44,7 +44,7 @@ return array(
 		),
 		array(
 			'type'               => 'autocomplete',
-			'heading'            => __( 'Include Staffs', 'total-child' ),
+			'heading'            => __( 'Include Staff', 'total-child' ),
 			'param_name'         => 'include_stuffs',
 			'param_holder_class' => 'vc_not-for-custom',
 			'admin_label'        => true,
@@ -65,10 +65,10 @@ return array(
 		),
 		array(
 			'type'        => 'textfield',
-			'heading'     => __( 'Number of staffs', 'total-child' ),
+			'heading'     => __( 'Number of staff', 'total-child' ),
 			'param_name'  => 'staffs_number',
 			'value'       => '',
-			'description' => __( 'Enter the limit of staffs to show. Leave empty to show all.', 'total-child' ),
+			'description' => __( 'Enter the limit of staff to show. Leave empty to show all.', 'total-child' ),
 			'dependency'  => array(
 				'element' => 'query_type',
 				'value'   => array( 'category' ),
