@@ -149,15 +149,6 @@ function easl_customizer_sections($sections) {
 					'type' => 'checkbox',
 				),
 			),
-			array(
-				'id' => 'easl_preloader_image',
-				'default' => '',
-				'control' => array(
-					'label' => __( 'Preloader Image', 'total-child' ),
-					'type' => 'media',
-					'mime_type' => 'image',
-				),
-			),
 		)
 	);
 	$sections['easl_publications_single'] = array(
