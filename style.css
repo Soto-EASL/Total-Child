@@ -1197,7 +1197,9 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
     color: #fff;
     padding: 11px 10px 11px 10px;
 }
-.sidr-class-dropdown-menu li.sidr-class-current-menu-item > a {
+.sidr-class-dropdown-menu li.sidr-class-current-menu-item > a,
+.sidr-class-dropdown-menu li.sidr-class-current-menu-ancestor> a
+{
     background: #80c4e5;
 }
 .sidr-class-dropdown-menu li ul a {
