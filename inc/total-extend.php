@@ -568,3 +568,8 @@ function easl_before_headder() {
 	echo '<div id="header-top-line"></div>';
 }
 add_action('wpex_hook_header_before', 'easl_before_headder');
+
+function easl_page_prelaoder_template() {
+	get_template_part('partials/header/preloader');
+}
+add_action( 'wpex_hook_after_body_tag', 'easl_page_prelaoder_template' );

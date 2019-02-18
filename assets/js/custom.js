@@ -846,4 +846,9 @@
             }
         };
     });
+    $(window).load(function () {
+        $('.easl-preloader').fadeOut(200, function(){
+            $(this).remove();
+        });
+    });
 })(jQuery);

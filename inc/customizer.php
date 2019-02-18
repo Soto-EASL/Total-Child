@@ -12,6 +12,10 @@ function easl_customizer_panels($panels) {
 		'title' => __('Publications', 'total-child'),
 		'condition' => true,
 	);
+	$panels['preloader_animation'] = array(
+		'title' => __('Preloader Animation', 'total-child'),
+		'condition' => true,
+	);
 	return $panels;
 }
 add_filter('wpex_customizer_panels', 'easl_customizer_panels');
@@ -128,6 +132,30 @@ function easl_customizer_sections($sections) {
 				'control' => array(
 					'label' => __('Header Back Button URL', 'total-child'),
 					'type' => 'text',
+				),
+			),
+		)
+	);
+	$sections['easl_preloader_animation'] = array(
+		'title' => __( 'Preloader Animation', 'total' ),
+		'panel' => 'wpex_preloader_animation',
+		'settings' => array(
+			array(
+				'id' => 'easl_enable_preloader',
+				'transport' => 'partialRefresh',
+				'default' => false,
+				'control' => array(
+					'label' => __( 'Show preloader animation.', 'total' ),
+					'type' => 'checkbox',
+				),
+			),
+			array(
+				'id' => 'easl_preloader_image',
+				'default' => '',
+				'control' => array(
+					'label' => __( 'Preloader Image', 'total-child' ),
+					'type' => 'media',
+					'mime_type' => 'image',
 				),
 			),
 		)
