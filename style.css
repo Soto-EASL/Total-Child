@@ -8772,6 +8772,13 @@ body .mentors-application-title {
         padding: 10px 15px;
         font-size: 16px;
     }
+
+    #tlight .termstitle {
+        font-size: 24px;
+        line-height: 24px;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 @media only screen and (max-width: 640px) {
     /*Shortcode: EASL Staffs Accordion*/
@@ -8805,6 +8812,10 @@ body .mentors-application-title {
     .wpb_easl_events .wpb_easl_events_heading {
         font-size: 22px;
         line-height: 22px;
+    }
+    #tlight .termstitle {
+        font-size: 18px;
+        line-height: 18px;
     }
 }
 @media only screen and (max-width: 360px) {
