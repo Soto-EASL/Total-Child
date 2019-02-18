@@ -8563,6 +8563,10 @@ body .mentors-application-title {
         width: 100%;
         max-width: 288px;
     }
+    /* Page: Mentorships */
+    body .mentors-application-title {
+        font-size: 24px;
+    }
     /*Footer*/
     .site-footer-inner {
         padding-top: 15px;
