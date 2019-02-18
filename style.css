@@ -7757,6 +7757,18 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     color: #004b87;
 }
 
+/*Shortcode: EASL Staffs Accordion*/
+.easl-staffs-accordion-wrap .vc_tta.vc_general .vc_tta-panels-container .vc_tta-panels .vc_tta-panel .vc_tta-panel-title > a {
+    background-color: #71c5e8;
+}
+.easl-staff-accordion-staff-image {
+    float: left;
+    margin: 0 25px 5px 0;
+    width: 142px;
+    height: auto;
+    display: block;
+}
+
 /*Cookie Consent*/
 .cookie-notice-container .easl-cookie-consent-button {
     border: 1px solid #71c5e8;
@@ -8677,7 +8689,11 @@ body .mentors-application-title {
     }
 }
 @media only screen and (max-width: 640px) {
-
+    /*Shortcode: EASL Staffs Accordion*/
+    .easl-staff-accordion-staff {
+        float: none;
+        margin: 0 0 15px;
+    }
 }
 @media only screen and  (min-width: 601px) and (max-width: 782px) {
     .easl-header-sticky-active #site-header {
