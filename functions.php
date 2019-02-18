@@ -386,3 +386,8 @@ function easl_body_classes($classes){
 	return $classes;
 }
 add_filter( 'body_class', 'easl_body_classes' );
+
+function easl_wtp_button() {
+    get_template_part('partials/wtp-close-button');
+}
+add_action('ttb_wtp_before_buttons_inside_form', 'easl_wtp_button');

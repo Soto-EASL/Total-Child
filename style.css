@@ -7914,6 +7914,7 @@ body .mentors-application-title {
     padding: 13px 25px;
     font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 28px;
+    font-weight: 400;
     line-height: 28px;
 }
 #tlight .termscontentwrapper {
@@ -7925,6 +7926,9 @@ body .mentors-application-title {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+.termspopupcontainer p:last-child {
+    margin-bottom: 0;
 }
 #tlight form {
     position: absolute;
@@ -7958,6 +7962,9 @@ body .mentors-application-title {
     -ms-transition: background-color .3s;
     -o-transition: background-color .3s;
     transition: background-color .3s;
+}
+#tlight form .tthebutton input[type="submit"]:not(.easl-wtp-close) {
+    display: none!important;
 }
 #tlight form .tthebutton input[type="submit"]:hover,
 #tlight form .tthebutton input[type="submit"]:active {
