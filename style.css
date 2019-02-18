@@ -2399,26 +2399,21 @@ body .wpb_single_image a.easl-vc-image-over:after {
     min-height: 200px;
     position: relative;
 }
-.easl-ec-filter-loading .easl-events-calendar-inner:after {
-    content: "\f110";
-    color: #afafaf;
-    font-family: FontAwesome;
-    font-size: 80px;
-    line-height: 80px;
-    width: 80px;
-    height: 80px;
+.easl-ec-filter-loading .easl-events-calendar-inner::after {
+    content: "";
+    width: 32px;
+    height:32px;
     left: 50%;
     top: 50%;
     position: absolute;
-    margin-left: -40px;
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    text-rendering: auto;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-animation: ticon-spin 1s infinite steps(8);
-    animation: ticon-spin 1s infinite steps(8);
+    background-image: url('images/easl-loader.gif');
+    background-size: 32px 32px;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .easl-ec-filter-loading .easl-events-calendar-bottom {
     opacity: 0;
@@ -7197,8 +7192,8 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     display: none;
     text-align: center;
     position: absolute;
-    height: 75px!important;
-    width: 75px!important;;
+    height: 32px!important;
+    width: 32px!important;;
     margin-left: -60px;
     top: 50%;
     left: 50%;
@@ -7404,8 +7399,8 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
     display: none;
     text-align: center;
     position: absolute;
-    height: 75px;
-    width: 75px;
+    height: 32px;
+    width: 32px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

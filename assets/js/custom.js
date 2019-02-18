@@ -425,7 +425,7 @@
         this.ajaxURL = EASLSETTINGS.ajaxUrl;
         this.request = false;
         this.$filterLabel = $('.easl-highlights-filter-label', this.$el);
-        this.$loader = $('<div class="easl-highlights-loader"><i class="ticon ticon-spinner ticon-pulse ticon-5x ticon-fw"></i></div>').appendTo('.easl-highlights-items', this.$el);
+        this.$loader = $('<div class="easl-highlights-loader">' + EASLSETTINGS.loaderImage + '</div>').appendTo('.easl-highlights-items', this.$el);
         this.addEventListener();
     };
     EASLHighlights.prototype.addEventListener = function(){

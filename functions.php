@@ -44,6 +44,7 @@ function easl_custom_scripts(){
 	$ssl_scheme = is_ssl() ? 'https' : 'http';
 	$fornt_end_data = array(
 		'ajaxUrl' => admin_url('admin-ajax.php', $ssl_scheme),
+        'loaderImage' =>  '<img class="easl-loading-icon" src="'. get_stylesheet_directory_uri() .'/images/easl-loader.gif"/>',
 	);
 	wp_localize_script( 'easl-custom', 'EASLSETTINGS', $fornt_end_data );
 }

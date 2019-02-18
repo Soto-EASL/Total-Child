@@ -49,14 +49,14 @@ if($current_country_id){
                                         </div>
                                 </div>
                                 <div class="associations-content">
-                                    <?php echo the_content();?>
+                                    <?php the_content();?>
                                 </div>
                             </div>
                         </div>
                     <?php endwhile;?>
                 <?php endif;?>
             </div>
-            <div class="easl-sd-load-icon"><i class="ticon ticon-spinner ticon-pulse ticon-5x ticon-fw"></i></div>
+            <div class="easl-sd-load-icon"><img class="easl-loading-icon" src="<?php echo get_stylesheet_directory_uri(); ?>/images/easl-loader.gif"/></div>
         </div>
     </div>
 </div>

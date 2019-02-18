@@ -50,7 +50,7 @@ jQuery(function($) {
             nextPrev,
             currentPageLink = $('.easl-msc-menu-wrap .current-menu-item a').attr('href');
         if($staffDetailWrap.length === 0){
-            $mscContentWrap.append('<div class="easl-staff-details-wrap"><div class="easl-member-profile-back-link"><a class="easl-staff-details-back easl-back-link-chevron" href="#">Back</a></div><div class="easl-staff-details-content"></div><div class="easl-staff-details-navigation"><a href="#" class="sd-next-prev prev-profile easl-staff-details-button">Previous Profile</a><a href="#" class="sd-next-prev next-profile easl-staff-details-button">Next Profile</a></div><div class="easl-sd-load-icon"><i class="ticon ticon-spinner ticon-pulse ticon-5x ticon-fw"></i></div></div>');
+            $mscContentWrap.append('<div class="easl-staff-details-wrap"><div class="easl-member-profile-back-link"><a class="easl-staff-details-back easl-back-link-chevron" href="#">Back</a></div><div class="easl-staff-details-content"></div><div class="easl-staff-details-navigation"><a href="#" class="sd-next-prev prev-profile easl-staff-details-button">Previous Profile</a><a href="#" class="sd-next-prev next-profile easl-staff-details-button">Next Profile</a></div><div class="easl-sd-load-icon">' + EASLSETTINGS.loaderImage + '</div></div>');
             $staffDetailWrap = $('.easl-staff-details-wrap', $mscContentWrap);
             $('.easl-member-profile-back-link a', $staffDetailWrap).attr('href', currentPageLink);
         }

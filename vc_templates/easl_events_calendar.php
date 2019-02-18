@@ -404,7 +404,7 @@ $html = '<div class="easl-events-calendar-wrap" '. implode( ' ', $event_wrapper_
 				<div class="easl-ec-row easl-ec-row-ball"><span></span></div>
 				<div class="easl-ec-load-more">
 					<div class="easl-ec-load-icon">
-						<i class="ticon ticon-spinner ticon-pulse ticon-3x ticon-fw"></i>
+						<img class="easl-loading-icon" src="' . get_stylesheet_directory_uri() . '/images/easl-loader.gif"/>
 					</div>
 					<p class="easl-ec-load-text">Loading More</p>
 				</div>
