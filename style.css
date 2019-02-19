@@ -1142,13 +1142,13 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
 }
 .sidr-class-wpex-close a {
     display: block;
-    background: #104f85;
+    background: transparent;
     height: 3px;
-    width: 28px;
+    width: 36px;
     padding: 0;
     margin: 0;
     position: absolute;
-    left: 8px;
+    left: 4px;
     top: 40px;
     line-height: normal;
     color: transparent;
@@ -1160,16 +1160,26 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
     background: #104f85;
     content: '';
     display: block;
+    top: 0;
     left: 0;
     position: absolute;
     height: 3px;
     width: 100%;
+    transform-origin: center center;
 }
 .sidr-class-wpex-close a::after {
-    bottom: -7px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 .sidr-class-wpex-close a::before {
-    top: -7px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 .sidr-class-menu-main-menu-container {
     position: absolute;
