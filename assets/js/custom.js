@@ -112,7 +112,7 @@
         this.resettingFilter = false;
         this.requestData = false;
         this.scrollLoading = false;
-        this.countries = {};
+        this.eventsMap = {};
     };
     EventCalendar.prototype.init = function(){
         if($('.easl-ec-filter-container', this.$wrap).length > 0){
@@ -130,52 +130,62 @@
         this.allTopicsID = "undefined" !== typeof this.$wrap.data('alltopic') ? this.$wrap.data('alltopic') : false;
         this.scrollLoad = !this.lastPage;
         this.requestData = JSON.stringify(this.getFilters());
-        var topicsCountries = {
+        var topicsEvents = {
             all: [],
-            allTopicCountry: "undefined" !== typeof this.$wrap.data('alltopiccountry') ? this.$wrap.data('alltopiccountry') : []
+            allTopicEvents: "undefined" !== typeof this.$wrap.data('alltopicevents') ? this.$wrap.data('alltopicevents') : []
         };
         $('[name="ec_filter_topics[]"]', this.$filterCon).each(function(){
-            var $this = $(this), cnt = $this.data('countries');
-            cnt = typeof cnt !== "undefined" ? cnt : [];
-            if($this.val() && cnt.length){
-                $.merge(topicsCountries.all, cnt);
-                topicsCountries[$this.val()] = cnt;
+            var $this = $(this), events = $this.data('events');
+            events = typeof events !== "undefined" ? events : [];
+            if($this.val() && events.length){
+                $.merge(topicsEvents.all, events);
+                topicsEvents[$this.val()] = events;
             }
         });
-        this.countries.topics = topicsCountries;
+        this.eventsMap.topics = topicsEvents;
 
-        var meetingTypeCountries = {
+        var meetingTypeEvents = {
             all: []
         };
         $('[name="ec_meeting_type"] option', this.$filterCon).each(function(){
-            var $this = $(this), cnt = $this.data('countries');
-            cnt = typeof cnt !== "undefined" ? cnt : [];
-            if($this.val() && cnt.length){
-                meetingTypeCountries.all = easlArrayUnion(meetingTypeCountries.all, cnt);
-                meetingTypeCountries[$this.val()] = cnt;
+            var $this = $(this), events = $this.data('events');
+            events = typeof events !== "undefined" ? events : [];
+            if($this.val() && events.length){
+                meetingTypeEvents.all = easlArrayUnion(meetingTypeEvents.all, events);
+                meetingTypeEvents[$this.val()] = events;
             }
         });
-        this.countries.meetingType = meetingTypeCountries;
+        this.eventsMap.meetingType = meetingTypeEvents;
 
-        var organizerCountries = {};
+        var organizerEvents = {};
         $('[name="organizer"]', this.$filterCon).each(function(){
-            var $this = $(this), cnt = $this.data('countries');
-            cnt = typeof cnt !== "undefined" ? cnt : [];
-            if($this.val() && cnt.length){
-                organizerCountries[$this.val()] = cnt;
+            var $this = $(this), events = $this.data('events');
+            events = typeof events !== "undefined" ? events : [];
+            if($this.val() && events.length){
+                organizerEvents[$this.val()] = events;
             }
         });
-        this.countries.organizer = organizerCountries;
+        this.eventsMap.organizer = organizerEvents;
 
-        var pastFutureCountries = {};
+        var pastFuturEvents = {};
         $('[name="ec_filter_type"]', this.$filterCon).each(function(){
-            var $this = $(this), cnt = $this.data('countries');
-            cnt = typeof cnt !== "undefined" ? cnt : [];
-            if($this.val() && cnt.length){
-                pastFutureCountries[$this.val()] = cnt;
+            var $this = $(this), events = $this.data('events');
+            events = typeof events !== "undefined" ? events : [];
+            if($this.val() && events.length){
+                pastFuturEvents[$this.val()] = events;
             }
         });
-        this.countries.type = pastFutureCountries;
+        this.eventsMap.type = pastFuturEvents;
+
+        var countriesEvents = {};
+        $('[name="ec_location"] option', this.$filterCon).each(function(){
+            var $this = $(this), events = $this.data('events');
+            events = typeof events !== "undefined" ? events : [];
+            if($this.val() && events.length){
+                countriesEvents[$this.val()] = events;
+            }
+        });
+        this.eventsMap.countries = countriesEvents;
     };
     EventCalendar.prototype.addListeners = function(){
         var ob = this;
@@ -264,44 +274,50 @@
         return data;
     };
     EventCalendar.prototype.updateCountryDropdown = function(data){
-        var countries = [];
+        var ob = this, events = [];
         if(data.topics) {
             for(var i=0; i < data.topics.length; i++) {
-                if(this.countries.topics[data.topics[i]]){
-                    countries = easlArrayUnion(countries, this.countries.topics[data.topics[i]]);
+                if(this.eventsMap.topics[data.topics[i]]){
+                    events = easlArrayUnion(events, this.eventsMap.topics[data.topics[i]]);
                 }
             }
         }else{
-            countries = this.countries.topics.all;
+            events = this.eventsMap.topics.all;
         }
-        countries = easlArrayUnion( countries, this.countries.topics.allTopicCountry);
+        events = easlArrayUnion( events, this.eventsMap.topics.allTopicEvents);
 
-        if(data.meeting_type && this.countries.meetingType[data.meeting_type]) {
-            countries = easlArrayIntersect(countries, this.countries.meetingType[data.meeting_type]);
-        }
-
-        if(data.organizer && this.countries.organizer[data.organizer]) {
-            countries = easlArrayIntersect(countries, this.countries.organizer[data.organizer]);
+        if(data.meeting_type && this.eventsMap.meetingType[data.meeting_type]) {
+            events = easlArrayIntersect(events, this.eventsMap.meetingType[data.meeting_type]);
         }
 
-        if(data.event_type && this.countries.type[data.event_type]) {
-            countries = easlArrayIntersect(countries, this.countries.type[data.event_type]);
+        if(data.organizer && this.eventsMap.organizer[data.organizer]) {
+            events = easlArrayIntersect(events, this.eventsMap.organizer[data.organizer]);
         }
 
-        if( (countries.length === 0 ) || (data.location && countries.indexOf(data.location) === -1) ){
+        if(data.event_type && this.eventsMap.type[data.event_type]) {
+            events = easlArrayIntersect(events, this.eventsMap.type[data.event_type]);
+        }
+        var locationEvents = [];
+        if(data.location && this.eventsMap.countries[data.location]) {
+            locationEvents = ob.eventsMap.countries[val] ? ob.eventsMap.countries[val] : array();
+            locationEvents = easlArrayIntersect(events, locationEvents);
+        }
+
+        if( (events.length === 0 ) || (data.location && locationEvents.length === 0) ){
             data.location = '';
             $('.easl-custom-select-filter-location .ec-cs-label', this.$filterCon).html($('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).first().addClass('easl-active').html());
             $('.easl-custom-select-filter-location select option').prop('selected', false).first().prop('selected', true);
         }
-        if(countries.length === 0 ){
+        if(events.length === 0 ){
             $('.easl-custom-select-filter-location .ec-cs-label', this.$filterCon).html($('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).first().addClass('easl-active').html());
             $('.easl-custom-select-filter-location select option').prop('selected', false).first().prop('selected', true);
             $('.easl-custom-select-filter-location .ecs-list li', this.$filterCon).not(':first-child').addClass('easl-hide');
         }else{
             $('.easl-custom-select-filter-location .ecs-list li').not(':first-child').each(function () {
-                var val = $(this).data('value');
-                if(val && countries.indexOf(val) !== -1) {
-                    $(this).removeClass('easl-hide');
+                var val = $(this).data('value'), cEs;
+                cEs = val && ob.eventsMap.countries[val] ? easlArrayIntersect(events, ob.eventsMap.countries[val]) : [];
+                if(cEs.length > 0) {
+                    $(this).removeClass('easl-hide')
                 }else{
                     $(this).addClass('easl-hide');
                 }
