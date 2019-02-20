@@ -7857,6 +7857,10 @@ body.wpb-js-composer .vc_tta.vc_tta-style-easl-flat .vc_tta-panel .vc_tta-panel-
 .easl-community-pages .easl-msc-menu-wrap {
     margin-right: 48px;
 }
+.easl-force-highlight-menu-community #site-navigation .dropdown-menu >li.menu-item-6427 >a {
+    color: #ffffff;
+    background-color: #71c5e8;
+}
 /*Page: Mentorships */
 body .mentors-application-title {
     background-color: #454545;
