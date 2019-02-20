@@ -106,7 +106,7 @@ $filter_by_topic = '<div class="wpb_column vc_column_container vc_col-sm-4">'.
                    '<ul class="ec-filter-topics">'.
                    '<li>'.
                    '<label class="easl-custom-checkbox easl-cb-all csic-light-blue easl-active">'.
-                   '<input type="checkbox" name="sd_topics[]" value="" '.(!$is_custom_topic ? 'checked="checked"' : '').'> <span>All Topics</span>'.
+                   '<input type="checkbox" name="sd_topics[]" value="" '.(!$is_custom_topic ? 'checked="checked"' : '').'> <span>All topics</span>'.
                    '</label>'.
                    '</li>'.
                    $taxonomy_string.

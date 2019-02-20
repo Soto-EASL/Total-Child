@@ -88,9 +88,9 @@ $latest_slide_desks = new WP_Query(array(
                 <div class="easl-highlights-filter">
                     <h5><?php _e('Select your field of expertise:', 'total-child'); ?></h5>
                     <div class="easl-highlights-filter-dd-wrap">
-                        <p class="easl-color-light-blue easl-highlights-filter-label" data-color="light-blue" data-topic=""><?php _e('All Topics', 'total-child'); ?></p>
+                        <p class="easl-color-light-blue easl-highlights-filter-label" data-color="light-blue" data-topic=""><?php _e('All topics', 'total-child'); ?></p>
                         <ul class="easl-highlights-filter-dd">
-                            <li class="easl-color-light-blue"><a href="#" data-color="light-blue" data-topic="all"><?php _e('All Topics', 'total-child'); ?></a></li>
+                            <li class="easl-color-light-blue"><a href="#" data-color="light-blue" data-topic="all"><?php _e('All topics', 'total-child'); ?></a></li>
                             <?php
                             $topics = get_terms( array(
                                 'taxonomy' => EASL_Event_Config::get_topic_slug(),
