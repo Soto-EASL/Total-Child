@@ -8052,6 +8052,16 @@ body .mentors-application-title {
     body.wpex-mobile-toggle-menu-icon_buttons #mobile-menu {
 
     }
+    .easl-staffs-row.easl-row {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+    }
+    .easl-staffs-row .easl-staff-item {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
 }
 
 @media only screen and (min-width: 768px) {
