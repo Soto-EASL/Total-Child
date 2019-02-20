@@ -299,7 +299,7 @@
         }
         var locationEvents = [];
         if(data.location && this.eventsMap.countries[data.location]) {
-            locationEvents = ob.eventsMap.countries[val] ? ob.eventsMap.countries[val] : array();
+            locationEvents = ob.eventsMap.countries[data.location] ? ob.eventsMap.countries[data.location] : array();
             locationEvents = easlArrayIntersect(events, locationEvents);
         }
 
