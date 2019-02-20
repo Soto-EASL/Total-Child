@@ -27,14 +27,24 @@ return array(
 		),
 		array(
 			'type'		 => 'dropdown',
+			'heading'	 => __( 'Award Title Type', 'total-child' ),
+			'param_name' => 'award_title_type',
+			'value'		 => array(
+				__( 'Award year', 'total-child' )	 => 'year',
+				__( 'Award title', 'total-child' )	 => 'title',
+			),
+			'group'		 => __( 'View', 'total-child' ),
+		),
+		array(
+			'type'		 => 'dropdown',
 			'heading'	 => __( 'Peoples Per Row', 'total-child' ),
 			'param_name' => 'people_per_row',
 			'std'		 => '3',
 			'value'		 => array(
-				__( '1 Item', 'total' )	 => '1',
-				__( '2 Item', 'total' )	 => '2',
-				__( '3 Item', 'total' )	 => '3',
-				__( '4 Item', 'total' )	 => '4',
+				__( '1 Item', 'total-child' )	 => '1',
+				__( '2 Item', 'total-child' )	 => '2',
+				__( '3 Item', 'total-child' )	 => '3',
+				__( '4 Item', 'total-child' )	 => '4',
 			),
 			'group'		 => __( 'View', 'total-child' ),
 		),
@@ -47,6 +57,37 @@ return array(
 			'group'		 => __( 'View', 'total-child' ),
 		),
 		// Query
+		array(
+			'type'       => 'dropdown',
+			'heading'    => __( 'Query Type', 'total-child' ),
+			'param_name' => 'query_type',
+			'group'      => __( 'Query', 'total-child' ),
+			'value'      => array(
+				__( 'Normal', 'total-child' ) => 'normal',
+				__( 'Include Only', 'total-child' )  => 'include',
+			),
+		),
+		array(
+			'type'               => 'autocomplete',
+			'heading'            => __( 'Include Awards', 'total-child' ),
+			'param_name'         => 'include_awards',
+			'param_holder_class' => 'vc_not-for-custom',
+			'admin_label'        => true,
+			'settings'           => array(
+				'multiple'       => true,
+				'min_length'     => 1,
+				'groups'         => false,
+				'unique_values'  => true,
+				'display_inline' => true,
+				'delay'          => 0,
+				'auto_focus'     => true,
+			),
+			'dependency'         => array(
+				'element' => 'query_type',
+				'value'   => array( 'include' ),
+			),
+			'group'              => __( 'Query', 'total-child' ),
+		),
 		array(
 			'type' => 'autocomplete',
 			'heading' => __( 'Award Type', 'total-child' ),
@@ -62,6 +103,10 @@ return array(
 				'delay' => 0,
 				'auto_focus' => true,
 			),
+			'dependency'         => array(
+				'element' => 'query_type',
+				'value'   => array( 'normal' ),
+			),
 			'group' => __( 'Query', 'total-child' ),
 		),
 		array(
@@ -70,6 +115,10 @@ return array(
 			'param_name' => 'year_num',
 			'value' => '',
 			'description' => __( 'leave to empty to display all years.', 'total-child' ),
+			'dependency'         => array(
+				'element' => 'query_type',
+				'value'   => array( 'normal' ),
+			),
 			'group' => __( 'Query', 'total-child' ),
 		),
 		array(
@@ -77,6 +126,10 @@ return array(
 			'std'		 => 'false',
 			'heading'	 => __( 'Past Years Only', 'total-child' ),
 			'param_name' => 'past_year_only',
+			'dependency'         => array(
+				'element' => 'query_type',
+				'value'   => array( 'normal' ),
+			),
 			'group'		 => __( 'Query', 'total-child' ),
 		),
 		array(

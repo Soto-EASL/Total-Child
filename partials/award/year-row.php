@@ -11,6 +11,9 @@ if(!isset($peoples_args)) {
 		'orderby' => 'post__in'
 	);
 }
+if(!isset($award_title_type)){
+	$award_title_type = 'year';
+}
 if(!isset($people_col_width)) {
 	$people_col_width = 'vc_col-sm-3';
 }
@@ -25,7 +28,7 @@ $award_thumb = $award_thumb ? $award_thumb[0] : '';
 }
 ?>
 <div class="easl-yearly-awardees-row">
-	<div class="easl-yearly-awardees-year"><span><?php echo get_field( 'award_year' ); ?></span></div>
+	<div class="easl-yearly-awardees-year"><span><?php if($award_title_type == 'year'){echo get_field( 'award_year' );}else{the_title();}?></span></div>
 	<?php
 	$awardees         = get_field( 'awardees' );
 

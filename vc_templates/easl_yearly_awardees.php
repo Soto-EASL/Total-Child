@@ -17,7 +17,10 @@ $css           = '';
 $css_animation = '';
 
 $people_per_row = '';
+$award_title_type = '';
 $display_thumb  = '';
+$query_type =- '';
+$include_awards = '';
 $award_type     = '';
 $year_num       = '';
 $past_year_only = '';
@@ -100,44 +103,52 @@ $do_auery   = true;
 $query_args = array(
 	'post_type'      => EASL_Award_Config::get_slug(),
 	'posts_per_page' => - 1,
-	'order'          => 'DESC',
-	'oderby'         => 'meta_value_num',
-	'meta_key'       => 'award_year'
 );
 
-if ( count( $avaiable_years ) > 0 ) {
-	$query_args['meta_query'] = array(
-		'relation' => 'AND',
-		array(
-			'key'     => 'award_year',
-			'value'   => $avaiable_years,
-			'compare' => 'IN',
-		)
-	);
-}elseif($past_year_only){
-	$query_args['meta_query'] = array(
-		'relation' => 'AND',
-		array(
-			'key'     => 'award_year',
-			'value'   => date("Y"),
-			'compare' => '<',
-		)
-	);
-}
-if ( $award_type ) {
-	$query_args['tax_query'] = array(
-		'relation' => 'AND',
-		array(
-			'taxonomy' => 'award_group',
-			'field'    => 'id',
-			'terms'    => array( $award_type ),
-			'operator' => 'IN',
-		)
-	);
-}
+if ( $query_type == 'include' ) {
+	$include_awards         = $this->string_to_array( $include_awards );
+	$query_args['post__in'] = $include_awards;
+	$query_args['orderby']  = 'post__in';
+}else {
+	$query_args['order']    = 'DESC';
+	$query_args['oderby']   = 'meta_value_num';
+	$query_args['meta_key'] = 'award_year';
 
-if ( $year_num > 0 && count( $avaiable_years ) < 1 ) {
-	$do_auery = false;
+
+	if ( count( $avaiable_years ) > 0 ) {
+		$query_args['meta_query'] = array(
+			'relation' => 'AND',
+			array(
+				'key'     => 'award_year',
+				'value'   => $avaiable_years,
+				'compare' => 'IN',
+			)
+		);
+	} elseif ( $past_year_only ) {
+		$query_args['meta_query'] = array(
+			'relation' => 'AND',
+			array(
+				'key'     => 'award_year',
+				'value'   => date( "Y" ),
+				'compare' => '<',
+			)
+		);
+	}
+	if ( $award_type ) {
+		$query_args['tax_query'] = array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'award_group',
+				'field'    => 'id',
+				'terms'    => array( $award_type ),
+				'operator' => 'IN',
+			)
+		);
+	}
+
+	if ( $year_num > 0 && count( $avaiable_years ) < 1 ) {
+		$do_auery = false;
+	}
 }
 $award_query = false;
 if ( $do_auery ) {
