@@ -34,16 +34,6 @@ if(!$view_all_text){
 if($title && $view_all_link){
 	$title .= '<a class="easl-events-all-link" href="'. esc_url($view_all_url) .'">' . $view_all_text . '</a>';
 }
-wp_dequeue_script('easl-custom');
-wp_enqueue_script( 'jquery-ui' );
-
-wp_enqueue_script( 'jquery-ui-datepicker', array( 'jquery-ui' ) );
-wp_enqueue_script('easl-custom');
-
-wp_enqueue_style(
-		'jquery-ui-datepicker-style',
-		'//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css'
-);
 
 $related_links_data = array();
 if($enable_related_links){
