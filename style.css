@@ -1263,6 +1263,9 @@ body #site-navigation .dropdown-menu ul a.sf-with-ul {
     width: 100%;
     text-align: center;
 }
+ul.sidr-class-sub-menu > .sidr-class-easl-hide-mobile-submenu {
+    display: none!important;
+}
 /*Header title*/
 .page-header {
     margin-bottom: 0;
