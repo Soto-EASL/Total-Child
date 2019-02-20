@@ -105,7 +105,7 @@ if ( $application_period_formatted ) {
 $award_type = get_field( 'past_awardees' );
 $award_type = absint( $award_type );
 // get years name for last 2 available years
-$avaiable_years = EASL_Award_Config::get_years( $award_type, 2, true );
+$avaiable_years = EASL_Award_Config::get_years( $award_type, 2, false );
 $do_auery       = true;
 $query_args     = array(
 	'post_type'      => EASL_Award_Config::get_slug(),
