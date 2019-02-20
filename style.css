@@ -1420,7 +1420,6 @@ body .custom.tparrows:hover {
 /*VC Shortcode: Single Image*/
 body .wpb_single_image .easl-vc-image-over {
     background: rgba(255,255,255,.75);
-    border-bottom: 3px solid #71c5e8;
     color: #004b87;
     display: block;
     padding: 10px 15px;
