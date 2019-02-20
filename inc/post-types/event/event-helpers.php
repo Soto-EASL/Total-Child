@@ -31,7 +31,7 @@ function easl_taxonomoy_colors(){
 		'blue' => __('Blue', 'total'),
 		'light-blue' => __('Light Blue', 'total'),
 		'red' => __('Red', 'total'),
-		'orrange' => __('Orrange', 'total'),
+		'orrange' => __('Orange', 'total'),
 		'teal' => __('Teal', 'total'),
 		'gray' => __('Gray', 'total'),
 		'yellow' => __('Yellow', 'total'),
