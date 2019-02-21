@@ -78,7 +78,7 @@ $staff_query = new WP_Query( $query_args );
 
 if ( $staff_query->have_posts() ) {
 	$this->enqueue_css_js();
-	$item_class	 = array( 'easl-staff-item easl-col', vcex_get_grid_column_class( array('columns' => $staff_col_width) ), 'col' );
+	$item_class	 = 'easl-staff-item easl-col easl-col-' . $staff_col_width;
 	$count		 = 0;
 	if($widget_title && class_exists('EASL_VC_Menu_Stacked_content') && EASL_VC_Menu_Stacked_content::$enable_right_menu_data ){
 		EASL_VC_Menu_Stacked_content::$right_menu_data[] = array(
@@ -98,13 +98,13 @@ if ( $staff_query->have_posts() ) {
 				<?php echo wpb_js_remove_wpautop( $content, true ); ?>
 			</div>
 		<?php endif; ?>
-		<div class="easl-staffs-row easl-row easl-row-col-2">
+		<div class="easl-staffs-row easl-row">
 			<?php
 			while ( $staff_query->have_posts() ) {
 				$staff_query->the_post();
 				$count++;
 				?>
-				<div class="<?php echo implode( ' ', $item_class ) . ' easl-col-' . $count; ?>">
+				<div class="<?php echo $item_class; ?>">
 					<div class="easl-staff-item-inner easl-col-inner">
 						<?php if ( has_post_thumbnail() ): ?>
 							<div class="easl-staff-item-thumb">
