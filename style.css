@@ -6490,35 +6490,6 @@ ul.suggestions{
 .easl-slide-deck-item {
     margin: 0 0 30px;
 }
-.easl-slide-deck-item-has-thumb {
-    isplay: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-}
-.easl-slide-deck-item-thumb {
-    width: 139px;
-    margin-right: 28px;
-}
-.easl-slide-deck-item-thumb img {
-    display: block;
-    transition: transform .25s;
-    position: relative;
-    z-index: 1;
-    transform-origin: left top;
-}
-.easl-slide-deck-item-thumb:hover img {
-    transform: scale(2);
-    box-shadow: 0 0 5px #000;
-    z-index: 5;
-}
-.easl-slide-deck-item-has .easl-slide-deck-item-content {
-    -ms-flex: 1;
-    flex: 1;
-}
 .easl-slide-deck-item-meta-title {
     border-left: 5px solid #165291;
     padding-left: 10px;
@@ -8101,17 +8072,6 @@ body .mentors-application-title {
     .vc_row.seven-columns div[class*=" vc_col-sm"]{
         width: 14.2857%;
     }
-
-    /*Page: Sister Societies*/
-    .sister-societies-cards .easl-card-btn .easl-card-btn-icon {
-        height: calc( 100% - 32px ) !important;
-        width: 100%;
-        background-size: contain;
-        background-position: center;
-    }
-    .sister-societies-cards .easl-card-btn:hover .easl-card-btn-icon {
-        background-position: center !important;
-    }
 }
 @media only screen and (max-width: 989px) and (min-width: 960px) {
     #site-navigation .dropdown-menu > li > a {
@@ -8212,6 +8172,47 @@ body .mentors-application-title {
     /*Shortcode: Events Calendar*/
     .ec-hide-desktop{
         display: none!important;
+    }
+    /*Slide decks*/
+    .easl-slide-deck-item-has-thumb {
+        isplay: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+    .easl-slide-deck-item-thumb {
+        width: 139px;
+        margin-right: 28px;
+    }
+    .easl-slide-deck-item-thumb img {
+        display: block;
+        transition: transform .25s;
+        position: relative;
+        z-index: 1;
+        transform-origin: left top;
+    }
+    .easl-slide-deck-item-thumb:hover img {
+        transform: scale(2);
+        box-shadow: 0 0 5px #000;
+        z-index: 5;
+    }
+    .easl-slide-deck-item-has .easl-slide-deck-item-content {
+        -ms-flex: 1;
+        flex: 1;
+    }
+
+    /*Page: Sister Societies*/
+    .sister-societies-cards .easl-card-btn .easl-card-btn-icon {
+        height: calc( 100% - 32px ) !important;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+    }
+    .sister-societies-cards .easl-card-btn:hover .easl-card-btn-icon {
+        background-position: center !important;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 782px) {
@@ -8952,6 +8953,14 @@ body .mentors-application-title {
         line-height: 24px;
         padding-left: 0;
         padding-right: 0;
+    }
+    /*Slide Decks*/
+    .easl-slide-deck-item-thumb {
+        width: auto;
+        margin: 0 0 15px;
+    }
+    .easl-slide-deck-item-thumb img {
+        max-width: 180px;
     }
 }
 @media only screen and (max-width: 640px) {
