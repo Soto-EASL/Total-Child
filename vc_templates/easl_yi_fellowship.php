@@ -108,7 +108,7 @@ if ( $the_fellowships->have_posts() ) {
                         $application_period.
                     '</div>'.
                     '<p class="sp-excerpt">'.get_the_excerpt().'</p>'.
-                    '<a class="easl-button easl-button-blue" href="'. get_permalink() . '">Find out more</a>'.
+                    '<a class="easl-generic-button easl-size-medium easl-color-blue" href="'. get_permalink() . '">Find out more <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>'.
                     
                 '</div>'.
                 $closed_block.

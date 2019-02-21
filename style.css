@@ -8771,6 +8771,25 @@ body .mentors-application-title {
         width: auto;
         margin: 0 0 10px;
     }
+    /*Fellowship*/
+    .easl-yi-fellowship-wrap .yi-fellowship {
+        display: block;
+    }
+    .easl-yi-fellowship-wrap .yi-fellowship .yif-thumb {
+        margin: 0 0 15px;
+        padding: 0;
+        width: auto;
+    }
+    .easl-yi-fellowship-wrap .yi-fellowship .yif-thumb a {
+        max-width: 185px;
+    }
+    .yif-title-wrap {
+        display: block;
+        margin: 0 0 18px;
+    }
+    .yif-title-wrap h3 {
+        margin: 0 0 8px;
+    }
     /*Footer*/
     .site-footer-inner {
         padding-top: 15px;
