@@ -273,7 +273,7 @@ $not_found_text = $has_filter ? __('Nothing has been found', 'total-child') : __
                                 </h3>
                             </div>
                             <?php if($download_link): ?>
-                            <a class="easl-button" href="<?php echo $download_link; ?>" target="_blank" download=""><?php _e('Download', 'total-child') ?></a>
+                            <a class="easl-generic-button easl-size-medium easl-color-light-blue" href="<?php echo $download_link; ?>" target="_blank" download=""><?php _e('Download', 'total-child') ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
 	                        <?php endif; ?>
                         </div>
                     </article>

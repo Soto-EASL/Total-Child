@@ -6548,28 +6548,28 @@ easl-sdrow-color-yellow .easl-slide-deck-item-meta-title {
     color: #f9bc49;
 }
 
-.easl-sdrow-color-blue .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-blue .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-blue .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-blue .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #165291;
 }
-.easl-sdrow-color-red .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-red .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-red .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-red .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #de2a57;
 }
-.easl-sdrow-color-teal .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-teal .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-teal .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-teal .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #189790;
 }
-.easl-sdrow-color-orrange .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-orrange .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-orrange .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-orrange .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #f26827;
 }
-.easl-sdrow-color-gray .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-gray .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-gray .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-gray .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #7e6a73;
 }
-.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-button:hover,
-.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-button:active {
+.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-generic-button:hover,
+.easl-sdrow-color-yellow .easl-slide-deck-item-content .easl-generic-button:active {
     background-color: #f9bc49;
 }
 
