@@ -8956,11 +8956,12 @@ body .mentors-application-title {
     }
     /*Slide Decks*/
     .easl-slide-deck-item-thumb {
-        width: auto;
+        width: 100%;
         margin: 0 0 15px;
     }
     .easl-slide-deck-item-thumb img {
-        max-width: 180px;
+        width: 100%;
+        height: auto;
     }
 }
 @media only screen and (max-width: 640px) {
