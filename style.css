@@ -8976,7 +8976,17 @@ body .mentors-application-title {
     }
 }
 @media only screen and (max-width: 567px) {
-
+    body .bee3D--nav {
+        width: 40px;
+        height: 112px;
+        z-index: 999999;
+    }
+    body .bee3D--nav__prev {
+        left: -18px;
+    }
+    body .bee3D--nav__next {
+        right: -18px;
+    }
 }
 @media only screen and (max-width: 480px) {
     /* VC Shortcode: EASL News List */
