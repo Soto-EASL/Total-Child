@@ -41,7 +41,7 @@ if ( !class_exists( 'EASL_VC_Scientific_Publication' ) ) {
 			}else{
 				$sql .= "AND {$cat_where}{$topic_where}";
 			}
-			$sql .= " AND ({$wpdb->postmeta}.meta_key = 'publication_date') ";
+			$sql .= " AND ({$wpdb->postmeta}.meta_key = 'publication_year') ";
 			$sql .= " AND ({$wpdb->posts}.post_type = 'publication') AND ({$wpdb->posts}.post_status = 'publish') ORDER BY {$wpdb->postmeta}.meta_value DESC";
 
 			$years = $wpdb->get_col($sql);

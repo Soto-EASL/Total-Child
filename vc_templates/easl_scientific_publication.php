@@ -65,7 +65,7 @@ if(isset($_REQUEST['ecf_search']) && ($_REQUEST['ecf_search'] != '') ){
     $filter_ecf_search = $_REQUEST['ecf_search'];
     $has_filter = true;
 }
-if(isset($_REQUEST['ecf_year']) && $_REQUEST['ecf_year'] != ''){
+if(!empty($_REQUEST['ecf_year'])){
     $filter_ecf_year = $_REQUEST['ecf_year'];
     $has_filter = true;
 }
@@ -242,13 +242,10 @@ if($filter_ecf_year && ($filter_ecf_year != '') ){
     $atts['meta_query'] = array(
         'relation' => 'AND',
         'publication_date'=> array(
-            'key' => 'publication_date',
+            'key' => 'publication_year',
             'value' => $filter_ecf_year,
-            'compare' => 'LIKE',
-            'type' => 'CHAR',
-        )
-
-
+            'compare' => '=',
+        ),
     );
 }
 
