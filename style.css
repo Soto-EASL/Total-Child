@@ -8101,6 +8101,17 @@ body .mentors-application-title {
     .vc_row.seven-columns div[class*=" vc_col-sm"]{
         width: 14.2857%;
     }
+
+    /*Page: Sister Societies*/
+    .sister-societies-cards .easl-card-btn .easl-card-btn-icon {
+        height: calc( 100% - 32px ) !important;
+        width: 100%;
+        background-size: contain;
+        background-position: center;
+    }
+    .sister-societies-cards .easl-card-btn:hover .easl-card-btn-icon {
+        background-position: center !important;
+    }
 }
 @media only screen and (max-width: 989px) and (min-width: 960px) {
     #site-navigation .dropdown-menu > li > a {
@@ -8762,6 +8773,16 @@ body .mentors-application-title {
     /* Page: Mentorships */
     body .mentors-application-title {
         font-size: 24px;
+    }
+    /*Page: Sister Societies*/
+    .sister-societies-cards .easl-card-btn .easl-card-btn-icon {
+        height: 115px;
+        width: 102px;
+        background-size: contain;
+        background-position: center;
+    }
+    .sister-societies-cards .easl-card-btn:hover .easl-card-btn-icon {
+        background-position: center !important;
     }
     /*Shortcode: Staffs*/
     .easl-staff-item-two-col .easl-staff-item-inner {
