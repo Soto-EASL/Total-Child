@@ -8568,6 +8568,35 @@ body .mentors-application-title {
     body.wpb-js-composer .vc_tta-tabs.vc_tta-tabs-position-left {
         display: block;
     }
+    /* VC Shortcode Toggle */
+    .wpb-js-composer .vc_tta.vc_general .vc_tta-panel .vc_tta-panel-heading {
+        border: 0;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all:first-child .vc_toggle_title {
+        padding-top: 20px;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all .vc_toggle_title {
+        background: transparent;
+        pointer-events: none;
+        padding: 20px 0 0;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all .vc_toggle_title h4 {
+        color: #004b87;
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all .vc_toggle_icon {
+        display: none!important;
+    }
+    .vc_toggle.easl-toggle-mobile-hide-title .vc_toggle_title {
+        display: none!important;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all >.vc_toggle_content {
+        display: block!important;
+    }
+    .vc_toggle.easl-toggle-mobile-show-all >.vc_toggle_content p:last-child {
+        margin-bottom: 0;
+    }
     /* Shortcode: EASL Generic Buttons Wrap */
     .easl-generic-buttons-wrap {
         display: block;
