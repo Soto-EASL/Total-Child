@@ -189,35 +189,6 @@ function register_custom_sidebar(){
 }
 add_action('widgets_init','register_custom_sidebar');
 
-
-
-function func_styles() {
-    if (is_page(sanitize_title('national-associations')) ||
-        is_page(sanitize_title('professor-andrew-k-burroughs')) ||
-        is_page(sanitize_title('professor-jean-pierre-benhamou')) ||
-        is_page(sanitize_title('professor-dame-sheila-sherlock')) ||
-        is_page(sanitize_title('officeteam')) ||
-        is_page(sanitize_title('cag')) ||
-        is_page(sanitize_title('ethicscommittee')) ||
-        is_page(sanitize_title('fellows')) ||
-        is_page(sanitize_title('editorialboard')) ||
-        is_page(sanitize_title('reviewers')) ||
-        is_page(sanitize_title('tribute')) ) {
-        wp_enqueue_style('sub-community-style',
-            get_stylesheet_directory_uri() . '/assets/css/sub-community.css');
-    }
-
-
-    if (is_page(sanitize_title('sister-societies'))) {
-        wp_enqueue_style('sister-societies-sub-community-style',
-            get_stylesheet_directory_uri() . '/assets/css/sub-community.css');
-        wp_enqueue_style('sister-societies-style',
-            get_stylesheet_directory_uri() . '/assets/css/sister-societies.css');
-    }
-}
-add_action('wp_head', 'func_styles', 25);
-
-
 add_shortcode('timeline_slide', 'timefunc');
 // [timeline_slide category_name="history"]
 function timefunc($atts) {
