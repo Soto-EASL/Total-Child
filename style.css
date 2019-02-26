@@ -4757,16 +4757,13 @@ ul.event-links-list li:before{
     position: relative;
     padding-right: 10px;
 }
-.easl-staff-item-detail .easl-staff-item-name  a:before{
+.easl-staff-item-detail .easl-staff-item-name  a::after{
     content: "\f105";
     color: #62cff5;
-    display: block;
+    display: inline-block;
     font-family: 'FontAwesome';
     font-size: 16px;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    margin-left: 3px;
 }
 .easl-staff-item-detail p {
     margin: 0;
