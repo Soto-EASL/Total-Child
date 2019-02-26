@@ -4757,13 +4757,14 @@ ul.event-links-list li:before{
     position: relative;
     padding-right: 10px;
 }
-.easl-staff-item-detail .easl-staff-item-name  a::after{
+.easl-staff-item-detail .easl-staff-item-name  a span::after{
     content: "\f105";
     color: #62cff5;
-    display: inline-block;
+    display: inline;
     font-family: 'FontAwesome';
     font-size: 16px;
-    margin-left: 3px;
+    position: relative;
+    left: 3px;
 }
 .easl-staff-item-detail p {
     margin: 0;
@@ -8038,6 +8039,18 @@ body .mentors-application-title {
         font-size: 20px;
     }
 }
+@media only screen and (max-width: 1024px) {
+    .easl-staffs-row.easl-row {
+        margin-left: 0;
+        margin-right: 0;
+        display: block;
+    }
+    .easl-staffs-wrap .easl-staffs-row .easl-staff-item {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+    }
+}
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
     .footer-newsletter .gform_wrapper .gform_heading {
         flex: 1 0 auto;
@@ -8086,16 +8099,6 @@ body .mentors-application-title {
     }
     body.wpex-mobile-toggle-menu-icon_buttons #mobile-menu {
 
-    }
-    .easl-staffs-row.easl-row {
-        margin-left: 0;
-        margin-right: 0;
-        display: block;
-    }
-    .easl-staffs-wrap .easl-staffs-row .easl-staff-item {
-        padding-left: 0;
-        padding-right: 0;
-        width: 100%;
     }
 }
 
