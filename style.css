@@ -2744,6 +2744,16 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-card-btn:hover .easl-card-btn-icon.litmus-icon {
     background-position: 0px -63px;
 }
+.easl-card-btn-icon.microb-predict-icon{
+    height: 30px;
+    width: 150px;
+}
+.easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-microb-predict{
+    background-position: 0px 0px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.microb-predict-icon {
+    background-position: 0px -30px;
+}
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-ueg{
     background-position: 0px 0px;
 }
@@ -2828,6 +2838,14 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .aliver-icon,
 .easl-gbtn-aliver{
     background-image: url("images/icons/aliver.png");
+}
+.aliver-green-icon,
+.easl-gbtn-aliver-green{
+    background-image: url("images/icons/aliver-green.png");
+}
+.microb-predict-icon,
+.easl-gbtn-microb-predict{
+    background-image: url("images/icons/microb-predict.png");
 }
 .apps-icon,
 .easl-gbtn-apps{
@@ -5293,6 +5311,9 @@ a.easl-card-btn:hover{
     height: 52px;
 }
 .easl-card-btn:hover .easl-card-btn-icon.aliver-icon{
+    background-position: 0px -47px;
+}
+.easl-card-btn:hover .easl-card-btn-icon.aliver-green-icon{
     background-position: 0px -47px;
 }
 .easl-card-btn:hover .easl-card-btn-icon.liver-icon{
