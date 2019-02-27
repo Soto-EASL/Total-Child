@@ -1486,7 +1486,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
     margin-left: 7px;
 }
 /* VC Shortcode: EASL Events */
-.wpb_easl_events .wpb_easl_events_heading {
+.wpb_easl_events .wpb_easl_events_heading,
+.wpb_easl_news_list .wpb_easl_news_heading {
     border-bottom: 1px solid #004b87;
     color: #004b87;
     margin: -7px 0 25px;
@@ -1497,10 +1498,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
     font-weight: 400;
     position: relative;
 }
-.wpb_easl_events .easl-events-all-link {
+.wpb_easl_events .easl-events-all-link,
+.wpb_easl_news_list .easl-news-all-link{
     background: #71c5e8;
     color: #fff;
-    float: right;
     display: inline-block;
     padding: 5px 8px;
     font-size: 16px;
@@ -1512,10 +1513,13 @@ body .wpb_single_image a.easl-vc-image-over:after {
     transform: translateY(-50%);
 }
 .wpb_easl_events .easl-events-all-link:hover,
-.wpb_easl_events .easl-events-all-link :active {
+.wpb_easl_events .easl-events-all-link:active,
+.wpb_easl_news_list .easl-news-all-link:hover,
+.wpb_easl_news_list .easl-news-all-link:active {
     color: #004b87;
 }
-.wpb_easl_events .easl-events-all-link:after {
+.wpb_easl_events .easl-events-all-link::after,
+.wpb_easl_news_list .easl-news-all-link::after {
     content: "\f105";
     display: inline-block;
     font-family: FontAwesome;
@@ -2458,38 +2462,6 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 
 /* VC Shortcode: EASL News */
-.wpb_easl_news_heading {
-    border-bottom: 1px solid #004b87;
-    color: #004b87;
-    margin: -7px 0 25px;
-    padding: 0 0 10px;
-    font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 30px;
-    line-height: 37px;
-    font-weight: 400;
-    position: relative;
-}
-.easl-news-all-link {
-    background: #71c5e8;
-    color: #fff;
-    float: right;
-    display: inline-block;
-    padding: 5px 8px;
-    margin-top: 4px;
-    font-size: 16px;
-    line-height: 16px;
-}
-.easl-news-all-link:hover,
-.easl-news-all-link :active {
-    color: #004b87;
-}
-.easl-news-all-link:after {
-    content: "\f105";
-    display: inline-block;
-    font-family: FontAwesome;
-    color: #004b87;
-    margin-left: 7px;
-}
 .easl-news-col {
     margin-bottom: 40px; 
 }
@@ -9063,7 +9035,8 @@ body .mentors-application-title {
     .wpex-bars {
         width: 22px;
     }
-    .wpb_easl_events .wpb_easl_events_heading {
+    .wpb_easl_events .wpb_easl_events_heading,
+    .wpb_easl_news_list .wpb_easl_news_heading {
         font-size: 22px;
         line-height: 22px;
     }
