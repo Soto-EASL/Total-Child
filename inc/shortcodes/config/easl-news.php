@@ -35,6 +35,13 @@ return array(
 			'param_name' => 'view_all_url',
 			'description' => __( 'Enter URL used as view all events link.', 'js_composer' ),
 		),
+		array(
+			'type'			 => 'textfield',
+			'heading'		 => __( 'Number of news', 'total-child' ),
+			'param_name'	 => 'limit',
+			'value'			 => '6',
+			'description'	 => __( 'Enter the limit of news to show. Leave empty to show all.', 'total-child' ),
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',
