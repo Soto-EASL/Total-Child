@@ -11,6 +11,24 @@ return array(
 	'icon' => 'vcex-icon ticon ticon-lightbulb-o',
 	'php_class_name' => 'EASL_Vc_Highlights',
 	'params' => array(
+		array(
+			'type' => 'textfield',
+			'heading' => __( 'All Event URL', 'total-child' ),
+			'param_name' => 'events_link',
+			'description' => __( 'Enter all events page url.', 'total-child' ),
+		),
+		array(
+			'type' => 'textfield',
+			'heading' => __( 'All Publications URL', 'total-child' ),
+			'param_name' => 'publications_link',
+			'description' => __( 'Enter all publications page url.', 'total-child' ),
+		),
+		array(
+			'type' => 'textfield',
+			'heading' => __( 'All Slide Decks URL', 'total-child' ),
+			'param_name' => 'slide_decks_link',
+			'description' => __( 'Enter all slide decks page url.', 'total-child' ),
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',
