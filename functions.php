@@ -362,3 +362,12 @@ function easl_wtp_button() {
     get_template_part('partials/wtp-close-button');
 }
 add_action('ttb_wtp_before_buttons_inside_form', 'easl_wtp_button');
+
+function easl_exclude_posts_from_search($query){
+    if(is_admin() || (defined('DOING_AJAX') && DOING_AJAX) || !$query->is_search() ){
+        return;
+    }
+	$excludes = array(8, 12, 6922);
+	$query->set('post__not_in', $excludes);
+}
+add_action('pre_get_posts', 'easl_exclude_posts_from_search');
