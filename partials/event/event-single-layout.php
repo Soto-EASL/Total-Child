@@ -114,7 +114,7 @@ if('venue|city,contury' == $event_location_display_format){
 	if($event_location_country){
 		$event_location[] = easl_event_map_country_key($event_location_country );
 	}
-	if(count($event_location > 0)){
+	if(count($event_location) > 0){
 		$event_location_display[] = implode(', ', $event_location);
 	}
 	$event_location_display = implode( ' | ', $event_location_display );
@@ -301,7 +301,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 										<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
 										<span class="timezone">America/Los_Angeles</span>
 										<span class="title"><?php the_title(); ?></span>
-										<span class="location"><?php echo $event_location; ?></span>
+										<span class="location"><?php echo $event_location_display; ?></span>
 									</div>
                                 </li>
 								<?php endif; ?>

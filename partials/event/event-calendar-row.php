@@ -234,7 +234,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 							<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
 							<span class="timezone">America/Los_Angeles</span>
 							<span class="title"><?php the_title(); ?></span>
-							<span class="location"><?php echo $event_location; ?></span>
+							<span class="location"><?php echo $event_location_display; ?></span>
 						</div>
 					</li>
 					<?php endif; ?>

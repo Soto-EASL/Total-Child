@@ -11,21 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $el_id
  * @var $this EASL_VC_Yearly_Awardee
  */
-$el_id         = '';
-$el_class      = '';
-$css           = '';
-$css_animation = '';
-
-$people_per_row = '';
+$el_id            = '';
+$el_class         = '';
+$css              = '';
+$css_animation    = '';
+$people_per_row   = '';
 $award_title_type = '';
-$display_thumb  = '';
-$query_type =- '';
-$include_awards = '';
-$award_type     = '';
-$year_num       = '';
-$past_year_only = '';
-$people_order   = '';
-$people_orderby = '';
+$display_thumb    = '';
+$query_type       = '';
+$include_awards   = '';
+$award_type       = '';
+$year_num         = '';
+$past_year_only   = '';
+$people_order     = '';
+$people_orderby   = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -92,7 +91,7 @@ switch ( $people_per_row ) {
 
 $award_type = absint( $award_type );
 
-$year_num = absint( $year_num );
+$year_num       = absint( $year_num );
 $past_year_only = 'true' == $past_year_only;
 
 $avaiable_years = array();
@@ -109,7 +108,7 @@ if ( $query_type == 'include' ) {
 	$include_awards         = $this->string_to_array( $include_awards );
 	$query_args['post__in'] = $include_awards;
 	$query_args['orderby']  = 'post__in';
-}else {
+} else {
 	$query_args['order']    = 'DESC';
 	$query_args['oderby']   = 'meta_value_num';
 	$query_args['meta_key'] = 'award_year';
@@ -158,11 +157,11 @@ if ( $award_query && $award_query->have_posts() ):
 	?>
     <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
 		<?php
-		while ( $award_query->have_posts() ){
+		while ( $award_query->have_posts() ) {
 			$award_query->the_post();
-			include locate_template('partials/award/year-row.php');
-        }
-        ?>
+			include locate_template( 'partials/award/year-row.php' );
+		}
+		?>
     </div>
 	<?php
 	wp_reset_query();
