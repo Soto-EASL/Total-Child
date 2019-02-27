@@ -18,6 +18,11 @@ if(get_post_type() == 'associations'){
 	if($nas_cat) {
 		$permalink = add_query_arg( array( 'nas_id' => $nas_cat[0] ), $permalink );
 	}
+}elseif(get_post_type() == Annual_Reports_Config::get_annual_reports_slug()){
+	$permalink = wpex_get_mod('annual_reports_page', '#');
+	if($permalink) {
+		$permalink = add_query_arg( array( 'annual_report_id' => get_the_ID() ), $permalink );
+	}
 }
 ?>
 
