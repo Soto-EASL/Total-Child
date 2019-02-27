@@ -69,10 +69,10 @@ if ( ! $has_thumb ) {
 				<?php if ( has_excerpt() ): ?>
                     <p class="sp-excerpt"><?php the_excerpt(); ?></p>
 				<?php endif; ?>
-                <a class="easl-button" href="<?php echo $read_more_link; ?>" <?php echo $target; ?>>Read More</a>
+                <a class="easl-button" href="<?php echo $read_more_link; ?>" <?php echo $target; ?>><?php _e('Read More', 'total-child'); ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
             </div>
         </div>
-	<?php } else { ?>
+    <?php } else { ?>
 		<?php if ( $has_thumb ) : ?>
 			<?php get_template_part( 'partials/search/search-entry-thumbnail' ); ?>
 		<?php endif; ?>
