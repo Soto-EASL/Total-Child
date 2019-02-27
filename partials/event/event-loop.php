@@ -11,8 +11,13 @@ if ( ! empty( $event_data['event_start_date'][0] ) ) {
 $event_color             = easl_get_events_topic_color( get_the_ID() );
 $event_meeting_type_name = easl_meeting_type_name( get_the_ID() );
 $event_location_display  = easl_get_event_location( get_the_ID(), 'city,contury' );
+
+$list_tag = 'li';
+if(is_search()){
+    $list_tag = 'div';
+}
 ?>
-<li class="easl-events-li easl-event-li-<?php echo $event_color; ?>">
+<<?php echo $list_tag; ?> class="easl-events-li easl-event-li-<?php echo $event_color; ?>">
     <h3><a title="" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
     <a class="events-li-date" href="<?php the_permalink(); ?>">
         <span class="eld-day"><?php echo $event_start_date[0]; ?></span>
@@ -33,4 +38,4 @@ $event_location_display  = easl_get_event_location( get_the_ID(), 'city,contury'
 			<?php endif; ?>
         </p>
 	<?php endif; ?>
-</li>
+</<?php echo $list_tag; ?>>
