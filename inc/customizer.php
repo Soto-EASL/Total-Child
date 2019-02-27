@@ -12,6 +12,10 @@ function easl_customizer_panels($panels) {
 		'title' => __('Publications', 'total-child'),
 		'condition' => true,
 	);
+	$panels['easl_miscellaneous'] = array(
+		'title' => __('Miscellaneous', 'total-child'),
+		'condition' => true,
+	);
 	$panels['preloader_animation'] = array(
 		'title' => __('Preloader Animation', 'total-child'),
 		'condition' => true,
@@ -161,6 +165,21 @@ function easl_customizer_sections($sections) {
 				'default' => __('', 'total-child'),
 				'control' => array(
 					'label' => __('Header Back Button URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
+		)
+	);
+	$sections['easl_miscellaneous_nat_associaitons'] = array(
+		'title' => __( 'National Associations', 'total-child' ),
+		'panel' => 'wpex_easl_miscellaneous',
+		'settings' => array(
+			array(
+				'id' => 'nat_associaitons_page',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('National Associations page URL', 'total-child'),
 					'type' => 'text',
 				),
 			),
