@@ -68,23 +68,21 @@ class WPEX_Associations_Config {
                 'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
             ),
             'public' => true,
+            'exclude_from_search' => false,
+            'publicly_queryable' => false,
+            'show_in_nav_menus' => false,
             'supports' => array(
                 'title',
                 'editor',
                 'excerpt',
                 'thumbnail',
-                'comments',
-                'custom-fields',
                 'revisions',
                 'author',
                 'page-attributes',
             ),
             'capability_type' => 'post',
             'has_archive' => false,
-            'rewrite' => array(
-                'slug' => 'association',
-                'with_front' => false
-            ),
+            'rewrite' => false,
             'menu_icon' => 'dashicons-groups',
             'menu_position' => 20,
         ) );
@@ -118,14 +116,12 @@ class WPEX_Associations_Config {
                 'not_found' => __( 'No Items Found', 'total' ),
                 'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
             ),
-            'public' => true,
-            'show_in_nav_menus' => true,
-            'show_admin_column' => true,
+            'public' => false,
             'show_ui' => true,
-            'show_tagcloud' => true,
+            'exclude_from_search' => false,
+            'show_admin_column' => true,
             'hierarchical' => true,
-            'rewrite' => array( 'slug' => 'associations-category', 'with_front' => false ),
-            'query_var' => true
+            'rewrite' => false,
         ) );
 
         // Register the staff category taxonomy
