@@ -342,7 +342,7 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 								<h3><a href="<?php echo $read_more_link; ?>" <?php echo $target; ?>><?php the_title(); ?></a></h3>
 							</div>
 							<p class="sp-excerpt"><?php echo $excerpt; ?></p>
-							<a class="easl-button" href="<?php echo $read_more_link; ?>" <?php echo $target; ?>>Read More</a>
+                            <a class="easl-button" href="<?php echo $read_more_link; ?>" <?php echo $target; ?>><?php _e('Read More', 'total-child'); ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
 						</div>
 					</article>
 			<?php
