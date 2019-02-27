@@ -170,6 +170,21 @@ function easl_customizer_sections($sections) {
 			),
 		)
 	);
+	$sections['easl_miscellaneous_annual_reports'] = array(
+		'title' => __( 'Annual Reports', 'total-child' ),
+		'panel' => 'wpex_easl_miscellaneous',
+		'settings' => array(
+			array(
+				'id' => 'annual_reports_page',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('Annual Reports page URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
+		)
+	);
 	$sections['easl_miscellaneous_nat_associaitons'] = array(
 		'title' => __( 'National Associations', 'total-child' ),
 		'panel' => 'wpex_easl_miscellaneous',
