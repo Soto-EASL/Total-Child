@@ -11,10 +11,6 @@ class Annual_Reports_Config {
      */
     public function __construct() {
         add_action( 'init', array( 'Annual_Reports_Config', 'register_post_type' ), 0 );
-        if ( is_admin() ) {
-            // Add settings metabox to event
-            add_filter( 'wpex_main_metaboxes_post_types', array( 'Annual_Reports_Config', 'meta_array' ), 20 );
-        }
     }
 
     public static function get_annual_reports_slug(){
@@ -38,7 +34,10 @@ class Annual_Reports_Config {
                 'not_found' => __( 'No Items Found', 'total' ),
                 'not_found_in_trash' => __( 'No Items Found In Trash', 'total' )
             ),
-            'public' => false,
+            'public' => true,
+            'exclude_from_search' => false,
+            'publicly_queryable' => false,
+            'show_in_nav_menus' => false,
             'show_ui' => true,
             'capability_type' => 'post',
             'has_archive' => false,
@@ -52,12 +51,6 @@ class Annual_Reports_Config {
             ),
         ) );
     }
-
-    public static function meta_array( $types ) {
-        $types[] = 'annual_reports';
-        return $types;
-    }
-
 
 }
 
