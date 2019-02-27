@@ -413,6 +413,9 @@ function easl_page_header_style( $style ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_style();
 	}
+	if(is_search()){
+		return 'background-image';
+	}
 	if ( ! is_singular( 'event', Publication_Config::get_publication_slug() ) || 'background-image' == $style ) {
 		return $style;
 	}
@@ -438,7 +441,7 @@ function easl_page_header_title_height( $height ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_height();
 	}
-	if ( is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
+	if ( is_search() || is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
 		return 220;
 	}
 
@@ -452,7 +455,7 @@ function easl_page_header_overlay_style( $style ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_overlay_style();
 	}
-	if ( is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
+	if ( is_search() || is_singular( 'event', Publication_Config::get_publication_slug() ) ) {
 		return '';
 	}
 
@@ -464,6 +467,9 @@ add_filter( 'wpex_page_header_overlay_style', 'easl_page_header_overlay_style', 
 
 function easl_page_header_bg( $image, $post_id ) {
 	$cusotm_bg = '';
+	if(is_search()){
+		$cusotm_bg = get_stylesheet_directory_uri() . '/images/header-blue-pattern.jpg';
+	}
 	if ( is_single() ) {
 		$cusotm_bg = easl_get_news_page_header_bg( $post_id );
 	}
@@ -476,7 +482,6 @@ function easl_page_header_bg( $image, $post_id ) {
 	if ( $cusotm_bg ) {
 		return $cusotm_bg;
 	}
-
 	return $image;
 }
 

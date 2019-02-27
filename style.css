@@ -1657,12 +1657,17 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .easl-events-li:hover h3 a:active {
     color: #71c5e8;
 }
-
+.el-topic-organiser,
 .el-location {
     font-size: 14px;
     line-height: 14px;
     margin: 0;
 }
+.el-topic-organiser {
+    margin: 0 0 14px;
+}
+.ell-topic-name,
+.ell-organiser-name,
 .ell-bar, 
 .ell-country {
     color: #666;
@@ -7888,6 +7893,11 @@ body .mentors-application-title {
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
+}
+
+/*Page: Seaarch results*/
+.search-results #content-wrap {
+    padding-top: 32px;
 }
 
 /* Terms Popup */

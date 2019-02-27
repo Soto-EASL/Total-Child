@@ -18,6 +18,26 @@ if(is_search()){
 }
 ?>
 <<?php echo $list_tag; ?> class="easl-events-li easl-event-li-<?php echo $event_color; ?>">
+    <?php if(is_search()):
+	    $event_topics_name = easl_event_topics_name(get_the_ID());
+	    $event_organisers = trim(get_field('event_organisers'));
+    ?>
+	    <?php if($event_topics_name || $event_organisers): ?>
+            <p class="el-topic-organiser">
+                    <span class="ell-topic">
+                        <?php if($event_topics_name): ?>
+                            <span class="ell-name">Topic:</span> <span class="ell-topic-name"><?php echo $event_topics_name; ?></span>
+                        <?php endif; ?>
+	                    <?php if($event_topics_name && $event_organisers): ?>
+                            <span class="ell-bar"> | </span>
+	                    <?php endif; ?>
+	                    <?php if( $event_organisers): ?>
+                            <span class="ell-name">Organisers:</span> <span class="ell-organiser-name"><?php echo esc_html($event_organisers); ?></span>
+	                    <?php endif; ?>
+                    </span>
+            </p>
+	    <?php endif; ?>
+    <?php endif; ?>
     <h3><a title="" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
     <a class="events-li-date" href="<?php the_permalink(); ?>">
         <span class="eld-day"><?php echo $event_start_date[0]; ?></span>
