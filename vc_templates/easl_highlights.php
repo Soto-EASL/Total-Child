@@ -129,7 +129,7 @@ $latest_slide_desks = new WP_Query(array(
                             <?php
                             while ($event_query->have_posts()){
 	                            $event_query->the_post();
-	                            get_template_part('partials/highlights/events');
+	                            get_template_part('partials/event/event-loop');
                             }
                             wp_reset_query();
                             ?>

@@ -102,7 +102,7 @@ if( class_exists('WPBakeryShortCode') ){
             while($latest_event->have_posts()){
                 $latest_event->the_post();
                 ob_start();
-	            get_template_part('partials/highlights/events');
+	            get_template_part('partials/event/event-loop');
 	            $items['events'] = ob_get_clean();
             }
 	        while($latest_publication->have_posts()){
