@@ -2763,6 +2763,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .education-icon {
     background-image: url('images/icons/education.png')
 }
+.easl-gbtn-elearning,
+.elearning-icon {
+    background-image: url('images/icons/elearning.png')
+}
 .easl-gbtn-fellowship,
 .fellowship-icon {
     background-image: url('images/icons/fellowship.png')

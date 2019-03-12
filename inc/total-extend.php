@@ -63,6 +63,7 @@ function easl_vc_button_grid_icons() {
 		__( 'Two faces', 'total' )       => 'two-faces',
 		__( 'Scroll', 'total' )       => 'scroll',
 		__( 'LiverTree', 'total' )       => 'livertree',
+		__('e-Learning', 'total-child')   => 'elearning',
 	);
 }
 
@@ -88,7 +89,6 @@ function easl_title_icons() {
 		'science'    => __( 'Science ', 'total' ),
 		'ueg'        => __( 'UEG', 'total' ),
 		'litmus'     => __( 'Litmus', 'total' ),
-
 	);
 }
 
