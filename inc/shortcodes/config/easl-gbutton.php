@@ -41,6 +41,12 @@ return array(
 			'param_name' => 'button_icon',
 			'value' => easl_vc_button_grid_icons(),
 		),
+		array(
+			'type'		 => 'vcex_ofswitch',
+			'std'		 => 'false',
+			'heading'	 => __( 'Inactive', 'total' ),
+			'param_name' => 'inactive',
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',

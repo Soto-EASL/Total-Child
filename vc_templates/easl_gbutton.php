@@ -10,11 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $button_link
  * @var $button_link_target
  * @var $button_icon
+ * @var $inactive
  * @var $el_class
  * @var $el_id
  * @var $css
- * Shortcode class EASL_VC_Button
- * @var $this EASL_VC_Button
+ * Shortcode class EASL_VC_GButton
+ * @var $this EASL_VC_GButton
  */
 $button_text = $button_link = $button_link_target = $button_icon = $el_class = $el_id = $css_animation = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -42,8 +43,13 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
+$button_enabled = true;
+if($inactive == 'true' || false !== strpos($el_class, 'permanently-hidden')){
+	$button_enabled = false;
+}
+
 $output = '';
-if($button_text_html && 'permanently-hidden' != $el_class){
+if($button_text_html && $button_enabled){
 	$output = '
 		<div ' . implode( ' ', $wrapper_attributes ) . ' class="easl-gbtn-wrap easl-col ' . esc_attr( trim( $css_class ) ) . '">
 			<div class="easl-col-inner">
