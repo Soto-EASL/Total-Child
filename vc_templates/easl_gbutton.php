@@ -10,14 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $button_link
  * @var $button_link_target
  * @var $button_icon
- * @var $inactive
+ * @var $active
  * @var $el_class
  * @var $el_id
  * @var $css
  * Shortcode class EASL_VC_GButton
  * @var $this EASL_VC_GButton
  */
-$button_text = $button_link = $button_link_target = $button_icon = $el_class = $el_id = $css_animation = '';
+$button_text = $button_link = $button_link_target = $button_icon = $el_class = $el_id = $css_animation = $active = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -44,7 +44,7 @@ if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 $button_enabled = true;
-if($inactive == 'true' || false !== strpos($el_class, 'permanently-hidden')){
+if($active == 'false' || false !== strpos($el_class, 'permanently-hidden')){
 	$button_enabled = false;
 }
 

@@ -43,9 +43,9 @@ return array(
 		),
 		array(
 			'type'		 => 'vcex_ofswitch',
-			'std'		 => 'false',
-			'heading'	 => __( 'Inactive', 'total' ),
-			'param_name' => 'inactive',
+			'std'		 => 'true',
+			'heading'	 => __( 'Active', 'total' ),
+			'param_name' => 'active',
 		),
 		vc_map_add_css_animation(),
 		array(
