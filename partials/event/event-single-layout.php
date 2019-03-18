@@ -160,14 +160,15 @@ $event_highlights = wp_parse_args($event_highlights, array(
 			<div class="wpb_column vc_column_container vc_col-sm-7">
 				<div class="vc_column-inner">
 					<div class="event-dates-meta-wrap wpb_wrapper easl-flex-con easl-flex-align-center clr">
+                        <?php if($event_start_date): ?>
 						<div class="event-dates-wrap">
 							<div class="event-dates">
-                                <?php $begining_date = new DateTime('@'.get_field('event_start_date'));?>
-								<span class="event-day"><?php echo $begining_date->format('d'); ?></span>
-								<span class="event-mon"><?php echo $begining_date->format('M'); ?></span>
-								<span class="event-year"><?php echo $begining_date->format('Y'); ?></span>
+								<span class="event-day"><?php echo date('d', $event_start_date); ?></span>
+								<span class="event-mon"><?php echo date('M', $event_start_date); ?></span>
+								<span class="event-year"><?php echo date('Y', $event_start_date); ?></span>
 							</div>
 						</div>
+                        <?php endif; ?>
 						<div class="event-meta-wrap easl-flex-one">
 							<?php if($event_topics_name): ?>
 							<p class="event-meta">
@@ -297,8 +298,12 @@ $event_highlights = wp_parse_args($event_highlights, array(
 											<span class="event-link-icon"><i class="ticon ticon-calendar-plus-o" aria-hidden="true"></i></span>
 											<span class="event-link-text">Add to Calendar</span>
 										</span>
+                                        <?php if($event_start_date): ?>
 										<span class="start"><?php echo date('Y-m-d', $event_start_date); ?></span>
+                                        <?php endif; ?>
+										<?php if($event_end_date): ?>
 										<span class="end"><?php echo date('Y-m-d', $event_end_date); ?></span>
+										<?php endif; ?>
 										<span class="timezone">America/Los_Angeles</span>
 										<span class="title"><?php the_title(); ?></span>
 										<span class="location"><?php echo $event_location_display; ?></span>
