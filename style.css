@@ -8683,6 +8683,9 @@ body .mentors-application-title {
         margin: 0;
         position: relative;
     }
+    .easl-msc-menu-mobile-menu-normal .easl-msc-menu-mobile-label {
+        display: none;
+    }
     .easl-msc-menu-mobile-label::after {
         content: "\f107";
         color: #78cdf2;
@@ -8713,6 +8716,11 @@ body .mentors-application-title {
         -ms-transition: opacity .2s;
         -o-transition: opacity .2s;
         transition: opacity .2s;
+    }
+    .easl-msc-menu-mobile-menu-normal .easl-msc-menu-wrap .msc-menu {
+        position: relative;
+        visibility: visible;
+        opacity: 1;
     }
     .msc-menu li {
         border-top: 1px solid #dedede;

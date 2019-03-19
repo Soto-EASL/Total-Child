@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this EASL_VC_Menu_Stacked_content
  */
 $title = $nav_menu = $layout =  $el_class = $el_id = $css_animation = '';
-$enable_right_menu_filter = $filter_all_link = '';
+$enable_right_menu_filter = $filter_all_link = $show_all_tabs_on_mobile = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -41,6 +41,11 @@ if($layout == "vertical") {
 	$menu_wrap_class = "easl-msc-menu-wrap";
 	$content_wrapp_class = "easl-msc-content-wrap";
 	$menu_class = 'msc-menu';
+}
+
+
+if($show_all_tabs_on_mobile == 'true') {
+	$css_classes .= ' easl-msc-menu-mobile-menu-normal';
 }
 
 $menu_content = '';

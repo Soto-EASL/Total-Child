@@ -68,6 +68,13 @@ return array(
 				'value'		 => array( 'true' ),
 			),
 		),
+		array(
+			'type' => 'vcex_ofswitch',
+			'heading' => __( 'Show All Tabs on Mobile', 'js_composer' ),
+			'std' => 'false',
+			'param_name' => 'show_all_tabs_on_mobile',
+			'admin_label' => false,
+		),
 		vc_map_add_css_animation(),
 		array(
 			'type' => 'el_id',
