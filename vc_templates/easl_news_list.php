@@ -166,7 +166,7 @@ $news_query = new WP_Query( $query_args );
                                         <p class="easl-news-list-meta">
                                             <span class="easl-news-list-date"></span><?php echo wpex_date_format( array(
 												'id'     => get_the_ID(),
-												'format' => 'd/m/y',
+												'format' => 'd M, Y',
 											) ); ?></span>
 											<?php
 											$sources = get_the_term_list( get_the_ID(), EASL_News_Source_Tax::get_slug(), '', ',', '' );

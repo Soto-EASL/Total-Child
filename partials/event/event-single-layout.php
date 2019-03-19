@@ -488,11 +488,15 @@ $event_highlights = wp_parse_args($event_highlights, array(
                                                 $addon_class = '';
 
                                         endswitch;
-
+	                                    $kd_start_date = !empty($date['event_key_start_date']) ? trim($date['event_key_start_date']): '';
+	                                    $kd_start_date = DateTime::createFromFormat('d/m/Y', $kd_start_date);
+	                                    if('false' === $kd_start_date){
+		                                    continue;
+	                                    }
 
                                         ?>
                                         <li class="app-process-key <?php echo $addon_class;?>">
-                                            <p class="event-kd-date"><?php echo $date['event_key_start_date'];?></p>
+                                            <p class="event-kd-date"><?php echo $kd_start_date->format('d M, Y');?></p>
                                             <h4 class="event-kd-title"><?php echo strip_tags($date['event_key_deadline_description'], '<br>');?></h4>
                                         </li>
                                         <?php $counter++;?>

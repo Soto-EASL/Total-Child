@@ -85,7 +85,7 @@ if ( $news_query->have_posts() ):
                                     <a href="<?php the_permalink(); ?>"><?php echo wpex_get_post_thumbnail( $image_args ); ?></a>
                                 </figure>
                                 <p class="easl-news-date"><?php echo wpex_date_format( array( 'id'     => get_the_ID(),
-								                                                              'format' => 'd/m/y',
+								                                                              'format' => 'd M, Y',
 									) ); ?></p>
                                 <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 <div class="eeasl-news-excerpt"><?php echo wpex_get_excerpt( array( 'length' => 28 ) ); ?></div>
