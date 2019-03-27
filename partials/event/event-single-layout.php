@@ -160,10 +160,16 @@ $event_highlights = wp_parse_args($event_highlights, array(
 			<div class="wpb_column vc_column_container vc_col-sm-7">
 				<div class="vc_column-inner">
 					<div class="event-dates-meta-wrap wpb_wrapper easl-flex-con easl-flex-align-center clr">
-                        <?php if($event_start_date): ?>
+                        <?php
+                        if($event_start_date):
+	                        $event_date_days = date('d', $event_start_date);
+	                        if($event_end_date > $event_start_date){
+		                        $event_date_days .= '-' . date('d', $event_end_date);
+	                        }
+                        ?>
 						<div class="event-dates-wrap">
 							<div class="event-dates">
-								<span class="event-day"><?php echo date('d', $event_start_date); ?></span>
+								<span class="event-day"><?php echo $event_date_days; ?></span>
 								<span class="event-mon"><?php echo date('M', $event_start_date); ?></span>
 								<span class="event-year"><?php echo date('Y', $event_start_date); ?></span>
 							</div>
