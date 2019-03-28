@@ -22,8 +22,16 @@ $el_class      = '';
 $el_id         = '';
 $css_animation = '';
 $limit         = '';
+$include_categories = '';
+$exclude_categories = '';
+$excerpt_length = '';
+
 $atts          = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
+
+$include_categories = $this->string_to_array( $include_categories );
+$exclude_categories = $this->string_to_array( $exclude_categories );
+$excerpt_length = absint($excerpt_length);
 
 if ( ! $view_all_text ) {
 	$view_all_text = 'View all News';
@@ -56,6 +64,27 @@ $query_args = array(
 		),
 	)
 );
+$tax_query = array();
+if($include_categories) {
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $include_categories,
+		'operator' => 'IN',
+	);
+}
+if($exclude_categories) {
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $exclude_categories,
+		'operator' => 'NOT IN',
+	);
+}
+if ( count( $tax_query ) > 0 ) {
+	$tax_query['relation'] = 'AND';
+	$query_args['tax_query'] = $tax_query;
+}
 
 $news_query = new WP_Query( $query_args );
 
@@ -88,7 +117,7 @@ if ( $news_query->have_posts() ):
 								                                                              'format' => 'd M, Y',
 									) ); ?></p>
                                 <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-                                <div class="eeasl-news-excerpt"><?php echo wpex_get_excerpt( array( 'length' => 28 ) ); ?></div>
+                                <div class="eeasl-news-excerpt"><?php echo wpex_get_excerpt( array( 'length' => $excerpt_length ) ); ?></div>
                             </article>
                         </div>
                     </div>

@@ -20,9 +20,17 @@ $display_newsletters = '';
 $nl_title = '';
 $nl_limit = '';
 $nl_year = '';
+$include_categories = '';
+$exclude_categories = '';
+$show_filter = '';
+$excerpt_length = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
+
+$include_categories = $this->string_to_array( $include_categories );
+$exclude_categories = $this->string_to_array( $exclude_categories );
+$excerpt_length = absint($excerpt_length);
 
 $search_req      = ! empty( $_REQUEST['nsearch'] ) ? $_REQUEST['nsearch'] : false;
 $news_source_req = ! empty( $_REQUEST['nsource'] ) ? absint( $_REQUEST['nsource'] ) : false;
@@ -52,15 +60,23 @@ $query_args = array(
 	'posts_per_page' => $limit,
 	'paged'          => $paged,
 );
-$tax_query  = array(
-	'relation' => 'AND',
-	array(
+$tax_query = array();
+if($include_categories) {
+	$tax_query[] = array(
 		'taxonomy' => 'category',
 		'field'    => 'term_id',
-		'terms'    => array( 23, 24, 34, 35, 36, 37, 38, 39, 88 ),
+		'terms'    => $include_categories,
+		'operator' => 'IN',
+	);
+}
+if($exclude_categories) {
+	$tax_query[] = array(
+		'taxonomy' => 'category',
+		'field'    => 'term_id',
+		'terms'    => $exclude_categories,
 		'operator' => 'NOT IN',
-	),
-);
+	);
+}
 
 if ( $search_req ) {
 	$query_args['s'] = $search_req;
@@ -77,12 +93,14 @@ if ( $news_source_req ) {
 }
 
 if ( count( $tax_query ) > 0 ) {
+	$tax_query['relation'] = 'AND';
 	$query_args['tax_query'] = $tax_query;
 }
 
 $news_query = new WP_Query( $query_args );
 ?>
 <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
+    <?php if($show_filter != 'false'): ?>
     <div class="easl-news-list-filter">
         <form class="easl-news-list-filter-form" action="" method="get">
             <div class="easl-row">
@@ -140,11 +158,10 @@ $news_query = new WP_Query( $query_args );
             </div>
         </form>
     </div>
-    <div class="easl-news-list-result <?php if ( $news_query->max_num_pages ) {
-		echo 'easl-news-list-result-has-pagination';
-	} ?>">
+    <?php endif; ?>
+    <div class="easl-news-list-result <?php if ( $news_query->max_num_pages ) { echo 'easl-news-list-result-has-pagination';} ?>">
         <div class="easl-row">
-            <div class="easl-col easl-col-3-4">
+            <div class="easl-col<?php if('true' == $display_newsletters){echo ' easl-col-3-4';}?>">
                 <div class="easl-col-inner">
                     <div class="easl-news-list-con">
 						<?php
@@ -177,7 +194,7 @@ $news_query = new WP_Query( $query_args );
                                         </p>
                                         <h2 class="easl-news-list-title"><a
                                                     href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                        <div class="easl-news-list-excerpt"><?php wpex_excerpt( array( 'length' => 32 ) ); ?></div>
+                                        <div class="easl-news-list-excerpt"><?php wpex_excerpt( array( 'length' => $excerpt_length ) ); ?></div>
                                     </div>
                                 </article>
 							<?php
