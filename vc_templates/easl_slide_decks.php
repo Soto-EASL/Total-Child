@@ -149,7 +149,7 @@ if(count($child_cats_drobdowns) > 0){
                             <div class="easl-custom-select" style="margin-bottom: 15px;">
                                 <span class="ec-cs-label">Select an option</span>
                                 <select name="sd_cat" placeholder="Select an option">
-                                    <option value="">All</option>
+                                    <option value="">Select an option</option>
                                     <?php echo $sd_cats_options; ?>
                                 </select>
                             </div>
