@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $content - shortcode content
  * @var $el_class
  * @var $el_id
- * @var $this EASL_VC_Secretary_Generals_Carousel
+ * @var $this EASL_VC_History_Slide
  */
 $el_class      = '';
 $css           = '';

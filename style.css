@@ -1746,6 +1746,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
     padding: 0 10px;
     font-size: 24px;
     line-height: 40px;
+    cursor: pointer;
 }
 
 .ec-filter-fields {
@@ -2765,7 +2766,7 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .easl-gbtn-elearning,
 .elearning-icon {
-    background-image: url('images/icons/elearning.png')
+    background-image: url('images/icons/elearning2.png')
 }
 .easl-gbtn-fellowship,
 .fellowship-icon {
@@ -6487,6 +6488,27 @@ ul.suggestions{
 }
 
 /* Shortcode: EASL Slide Decks */
+.slide-deck-filter .ec-filter-topics {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.slide-deck-filter .ec-filter-topics li {
+    margin: 0 0 8px;
+}
+.slide-deck-filter .ec-filter-topics li:last-child {
+    margin-bottom: 0;
+}
+.ec-filter-year {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s;
+}
+.ec-filter-year.easl-active {
+    opacity: 1;
+    visibility: visible;
+}
+
 .easl-slide-deck-item {
     margin: 0 0 30px;
 }

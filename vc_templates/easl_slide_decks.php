@@ -32,33 +32,31 @@ if ( $css_class ) {
 	$wrapper_attributes[] = 'class="' . esc_attr( $css_class ) . '"';
 }
 
-wp_enqueue_style('easl-scientific-publication-style',
-	get_stylesheet_directory_uri() . '/assets/css/easl_scientific_publication.css');
-
-wp_enqueue_script('easl-scientific-publication-script',
-	get_stylesheet_directory_uri() . '/assets/js/easl_scientific_publication.js',
-	['jquery'],
-	false,
-	true);
-
 $has_filter = false;
 $filter_sd_topics = [];
 $filter_sd_search = '';
 $filter_sd_cat = '';
+$filter_sd_year = '';
 
-
-
-if(isset($_REQUEST['sd_topics'])){
+if(!empty($_REQUEST['sd_topics'])){
 	$filter_sd_topics = $_REQUEST['sd_topics'];
 	$has_filter = true;
 }
-if(isset($_REQUEST['sd_search']) && ($_REQUEST['sd_search'] != '') ){
+if( !empty($_REQUEST['sd_search']) ){
 	$filter_sd_search = $_REQUEST['sd_search'];
 	$has_filter = true;
 }
-if(isset($_REQUEST['sd_cat']) && $_REQUEST['sd_cat'] != ''){
+if(!empty($_REQUEST['sd_cat'])){
 	$filter_sd_cat = $_REQUEST['sd_cat'];
 	$has_filter = true;
+}
+if(!empty($_REQUEST['sd_year'])){
+	$filter_sd_year = $_REQUEST['sd_year'];
+	$has_filter = true;
+}
+
+if(empty($filter_sd_year)){
+    $has_filter = false;
 }
 
 $filter_by_topic = '';
@@ -87,149 +85,152 @@ if($taxonomies){
             $is_custom_topic = true;
         }
         $taxonomy_string .= '<li>'.
-                            '<label class="easl-custom-checkbox csic-'.$bg_color.'">'.
-                            '<input type="checkbox" name="sd_topics[]" value="'.$term_id.'" data-countries="" '.$filter_topic_checked.'> <span>'.$term_name.'</span>'.
-                            '</label>'.
+                                '<label class="easl-custom-checkbox csic-'.$bg_color.'">'.
+                                    '<input type="checkbox" name="sd_topics[]" value="'.$term_id.'" data-countries="" '.$filter_topic_checked.'> <span>'.$term_name.'</span>'.
+                                '</label>'.
                             '</li>';
     }
 }
 
-$filter_by_topic = '<div class="wpb_column vc_column_container vc_col-sm-4">'.
-                   '<div class="vc_column-inner ">'.
-                   '<div class="wpb_wrapper">'.
-                   '<div class="wpb_raw_code wpb_content_element wpb_raw_html">'.
-                   '<div class="wpb_wrapper">'.
-                   '<div class="easl-col-inner">'.
-                   '<div class="easl-col-inner">'.
-
-                   '<h4 style="font-size: 21px;border-bottom: 1px solid #d7d7d7;">Show me:</h4>'.
-                   '<ul class="ec-filter-topics">'.
-                   '<li>'.
-                   '<label class="easl-custom-checkbox easl-cb-all csic-light-blue easl-active">'.
-                   '<input type="checkbox" name="sd_topics[]" value="" '.(!$is_custom_topic ? 'checked="checked"' : '').'> <span>All topics</span>'.
-                   '</label>'.
-                   '</li>'.
-                   $taxonomy_string.
-                   '</ul>'.
-                   '</div>'.
-                   '</div>'.
-                   '</div>'.
-                   '</div>'.
-                   '</div>'.
-                   '</div>'.
-                   '</div>';
 
 $br = '';
 $no_bottom_margins = '';
 
 
 $sd_cats_options = '';
-$slide_decks_categories = get_terms( array(
-	'taxonomy'   => Slide_Decks_Config::get_category_slug(),
-	'hide_empty' => false,
-	'orderby'    => 'term_id',
-	'order'      => 'ASC',
-	'fields'     => 'id=>name',
-) );
+$slide_decks_categories = $this->get_categories_heirarchi();
+$child_cats_drobdowns = array();
 if($slide_decks_categories){
-    foreach ($slide_decks_categories as $term_id => $term_name){
-	    $sd_cats_options .= '<option value="'. $term_id .'" '. selected($term_id, $filter_sd_cat, false) .'>'. $term_name .'</option>';
+    foreach ($slide_decks_categories['parents'] as  $sd_cat){
+        $cc_cat_dd = '';
+	    $sd_cats_options .= '<option value="'. $sd_cat['term_id'] .'" '. selected($sd_cat['term_id'], $filter_sd_cat, false) .'>'. $sd_cat['term_name'] .'</option>';
+
+	    if(isset($slide_decks_categories['childs'][$sd_cat['term_id']])){
+	        foreach ($slide_decks_categories['childs'][$sd_cat['term_id']] as $cterm){
+		        $cc_cat_dd .= '<option value="'. $cterm['term_id'] .'"'. selected($cterm['term_id'], $filter_sd_year, false) .'>'. $cterm['term_name'] .'</option>';
+	        }
+        }
+	    if($cc_cat_dd){
+		    $child_cats_drobdowns[] = '<select class="sd-cat-childs-'.$sd_cat['term_id'].'"><option value="">Select Year</option>'. $cc_cat_dd .'</select>';
+        }
     }
 }
-
-$top_filter = '<div class="vc_row wpb_row no-bottom-margins vc_inner vc_row-fluid easl-slide-decks-container">'.
-              $filter_by_topic.
-              '<div class="wpb_column vc_column_container vc_col-sm-8">'.
-              '<div class="vc_column-inner ">'.
-              '<div class="wpb_wrapper">'.
-              '<div class="wpb_raw_code wpb_content_element wpb_raw_html">'.
-              '<div class="wpb_wrapper">'.
-              '<div class="easl-col-inner" >'.
-              '<div class="ec-filter-search">'.
-              '<input type="text" name="sd_search" value="'.($filter_sd_search ? $filter_sd_search : '').'" placeholder="Search for slide decks"/>'.
-              '<span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>'.
-              '</div>'.
-              '<h4 style="font-size: 21px">Filter Slide Decks:</h4>'.
-
-              '<div class="easl-custom-select" style="margin-bottom: 15px;">'.
-              '<span class="ec-cs-label">Select an option</span>'.
-              '<select name="sd_cat" placeholder="Select an option">'.
-              '<option value="">All</option>'.
-              $sd_cats_options.
-              '</select>'.
-              '</div>';
-
-$top_filter .=			'</div>'.
-                          '</div>'.
-                          '</div>'.
-                          '</div>'.
-                          '</div>'.
-                          '</div>';
-
-$top_filter .= '</div>';
-
-$limit = absint($limit);
-if(!$limit){
-	$limit = -1;
+if(count($child_cats_drobdowns) > 0){
+	$child_cats_drobdowns = implode('', $child_cats_drobdowns);
+}else{
+	$child_cats_drobdowns = '';
 }
-$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-$query_args = array(
-	'post_type'      => Slide_Decks_Config::get_slug(),
-	'post_status'    => 'publish',
-	'posts_per_page' => $limit,
-	'paged'          => $paged,
-);
-
-if($filter_sd_search){
-	$query_args['s'] = $filter_sd_search;
-}
-
-$tax_query = array();
-if( is_array($filter_sd_topics) && count($filter_sd_topics) > 0 && $filter_sd_topics[0] != '') {
-	$tax_query[] =  array(
-		'taxonomy' => Slide_Decks_Config::get_topic_slug(),
-		'field' => 'id',
-		'terms' => $filter_sd_topics,
-		'operator' => 'IN',
-	);
-}
-if(!empty($filter_sd_cat)) {
-	$tax_query[] =  array(
-		'taxonomy' => Slide_Decks_Config::get_category_slug(),
-		'field' => 'id',
-		'terms' => array($filter_sd_cat),
-		'operator' => 'IN',
-	);
-}
-if(count($tax_query) > 0){
-	$query_args['tax_query'] = array('relation' => 'AND');
-	$query_args['tax_query'][] = $tax_query;
-}
-
-$easl_query = new WP_Query( $query_args );
-
-$paginatio_html =  paginate_links( array(
-	'total'     => $easl_query->max_num_pages,
-	'current'   => $paged,
-	'end_size'  => 3,
-	'mid_size'  => 5,
-	'prev_next' => true,
-	'prev_text' => '<span class="ticon ticon-angle-left" aria-hidden="true"></span>',
-	'next_text' => '<span class="ticon ticon-angle-right" aria-hidden="true"></span>',
-	'type'      => 'list',
-) );
-
-$pagination = '<div class="easl-list-pagination" >' . $paginatio_html . '</div>';
-
-$not_found_text = $has_filter ? __('Nothing has been found', 'total-child') : __('content is coming soon', 'total-child');
 ?>
 <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
     <div class="easl-slide-decks-wrap">
-		<?php if($top_filter): ?>
-            <form class="publication-filter" action="" method="get" style="background: #fff; border: 3px solid #004b87; padding: 30px 15px; margin-bottom: 30px;">
-				<?php echo $top_filter; ?>
-            </form>
-		<?php endif; ?>
+        <form class="slide-deck-filter" action="" method="get" style="background: #fff; border: 3px solid #004b87; padding: 30px 15px; margin-bottom: 30px;">
+            <div class="easl-row easl-slide-decks-container">
+                <div class="easl-col easl-col-3">
+                    <div class="easl-col-inner">
+                        <h4 style="font-size: 21px;border-bottom: 1px solid #d7d7d7;">Show me:</h4>
+                        <ul class="ec-filter-topics">
+                            <li>
+                                <label class="easl-custom-checkbox easl-cb-all csic-light-blue easl-active">
+                                    <input type="checkbox" name="sd_topics[]" value="" <?php if(!$is_custom_topic){ echo 'checked="checked"';}?>> <span>All topics</span>
+                                </label>
+                            </li>
+                            <?php echo $taxonomy_string;?>
+                        </ul>
+                    </div>
+                </div>
+                <div class="easl-col easl-col-2-3">
+                    <div class="easl-col-inner">
+                        <div class="ec-filter-search">
+                            <input type="text" name="sd_search" value="<?php if($filter_sd_search) {echo $filter_sd_search;}?>" placeholder="Search for slide decks"/>
+                            <span class="ecs-icon"><i class="ticon ticon-search" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="ec-filter-cat">
+                            <h4 style="font-size: 21px">Filter Slide Decks:</h4>
+                            <div class="easl-custom-select" style="margin-bottom: 15px;">
+                                <span class="ec-cs-label">Select an option</span>
+                                <select name="sd_cat" placeholder="Select an option">
+                                    <option value="">All</option>
+                                    <?php echo $sd_cats_options; ?>
+                                </select>
+                            </div>
+                            <div style="display: none;">
+                                <?php echo $child_cats_drobdowns; ?>
+                            </div>
+                        </div>
+                        <div class="ec-filter-year">
+                            <div class="easl-custom-select" style="margin-bottom: 0px;">
+                                <span class="ec-cs-label">Select year</span>
+                                <select name="sd_year" placeholder="Select year">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <?php
+        if($has_filter):
+	        $limit = absint($limit);
+	        if(!$limit){
+		        $limit = -1;
+	        }
+	        $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+	        $query_args = array(
+		        'post_type'      => Slide_Decks_Config::get_slug(),
+		        'post_status'    => 'publish',
+		        'posts_per_page' => $limit,
+		        'paged'          => $paged,
+	        );
+
+	        if($filter_sd_search){
+		        $query_args['s'] = $filter_sd_search;
+	        }
+
+	        $tax_query = array();
+	        if( is_array($filter_sd_topics) && count($filter_sd_topics) > 0 && $filter_sd_topics[0] != '') {
+		        $tax_query[] =  array(
+			        'taxonomy' => Slide_Decks_Config::get_topic_slug(),
+			        'field' => 'id',
+			        'terms' => $filter_sd_topics,
+			        'operator' => 'IN',
+		        );
+	        }
+	        if(!empty($filter_sd_year)) {
+		        $tax_query[] =  array(
+			        'taxonomy' => Slide_Decks_Config::get_category_slug(),
+			        'field' => 'id',
+			        'terms' => array($filter_sd_year),
+			        'operator' => 'IN',
+		        );
+	        }
+	        if(count($tax_query) > 0){
+		        $query_args['tax_query'] = array('relation' => 'AND');
+		        $query_args['tax_query'][] = $tax_query;
+	        }
+
+	        $easl_query = new WP_Query( $query_args );
+
+	        $paginatio_html =  paginate_links( array(
+		        'total'     => $easl_query->max_num_pages,
+		        'current'   => $paged,
+		        'end_size'  => 3,
+		        'mid_size'  => 5,
+		        'prev_next' => true,
+		        'prev_text' => '<span class="ticon ticon-angle-left" aria-hidden="true"></span>',
+		        'next_text' => '<span class="ticon ticon-angle-right" aria-hidden="true"></span>',
+		        'type'      => 'list',
+	        ) );
+
+	        $pagination = '<div class="easl-list-pagination" >' . $paginatio_html . '</div>';
+
+	        $not_found_text = __('Content is coming soon', 'total-child');
+	        $sponsors_text = get_field('sponsors_text', get_term($filter_sd_year, Slide_Decks_Config::get_category_slug()))
+        ?>
+        <?php if($sponsors_text): ?>
+        <div class="easl-sd-sponsors">
+            <?php echo do_shortcode($sponsors_text); ?>
+        </div>
+        <?php endif; ?>
         <div class="easl-slide-decks-top-pagination easl-list-pagination" ><?php echo $paginatio_html; ?></div>
         <div class="easl-slide-decks-inner">
 			<?php
@@ -286,5 +287,6 @@ $not_found_text = $has_filter ? __('Nothing has been found', 'total-child') : __
 			?>
         </div>
         <div class="easl-slide-decks-bottom-pagination easl-list-pagination" ><?php echo $paginatio_html; ?></div>
+        <?php endif; ?>
     </div>
 </div>

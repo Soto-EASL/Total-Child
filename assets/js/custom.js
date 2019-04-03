@@ -494,6 +494,79 @@
             new EASLHighlights($(this));
         });
     };
+
+    function EASLSlideDecks ($el){
+        this.$el = $el;
+        this.$filter = $('.slide-deck-filter', $el);
+        this.$topicFilterWrap = $('.ec-filter-topics', $el);
+        this.$catFilter = $('[name="sd_cat"]', $el);
+        this.$yearFilter = $('[name="sd_year"]', $el);
+        this.$yearFilterWrap = $('.ec-filter-year', $el);
+        this.activeCatYears();
+        this.addListners();
+    };
+    EASLSlideDecks.prototype.activeCatYears = function () {
+        var catID, yearsClass, $yearsEl;
+        catID = this.$catFilter.val();
+        if(catID){
+            yearsClass = '.sd-cat-childs-' + catID;
+        }
+        if(yearsClass){
+            $yearsEl = $(yearsClass, this.$el);
+        }
+        if($yearsEl && $yearsEl.length){
+            this.$yearFilter.html($yearsEl.html());
+            easlCustomSelectEL(this.$yearFilterWrap.find('.easl-custom-select'));
+            this.$yearFilterWrap.addClass('easl-active');
+        }else{
+            this.$yearFilterWrap.removeClass('easl-active');
+            this.$yearFilter.val('');
+        }
+    };
+    EASLSlideDecks.prototype.addListners = function () {
+        var ob = this;
+        this.$filter.on('submit', function (event) {
+            if(!ob.$yearFilter.val()){
+                event.preventDefault();
+                return false;
+            }
+        });
+        this.$catFilter.on('change', function (event) {
+            var catID, yearsClass, $yearsEl;
+            catID = $(this).val();
+            if(catID){
+                yearsClass = '.sd-cat-childs-' + catID;
+            }
+            if(yearsClass){
+                $yearsEl = $(yearsClass, ob.$el);
+            }
+            if($yearsEl && $yearsEl.length){
+                ob.$yearFilter.html($yearsEl.html());
+                easlCustomSelectEL(ob.$yearFilterWrap.find('.easl-custom-select'));
+                ob.$yearFilterWrap.addClass('easl-active');
+            }else{
+                ob.$yearFilterWrap.removeClass('easl-active');
+                ob.$yearFilter.val('');
+            }
+        });
+        this.$topicFilterWrap.find(':input').on('change', function (event) {
+           ob.$filter.submit();
+        });
+        this.$yearFilter.on('change', function (event) {
+            if($(this).val()){
+                ob.$filter.submit();
+            }
+        });
+        this.$filter.find('.ec-filter-search .ecs-icon').on('click', function (event) {
+            event.preventDefault();
+            ob.$filter.submit();
+        });
+    };
+    $.fn.easlSlideDecks = function(){
+        return this.each(function(){
+            new EASLSlideDecks($(this));
+        });
+    };
     
     function easlCustomCheckbox(){
         $('.easl-custom-checkbox').each(function(){
@@ -532,7 +605,23 @@
             }
         });  
     };
-    
+
+    function easlCustomSelectEL($cs){
+            var  lis = '', activeLabel = '', $ul = $cs.find('ul.ecs-list');
+            $ul.length && $ul.remove();
+            $('option', $cs).each(function(){
+                var dataval = 'data-value="' + $(this).attr('value') + '"';
+                if($(this).is(':selected')){
+                    $cs.find('.ec-cs-label').html($(this).html() );
+                    lis = lis + '<li class="easl-active" ' + dataval + '>' + $(this).html() + '</li>';
+                }else{
+                    lis = lis + '<li ' + dataval + '>' + $(this).html() + '</li>';
+                }
+            });
+            if(lis.length > 0){
+                $cs.append('<ul class="ecs-list filter-list">' + lis + '</ul>')
+            }
+    };
     
     function EASLSlideToggle($el) {
         this.$el = $el;
@@ -718,6 +807,7 @@
         });
         $('.easl-events-calendar-wrap').easlEventCalander();
         $('.easl-highlights').easlHighlights();
+        $('.easl-slide-decks-wrap').easlSlideDecks();
         $(document).on('click', '.show_more_btn', function (e) {
             e.preventDefault();
             $('.event_description').toggle();
