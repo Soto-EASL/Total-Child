@@ -40,6 +40,7 @@ if( function_exists('get_field')){
 	$poster_download_link = get_field('poster_download_link');
 	$event_organisers = trim(get_field('event_organisers'));
 	$event_google_map = get_field('event_google_map');
+	$event_google_map_iframe = get_field('event_google_map_iframe');
 	$event_highlights = get_field('event_highlights');
 }else{
 	$event_online_programme_url = get_post_meta(get_the_ID(), 'event_online_programme_url', true);
@@ -67,6 +68,7 @@ if( function_exists('get_field')){
 	$poster_download_link = get_post_meta(get_the_ID(), 'poster_download_link', true);
 	$event_organisers = trim(get_post_meta(get_the_ID(), 'event_organisers', true));
 	$event_google_map = get_post_meta(get_the_ID(), 'event_google_map', true);
+	$event_google_map_iframe = get_post_meta(get_the_ID(), 'event_google_map_iframe', true);
 	$event_highlights = get_post_meta(get_the_ID(), 'event_highlights', true);
 }
 if(!in_array($event_poster_text_source, array('default', 'no', 'custom') )) {
@@ -546,10 +548,10 @@ $event_highlights = wp_parse_args($event_highlights, array(
 							<?php endif; ?>
                         </div>
 						<?php endif; ?>
-						<?php if($event_google_map): ?>
+						<?php if($event_google_map_iframe): ?>
                         <div class="event-google-map-box event-sidebar-item event-image-box-bg">
                             <div class="eib-image">
-                                <iframe src="<?php echo $event_google_map;?>" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+	                            <?php echo $event_google_map_iframe; ?>
                             </div>
                             <div class="eib-text">
 								<?php if(get_field('event_address')): ?>
