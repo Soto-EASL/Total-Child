@@ -1568,8 +1568,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
     background: #f3f3ee;
     color: inherit;
     position: absolute;
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     left: 0;
     top: 0;
@@ -1618,9 +1618,9 @@ body .wpb_single_image a.easl-vc-image-over:after {
 }
 .eld-mon {
     display: block;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 22px;
-    padding: 2px 0;
+    padding: 5px 0;
 }
 .eld-year {
     display: block;
@@ -1981,8 +1981,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
     bottom: -1px;
     font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: absolute;
-    height: 74px;
-    width: 74px;
+    height: 80px;
+    width: 80px;
     text-align: center;
     margin: 0;
     transform: translateY(50%);
@@ -1998,15 +1998,15 @@ body .wpb_single_image a.easl-vc-image-over:after {
     font-size: 15px;
     line-height: 15px;
     font-weight: 400;
-    margin: 0;
+    margin: 0 0 4px;
     padding: 7px 0 0;
 }
 .ecd-mon {
     display: block;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 22px;
     font-weight: 400;
-    margin: 0 0 2px;
+    margin: 0 0 4px;
 }
 .ecd-year {
     display: block;
@@ -3945,8 +3945,8 @@ body.single-event {
     font-family: "KnockoutHTF51Middleweight", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     position: relative;
-    width: 75px;
-    height: 75px;
+    width: 80px;
+    height: 80px;
     text-align: center;
 }
 .event-day {
@@ -3957,9 +3957,9 @@ body.single-event {
 }
 .event-mon {
     display: block;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 22px;
-    padding: 2px 0;
+    padding: 5px 0;
 }
 .event-year {
     display: block;

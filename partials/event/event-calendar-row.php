@@ -49,7 +49,21 @@ $event_date_days = date('d', $event_start_date);
 if($event_end_date > $event_start_date){
 	$event_date_days .= '-' . date('d', $event_end_date);
 }
-
+$event_date_month = '';
+$event_start_month = '';
+$event_end_month = '';
+if($event_start_date){
+	$event_start_month = date('M', $event_start_date);
+}
+if($event_end_date){
+	$event_end_month = date('M', $event_end_date);
+}
+if($event_start_month){
+	$event_date_month = $event_start_month;
+}
+if($event_end_month && ($event_start_month != $event_end_month)){
+	$event_date_month .= '/' . $event_end_month;
+}
 
 if(!in_array( $event_location_display_format, array('venue|city,contury', 'venue,Country', 'venue', 'city,contury' ))) {
 	$event_location_display_format = 'venue|city,contury';
@@ -152,7 +166,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 				<p class="ec-dates" href="">
                     <span class="ecd-day"><?php echo $event_date_days; ?></span>
-                    <span class="ecd-mon"><?php echo date('M', $event_start_date); ?></span>
+                    <span class="ecd-mon"><?php echo $event_date_month; ?></span>
                     <span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="ticon ticon-play" aria-hidden="true"></i></p>
 			</header>
 			<p class="ec-location">
@@ -261,7 +275,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                             endswitch;
                             $kd_start_date = !empty($date['event_key_start_date']) ? trim($date['event_key_start_date']): '';
 	                        $kd_start_date = DateTime::createFromFormat('d/m/Y', $kd_start_date);
-                            if('false' === $kd_start_date){
+                            if(false === $kd_start_date){
                                 continue;
                             }
                             ?>

@@ -166,11 +166,23 @@ $event_highlights = wp_parse_args($event_highlights, array(
 	                        if($event_end_date > $event_start_date){
 		                        $event_date_days .= '-' . date('d', $event_end_date);
 	                        }
+	                        $event_date_month = '';
+	                        $event_end_month = '';
+	                        $event_start_month = date('M', $event_start_date);
+	                        if($event_end_date){
+		                        $event_end_month = date('M', $event_end_date);
+	                        }
+	                        if($event_start_month){
+		                        $event_date_month = $event_start_month;
+	                        }
+	                        if($event_end_month && ($event_start_month != $event_end_month)){
+		                        $event_date_month .= '/' . $event_end_month;
+	                        }
                         ?>
 						<div class="event-dates-wrap">
 							<div class="event-dates">
 								<span class="event-day"><?php echo $event_date_days; ?></span>
-								<span class="event-mon"><?php echo date('M', $event_start_date); ?></span>
+								<span class="event-mon"><?php echo $event_date_month; ?></span>
 								<span class="event-year"><?php echo date('Y', $event_start_date); ?></span>
 							</div>
 						</div>
@@ -496,7 +508,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
                                         endswitch;
 	                                    $kd_start_date = !empty($date['event_key_start_date']) ? trim($date['event_key_start_date']): '';
 	                                    $kd_start_date = DateTime::createFromFormat('d/m/Y', $kd_start_date);
-	                                    if('false' === $kd_start_date){
+	                                    if(false === $kd_start_date){
 		                                    continue;
 	                                    }
 
