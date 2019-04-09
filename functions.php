@@ -50,6 +50,11 @@ function easl_custom_scripts(){
 }
 add_action('wp_enqueue_scripts', 'easl_custom_scripts', 20);
 
+function easl_admin_custom_scripts() {
+	wp_enqueue_style('easl-admin-common', get_stylesheet_directory_uri() . '/assets/css/admin/common.css');
+}
+add_action('admin_enqueue_scripts', 'easl_admin_custom_scripts');
+
 function easl_header_scripts() {
 	if( is_singular('event') && easl_is_future_event( get_queried_object_id())){
 		?>
