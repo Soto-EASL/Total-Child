@@ -65,8 +65,12 @@ $order = strtoupper( $order );
 if ( in_array( $order, array( 'ASC', 'DESC' ) ) ) {
 	$query_args[ 'order' ] = $order;
 }
-if ( $orderby && in_array( $orderby, vcex_orderby_array() ) ) {
+if ( in_array( $orderby,  array('ID', 'title', 'menu_order')) ) {
 	$query_args[ 'orderby' ] = $orderby;
+}
+if ( in_array( $orderby,  array('first_name', 'last_name')) ) {
+	$query_args[ 'orderby' ] = 'meta_value';
+	$query_args['meta_key'] = $orderby;
 }
 
 $cats_query = $this->build_category_query( $include_categories, $cat_relation );

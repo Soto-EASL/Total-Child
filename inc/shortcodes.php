@@ -21,7 +21,7 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-users-grid.p
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-card-button.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
+//require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs-accordion.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-annual-reports.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.php';
@@ -59,7 +59,7 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_cag_members', null, get_theme_file_path('/inc/shortcodes/config/easl-cag-members.php') );
 	vc_lean_map( 'easl_menu_stacked_content', null, get_theme_file_path('/inc/shortcodes/config/easl-menu-stacked-content.php' ));
 	vc_lean_map( 'easl_card_button', null, get_theme_file_path('/inc/shortcodes/config/easl-card-button.php' ));
-	vc_lean_map( 'easl_staffs', null, get_theme_file_path('/inc/shortcodes/config/easl-staffs.php') );
+	//vc_lean_map( 'easl_staffs', null, get_theme_file_path('/inc/shortcodes/config/easl-staffs.php') );
 	vc_lean_map( 'easl_staffs_accordion', null, get_theme_file_path('/inc/shortcodes/config/easl-staffs-accordion.php') );
 	vc_lean_map( 'easl_scientific_publication', null, get_theme_file_path('/inc/shortcodes/config/easl-scientific-publication.php') );
 	//vc_lean_map( 'easl_awardees', null, get_theme_file_path('/inc/shortcodes/config/easl-awardees.php') );
@@ -83,5 +83,6 @@ add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
 
 function ilc_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/youtube-video/youtube-video.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-staffs/easl-staffs.php');
 }
 add_action('vc_after_mapping', 'ilc_map_vc_shortcodes');
