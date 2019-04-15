@@ -593,3 +593,125 @@ function easl_is_future_event($event_id) {
 	}
 	return false;
 }
+
+function easl_get_event_date_parts( $event_id = false ) {
+	if ( ! $event_id ) {
+		$event_id = get_the_ID();
+	}
+	$event_start_date = get_post_meta( $event_id, 'event_start_date', true );
+	$event_end_date   = get_post_meta( $event_id, 'event_end_date', true );
+
+	if ( ! $event_start_date ) {
+		return false;
+	}
+	$event_start_day = date( 'd', $event_start_date );
+	if ( ! $event_start_date ) {
+		return false;
+	}
+	if ( $event_end_date > $event_start_date ) {
+		$event_start_day .= '-' . date( 'd', $event_end_date );
+	}
+	$date_parts       = array(
+		'day'   => '',
+		'month' => '',
+		'year'  => ''
+	);
+	$date_parts['day'] = $event_start_day;
+
+	$event_start_month = date( 'M', $event_start_date );
+	$event_end_month   = '';
+	if ( $event_end_date ) {
+		$event_end_month = date( 'M', $event_end_date );
+	}
+	if ( $event_start_month ) {
+		$date_parts['month'] = $event_start_month;
+	}
+	if ( $event_start_month && $event_end_month && ( $event_start_month != $event_end_month ) ) {
+		$date_parts['month'] .= '/' . $event_end_month;
+	}
+	$event_start_year = date( 'Y', $event_start_date );
+	if ( $event_start_year ) {
+		$date_parts['year'] = $event_start_year;
+	}
+
+	return $date_parts;
+}
+
+function easl_get_event_time_type( $event_id = false ) {
+	if ( ! $event_id ) {
+		$event_id = get_the_ID();
+	}
+	$event_start_date = get_post_meta( $event_id, 'event_start_date', true );
+	$event_end_date   = get_post_meta( $event_id, 'event_end_date', true );
+
+	$now_time        = time() - 86399;
+	$event_time_type = 'upcoming';
+	if ( ( $event_start_date < $now_time ) && ( $event_end_date < $now_time ) ) {
+		$event_time_type = 'past';
+	}
+	if ( ( $event_start_date < $now_time ) && ( $event_end_date >= $now_time ) ) {
+		$event_time_type = 'current';
+	}
+
+	return $event_time_type;
+}
+
+function easl_get_formatted_event_location( $event_id = false ) {
+	if ( ! $event_id ) {
+		$event_id = get_the_ID();
+	}
+	$event_location                = array();
+	$event_location_venue          = get_post_meta( $event_id, 'event_location_venue', true );
+	$event_location_city           = get_post_meta( $event_id, 'event_location_city', true );
+	$event_location_country        = get_post_meta( $event_id, 'event_location_country', true );
+	$event_location_display_format = get_post_meta( $event_id, 'event_location_display_format', true );
+
+	if ( ! in_array( $event_location_display_format, array(
+		'venue|city,contury',
+		'venue,Country',
+		'venue',
+		'city,contury'
+	) ) ) {
+		$event_location_display_format = 'venue|city,contury';
+	}
+
+	$event_location_display = array();
+
+	if ( 'venue|city,contury' == $event_location_display_format ) {
+		if ( $event_location_venue ) {
+			$event_location_display[] = $event_location_venue;
+		}
+		if ( $event_location_city ) {
+			$event_location[] = $event_location_city;
+		}
+		if ( $event_location_country ) {
+			$event_location[] = easl_event_map_country_key( $event_location_country );
+		}
+		if ( count( $event_location ) > 0 ) {
+			$event_location_display[] = implode( ', ', $event_location );
+		}
+		$event_location_display = implode( ' | ', $event_location_display );
+	} elseif ( 'venue,Country' == $event_location_display_format ) {
+		if ( $event_location_venue ) {
+			$event_location_display[] = $event_location_venue;
+		}
+		if ( $event_location_country ) {
+			$event_location_display[] = easl_event_map_country_key( $event_location_country );
+		}
+		$event_location_display = implode( ', ', $event_location_display );
+	} elseif ( 'venue' == $event_location_display_format ) {
+		$event_location_display = $event_location_venue;
+	} elseif ( 'city,contury' == $event_location_display_format ) {
+		if ( $event_location_city ) {
+			$event_location_display[] = $event_location_city;
+		}
+		if ( $event_location_country ) {
+			$event_location_display[] = easl_event_map_country_key( $event_location_country );
+		}
+		$event_location_display = implode( ', ', $event_location_display );
+	} else {
+		$event_location_display = '';
+	}
+
+	return $event_location_display;
+}
