@@ -274,28 +274,27 @@
         return data;
     };
     EventCalendar.prototype.updateCountryDropdown = function(data){
-        var ob = this, events = [];
+        var ob = this, events = [], loaded = false;
         if(data.topics) {
+            loaded = true;
             for(var i=0; i < data.topics.length; i++) {
                 if(this.eventsMap.topics[data.topics[i]]){
                     events = easlArrayUnion(events, this.eventsMap.topics[data.topics[i]]);
                 }
             }
-        }else{
-            events = this.eventsMap.topics.all;
+            events = easlArrayUnion( events, this.eventsMap.topics.allTopicEvents);
         }
-        events = easlArrayUnion( events, this.eventsMap.topics.allTopicEvents);
 
         if(data.meeting_type && this.eventsMap.meetingType[data.meeting_type]) {
-            events = easlArrayIntersect(events, this.eventsMap.meetingType[data.meeting_type]);
+            events = loaded ? easlArrayIntersect(events, this.eventsMap.meetingType[data.meeting_type]) : (loaded = true, this.eventsMap.meetingType[data.meeting_type]);
         }
 
         if(data.organizer && this.eventsMap.organizer[data.organizer]) {
-            events = easlArrayIntersect(events, this.eventsMap.organizer[data.organizer]);
+            events = loaded ? easlArrayIntersect(events, this.eventsMap.organizer[data.organizer]) : (loaded = true, this.eventsMap.organizer[data.organizer]);
         }
 
         if(data.event_type && this.eventsMap.type[data.event_type]) {
-            events = easlArrayIntersect(events, this.eventsMap.type[data.event_type]);
+            events = loaded ? easlArrayIntersect(events, this.eventsMap.type[data.event_type]) : (loaded = true, this.eventsMap.type[data.event_type]);
         }
         var locationEvents = [];
         if(data.location && this.eventsMap.countries[data.location]) {

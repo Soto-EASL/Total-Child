@@ -30,7 +30,7 @@ if( class_exists('WPBakeryShortCode') ){
             }
 			return $return;
         }
-		public static function events_meeting_type_map() {
+		public static function events_meeting_type_map($include_children = true) {
 			global $wpdb;
 			$sql = "";
 			$sql .= "SELECT GROUP_CONCAT(DISTINCT {$wpdb->posts}.ID ORDER BY {$wpdb->posts}.ID ASC SEPARATOR ',') as events, terms.term_id";
@@ -55,6 +55,9 @@ if( class_exists('WPBakeryShortCode') ){
 					$return[$item->term_id] = array();
 				}
 			}
+			if($include_children){
+				$return = self::events_map_include_child_terms($return, EASL_Event_Config::get_meeting_type_slug());
+            }
 			return $return;
 		}
 
@@ -158,6 +161,21 @@ if( class_exists('WPBakeryShortCode') ){
 				$return[$name] = $id;
             }
 			return $return;
+        }
+
+        public static function events_map_include_child_terms($terms_events_map, $taxonomy) {
+		    if(!$terms_events_map || !is_array($terms_events_map) || count($terms_events_map) < 1 || !is_taxonomy_hierarchical($taxonomy)){
+		        return $terms_events_map;
+            }
+		    foreach ($terms_events_map as $term_id => $term_events){
+		        $term_children = get_term_children($term_id, $taxonomy);
+		        foreach($term_children as $term_child_id){
+		            if(isset($terms_events_map[$term_child_id])){
+		                $terms_events_map[$term_id] = array_unique(array_merge($terms_events_map[$term_id], $terms_events_map[$term_child_id]));
+                    }
+                }
+            }
+	        return $terms_events_map;
         }
 
 		public function string_to_array( $value ) {
