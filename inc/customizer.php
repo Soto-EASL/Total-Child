@@ -138,6 +138,15 @@ function easl_customizer_sections($sections) {
 					'type' => 'text',
 				),
 			),
+			array(
+				'id' => 'fellowship_header_back_button',
+				'transport' => 'partialRefresh',
+				'default' => __('', 'total-child'),
+				'control' => array(
+					'label' => __('Header Back Button URL', 'total-child'),
+					'type' => 'text',
+				),
+			),
 		)
 	);
 	$sections['easl_preloader_animation'] = array(
