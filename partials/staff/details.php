@@ -4,6 +4,17 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 $post = get_post( get_the_ID() );
+$easl_position = get_field('easl_position');
+
+if($easl_position){
+	$easl_position = wp_kses($easl_position, array(
+	        'span' => array(),
+	        'strong' => array(),
+	        'em' => array(),
+	        'b' => array(),
+	        'i' => array(),
+    ));
+}
 
 $img_path = '';
 if ( has_post_thumbnail( $post->ID ) ) {
@@ -24,10 +35,8 @@ $terms = get_the_terms( $post->ID, 'staff_category' );
         </div>
         <div class="easl-staff-details-title-contact">
             <h2><?php the_title(); ?></h2>
-	        <?php if ( $terms ): ?>
-		        <?php foreach ( $terms as $term ): ?>
-                    <h4 class="easl-staff-details-position"><?php echo $term->name; ?></h4>
-		        <?php endforeach; ?>
+	        <?php if ( $easl_position ): ?>
+                <h4 class="easl-staff-details-position"><?php echo $easl_position; ?></h4>
 	        <?php endif; ?>
             <?php if(has_excerpt()): ?>
             <div class="easl-staff-details-excerpt"><?php the_excerpt(); ?></div>
