@@ -5413,6 +5413,24 @@ ul.suggestions{
 .publication-sidebar-item .easl-custom-select:after{
     color: #62cff5;
 }
+.easl-events-top-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: stretch;
+    flex-wrap: nowrap;
+}
+.easl-events-top-buttons a {
+    width: 50%;
+}
+.easl-events-top-buttons a:first-child {
+    margin-right: 10px;
+    margin-left: 0;
+}
+.easl-events-top-buttons a:last-child {
+    margin-left: 10px;
+    margin-right: 0;
+}
 .event-button-icon-person {
     background-image: url(images/icons/person.png);
 }
@@ -9215,6 +9233,13 @@ body .mentors-application-title {
     .yif-title-wrap h3 {
         margin: 0 0 8px;
     }
+    /* Events */
+    .event-dates-meta-wrap {
+        margin-bottom: 25px;
+    }
+    .easl-events-top-buttons {
+        justify-content: flex-start;
+    }
     /*Footer*/
     .site-footer-inner {
         padding-top: 15px;
@@ -9396,6 +9421,14 @@ body .mentors-application-title {
     /* VC Shortcode: EASL News List */
     .easl-news-list-thumb img {
         width: 100%;
+    }
+    /* Events */
+    .easl-events-top-buttons {
+        display: block;
+        text-align: left;
+    }
+    .easl-events-top-buttons a {
+        margin: 0 0 15px!important;
     }
 }
 @media only screen and (max-width: 479px) {

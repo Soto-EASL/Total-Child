@@ -222,30 +222,15 @@ $event_highlights = wp_parse_args($event_highlights, array(
             <div class="wpb_column vc_column_container vc_col-sm-5">
                 <div class="vc_column-inner" style="justify-content: center;">
                     <div class="wpb_wrapper">
-                        <div class="vc_row wpb_row vc_row-fluid">
-						<?php if($event_submit_abstract_url): ?>
-                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                <div class="vc_column-inner ">
-                                    <div class="wpb_wrapper">
-                                        <a class="event-button event-button-wide event-button-icon event-button-icon-application"
-                                           style="padding-top: 8px;
-                                                  padding-bottom: 8px;"
-												  href="<?php echo esc_url($event_submit_abstract_url);?>" target="_blank">Submit Abstract</a>
-                                    </div>
-                                </div>
-                            </div>
-						<?php endif; ?>
-						<?php if($event_register_url): ?>
-                            <div class="wpb_column vc_column_container vc_col-sm-6">
-                                <div class="vc_column-inner ">
-                                    <div class="wpb_wrapper">
-                                        <a class="event-button event-button-wide event-button-icon event-button-icon-person"
-                                           style="padding-top: 8px;
+                        <div class="easl-events-top-buttons">
+	                        <?php if($event_submit_abstract_url): ?>
+                                <a class="event-button event-button-wide event-button-icon event-button-icon-application" style="padding-top: 8px; padding-bottom: 8px;" href="<?php echo esc_url($event_submit_abstract_url);?>" target="_blank">Submit Abstract</a>
+	                        <?php endif; ?>
+	                        <?php if($event_register_url): ?>
+                                <a class="event-button event-button-wide event-button-icon event-button-icon-person" style="padding-top: 8px;
                                                   padding-bottom: 8px;" href="<?php echo esc_url($event_register_url);?>" target="_blank">Register</a>
-                                    </div>
-                                </div>
-                            </div>
-						<?php endif; ?>
+	                        <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -253,7 +238,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 			<?php endif; ?>
 		</div>
 	</div>
-	
+
 	<div class="event-main-section">
 		<div class="vc_row wpb_row vc_row-fluid">
 			<div class="wpb_column vc_column_container vc_col-sm-8">
@@ -261,7 +246,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 					<div class="wpb_wrapper clr">
 						<?php if($event_top_sections && is_array( $event_top_sections) && count($event_top_sections) > 0): ?>
                         <div class="event-sections">
-							<?php 
+							<?php
 							foreach ($event_top_sections as $event_top_section):
 								$event_top_section_title = !empty($event_top_section['section_title'])? trim($event_top_section['section_title']) : '';
 								$event_top_section_content = !empty($event_top_section['section_content'])? trim($event_top_section['section_content']) : '';
@@ -285,7 +270,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 							<?php endif; ?>
 							<?php if($event_short_description): ?>
                             <div class="event_description">
-                                <?php echo do_shortcode($event_short_description);?>    
+                                <?php echo do_shortcode($event_short_description);?>
                             </div>
 							<?php endif; ?>
 							<?php if($event_show_more): ?>
@@ -387,7 +372,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 						<?php endif; ?>
 						<?php if($event_sections && is_array( $event_sections) && count($event_sections) > 0): ?>
                         <div class="event-sections">
-							<?php 
+							<?php
 							foreach ($event_sections as $event_section):
 								$event_section_title = !empty($event_section['section_title'])? trim($event_section['section_title']) : '';
 								$event_section_content = !empty($event_section['section_content'])? trim($event_section['section_content']) : '';
@@ -414,7 +399,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 						<?php endif; ?>
 						<?php if($event_bottom_sections && is_array( $event_bottom_sections) && count($event_bottom_sections) > 0): ?>
                         <div class="event-sections">
-							<?php 
+							<?php
 							foreach ($event_bottom_sections as $event_bottom_section):
 								$event_bottom_section_title = !empty($event_bottom_section['section_title'])? trim($event_bottom_section['section_title']) : '';
 								$event_bottom_section_content = !empty($event_bottom_section['section_content'])? trim($event_bottom_section['section_content']) : '';
@@ -491,7 +476,7 @@ $event_highlights = wp_parse_args($event_highlights, array(
 
 								<h3 class="event-sidebar-item-title">Key Deadlines</h3>
 								<ul>
-                                    <?php 
+                                    <?php
 									if(!$key_dates){
 										$key_dates = array();
 									}
@@ -534,9 +519,9 @@ $event_highlights = wp_parse_args($event_highlights, array(
 							<?php endif; ?>
 							<?php if($event_poster_text): ?>
 							<p><?php echo wp_kses( $event_poster_text, array(
-									'br' => array(), 
+									'br' => array(),
 									'span' => array(
-										'style' => array(), 
+										'style' => array(),
 										'class' => array(),
 									)
 								) ); ?></p>
