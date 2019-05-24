@@ -4927,7 +4927,13 @@ ul.event-links-list li:before{
 .easl-button-grid-column-container.easl-button-grid-wrapper .easl-gbtn-wrap {
     margin: 0 5px 10px;
 }
+/* Shortcode: Annual Reports */
+.annual-report-thumb {
 
+}
+.annual-report-thumb img{
+    border: 1px solid #d1d1d1;
+}
 /*Footer Newsletter*/
 .footer-newsletter {
     background: #004b87;
