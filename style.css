@@ -8570,7 +8570,7 @@ body .mentors-application-title {
     }
     /*Slide decks*/
     .easl-slide-deck-item-has-thumb {
-        display: -webkit-box;
+        isplay: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: horizontal;
