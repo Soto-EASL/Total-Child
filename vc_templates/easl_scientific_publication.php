@@ -17,6 +17,7 @@ if (!defined('ABSPATH')) {
 $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = $css = '';
 $enable_related_links = $relink_title = $related_links = '';
 $hide_topic = $include_categories = '';
+$deny_detail_page = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );

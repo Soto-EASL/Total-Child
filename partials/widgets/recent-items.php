@@ -79,7 +79,7 @@ if($publication_number) {
 			'id'        => get_the_ID(),
 			'date'      => $post->post_date,
 			'title'     => get_the_title(),
-			'permalink' => get_the_permalink(),
+			'permalink' => has_term(104, 'publication_category', get_the_ID()) ? get_field('link_to_journal_hepatology') : get_the_permalink(),
 			'color'     => $current_item_color ? $current_item_color : easl_get_publication_topic_color( get_the_ID() ),
 		);
 	}
