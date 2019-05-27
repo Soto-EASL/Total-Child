@@ -5447,6 +5447,9 @@ ul.suggestions{
     height: 277px;
     overflow: hidden;
 }
+.event-button-apply {
+    max-width: 145px;
+}
 /* Events */
 .ec-links-more .ec-links-icon {
     background-repeat: no-repeat;
