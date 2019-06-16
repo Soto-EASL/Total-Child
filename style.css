@@ -4069,6 +4069,7 @@ body.single-event {
     flex-wrap: wrap;
     flex-direction: row;
     margin-bottom: 30px;
+    width: 100%;
 }
 .event-image-box-bg {
     background: #f1f1f1;
