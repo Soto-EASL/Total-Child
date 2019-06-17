@@ -15,20 +15,13 @@ if (!defined('ABSPATH')) {
  */
 
 $title = $element_width = $view_all_link = $view_all_url = $view_all_text = $el_class = $el_id = $css_animation = $css = '';
+$posts_per_page = $pagination = $order = $orderby = '';
 $enable_related_links = $relink_title = $related_links = '';
 $hide_topic = $include_categories = '';
 $deny_detail_page = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
-
-if($include_categories) {
-	$include_categories = explode(',', $include_categories);
-}
-if(!$include_categories) {
-	$include_categories = array();
-}
-
 
 $class_to_filter = 'wpb_easl_scientific_publication wpb_content_element';
 $class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
@@ -54,9 +47,6 @@ $has_filter = false;
 $filter_ec_filter_topics = [];
 $filter_ecf_search = '';
 $filter_ecf_year = '';
-
-$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-
 
 if(isset($_REQUEST['ec_filter_topics'])){
     $filter_ec_filter_topics = $_REQUEST['ec_filter_topics'];
@@ -156,6 +146,9 @@ $option = '';
 $years_dd = $this->get_years($include_categories, $filter_ec_filter_topics);
 $filter_ecf_year = absint($filter_ecf_year);
 foreach ( $years_dd as $year ){
+    if(!$year){
+        continue;
+    }
 	$option .= '<option value="' . $year . '" ' . selected( $year, $filter_ecf_year, false )  . '>' . $year . '</option>';
 }
 $related_links_html = '';
@@ -214,46 +207,83 @@ $top_filter .=  $hide_topic === "true" ? '<div class="wpb_column vc_column_conta
 						'<div class="easl-col-inner" >'. $related_links_html.'</div></div></div></div></div></div>': '';
 $top_filter .= '</div>';
 
-$atts['post_type'] = 'publication';
-$atts['paged'] = $paged;
-$atts['tax_query'] = array();
-if(count($include_categories) > 0) {
-	$atts['tax_query'] = array(
-		array(
-			'taxonomy'=> 'publication_category',
-			'field' => 'id',
-			'terms' => $include_categories,
-		),
+$posts_per_page = absint( $posts_per_page );
+if ( ! $posts_per_page ) {
+	$posts_per_page = - 1;
+}
+if ( ! in_array( $order, array( 'ASC', 'DESC' ) ) ) {
+	$order = 'DESC';
+}
+if ( ! in_array( $orderby, array( 'title', 'ID' ) ) ) {
+	$orderby = 'pub_date';
+}
+
+if ( $include_categories ) {
+	$include_categories = explode( ',', $include_categories );
+}
+if ( ! $include_categories ) {
+	$include_categories = array();
+}
+
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+$query_args = array(
+	'post_type'      => Publication_Config::get_publication_slug(),
+	'post_status'    => 'publish',
+	'posts_per_page' => $posts_per_page,
+	'paged'          => $paged,
+	'order'          => $order,
+);
+if ( $orderby == 'pub_date' ) {
+	$query_args['orderby']  = 'meta_value_num';
+	$query_args['meta_key'] = 'publication_raw_date';
+} else {
+	$query_args['orderby'] = $orderby;
+}
+$pub_tag_query = array();
+if ( count( $include_categories ) > 0 ) {
+	$pub_tag_query[] = array(
+		'taxonomy' => 'publication_category',
+		'field'    => 'id',
+		'terms'    => $include_categories,
 	);
 }
-if( is_array($filter_ec_filter_topics) && count($filter_ec_filter_topics) > 0 && $filter_ec_filter_topics[0] != '') {
-	$atts['tax_query']['relation'] = 'AND';
-	$atts['tax_query'][] =  array(
+if ( is_array( $filter_ec_filter_topics ) && count( $filter_ec_filter_topics ) > 0 && $filter_ec_filter_topics[0] != '' ) {
+	$pub_tag_query[] = array(
 		'taxonomy' => 'publication_topic',
-		'field' => 'id',
-		'terms' => $filter_ec_filter_topics,
+		'field'    => 'id',
+		'terms'    => $filter_ec_filter_topics,
 		'operator' => 'IN',
 	);
 }
-if($filter_ecf_search){
-    $atts['s'] = $filter_ecf_search;
+if ( count( $pub_tag_query ) > 0 ) {
+	$pub_tag_query['relation'] = 'AND';
+	$query_args['tax_query']   = $pub_tag_query;
 }
 
-if($filter_ecf_year && ($filter_ecf_year != '') ){
-    $atts['meta_query'] = array(
-        'relation' => 'AND',
-        'publication_date'=> array(
-            'key' => 'publication_year',
-            'value' => $filter_ecf_year,
-            'compare' => '=',
-        ),
-    );
+if ( $filter_ecf_search ) {
+	$query_args['s'] = $filter_ecf_search;
+}
+if ( $filter_ecf_year ) {
+	$query_args['meta_query'] = array(
+		'relation'         => 'AND',
+        array(
+			'key'     => 'publication_raw_date',
+			'value'   => $filter_ecf_year . '0101',
+			'compare' => '>=',
+		),
+        array(
+			'key'     => 'publication_raw_date',
+			'value'   => $filter_ecf_year . '1231',
+			'compare' => '<=',
+		),
+	);
 }
 
 
 //$css_animation = $this->getCSSAnimation($css_animation);
 
-$easl_query = new WP_Query( $atts );
+$easl_query = new WP_Query( $query_args );
 
 $topic_label = 'Topic:';
 $topic_delimiter = ' | ';
@@ -316,7 +346,18 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 					$excerpt = $hide_excerpt === "true" ? '' : get_the_excerpt();
 					$read_more_link =  $deny_detail_page === "true" ? get_field('link_to_journal_hepatology') : get_permalink();
 					$target = $deny_detail_page === "true" ? 'target="_blank"' : '';
-					$publication_date = get_field('publication_date');
+					$publication_date = get_field('publication_raw_date');
+					$publication_date_format = get_field('publication_date_format');
+					$custom_date_text = get_field('custom_date_text');
+					if(!$publication_date_format){
+						$publication_date_format = 'Y';
+                    }
+					if($publication_date_format == 'custom'){
+						$publication_date = $custom_date_text;
+                    }elseif($publication_date){
+						$publication_date = new DateTime($publication_date);
+						$publication_date = $publication_date->format($publication_date_format);
+                    }
 					?>
 					<article class="scientific-publication <?php if(!$image_src){echo 'sp-has-no-thumb';} ?> easl-sprow-color-<?php echo easl_get_publication_topic_color(); ?> clr">
 						<?php if($image_src): ?>

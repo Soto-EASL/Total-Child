@@ -3,7 +3,18 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
-$publication_date = get_field('publication_date');
+$publication_date = get_field('publication_raw_date');
+$publication_date_format = get_field('publication_date_format');
+$custom_date_text = get_field('custom_date_text');
+if(!$publication_date_format){
+	$publication_date_format = 'Y';
+}
+if($publication_date_format == 'custom'){
+	$publication_date = $custom_date_text;
+}elseif($publication_date){
+	$publication_date = new DateTime($publication_date);
+	$publication_date = $publication_date->format($publication_date_format);
+}
 $image = has_post_thumbnail( get_the_ID() ) ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
 
 $topic_color = easl_get_publication_topic_color(get_the_ID());

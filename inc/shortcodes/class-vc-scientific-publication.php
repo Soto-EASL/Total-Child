@@ -32,19 +32,18 @@ if ( !class_exists( 'EASL_VC_Scientific_Publication' ) ) {
 				$topic_join = " LEFT JOIN {$wpdb->term_relationships} AS tt_topic  ON ({$wpdb->posts}.ID = tt_topic.object_id)";
 				$topic_where = " tt_topic.term_taxonomy_id IN (". implode(',', $topics) .") ";
 			}
-			$sql  = "SELECT DISTINCT {$wpdb->postmeta}.meta_value AS year FROM {$wpdb->posts}";
+			$sql  = "SELECT DISTINCT SUBSTRING({$wpdb->postmeta}.meta_value, 1, 4) AS year FROM {$wpdb->posts}";
 			$sql .= "{$cat_join}{$topic_join}";
 			$sql .= " INNER JOIN {$wpdb->postmeta} ON ( {$wpdb->posts}.ID = {$wpdb->postmeta}.post_id ) ";
 			$sql .= " WHERE (1=1)";
 			if($cat_where && $topic_where){
 				$sql .=" AND ({$cat_where} AND {$topic_where})";
-			}else{
-				$sql .= "AND {$cat_where}{$topic_where}";
 			}
-			$sql .= " AND ({$wpdb->postmeta}.meta_key = 'publication_year') ";
+			$sql .= " AND ({$wpdb->postmeta}.meta_key = 'publication_raw_date') ";
 			$sql .= " AND ({$wpdb->posts}.post_type = 'publication') AND ({$wpdb->posts}.post_status = 'publish') ORDER BY {$wpdb->postmeta}.meta_value DESC";
 
 			$years = $wpdb->get_col($sql);
+
 			if(!$years || !is_array($years)){
 				$years = array();
 			}

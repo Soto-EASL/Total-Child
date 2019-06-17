@@ -78,7 +78,7 @@ if ( $video_id ):
          xmlns="http://www.w3.org/1999/html">
 		<?php
 		if ( $widget_title && 'top' == $title_pos ) {
-			echo wpb_widget_title( array( 'title' => $widget_title, 'extraclass' => 'easl-yt-player-heading easl-yt-player-top' ) );
+			echo '<h2 class="wpb_heading easl-yt-player-heading easl-yt-player-top">' . $widget_title . '</h2>';
 		}
 		?>
         <div class="easl-yt-player-wrap">
@@ -125,7 +125,7 @@ if ( $video_id ):
 	        if($lightbox){
 		        $widget_title = '<a data-fancybox target="_blank" href="https://www.youtube.com/watch?v='. $video_id .'">'. $widget_title .'</a>';
             }
-		    echo wpb_widget_title( array( 'title' => $widget_title, 'extraclass' => 'easl-yt-player-heading easl-yt-player-heading-bottom' ) );
+		    echo '<h2 class="wpb_heading easl-yt-player-heading easl-yt-player-heading-bottom">' . $widget_title . '</h2>';
 	    }
 	    ?>
     </div>

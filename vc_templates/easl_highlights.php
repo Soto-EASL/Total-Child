@@ -75,6 +75,9 @@ $latest_publication = new WP_Query( array(
 	'post_type'      => Publication_Config::get_publication_slug(),
 	'post_status'    => 'publish',
 	'posts_per_page' => 1,
+	'orderby'        => 'meta_value_num',
+	'meta_key'       => 'publication_raw_date',
+	'order'          => 'DESC',
 ) );
 $latest_slide_desks = new WP_Query( array(
 	'post_type'      => Slide_Decks_Config::get_slug(),
