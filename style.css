@@ -284,6 +284,8 @@ hr.in-the-bottom{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     align-items: center;
+    margin-left: -7px;
+    margin-right: -7px;
 }
 .easl-align-left {
     justify-content: flex-start;
@@ -299,12 +301,6 @@ hr.in-the-bottom{
 }
 .easl-generic-buttons-wrap .easl-generic-button {
     margin: 0 7px 14px;
-}
-.easl-generic-buttons-wrap .easl-generic-button:first-child {
-    margin-left: 0;
-}
-.easl-generic-buttons-wrap .easl-generic-button:last-child {
-    margin-right: 0;
 }
 
 .easl-button {
