@@ -6367,7 +6367,11 @@ ul.suggestions{
     position: relative;
     z-index: 2;
  }
-
+/* VC Shortcode: Single image */
+.easl-vc-image-border-gray.wpb_single_image img {
+    display: inline-block;
+    border: 1px solid #d1d1d1;
+}
 /* VC Shortcode: EASL News List */
 .easl-news-list-filter {
     padding: 15px 15px 0;
