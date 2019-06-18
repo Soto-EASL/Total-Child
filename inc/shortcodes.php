@@ -33,7 +33,6 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-ilc-details.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-bgtext-box.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-yearly-awardees.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-secretary-generals-carousel.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-history-slide.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-membership-cats.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-sitemap.php';
 
@@ -71,7 +70,6 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_bgtext_box', null, get_theme_file_path('/inc/shortcodes/config/easl-bgtext-box.php') );
 	vc_lean_map( 'easl_yearly_awardees', null, get_theme_file_path('/inc/shortcodes/config/easl-yearly-awardees.php') );
 	vc_lean_map( 'easl_secretary_general_carousel', null, get_theme_file_path('/inc/shortcodes/config/easl-secretary-general-carousel.php') );
-	vc_lean_map( 'easl_history_slide', null, get_theme_file_path('/inc/shortcodes/config/easl-history-slide.php') );
 	vc_lean_map( 'easl_membership_cats', null, get_theme_file_path('/inc/shortcodes/config/easl-membership-cats.php') );
 	vc_lean_map( 'easl_highlights', null, get_theme_file_path('/inc/shortcodes/config/easl-highlights.php') );
 	vc_lean_map( 'easl_sitemap', null, get_theme_file_path('/inc/shortcodes/config/easl-sitemap.php') );
@@ -82,5 +80,6 @@ function ilc_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/youtube-video/youtube-video.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-staffs/easl-staffs.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-annual-reports/easl-annual-reports.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-history-slide/easl-history-slide.php');
 }
 add_action('vc_after_mapping', 'ilc_map_vc_shortcodes');
