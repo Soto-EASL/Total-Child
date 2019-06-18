@@ -796,7 +796,7 @@
             showOn: "button",
             buttonImageOnly: true,
         });
-        $('.easl-carousel').on('loaded.owl.carousel changed.owl.carousel resized.owl.carousel', function(event){
+        $('.easl-carousel').on('initialized.owl.carousel loaded.owl.carousel changed.owl.carousel resized.owl.carousel', function(event){
             var top = 0;
             if(null !== event.item.index){
                 top = $(this).find(".owl-item").eq(event.item.index).find(".easl-carousel-image").outerHeight();
