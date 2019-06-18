@@ -61,6 +61,7 @@ if ( $orderby == 'year' ) {
 $sg_query = new WP_Query( $query_args );
 
 if ( $sg_query->have_posts() ) {
+	vcex_enqueue_carousel_scripts();
 	$carousel_options = array(
 		'arrows' => 'true',
 		'dots' => 'false',
@@ -78,12 +79,7 @@ if ( $sg_query->have_posts() ) {
 	);
 	$wrapper_attributes[] = 'data-wpex-carousel="'. vcex_get_carousel_settings( $carousel_options, 'easl_carousel' ) .'"';
 	?>
-    <div <?php echo implode( ' ', $wrapper_attributes ); ?> data-items="5" data-slideby="1" data-nav="true"
-                                                            data-dots="false" data-autoplay="false" data-loop="true"
-                                                            data-autoplay-timeout="5000" data-center="false"
-                                                            data-margin="15" data-items-tablet="3"
-                                                            data-items-mobile-landscape="2"
-                                                            data-items-mobile-portrait="1" data-smart-speed="150">
+    <div <?php echo implode( ' ', $wrapper_attributes ); ?>>
 		<?php
 		while ( $sg_query->have_posts() ):
 			$sg_query->the_post();
