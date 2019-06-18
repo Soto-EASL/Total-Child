@@ -61,6 +61,22 @@ if ( $orderby == 'year' ) {
 $sg_query = new WP_Query( $query_args );
 
 if ( $sg_query->have_posts() ) {
+	$carousel_options = array(
+		'arrows' => 'true',
+		'dots' => 'false',
+		'auto_play' => 'false',
+		'infinite_loop' => true,
+		'center' => 'false',
+		'animation_speed' => 150,
+		'items' => 5,
+		'items_scroll' => 1,
+		'timeout_duration' => 5000,
+		'items_margin' => 15,
+		'tablet_items' => 3,
+		'mobile_landscape_items' => 2,
+		'mobile_portrait_items' => 1
+	);
+	$wrapper_attributes[] = 'data-wpex-carousel="'. vcex_get_carousel_settings( $carousel_options, 'easl_carousel' ) .'"';
 	?>
     <div <?php echo implode( ' ', $wrapper_attributes ); ?> data-items="5" data-slideby="1" data-nav="true"
                                                             data-dots="false" data-autoplay="false" data-loop="true"
