@@ -82,5 +82,7 @@ add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
 function ilc_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/youtube-video/youtube-video.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-staffs/easl-staffs.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-icon-widget-grid/easl-icon-widget-grid.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-icon-widget/easl-icon-widget.php');
 }
 add_action('vc_after_mapping', 'ilc_map_vc_shortcodes');
