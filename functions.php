@@ -376,3 +376,10 @@ function easl_exclude_posts_from_search($query){
 	$query->set('post__not_in', $excludes);
 }
 add_action('pre_get_posts', 'easl_exclude_posts_from_search');
+
+add_filter( 'wpb_widget_title', 'easl_override_widget_title', 10, 2 );
+function easl_override_widget_title( $output = '', $params = array( '' ) ) {
+	$extraclass = ( isset( $params['extraclass'] ) ) ? " " . $params['extraclass'] : "";
+
+	return '<h1 class="entry-title' . $extraclass . '">' . $params['title'] . '</h1>';
+}
