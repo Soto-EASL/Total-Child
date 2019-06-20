@@ -407,6 +407,13 @@ $wrapper_attributes = array();
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
+wp_enqueue_script(
+	'appear',
+	vcex_asset_url( 'js/lib/jquery.appear.min.js' ),
+	array( 'jquery' ),
+	'1.0',
+	true
+);
 $output = '
 	<div ' . implode( ' ', $wrapper_attributes ) . ' class="' . esc_attr( trim( $css_class ) ) . '">
 		' . wpb_widget_title( array( 'title' => $title, 'extraclass' => 'wpb_easl_events_calendar_heading' ) ) . '
