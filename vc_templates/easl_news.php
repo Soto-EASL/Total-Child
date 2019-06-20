@@ -100,22 +100,16 @@ if ( $news_query->have_posts() ):
 					if ( ! has_post_thumbnail() ) {
 						continue;
 					}
-					$image_args = array(
-						'width'      => 350,
-						'height'     => 170,
-						'crop'       => true,
-						'attachment' => get_post_thumbnail_id(),
-					);
 					?>
                     <div class="easl-news-col easl-col easl-col-3">
                         <div class="easl-col-inner">
                             <article class="easl-news-item">
                                 <figure>
-                                    <a href="<?php the_permalink(); ?>"><?php echo wpex_get_post_thumbnail( $image_args ); ?></a>
+                                    <a href="<?php the_permalink(); ?>">
+		                                <?php the_post_thumbnail( 'news_list' ); ?>
+                                    </a>
                                 </figure>
-                                <p class="easl-news-date"><?php echo wpex_date_format( array( 'id'     => get_the_ID(),
-								                                                              'format' => 'd M, Y',
-									) ); ?></p>
+                                <p class="easl-news-date"><?php echo wpex_date_format( array( 'id'     => get_the_ID(),'format' => 'd M, Y', ) ); ?></p>
                                 <h3><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
                                 <div class="eeasl-news-excerpt"><?php echo wpex_get_excerpt( array( 'length' => $excerpt_length ) ); ?></div>
                             </article>

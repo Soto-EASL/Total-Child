@@ -18,7 +18,7 @@ require_once EASL_INC_DIR . 'widgets.php';
 function easl_theme_setup(){
 	load_theme_textdomain('total-child');
 	add_image_size('staff_grid', 254, 254, true);
-	add_image_size('news_list', 256, 126, true);
+	add_image_size('news_list', 350, 170, true);
 	add_image_size('news_single', 1125, 9999, false);
 }
 add_action( 'after_setup_theme', 'easl_theme_setup' );
