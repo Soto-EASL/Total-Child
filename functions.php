@@ -18,7 +18,7 @@ require_once EASL_INC_DIR . 'widgets.php';
 function easl_theme_setup(){
 	load_theme_textdomain('total-child');
 	add_image_size('staff_grid', 254, 254, true);
-	add_image_size('news_list', 256, 126, true);
+	add_image_size('news_list', 350, 170, true);
 	add_image_size('news_single', 1125, 9999, false);
 }
 add_action( 'after_setup_theme', 'easl_theme_setup' );
@@ -376,3 +376,10 @@ function easl_exclude_posts_from_search($query){
 	$query->set('post__not_in', $excludes);
 }
 add_action('pre_get_posts', 'easl_exclude_posts_from_search');
+
+add_filter( 'wpb_widget_title', 'easl_override_widget_title', 10, 2 );
+function easl_override_widget_title( $output = '', $params = array( '' ) ) {
+	$extraclass = ( isset( $params['extraclass'] ) ) ? " " . $params['extraclass'] : "";
+
+	return '<h1 class="entry-title' . $extraclass . '">' . $params['title'] . '</h1>';
+}
