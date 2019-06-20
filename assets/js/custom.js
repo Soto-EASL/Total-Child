@@ -360,13 +360,16 @@
         this.$wrap.removeClass('easl-ec-scroll-loading easl-ec-filter-loading');
     };
     EventCalendar.prototype.animateRows = function($rows){
-        if("function" !== typeof jQuery.fn.waypoint){
+        if("function" !== typeof jQuery.fn.vcwaypoint){
+            console.log("vcwaypoint is not installed");
             return false;
         }
-        $(".wpb_animate_when_almost_visible:not(.wpb_start_animation)", $rows).waypoint(function(){
-            jQuery(this).addClass("wpb_start_animation animated");
-        },{offset:"85%"});
-
+        $(".wpb_animate_when_almost_visible:not(.wpb_start_animation)", $rows).each(function () {
+            var $el = jQuery(this);
+            $el.vcwaypoint(function () {
+                $el.addClass("wpb_start_animation animated");
+            }, {offset: "85%"});
+        });
     };
     EventCalendar.prototype.abortRequest = function(){
         (typeof this.request === 'object') && this.request.abort();
