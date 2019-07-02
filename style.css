@@ -1416,6 +1416,9 @@ body .custom.tparrows:before {
 body .custom.tparrows:hover {
     background: rgba(113,197,232,.75);
 }
+body .tp-caption.slidelink a span {
+    background-image: url('images/coloredbg.png');
+}
 /*VC Shortcode: Single Image*/
 body .wpb_single_image .easl-vc-image-over {
     background: rgba(255,255,255,.75);
