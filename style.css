@@ -990,59 +990,48 @@ body #site-navigation-wrap {
 }
 .header-aside-buttons {
 	display: table-cell;
-	width: 160px;
-    padding: 7px 0 0;
+    padding: 85px 0 0;
+    text-align: right;
+    font-size: 16px;
+    line-height: 1.5em;
+    -webkit-transition: padding-top .25s;
+    -moz-transition: padding-top .25s;
+    -ms-transition: padding-top .25s;
+    -o-transition: padding-top .25s;
+    transition: padding-top .25s;
 }
 .mz-loggedout-buttons.header-aside-buttons {
-    width: 330px;
+
 }
 .header-aside-buttons a {
-	background: #62cff5;
-	display: block;
-	margin: 0 0 5px;
-	width: 100%;
-	text-align: center;
-	padding: 18px 10px;
-	color: #004b87;
-	font-size: 16px;
-	font-family: "KnockoutHTF51Middleweight";
-    transition-property: background;
-}
-.header-aside-buttons .become-a-member-button {
-    background: #78cdf2;
-}
-.mz-loggedout-buttons.header-aside-buttons .become-a-member-button {
-    display: inline-block;
-    width: 160px;
+	display: inline-block;
+	color: #666;
 }
 .mz-buttonsep {
-    display: block;
-    height: 1px;
+    display: inline-block;
+    color: #666;
+    margin: 0 4px;
 }
 .easl-header-sticky-active .mz-buttonsep {
-    display: none;
+
 }
 .header-aside-buttons a:hover,
 .header-aside-buttons a:active,
 .header-aside-buttons a:hover,
 .header-aside-buttons a:active {
-    background: #004b87;
-    color: #fff;
     text-decoration: none;
 }
 .easl-header-sticky-active .header-aside-buttons {
-    width: 330px;
+    
 }
-.easl-header-sticky-active .header-aside-buttons.mz-loggedout-buttons {
-    width: 500px;
+.easl-header-sticky-active .header-aside-buttons {
+    padding-top: 15px;
 }
 .easl-header-sticky-active .header-aside-buttons a {
-    display: inline-block;
-    width: 160px;
-    margin: 0 5px 0 0;
+
 }
 .easl-header-sticky-active .header-aside-buttons a:last-child {
-    margin-right: 0;
+
 }
 #header-aside-social {
 	position: fixed;
