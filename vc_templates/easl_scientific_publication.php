@@ -19,6 +19,7 @@ $posts_per_page = $pagination = $order = $orderby = '';
 $enable_related_links = $relink_title = $related_links = '';
 $hide_topic = $include_categories = '';
 $deny_detail_page = '';
+$hide_excerpt = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -355,7 +356,7 @@ $not_found_text = $has_filter ? 'Nothing has been found' : 'content is coming so
 					if($publication_date_format == 'custom'){
 						$publication_date = $custom_date_text;
                     }elseif($publication_date){
-						$publication_date = new DateTime($publication_date);
+						$publication_date = DateTime::createFromFormat('d/m/Y', $publication_date);
 						$publication_date = $publication_date->format($publication_date_format);
                     }
 					?>

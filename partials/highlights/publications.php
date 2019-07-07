@@ -12,7 +12,7 @@ if(!$publication_date_format){
 if($publication_date_format == 'custom'){
 	$publication_date = $custom_date_text;
 }elseif($publication_date){
-	$publication_date = new DateTime($publication_date);
+	$publication_date = DateTime::createFromFormat('d/m/Y', $publication_date);
 	$publication_date = $publication_date->format($publication_date_format);
 }
 $image = has_post_thumbnail( get_the_ID() ) ? wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
