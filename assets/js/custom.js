@@ -855,24 +855,40 @@
             $('.easl-news-list-filter-form').submit();
         });
         // National Association
-        $body.on('click', '.national-associations-menu-item', function (e) {
-            e.preventDefault();
-            var $this = $(this), $con = $this.closest('.nas-container');
-            var cat = $this.data('term');
-            if($this.hasClass('nas-current')) {
+        $('.nas_filter_id').on('change', function (e) {
+            var $this = $(this), $con = $this.closest('.easl-nas-wrap');
+            var id = $this.val();
+            if(!id){
+                $this.data('current', false);
+                $con.removeClass('nas-loaded nas-loading');
                 return false;
             }
-            $('.national-associations-menu-item.nas-current', $con).removeClass('nas-current');
-            $this.addClass('nas-current');
+            if($this.data('current') === id) {
+                return false;
+            }
+            $this.data('current', id);
             $con.removeClass('nas-loaded').addClass('nas-loading');
             $.post(EASLSETTINGS.ajaxUrl, {
-                'action': 'get_national_associations_func',
-                'category': cat
+                'action': 'get_nas_details',
+                'nas_id': id
             }, function (response) {
-                $('.associations-content-block-response', $con).html(response);
+                $('.easl-nas-details', $con).html(response);
                 $con.removeClass('nas-loading').addClass('nas-loaded');
-                history.pushState({id: 'nas', html: $con.html() }, document.title, $this.attr('href'));
+                //history.pushState({id: 'nas', html: $con.html() }, document.title, $this.attr('href'));
             });
+        });
+        $('.easl-nas-contribute-form-wrap').attr('style', '');
+        $('.easl-nas-contribute-button-trigger').on('click', function (event) {
+            event.preventDefault();
+            var id = $(this).attr('href');
+            $formModal = $(id);
+            if($formModal.length) {
+                $formModal.addClass('easl-active');
+            }
+        });
+        $('.easl-nas-form-close').on('click', function (event) {
+            event.preventDefault();
+            $(this).closest('.easl-nas-contribute-form-wrap').removeClass('easl-active');
         });
         $body.on('click', '.show-footer-newsletter', function (event) {
             event.preventDefault();
