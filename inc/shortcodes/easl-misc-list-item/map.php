@@ -64,10 +64,7 @@ return array(
 			'param_name'  => 'title',
 			'description' => __( 'Enter title.', 'total-child' ),
 			'group'       => __( 'Data', 'total-child' ),
-			'dependency'  => array(
-				'element' => 'type',
-				'value'   => array( 'downloadable', 'title_excerpt' ),
-			),
+			'admin_label' => true,
 		),
 		array(
 			'type'        => 'textarea',
