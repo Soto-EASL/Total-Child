@@ -97,4 +97,3 @@ function easl_menu_order($menu_order) {
 
 }
 add_filter( 'menu_order', 'easl_menu_order' );
-//2246,1397,1399,1391,1393,1388,1395
