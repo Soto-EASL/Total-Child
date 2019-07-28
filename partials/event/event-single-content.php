@@ -11,27 +11,27 @@ $event_show_more               = trim( get_field( 'event_show_more' ) );
 $event_online_programme_url    = get_field( 'event_online_programme_url' );
 $event_time_type               = easl_get_event_time_type( get_the_ID() );
 $event_location_display        = easl_get_formatted_event_location( get_the_ID() );
-$event_start_date = get_post_meta(get_the_ID(), 'event_start_date', true);
-$event_end_date = get_post_meta(get_the_ID(), 'event_end_date', true);
-$event_notification_url = get_field('event_notification_url');
-$event_website_url = get_field('event_website_url');
-$event_why_attend = trim(get_field('event_why_attend'));
-$event_why_attend_title = trim(get_field('event_why_attend_title'));
-$event_who_should_attend = trim(get_field('event_who_should_attend'));
-$event_who_should_attend_title = trim(get_field('event_who_should_attend_title'));
-$event_topic_covered = trim(get_field('event_topic_covered'));
-$event_topic_covered_title = trim(get_field('event_topic_covered_title'));
-$event_highlights = get_field('event_highlights');
-$event_highlights = wp_parse_args($event_highlights, array(
+$event_start_date              = get_post_meta( get_the_ID(), 'event_start_date', true );
+$event_end_date                = get_post_meta( get_the_ID(), 'event_end_date', true );
+$event_notification_url        = get_field( 'event_notification_url' );
+$event_website_url             = get_field( 'event_website_url' );
+$event_why_attend              = trim( get_field( 'event_why_attend' ) );
+$event_why_attend_title        = trim( get_field( 'event_why_attend_title' ) );
+$event_who_should_attend       = trim( get_field( 'event_who_should_attend' ) );
+$event_who_should_attend_title = trim( get_field( 'event_who_should_attend_title' ) );
+$event_topic_covered           = trim( get_field( 'event_topic_covered' ) );
+$event_topic_covered_title     = trim( get_field( 'event_topic_covered_title' ) );
+$event_highlights              = get_field( 'event_highlights' );
+$event_highlights              = wp_parse_args( $event_highlights, array(
 	'cover_image' => '',
-	'pdf_url' => '',
-));
-$event_sections = get_field('event_sections');
-$about_easl_schools = get_field('about_easl_schools');
-$about_easl_school_title = wpex_get_mod('about_easl_schools_title');
-$about_easl_school_content = wpex_get_mod('about_easl_schools_content');
-$event_bottom_sections = get_field('event_bottom_sections');
-$event_accreditation = get_field('event_accreditation');
+	'pdf_url'     => '',
+) );
+$event_sections                = get_field( 'event_sections' );
+$about_easl_schools            = get_field( 'about_easl_schools' );
+$about_easl_school_title       = wpex_get_mod( 'about_easl_schools_title' );
+$about_easl_school_content     = wpex_get_mod( 'about_easl_schools_content' );
+$event_bottom_sections         = get_field( 'event_bottom_sections' );
+$event_accreditation           = get_field( 'event_accreditation' );
 
 
 ?>
@@ -84,10 +84,8 @@ $event_accreditation = get_field('event_accreditation');
                 <ul class="event-links-list">
 					<?php if ( $event_online_programme_url ): ?>
                         <li class="event-link-program" style="float: left;border: none;margin-right: 40px;">
-                            <a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url ); ?>"
-                               style="display: inline-block" target="_blank">
-                                <span class="event-link-icon"><i class="ticon ticon-list-ul"
-                                                                 aria-hidden="true"></i></span>
+                            <a class="event-link-item" href="<?php echo esc_url( $event_online_programme_url ); ?>" style="display: inline-block" target="_blank">
+                                <span class="event-link-icon"><i class="ticon ticon-list-ul" aria-hidden="true"></i></span>
                                 <span class="event-link-text">Scientific Programme</span>
                             </a>
                         </li>
@@ -97,7 +95,7 @@ $event_accreditation = get_field('event_accreditation');
                             <div title="Add to Calendar" class="addeventatc">
 										<span class="event-link-item" href="" style="display: inline-block">
 											<span class="event-link-icon"><i class="ticon ticon-calendar-plus-o"
-                                                                             aria-hidden="true"></i></span>
+                                                        aria-hidden="true"></i></span>
 											<span class="event-link-text">Add to Calendar</span>
 										</span>
 								<?php if ( $event_start_date ): ?>
@@ -114,8 +112,7 @@ $event_accreditation = get_field('event_accreditation');
 					<?php endif; ?>
 					<?php if ( $event_notification_url && ( 'past' != $event_time_type ) ): ?>
                         <li class="event-link-notify" style="float: left;border: none;margin-right: 40px">
-                            <a class="event-link-item" href="<?php echo esc_url( $event_notification_url ); ?>"
-                               style="display: inline-block" target="_blank">
+                            <a class="event-link-item" href="<?php echo esc_url( $event_notification_url ); ?>" style="display: inline-block" target="_blank">
                                 <span class="event-link-icon"><i class="ticon ticon-envelope-o" aria-hidden="true"></i></span>
                                 <span class="event-link-text">Get Notified</span>
                             </a>
@@ -123,8 +120,7 @@ $event_accreditation = get_field('event_accreditation');
 					<?php endif; ?>
 					<?php if ( $event_website_url ): ?>
                         <li class="event-link-website" style="float: left;border: none;margin-right: 40px">
-                            <a class="event-link-item" href="<?php echo esc_url( $event_website_url ); ?>"
-                               style="display: inline-block" target="_blank">
+                            <a class="event-link-item" href="<?php echo esc_url( $event_website_url ); ?>" style="display: inline-block" target="_blank">
                                 <span class="event-link-icon"><i class="ticon ticon-tv" aria-hidden="true"></i></span>
                                 <span class="event-link-text">Visit Website</span>
                             </a>

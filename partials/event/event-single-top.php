@@ -6,12 +6,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $event_date_parts        = easl_get_event_date_parts( get_the_ID() );
 $event_topics_name       = easl_event_topics_name( get_the_ID() );
-$event_organisers = trim(get_field('event_organisers'));
+$event_organisers        = trim( get_field( 'event_organisers' ) );
 $event_location_display  = easl_get_formatted_event_location( get_the_ID() );
 $event_meeting_type_name = easl_meeting_type_name( get_the_ID() );
 
 $event_submit_abstract_url = trim( get_field( 'event_submit_abstract_url' ) );
 $event_register_url        = trim( get_field( 'event_register_url' ) );
+$event_application_url     = trim( get_field( 'event_application_url' ) );
 
 ?>
 <div class="event-top-section">
@@ -59,35 +60,22 @@ $event_register_url        = trim( get_field( 'event_register_url' ) );
                 </div>
             </div>
         </div>
-		<?php if ( $event_submit_abstract_url || $event_register_url ): ?>
+		<?php if ( $event_submit_abstract_url || $event_register_url || $event_application_url ): ?>
             <div class="wpb_column vc_column_container vc_col-sm-5">
                 <div class="vc_column-inner" style="justify-content: center;">
                     <div class="wpb_wrapper">
-                        <div class="vc_row wpb_row vc_row-fluid">
-							<?php if ( $event_submit_abstract_url ): ?>
-                                <div class="wpb_column vc_column_container vc_col-sm-6">
-                                    <div class="vc_column-inner ">
-                                        <div class="wpb_wrapper">
-                                            <a class="event-button event-button-wide event-button-icon event-button-icon-application"
-                                               style="padding-top: 8px;
-                                                  padding-bottom: 8px;"
-                                               href="<?php echo esc_url( $event_submit_abstract_url ); ?>"
-                                               target="_blank">Submit Abstract</a>
-                                        </div>
-                                    </div>
-                                </div>
-							<?php endif; ?>
-							<?php if ( $event_register_url ): ?>
-                                <div class="wpb_column vc_column_container vc_col-sm-6">
-                                    <div class="vc_column-inner ">
-                                        <div class="wpb_wrapper">
-                                            <a class="event-button event-button-wide event-button-icon event-button-icon-person"
-                                               style="padding-top: 8px;
-                                                  padding-bottom: 8px;"
-                                               href="<?php echo esc_url( $event_register_url ); ?>" target="_blank">Register</a>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="easl-events-top-buttons">
+							<?php if ( $event_application_url ): ?>
+                                <a class="event-button event-button-wide event-button-icon event-button-icon-person event-button-apply" style="padding-top: 8px;
+                                                      padding-bottom: 8px;" href="<?php echo esc_url( $event_application_url ); ?>" target="_blank">Apply</a>
+							<?php else: ?>
+								<?php if ( $event_submit_abstract_url ): ?>
+                                    <a class="event-button event-button-wide event-button-icon event-button-icon-application" style="padding-top: 8px; padding-bottom: 8px;" href="<?php echo esc_url( $event_submit_abstract_url ); ?>" target="_blank">Submit Abstract</a>
+								<?php endif; ?>
+								<?php if ( $event_register_url ): ?>
+                                    <a class="event-button event-button-wide event-button-icon event-button-icon-person" style="padding-top: 8px;
+                                                      padding-bottom: 8px;" href="<?php echo esc_url( $event_register_url ); ?>" target="_blank">Register</a>
+								<?php endif; ?>
 							<?php endif; ?>
                         </div>
                     </div>
