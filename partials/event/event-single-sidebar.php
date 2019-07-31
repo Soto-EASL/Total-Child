@@ -28,19 +28,18 @@ if ( $event_poster_text_source == 'no' ) {
 <div class="wpb_column vc_column_container vc_col-sm-4">
     <div class="vc_column-inner event-main-sidebar">
         <div class="wpb_wrapper">
-            <?php
-            if(have_rows('sidebar_top_widgets')) {
-	            while ( have_rows( 'sidebar_top_widgets' ) ){
-	                the_row();
-	                $widget_type = get_sub_field('type');
-	                if($widget_type){
-		                $widget_type = str_replace('_', '-', $widget_type);
-		                get_template_part('partials/event/widgets/'.$widget_type);
-                    }
-
-                }
-            }
-            ?>
+			<?php
+			if ( have_rows( 'sidebar_top_widgets' ) ) {
+				while ( have_rows( 'sidebar_top_widgets' ) ) {
+					the_row();
+					$widget_type = get_sub_field( 'type' );
+					if ( $widget_type ) {
+						$widget_type = str_replace( '_', '-', $widget_type );
+						get_template_part( 'partials/event/widgets/' . $widget_type );
+					}
+				}
+			}
+			?>
 			<?php
 			if ( $key_dates ):
 				?>
@@ -64,7 +63,6 @@ if ( $event_poster_text_source == 'no' ) {
 										break;
 									default:
 										$addon_class = '';
-
 								endswitch;
 								$kd_start_date = ! empty( $date['event_key_start_date'] ) ? trim( $date['event_key_start_date'] ) : '';
 								$kd_start_date = DateTime::createFromFormat( 'd/m/Y', $kd_start_date );
@@ -100,8 +98,7 @@ if ( $event_poster_text_source == 'no' ) {
 							) ); ?></p>
 					<?php endif; ?>
 					<?php if ( $poster_download_link && ! empty( $poster_download_link['url'] ) ): ?>
-                        <a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button"
-                           href="<?php echo esc_url( $poster_download_link['url'] ); ?>" <?php if ( $poster_download_link['target'] ) {
+                        <a class="event-button event-button-icon event-button-no-arrow event-button-icon-download event-image-box-full-button" href="<?php echo esc_url( $poster_download_link['url'] ); ?>" <?php if ( $poster_download_link['target'] ) {
 							echo 'target="' . esc_attr( $poster_download_link['target'] ) . '"';
 						} ?> download>
 							<?php if ( ! empty( $poster_download_link['title'] ) ) {
@@ -126,25 +123,25 @@ if ( $event_poster_text_source == 'no' ) {
 						<?php if ( get_field( 'event_google_map_view_on_map' ) ): ?>
                             <p>
                                 <a class="event-button event-button-icon event-button-no-arrow event-button-icon-marker event-image-box-full-button"
-                                   href="<?php echo get_field( 'event_google_map_view_on_map' ); ?>" target="_blank"
+                                        href="<?php echo get_field( 'event_google_map_view_on_map' ); ?>" target="_blank"
                                 >View on Map</a>
                             </p>
 						<?php endif; ?>
                     </div>
                 </div>
 			<?php endif; ?>
-	        <?php
-	        if(have_rows('sidebar_bottom_widgets')) {
-		        while ( have_rows( 'sidebar_bottom_widgets' ) ){
-			        the_row();
-			        $widget_type = get_sub_field('type');
-			        if($widget_type){
-				        $widget_type = str_replace('_', '-', $widget_type);
-				        get_template_part('partials/event/widgets/'.$widget_type);
-			        }
-		        }
-	        }
-	        ?>
+			<?php
+			if ( have_rows( 'sidebar_bottom_widgets' ) ) {
+				while ( have_rows( 'sidebar_bottom_widgets' ) ) {
+					the_row();
+					$widget_type = get_sub_field( 'type' );
+					if ( $widget_type ) {
+						$widget_type = str_replace( '_', '-', $widget_type );
+						get_template_part( 'partials/event/widgets/' . $widget_type );
+					}
+				}
+			}
+			?>
         </div>
     </div>
 </div>

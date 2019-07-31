@@ -6,19 +6,20 @@
  * @subpackage Partials
  * @version 4.4.1
  */
+
 // Prevent direct access
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
 ?>
 
-<article id="single-blocks" class="single-event-article entry easl-color-<?php echo easl_get_events_topic_color(get_the_ID()); ?> clr">
+<article id="single-blocks" class="single-event-article entry easl-color-<?php echo easl_get_events_topic_color( get_the_ID() ); ?> clr">
 	<?php get_template_part('partials/event/event-single-top'); ?>
-	<div class="event-main-section">
-		<div class="vc_row wpb_row vc_row-fluid">
-			<?php get_template_part('partials/event/event-single-content'); ?>
-			<?php get_template_part('partials/event/event-single-sidebar'); ?>
-		</div>
-	</div>
+    <div class="event-main-section">
+        <div class="vc_row wpb_row vc_row-fluid">
+	        <?php get_template_part('partials/event/event-single-content'); ?>
+	        <?php get_template_part('partials/event/event-single-sidebar'); ?>
+        </div>
+    </div>
 	<?php get_template_part('partials/event/event-single-bottom'); ?>
 </article><!-- #single-blocks -->

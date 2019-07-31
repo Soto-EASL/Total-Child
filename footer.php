@@ -32,23 +32,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="social_buttons_widget">
 <?php dynamic_sidebar('social_buttons');?>
 </div>
-<script>
-
-(function (d, t) {
-
-   var pp = d.createElement(t), s = d.getElementsByTagName(t)[0];
-
-   pp.src = '//app.pageproofer.com/overlay/js/3085/1254';
-
-   pp.type = 'text/javascript';
-
-   pp.async = true;
-
-   s.parentNode.insertBefore(pp, s);
-
-})(document, 'script');
-
-</script>
-
 </body>
 </html>

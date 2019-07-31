@@ -91,6 +91,7 @@ class Publication_Config {
             'public' => true,
             'show_in_nav_menus' => true,
             'show_ui' => true,
+            'show_admin_column' => true,
             'show_tagcloud' => true,
             'hierarchical' => true,
             'rewrite' => array( 'slug' => 'publication-category', 'with_front' => false ),

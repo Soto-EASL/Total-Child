@@ -29,21 +29,27 @@ if ( ! empty( $el_id ) ) {
 }
 
 $wrapper_attributes[] = 'class="wpex-carousel easl-carousel owl-carousel clr ' . esc_attr( trim( $css_class ) ) . '"';
-$wrapper_attributes[] = 'data-items="1"';
-$wrapper_attributes[] = 'data-slideby="1"';
-$wrapper_attributes[] = 'data-nav="false"';
-$wrapper_attributes[] = 'data-dots="true"';
-$wrapper_attributes[] = 'data-autoplay="true"';
-$wrapper_attributes[] = 'data-loop="true"';
-$wrapper_attributes[] = 'data-autoplay-timeout="5000"';
-$wrapper_attributes[] = 'data-center="false"';
-$wrapper_attributes[] = 'data-items-tablet="1"';
-$wrapper_attributes[] = 'data-items-mobile-landscape="1"';
-$wrapper_attributes[] = 'data-items-mobile-portrait="1"';
-$wrapper_attributes[] = 'data-smart-speed="150"';
+
+$carousel_options = array(
+	'arrows' => 'false',
+	'dots' => true,
+	'auto_play' => true,
+	'infinite_loop' => true,
+	'center' => 'false',
+	'animation_speed' => 150,
+	'items' => 1,
+	'items_scroll' => 1,
+	'timeout_duration' => 5000,
+	'items_margin' => 0,
+	'tablet_items' => 1,
+	'mobile_landscape_items' => 1,
+	'mobile_portrait_items' => 1
+);
+$wrapper_attributes[] = 'data-wpex-carousel="'. vcex_get_carousel_settings( $carousel_options, 'easl_carousel' ) .'"';
 
 $output = '';
 if($items){
+	vcex_enqueue_carousel_scripts();
 	$output = '
 		<div ' . implode( ' ', $wrapper_attributes ) . '">
 			' . $items . '

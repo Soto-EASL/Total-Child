@@ -90,6 +90,12 @@ return array(
                 'type' => 'text',
                 'description' => esc_html__( 'Enter the Registration URL.', 'total' ),
             ),
+			'application' => array(
+				'title' => esc_html__( 'Application URL', 'total' ),
+				'id' => $prefix . 'application_url',
+				'type' => 'text',
+				'description' => esc_html__( 'Enter the Application URL.', 'total' ),
+			),
             'sponsorship_Link_url' => array(
                 'title' => esc_html__( 'Sponsorship Link URL', 'total' ),
                 'id' => $prefix . 'sponsorship_url',

@@ -19,10 +19,9 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-menu-stacked
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-post-type-grid.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-users-grid.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-card-button.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
+//require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-associations.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-highlights.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-staffs-accordion.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-annual-reports.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-slide-decks.php';
 //require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-awardees.php';
 //require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-storyline-3d-slider.php';
@@ -34,7 +33,6 @@ require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-ilc-details.
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-bgtext-box.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-yearly-awardees.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-secretary-generals-carousel.php';
-require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-history-slide.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-membership-cats.php';
 require_once get_stylesheet_directory() . '/inc/shortcodes/class-vc-sitemap.php';
 
@@ -68,21 +66,25 @@ function easl_vc_shortcodes_lean_maps(){
 	vc_lean_map( 'easl_news_list', null, get_theme_file_path('/inc/shortcodes/config/easl-news-list.php') );
 	vc_lean_map( 'easl_slide_decks', null, get_theme_file_path('/inc/shortcodes/config/easl-slide-decks.php') );
 	vc_lean_map( 'easl_ilc_details', null, get_theme_file_path('/inc/shortcodes/config/easl-ilc-details.php') );
-	vc_lean_map( 'easl_national_associations', null, get_theme_file_path('/inc/shortcodes/config/easl-national-associations.php') );
+	//vc_lean_map( 'easl_national_associations', null, get_theme_file_path('/inc/shortcodes/config/easl-national-associations.php') );
 	vc_lean_map( 'easl_bgtext_box', null, get_theme_file_path('/inc/shortcodes/config/easl-bgtext-box.php') );
 	vc_lean_map( 'easl_yearly_awardees', null, get_theme_file_path('/inc/shortcodes/config/easl-yearly-awardees.php') );
 	vc_lean_map( 'easl_secretary_general_carousel', null, get_theme_file_path('/inc/shortcodes/config/easl-secretary-general-carousel.php') );
-	vc_lean_map( 'easl_history_slide', null, get_theme_file_path('/inc/shortcodes/config/easl-history-slide.php') );
 	vc_lean_map( 'easl_membership_cats', null, get_theme_file_path('/inc/shortcodes/config/easl-membership-cats.php') );
 	vc_lean_map( 'easl_highlights', null, get_theme_file_path('/inc/shortcodes/config/easl-highlights.php') );
 	vc_lean_map( 'easl_sitemap', null, get_theme_file_path('/inc/shortcodes/config/easl-sitemap.php') );
 }
 add_action( 'vc_after_init', 'easl_vc_shortcodes_lean_maps', 40 );
 
-function ilc_map_vc_shortcodes() {
+function easl_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/youtube-video/youtube-video.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-staffs/easl-staffs.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-icon-widget-grid/easl-icon-widget-grid.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-icon-widget/easl-icon-widget.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-annual-reports/easl-annual-reports.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-history-slide/easl-history-slide.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-national-associations/easl-national-associations.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-misc-list/easl-misc-list.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-misc-list-item/easl-misc-list-item.php');
 }
-add_action('vc_after_mapping', 'ilc_map_vc_shortcodes');
+add_action('vc_after_mapping', 'easl_map_vc_shortcodes');

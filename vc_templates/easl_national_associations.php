@@ -1,62 +1,98 @@
 <?php
+/**
+ * EASL_VC_Staffs
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	die( '-1' );
+}
+/**
+ * Shortcode attributes
+ * @var $atts
+ * @var $content - shortcode content
+ * @var $el_class
+ * @var $el_id
+ * @var $this EASL_VC_National_Associations
+ */
 
-$page_link = remove_query_arg('nas_id');
+$el_class              = '';
+$css                   = '';
+$css_animation         = '';
+$contribute_enable     = '';
+$contribute_title      = '';
+$contribute_subtitle   = '';
+$contribute_btitle     = '';
+$contribute_bcolor     = '';
+$contribute_form       = '';
+$contribute_form_title = '';
 
-$current_country_id = !empty($_GET['nas_id']) ? absint($_GET['nas_id']) : '';
+EASL_VC_National_Associations::reset_nas_data();
+EASL_VC_National_Associations::update_nas_count();
 
-$the_associations = false;
-if($current_country_id){
-    $the_associations = new WP_Query( array(
-        'posts_per_page' => -1,
-        'post_type' => 'associations',
-        'tax_query' => array(
-            array(
-                'taxonomy' => 'associations_category',
-                'field' => 'term_id',
-                'terms' => array($current_country_id),
-            )
-        )
-    ) );
+$atts = vc_map_get_attributes( $this->getShortcode(), $atts );
+extract( $atts );
+$class_to_filter = 'wpb_content_element easl-nas-wrap clr';
+$class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class ) . $this->getCSSAnimation( $css_animation );
+$css_class       = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings( 'base' ), $atts );
+
+$wrapper_attributes = array();
+
+if ( $widget_title && empty( $atts['el_id'] ) ) {
+	$atts['el_id'] = sanitize_title_with_dashes( $widget_title );
 }
 
+if ( ! empty( $atts['el_id'] ) ) {
+	$wrapper_attributes[] = 'id="' . esc_attr( $atts['el_id'] ) . '"';
+}
+if ( $css_class ) {
+	$wrapper_attributes[] = 'class="' . esc_attr( $css_class ) . '"';
+}
+
+$contribute_title    = trim( $contribute_title );
+$contribute_subtitle = trim( $contribute_subtitle );
+$contribute_btitle   = trim( $contribute_btitle );
+
+$page_link = remove_query_arg( 'nas_id' );
+
+$current_nas_id = ! empty( $_GET['nas_id'] ) ? absint( $_GET['nas_id'] ) : '';
+
+$current_nas_post = false;
+if ( $current_nas_id ) {
+	$current_nas_post = get_post( $current_nas_id );
+}
+EASL_VC_National_Associations::set_contribute_data( array(
+	'enabled' => $contribute_enable == 'true',
+    'title' => $contribute_title,
+    'subtitle' => $contribute_subtitle,
+    'button_title' => $contribute_btitle,
+    'button_color' => $contribute_bcolor,
+    'form_id' => $contribute_form,
+    'form_title' => $contribute_form_title,
+) );
+EASL_VC_National_Associations::form_overlay_at_footer();
 ?>
-<div class="nas-container easl-row easl-row-same-height-col<?php if ( $the_associations && $the_associations->have_posts() ){echo ' nas-loaded';} ?>">
-    <div class="easl-col easl-col-2">
-        <div class="easl-col-inner nas-country-lists clr">
-            <?php
-            $countries = get_categories(['taxonomy' => 'associations_category']);
-            foreach ($countries as $country):
-             ?>
-                <div class="menu-item-block"><a class="national-associations-menu-item<?php if($current_country_id === $country->term_id){echo ' nas-current';} ?>" href="<?php echo add_query_arg(array('nas_id' => $country->term_id), $page_link); ?>" data-term="<?php echo $country->term_id; ?>"><?php echo  $country->name; ?> <i class="ticon ticon-angle-right"></i></a></div>
-            <?php endforeach ?>
-        </div>
+<div <?php echo implode( ' ', $wrapper_attributes ); ?>>
+    <div class="eals-nas-filter">
+        <?php get_template_part( 'partials/national-association/filter' ); ?>
     </div>
-    <div class="easl-col easl-col-2">
-        <div class="easl-col-inner associations-content-block">
-            <div class="associations-content-block-response">
-                <?php
-                if ( $the_associations && $the_associations->have_posts() ):
-                    while ($the_associations->have_posts()) :
-                        $the_associations->the_post();
-                        $image = has_post_thumbnail( get_the_ID() ) ?
-                        wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';?>
-                        <div class="associations clr">
-                            <div class="associations-content-wrapper">
-                                <div class="d-flex">
-                                    <?php echo ($image ? '<div class="associations-thumb"><img alt="" src="'.$image[0].'"></div>' : '')?>
-                                    <div class="associations-title-wrap clr">
-                                        <?php echo the_title('<h3>','</h3>');?>
-                                        </div>
-                                </div>
-                                <div class="associations-content">
-                                    <?php the_content();?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endwhile;?>
-                <?php endif;?>
-            </div>
-            <div class="easl-sd-load-icon"><img class="easl-loading-icon" src="<?php echo get_stylesheet_directory_uri(); ?>/images/easl-loader.gif"/></div>
+	<?php
+    if ( 'true' == $contribute_enable ){
+		get_template_part( 'partials/national-association/contribute' );
+    }
+    ?>
+    <div class="easl-nas-details-wrap<?php if ( $current_nas_post ) {
+		echo ' easl-active';
+	} ?>">
+        <div class="easl-nas-details">
+			<?php
+			if ( $current_nas_post ) {
+				global $post;
+				$post = $current_nas_post;
+				setup_postdata( $post );
+				get_template_part( 'partials/national-association/details' );
+				wp_reset_postdata();
+			}
+			?>
         </div>
+        <div class="easl-sd-load-icon"><img class="easl-loading-icon" src="<?php echo get_stylesheet_directory_uri(); ?>/images/easl-loader.gif"/></div>
     </div>
 </div>
