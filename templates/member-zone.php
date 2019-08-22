@@ -47,7 +47,7 @@ get_header(); ?>
                                 </div>
                                 <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-9 vc_col-md-10">
                                     <div class="vc_column-inner">
-                                        <div class="wpb_wrapper">
+                                        <div class="wpb_wrapper easl-mz-container-inner">
 											<?php the_content(); ?>
                                         </div>
                                     </div>
