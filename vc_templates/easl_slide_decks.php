@@ -224,9 +224,13 @@ if(count($child_cats_drobdowns) > 0){
 	        $pagination = '<div class="easl-list-pagination" >' . $paginatio_html . '</div>';
 
 	        $not_found_text = __('Content is coming soon', 'total-child');
-	        $sponsors_text = get_field('sponsors_text', get_term($filter_sd_year, Slide_Decks_Config::get_category_slug()))
+	        $sponsors_text = get_field('sponsors_text', get_term($filter_sd_year, Slide_Decks_Config::get_category_slug()));
+	        $sponsors_text_position = get_field('sponsors_text_position', get_term($filter_sd_year, Slide_Decks_Config::get_category_slug()));
+	        if(!in_array($sponsors_text_position, array('top', 'bottom'))) {
+		        $sponsors_text_position = 'top';
+            }
         ?>
-        <?php if($sponsors_text): ?>
+        <?php if($sponsors_text && $sponsors_text_position == 'top'): ?>
         <div class="easl-sd-sponsors">
             <?php echo do_shortcode($sponsors_text); ?>
         </div>
@@ -286,6 +290,11 @@ if(count($child_cats_drobdowns) > 0){
             }
 			?>
         </div>
+        <?php if($sponsors_text && $sponsors_text_position == 'bottom'): ?>
+            <div class="easl-sd-sponsors">
+		        <?php echo do_shortcode($sponsors_text); ?>
+            </div>
+        <?php endif; ?>
         <div class="easl-slide-decks-bottom-pagination easl-list-pagination" ><?php echo $paginatio_html; ?></div>
         <?php endif; ?>
     </div>
