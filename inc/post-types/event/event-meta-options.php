@@ -6,6 +6,7 @@ $prefix = 'event_';
 return array(
 	'event-data' => array(
 		'title' => esc_html__( 'Event Data', 'total' ),
+		'post_type'               => array( 'event' ),
 		'settings' => array(
 			'location_venue' => array(
 				'title' => esc_html__( 'Location - Venue Name', 'total' ),

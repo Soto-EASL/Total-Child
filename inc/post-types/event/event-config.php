@@ -221,9 +221,6 @@ class EASL_Event_Config {
 	 * @return type
 	 */
 	public static function meta_array($array, $post){
-		if('event' !== get_post_type( $post )){
-			return $array;
-		}
 		$events_meta_arr = require EASL_INC_DIR . 'post-types/event/event-meta-options.php';
 		if(empty($events_meta_arr)){
 			return $array;
