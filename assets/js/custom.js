@@ -592,7 +592,7 @@
     };
     function easlCustomSelect(){
         $('.easl-custom-select').each(function(){
-            var $cs = $(this), lis = '', activeLabel = '';
+            var $cs = $(this), $ul = $(".ecs-list", $cs), lis = '', activeLabel = '';
             $('option', $cs).each(function(){
                 var dataval = 'data-value="' + $(this).attr('value') + '"';
                 if($(this).is(':selected')){
@@ -603,6 +603,9 @@
                 }
             });
             if(lis.length > 0){
+                if($ul.length){
+                    $ul.html(lis);
+                }
                 $cs.append('<ul class="ecs-list filter-list">' + lis + '</ul>')
             }
         });  
@@ -717,6 +720,12 @@
         easlCustomCheckbox();
         easlCustomRadio();
         easlCustomSelect();
+
+        $body.on("mz_reload_custom_fields", function (event, $context) {
+            easlCustomCheckbox();
+            easlCustomRadio();
+            easlCustomSelect();
+        });
         $body.on('click', '.easl-custom-select', function(){
             var $cs = $(this);
             if($('.ecs-list', $cs).is(":animated")){

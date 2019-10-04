@@ -23,6 +23,12 @@ function easl_theme_setup(){
 }
 add_action( 'after_setup_theme', 'easl_theme_setup' );
 
+function easl_register_nav_menus() {
+	register_nav_menu( 'member-zone-pages-menu', __( 'Member Zone Pages Menu' ) );
+}
+
+add_action( 'init', 'easl_register_nav_menus' );
+
 function total_child_enqueue_parent_theme_style() {
 
 	// Dynamically get version number of the parent stylesheet (lets browsers re-cache your stylesheet when you update your theme)
