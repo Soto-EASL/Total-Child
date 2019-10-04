@@ -27,32 +27,7 @@ get_header(); ?>
 
                     <article id="single-blocks" class="single-page-article wpex-clr">
                         <div class="single-content single-page-content entry clr">
-                            <div class="vc_row wpb_row vc_row-fluid">
-                                <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-3 vc_col-md-2">
-                                    <div class="vc_column-inner">
-                                        <div class="easl-mz-page-menu">
-                                            <h1 class="easl-mz-page-menu-title">Member Zone</h1>
-											<?php
-											wp_nav_menu( array(
-												'container'      => 'nav',
-												'menu_class'     => '',
-												'wp_nav_menu'    => '',
-												'echo'           => true,
-												'fallback_cb'    => false,
-												'theme_location' => 'member-zone-pages-menu',
-											) );
-											?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-9 vc_col-md-10">
-                                    <div class="vc_column-inner">
-                                        <div class="wpb_wrapper easl-mz-container-inner">
-											<?php the_content(); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php do_action('easl_mz_memberzone_page_content'); ?>
                         </div>
                     </article>
 
