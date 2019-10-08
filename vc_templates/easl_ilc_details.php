@@ -63,7 +63,7 @@ if($ilc_object):
 		wp_enqueue_script('easl-yt-playlist', get_theme_file_uri('assets/js/yt-playlist.js'), array('jquery'), null, true);
 	}
 	if($downloadable_congress_report) {
-		$downloadable_congress_report = ' download="download"';
+		$downloadable_congress_report = ' download="' . basename( parse_url( $congress_report_pdf, PHP_URL_PATH ) ) . '"';
     }
 	if($congress_report_new_tab) {
 		$congress_report_new_tab = ' target="_blank"';

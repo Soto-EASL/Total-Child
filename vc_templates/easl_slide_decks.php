@@ -258,7 +258,7 @@ if(count($child_cats_drobdowns) > 0){
                     <article class="easl-slide-deck-item <?php if($image_src){echo 'easl-slide-deck-item-has-thumb';} ?> easl-sdrow-color-<?php echo easl_get_slide_decks_topic_color(); ?> clr">
 						<?php if($image_src): ?>
                             <div class="easl-slide-deck-item-thumb">
-                                <?php if($download_link): ?><a href="<?php echo $download_link;?>" title="" target="_blank" download=""><?php endif; ?>
+                                <?php if($download_link): ?><a href="<?php echo $download_link;?>" title="" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php endif; ?>
                                     <img alt="" src="<?php echo $image_src; ?>"/>
 					            <?php if($download_link): ?></a><?php endif; ?>
                             </div>
@@ -272,13 +272,13 @@ if(count($child_cats_drobdowns) > 0){
                                 </p>
 	                            <?php endif; ?>
                                 <h3>
-                                    <?php if($download_link): ?><a href="<?php echo $download_link; ?>" target="_blank" download=""><?php endif; ?>
+                                    <?php if($download_link): ?><a href="<?php echo $download_link; ?>" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php endif; ?>
                                         <?php the_title(); ?>
                                     <?php if($download_link): ?></a><?php endif; ?>
                                 </h3>
                             </div>
                             <?php if($download_link): ?>
-                            <a class="easl-generic-button easl-size-medium easl-color-light-blue" href="<?php echo $download_link; ?>" target="_blank" download=""><?php _e('Download', 'total-child') ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
+                            <a class="easl-generic-button easl-size-medium easl-color-light-blue" href="<?php echo $download_link; ?>" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php _e('Download', 'total-child') ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
 	                        <?php endif; ?>
                         </div>
                     </article>

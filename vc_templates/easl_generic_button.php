@@ -19,35 +19,35 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode class EASL_VC_Generic_Button
  * @var $this EASL_VC_Generic_Button
  */
-$title = '';
-$url = '';
-$new_tab = '';
+$title        = '';
+$url          = '';
+$new_tab      = '';
 $downloadable = '';
-$color = '';
-$size = '';
-$align = '';
-$show_arrow = '';
+$color        = '';
+$size         = '';
+$align        = '';
+$show_arrow   = '';
 
 $el_id = $el_class = $css_animation = $css = '';
 
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
-$title = trim($title);
-$title = wp_kses($title, array(
-	'span' => array(
+$title = trim( $title );
+$title = wp_kses( $title, array(
+	'span'   => array(
 		'class' => array(),
 		'style' => array(),
 	),
-	'em' => array(),
+	'em'     => array(),
 	'strong' => array(),
-	'br' => array(),
-));
-$url = trim($url);
+	'br'     => array(),
+) );
+$url   = trim( $url );
 
-if($title && $url) {
+if ( $title && $url ) {
 	$button_classes = array( 'easl-generic-button' );
-	if(EASL_VC_Generic_Button_Container::$active == true) {
+	if ( EASL_VC_Generic_Button_Container::$active == true ) {
 		$align = 'inline';
 	}
 	$button_classes[] = EASL_VC_Generic_Button::get_color_class( $color );
@@ -64,7 +64,7 @@ if($title && $url) {
 
 	$css_class = $this->getCSSAnimation( $css_animation );
 	$css_class .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class );
-	$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $css_class, $this->settings['base'], $atts );
+	$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $css_class, $this->getSettings()['base'], $atts );
 
 	if ( $css_class ) {
 		$button_classes[] = $css_class;
@@ -84,8 +84,8 @@ if($title && $url) {
 	}
 
 	if ( $downloadable == 'true' ) {
-		$wrapper_attributes[] = 'download="download"';
-		$icon_html = '<span class="easl-generic-button-icon"><span class="ticon ticon-download"></span></span>';
+		$wrapper_attributes[] = 'download="' . basename( parse_url( $url, PHP_URL_PATH ) ) . '"';
+		$icon_html            = '<span class="easl-generic-button-icon"><span class="ticon ticon-download"></span></span>';
 	}
 
 	$wrapper_attributes[] = 'href="' . esc_url( $url ) . '"';
