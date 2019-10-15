@@ -29,8 +29,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 <?php wpex_outer_wrap_after(); ?>
 
 <?php wp_footer(); ?>
-<div class="social_buttons_widget">
-<?php dynamic_sidebar('social_buttons');?>
-</div>
 </body>
 </html>
