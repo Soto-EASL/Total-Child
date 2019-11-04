@@ -64,6 +64,8 @@ if(is_page()){
 echo '<div class="easl-page-header-title-wrap">';
 if(('background-image' == wpex_page_header_style()) && wpex_page_header_background_image()) {
 	echo easl_page_header_background_image();
+}else{
+	echo easl_singular_default_header_background_image();
 }
 // Output title
 echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . '>';

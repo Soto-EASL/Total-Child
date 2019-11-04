@@ -29,41 +29,41 @@ function easl_vc_button_icons() {
 
 function easl_vc_button_grid_icons() {
 	return array(
-		__( 'No Icon', 'total' )         => '',
-		__( 'Awards', 'total' )          => 'awards',
-		__( 'Bursaries', 'total' )       => 'bursaries',
-		__( 'Calendar', 'total' )        => 'calendar',
-		__( 'Education', 'total' )       => 'education',
-		__( 'Fellowship', 'total' )      => 'fellowship',
-		__( 'Flask', 'total' )           => 'flask',
-		__( 'Groups', 'total' )          => 'groups',
-		__( 'Membership', 'total' )      => 'membership',
-		__( 'Mentorship', 'total' )      => 'mentorship',
-		__( 'Microb-Predict', 'total' ) => 'microb-predict',
-		__( 'Liver', 'total' )           => 'liver',
-		__( 'Arrows', 'total' )          => 'arrows',
-		__( 'Arrows', 'total' )          => 'arrows',
-		__( 'Globe', 'total' )           => 'globe',
-		__( 'UEG', 'total' )             => 'ueg',
-		__( 'ALEH', 'total' )            => 'aleh',
-		__( 'AASLD', 'total' )           => 'aasld',
-		__( 'APASL', 'total' )           => 'apasl',
-		__( 'Aliver', 'total' )          => 'aliver',
-		__( 'Aliver Green', 'total' )    => 'aliver-green',
-		__( 'Apps', 'total' )            => 'apps',
-		__( 'Report', 'total' )          => 'report',
-		__( 'Twitter', 'total' )         => 'twitter',
-		__( 'Video', 'total' )           => 'video',
-		__( 'Litmus', 'total' )          => 'litmus',
-		__( 'EU stars ', 'total' )       => 'eu-star',
-		__( 'Hand shake', 'total' )      => 'handshake',
-		__( 'group of people', 'total' ) => 'group',
-		__( 'ID card', 'total' )         => 'id-card',
-		__( 'Hepatocytes', 'total' )     => 'hepatocytes',
-		__( 'Two faces', 'total' )       => 'two-faces',
-		__( 'Scroll', 'total' )       => 'scroll',
-		__( 'LiverTree', 'total' )       => 'livertree',
-		__('e-Learning', 'total-child')   => 'elearning',
+		__( 'No Icon', 'total' )          => '',
+		__( 'Awards', 'total' )           => 'awards',
+		__( 'Bursaries', 'total' )        => 'bursaries',
+		__( 'Calendar', 'total' )         => 'calendar',
+		__( 'Education', 'total' )        => 'education',
+		__( 'Fellowship', 'total' )       => 'fellowship',
+		__( 'Flask', 'total' )            => 'flask',
+		__( 'Groups', 'total' )           => 'groups',
+		__( 'Membership', 'total' )       => 'membership',
+		__( 'Mentorship', 'total' )       => 'mentorship',
+		__( 'Microb-Predict', 'total' )   => 'microb-predict',
+		__( 'Liver', 'total' )            => 'liver',
+		__( 'Arrows', 'total' )           => 'arrows',
+		__( 'Arrows', 'total' )           => 'arrows',
+		__( 'Globe', 'total' )            => 'globe',
+		__( 'UEG', 'total' )              => 'ueg',
+		__( 'ALEH', 'total' )             => 'aleh',
+		__( 'AASLD', 'total' )            => 'aasld',
+		__( 'APASL', 'total' )            => 'apasl',
+		__( 'Aliver', 'total' )           => 'aliver',
+		__( 'Aliver Green', 'total' )     => 'aliver-green',
+		__( 'Apps', 'total' )             => 'apps',
+		__( 'Report', 'total' )           => 'report',
+		__( 'Twitter', 'total' )          => 'twitter',
+		__( 'Video', 'total' )            => 'video',
+		__( 'Litmus', 'total' )           => 'litmus',
+		__( 'EU stars ', 'total' )        => 'eu-star',
+		__( 'Hand shake', 'total' )       => 'handshake',
+		__( 'group of people', 'total' )  => 'group',
+		__( 'ID card', 'total' )          => 'id-card',
+		__( 'Hepatocytes', 'total' )      => 'hepatocytes',
+		__( 'Two faces', 'total' )        => 'two-faces',
+		__( 'Scroll', 'total' )           => 'scroll',
+		__( 'LiverTree', 'total' )        => 'livertree',
+		__( 'e-Learning', 'total-child' ) => 'elearning',
 	);
 }
 
@@ -196,7 +196,7 @@ function easl_social_profile_options_list() {
 add_filter( 'wpex_social_profile_options_list', 'easl_social_profile_options_list' );
 
 function easl_extended_meta( $array, $post ) {
-	$array['main']['settings']['easl_extra_body_class']           = array(
+	$array['main']['settings']['easl_extra_body_class'] = array(
 		'title'       => esc_html__( 'Extra body class', 'total-child' ),
 		'type'        => 'text',
 		'id'          => 'easl_extra_body_class',
@@ -209,17 +209,17 @@ function easl_extended_meta( $array, $post ) {
 		'description' => esc_html__( 'Select a icon to display on left of the title for this page or post.', 'total' ),
 		'options'     => easl_title_icons(),
 	);
-	$array['title']['settings']['page_title_color'] = array(
+	$array['title']['settings']['page_title_color']     = array(
 		'title'       => esc_html__( 'Title Text Color', 'total-child' ),
 		'id'          => 'easl_page_title_color',
 		'type'        => 'select',
 		'description' => esc_html__( 'Select a page title color.', 'total-child' ),
 		'options'     => array(
-			''        => esc_html__( 'Default', 'total-child' ),
-			'black' => esc_html__( 'Black', 'total-child' ),
-			'blue'  => esc_html__( 'Blue', 'total-child' ),
+			''           => esc_html__( 'Default', 'total-child' ),
+			'black'      => esc_html__( 'Black', 'total-child' ),
+			'blue'       => esc_html__( 'Blue', 'total-child' ),
 			'light-blue' => esc_html__( 'Light Blue', 'total-child' ),
-			'white' => esc_html__( 'White', 'total-child' ),
+			'white'      => esc_html__( 'White', 'total-child' ),
 		),
 	);
 	$array['title']['settings']['allow_shortcode_html'] = array(
@@ -292,21 +292,21 @@ function easl_vc_add_params() {
 			'group'      => __( 'Over Image Link', 'total' ),
 		),
 	) );
-	$tour_styles = WPBMap::getParam('vc_tta_tour', 'style');
-	$tour_styles = $tour_styles['value'];
-	$tour_styles[__( 'EASL Flat', 'total-child' )] = 'easl-flat';
-	vc_update_shortcode_param('vc_tta_tour', array(
+	$tour_styles                                     = WPBMap::getParam( 'vc_tta_tour', 'style' );
+	$tour_styles                                     = $tour_styles['value'];
+	$tour_styles[ __( 'EASL Flat', 'total-child' ) ] = 'easl-flat';
+	vc_update_shortcode_param( 'vc_tta_tour', array(
 		'param_name' => 'style',
-		'value' => $tour_styles
-	));
+		'value'      => $tour_styles
+	) );
 
-	$toggle_styles = WPBMap::getParam('vc_toggle', 'style');
-	$toggle_styles = $toggle_styles['value'];
-	$toggle_styles[__( 'EASL Toggle', 'total-child' )] = 'easl-toggle';
-	vc_update_shortcode_param('vc_toggle', array(
+	$toggle_styles                                       = WPBMap::getParam( 'vc_toggle', 'style' );
+	$toggle_styles                                       = $toggle_styles['value'];
+	$toggle_styles[ __( 'EASL Toggle', 'total-child' ) ] = 'easl-toggle';
+	vc_update_shortcode_param( 'vc_toggle', array(
 		'param_name' => 'style',
-		'value' => $toggle_styles
-	));
+		'value'      => $toggle_styles
+	) );
 }
 
 add_action( 'vc_after_init', 'easl_vc_add_params', 40 );
@@ -392,6 +392,7 @@ function easl_get_events_page_header_bg( $event_id ) {
 
 	return $bg[0];
 }
+
 function easl_get_publication_page_header_bg( $pub_id ) {
 	$term_id = easl_publication_topic_id( $pub_id );
 	if ( ! $term_id ) {
@@ -416,7 +417,7 @@ function easl_page_header_style( $style ) {
 	if ( is_single() ) {
 		return easl_get_news_page_header_style();
 	}
-	if(is_search()){
+	if ( is_search() ) {
 		return 'background-image';
 	}
 	if ( ! is_singular( 'event', Publication_Config::get_publication_slug() ) || 'background-image' == $style ) {
@@ -470,7 +471,7 @@ add_filter( 'wpex_page_header_overlay_style', 'easl_page_header_overlay_style', 
 
 function easl_page_header_bg( $image, $post_id ) {
 	$cusotm_bg = '';
-	if(is_search()){
+	if ( is_search() ) {
 		$cusotm_bg = get_stylesheet_directory_uri() . '/images/header-blue-pattern.jpg';
 	}
 	if ( is_single() ) {
@@ -485,6 +486,7 @@ function easl_page_header_bg( $image, $post_id ) {
 	if ( $cusotm_bg ) {
 		return $cusotm_bg;
 	}
+
 	return $image;
 }
 
@@ -526,17 +528,18 @@ add_shortcode( 'easl_title_icon', 'easl_util_sc_title_icon' );
 
 function easl_vcex_change_shortcode_parameter() {
 	vc_add_param( 'vcex_post_type_carousel', array(
-			'type' => 'vcex_ofswitch',
-			'std' => 'true',
-			'heading' => __( 'Enable Posts Link', 'total' ),
-			'param_name' => 'easl_title_link',
-			'group' => __( 'Title', 'total' ),
+		'type'       => 'vcex_ofswitch',
+		'std'        => 'true',
+		'heading'    => __( 'Enable Posts Link', 'total' ),
+		'param_name' => 'easl_title_link',
+		'group'      => __( 'Title', 'total' ),
 	) );
 }
+
 add_action( 'vc_after_init', 'easl_vcex_change_shortcode_parameter', 50 );
 
-function easl_vcex_post_type_carousel_title($title_output, $atts ) {
-	if(empty($atts['easl_title_link']) || ('true' == $atts['easl_title_link'])){
+function easl_vcex_post_type_carousel_title( $title_output, $atts ) {
+	if ( empty( $atts['easl_title_link'] ) || ( 'true' == $atts['easl_title_link'] ) ) {
 		return $title_output;
 	}
 	$heading_style = vcex_inline_style( array(
@@ -557,33 +560,37 @@ function easl_vcex_post_type_carousel_title($title_output, $atts ) {
 	$title_output .= '</span>';
 
 	$title_output .= '</div>';
+
 	return $title_output;
 }
-add_filter('vcex_post_type_carousel_title', 'easl_vcex_post_type_carousel_title', 10, 2);
 
-function easl_wpb_toggle_heading($heading, $data) {
-	return '<h4>'. $data['title'] .'</h4>';
+add_filter( 'vcex_post_type_carousel_title', 'easl_vcex_post_type_carousel_title', 10, 2 );
+
+function easl_wpb_toggle_heading( $heading, $data ) {
+	return '<h4>' . $data['title'] . '</h4>';
 }
-add_filter('wpb_toggle_heading', 'easl_wpb_toggle_heading', 20, 2);
+
+add_filter( 'wpb_toggle_heading', 'easl_wpb_toggle_heading', 20, 2 );
 
 /**
  * Display Social Share Icons
  */
-function easl_social_share_icons(){
-	include get_theme_file_path('partials/social-shares-icons.php');
+function easl_social_share_icons() {
+	include get_theme_file_path( 'partials/social-shares-icons.php' );
 }
 
 function easl_before_headder() {
-	get_template_part('partials/header/mobile-top-buttons');
+	get_template_part( 'partials/header/mobile-top-buttons' );
 	echo '<div id="header-top-line"></div>';
 }
-add_action('wpex_hook_header_before', 'easl_before_headder');
+
+add_action( 'wpex_hook_header_before', 'easl_before_headder' );
 
 function easl_page_prelaoder_template() {
-	get_template_part('partials/header/preloader');
+	get_template_part( 'partials/header/preloader' );
 }
-add_action( 'wpex_hook_after_body_tag', 'easl_page_prelaoder_template' );
 
+add_action( 'wpex_hook_after_body_tag', 'easl_page_prelaoder_template' );
 
 
 function easl_page_header_background_image() {
@@ -624,7 +631,7 @@ function easl_page_header_background_image() {
 				if ( is_array( $new_meta ) && ! empty( $new_meta['url'] ) ) {
 					$image = isset( $new_meta['url'] ) ? $new_meta['url'] : $image;
 				} else {
-					$image = $new_meta ? $new_meta : $image ;
+					$image = $new_meta ? $new_meta : $image;
 				}
 			} else {
 				$meta  = get_post_meta( $post_id, 'wpex_post_title_background', true ); // Fallback
@@ -634,7 +641,7 @@ function easl_page_header_background_image() {
 		}
 
 	}
-	if(!$image) {
+	if ( ! $image ) {
 		return '';
 	}
 	// Generate image URL if using ID
@@ -642,12 +649,35 @@ function easl_page_header_background_image() {
 	if ( $image && is_numeric( $image ) ) {
 		$image_url = wp_get_attachment_image_url( $image, 'full' );
 	}
-	if(!$image_url) {
+	if ( ! $image_url ) {
 		return '';
 	}
 
-	$img_alt = trim( strip_tags( get_post_meta( $image, '_wp_attachment_image_alt', true ) ));
+	$img_alt = trim( strip_tags( get_post_meta( $image, '_wp_attachment_image_alt', true ) ) );
 
 	// Return image
-	return '<img class="easl-page-header-bg-img" alt="'. $img_alt .'" src="' . $image_url . '"/>';
+	return '<img class="easl-page-header-bg-img" alt="' . $img_alt . '" src="' . $image_url . '"/>';
+}
+
+function easl_singular_default_header_background_image() {
+	if ( ! is_singular( array( 'event', Publication_Config::get_publication_slug() ) ) ) {
+		return '';
+	}
+	$post_id = get_queried_object_id();
+	$color   = '';
+	if ( is_singular( 'event' ) ) {
+		$color = easl_get_events_topic_color( $post_id );
+	}
+	if ( is_singular( Publication_Config::get_publication_slug() ) ) {
+		$color = easl_get_publication_topic_color( $post_id );
+	}
+	$image_url = get_stylesheet_directory_uri() . '/images/';
+	if ( ! $color || ( $color == 'gray' ) ) {
+		$image_url .= 'events-header.jpg';
+	} else {
+		$image_url .= 'events-header-' . $color . '.jpg';
+	}
+	$img_alt = get_the_title( $post_id );
+
+	return '<img class="easl-page-header-bg-img" alt="' . $img_alt . '" src="' . $image_url . '"/>';
 }

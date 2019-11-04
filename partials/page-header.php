@@ -14,7 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
-<?php 
+<?php
 
 $post_title_icon = get_post_meta( wpex_get_current_post_id(), 'ese_post_title_icon', true );
 $post_title_icon_class = '';
@@ -29,10 +29,12 @@ if($post_title_icon){
 	<?php
 	if(('background-image' == wpex_page_header_style()) && wpex_page_header_background_image()) {
 		echo easl_page_header_background_image();
-	}
+	}else{
+        echo easl_singular_default_header_background_image();
+    }
     ?>
 	<?php wpex_hook_page_header_top(); ?>
-	
+
 	<div class="page-header-inner container <?php echo $post_title_icon_class; ?> clr">
 		<?php wpex_hook_page_header_inner(); // All default content added via this hook ?>
 	</div><!-- .page-header-inner -->
