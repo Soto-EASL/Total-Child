@@ -26,7 +26,11 @@ if($post_title_icon){
 <?php wpex_hook_page_header_before(); ?>
 
 <header class="<?php echo wpex_page_header_classes(); ?>">
-	
+	<?php
+	if(('background-image' == wpex_page_header_style()) && wpex_page_header_background_image()) {
+		echo easl_page_header_background_image();
+	}
+    ?>
 	<?php wpex_hook_page_header_top(); ?>
 	
 	<div class="page-header-inner container <?php echo $post_title_icon_class; ?> clr">

@@ -41,7 +41,7 @@ wp_enqueue_style('easl-scientific-publication-style',
 wp_enqueue_script('easl-scientific-publication-script',
     get_stylesheet_directory_uri() . '/assets/js/easl_scientific_publication.js',
     ['jquery'],
-    false,
+    '1.2',
     true);
 
 $has_filter = false;

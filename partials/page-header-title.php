@@ -61,7 +61,10 @@ if(is_page()){
 		$allow_html_shortcode = true;
 	}
 }
-
+echo '<div class="easl-page-header-title-wrap">';
+if(('background-image' == wpex_page_header_style()) && wpex_page_header_background_image()) {
+	echo easl_page_header_background_image();
+}
 // Output title
 echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . '>';
 	$back_url = '';
@@ -85,3 +88,4 @@ echo '<' . $html_tag . ' class="page-header-title wpex-clr"' . $schema_markup . 
 	}
 
 echo '</' . $html_tag . '>';
+echo '</div>';

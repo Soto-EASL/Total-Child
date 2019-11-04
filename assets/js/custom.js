@@ -823,7 +823,7 @@
             e.preventDefault();
             $('.event_description').toggle();
 
-        })
+        });
         $body.on('click', '.ec-links-deadline', function(event){
             event.preventDefault();
             var $li = $(this).closest('li');

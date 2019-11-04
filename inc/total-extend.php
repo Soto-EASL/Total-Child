@@ -244,6 +244,9 @@ function easl_remove_parents_action() {
 	remove_action( 'wpex_hook_page_header_inner', 'wpex_display_breadcrumbs' );
 	add_action( 'wpex_hook_page_header_inner', 'wpex_display_breadcrumbs', 9 );
 
+	remove_action( 'wpex_hook_page_header_inner', 'wpex_page_header_title_table_wrap_open', 0 );
+	remove_action( 'wpex_hook_page_header_inner', 'wpex_page_header_title_table_wrap_close', 9999 );
+
 	remove_action( 'wpex_hook_footer_after', 'wpex_footer_bottom' );
 	//add_action( 'wpex_hook_footer_after', 'wpex_footer_bottom' );
 	remove_action( 'wpex_hook_footer_bottom_inner', 'wpex_footer_bottom_copyright' );
@@ -580,3 +583,71 @@ function easl_page_prelaoder_template() {
 	get_template_part('partials/header/preloader');
 }
 add_action( 'wpex_hook_after_body_tag', 'easl_page_prelaoder_template' );
+
+
+
+function easl_page_header_background_image() {
+
+	// Get current post ID
+	$post_id = wpex_get_current_post_id();
+
+	// Get default Customizer value
+	$image = wpex_get_mod( 'page_header_background_img' );
+
+	// Fetch from featured image
+	if ( $image
+	     && $post_id
+	     && $fetch_thumbnail_types = wpex_get_mod( 'page_header_background_fetch_thumbnail', null )
+	) {
+		if ( ! is_array( $fetch_thumbnail_types ) ) {
+			$fetch_thumbnail_types = explode( ',', $fetch_thumbnail_types );
+		}
+		if ( in_array( get_post_type( $post_id ), $fetch_thumbnail_types ) ) {
+			$thumbnail = get_post_thumbnail_id( $post_id );
+			if ( $thumbnail ) {
+				$image = $thumbnail;
+			}
+		}
+	}
+
+	// Apply filters before meta checks => meta should always override
+	$image = apply_filters( 'wpex_page_header_background_img', $image ); // @todo remove this deprecated filter
+	$image = apply_filters( 'wpex_page_header_background_image', $image, $post_id );
+
+	// Check meta for bg image
+	if ( $post_id ) {
+
+		// Get page header background from meta
+		if ( $post_id && 'background-image' == get_post_meta( $post_id, 'wpex_post_title_style', true ) ) {
+
+			if ( $new_meta = get_post_meta( $post_id, 'wpex_post_title_background_redux', true ) ) {
+				if ( is_array( $new_meta ) && ! empty( $new_meta['url'] ) ) {
+					$image = isset( $new_meta['url'] ) ? $new_meta['url'] : $image;
+				} else {
+					$image = $new_meta ? $new_meta : $image ;
+				}
+			} else {
+				$meta  = get_post_meta( $post_id, 'wpex_post_title_background', true ); // Fallback
+				$image = $meta ? $meta : $image;
+			}
+
+		}
+
+	}
+	if(!$image) {
+		return '';
+	}
+	// Generate image URL if using ID
+	$image_url = '';
+	if ( $image && is_numeric( $image ) ) {
+		$image_url = wp_get_attachment_image_url( $image, 'full' );
+	}
+	if(!$image_url) {
+		return '';
+	}
+
+	$img_alt = trim( strip_tags( get_post_meta( $image, '_wp_attachment_image_alt', true ) ));
+
+	// Return image
+	return '<img class="easl-page-header-bg-img" alt="'. $img_alt .'" src="' . $image_url . '"/>';
+}
