@@ -78,7 +78,7 @@
         }else if(easlIsMobile(767)){
             headerOffset = $('#header-top-line').offset().top - bodyOffsetTop;
         }
-
+        console.log(headerOffset);``
         if( $(window).scrollTop() <= headerOffset ){
             $('body').addClass('easl-scroll-at-top').removeClass('easl-scrolled easl-header-sticky-active');
         }else{

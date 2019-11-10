@@ -975,7 +975,7 @@ sub {
     z-index: 1;
 }
 .easl-header-sticky-active #site-logo .logo-img-sticky {
-    height: 50px;
+    height: 45px;
     visibility: visible;
     z-index: 2;
 }
@@ -5295,18 +5295,120 @@ a.button:hover{
     transform: translateY(-50%);
     z-index: 99999;
 }
-.social_buttons_widget a.social-btn{
-    width: 35px;
-    height: 34px;
+.social_buttons_widget .sidebar-box {
+    margin: 0;
+}
+.social_buttons_widget .easl-follow-buttons-title {
+    width: 40px;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 9px;
+    background: #f9f9f9;
+    padding: 2px 0;
+    text-align: center;
+}
+.social_buttons_widget a.social-btn {
+    background: #f9f9f9;
+    color: #004b87;
     display: block;
     float: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    margin-bottom: 9px;
     text-align: center;
-    background: #ffffff;
-    color: #004b87;
-    margin-bottom: 4px;
-    box-shadow: 0 0 8px 0 rgba(0,0,0,0.5);
-    font-size: 2rem;
+    transition: opacity .25s;
 }
+.social_buttons_widget a.social-btn.facebook {
+    color: #3e5b98;
+}
+.social_buttons_widget a.social-btn.twitter {
+    color: #4da7de;
+}
+.social_buttons_widget a.social-btn.linkedin {
+    color: #0274b3;
+}
+.social_buttons_widget a.social-btn.youtube {
+    color: #f00;
+}
+.social_buttons_widget a.social-btn:hover,
+.social_buttons_widget a.social-btn:active {
+    opacity: .5;
+}
+/* Share icons*/
+.heateor_sss_sharing_container {
+    margin-bottom: 35px;
+}
+.single-fellowship .heateor_sss_sharing_container {
+    margin-top: 35px;
+}
+.heateor_sss_sharing_title {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    color: #004b87;
+    width: 60px;
+    font-family: 'KnockoutHTF51Middleweight';
+    font-size: 16px;
+    font-weight: 400;
+}
+.heateor_sss_sharing_container .heateor_sss_sharing_ul {
+    float: left;
+    width: calc(100% - 60px);
+}
+.heateor_sss_sharing_container .heateorSssSharing {
+    float: left;
+    border: none;
+    line-height: 40px;
+    background: #f9f9f9!important;
+    font-size: 14px;
+    height: 40px!important;
+    width: 40px!important;
+    margin: 0 5px 0 0;
+    text-align: center;
+    transition: opacity .25s;
+}
+.heateor_sss_sharing_container ul li:last-child .heateorSssSharing {
+    margin-right: 0;
+}
+.heateor_sss_sharing_container .heateorSssSharing:hover {
+    opacity: .5;
+}
+.heateor_sss_sharing_container .heateorSssSharing a:hover {
+    text-decoration: none;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssSharingSvg {
+    background: transparent;
+    display: inline-block;
+    font-family: "ticons";
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssFacebookSvg::after {
+    content: "\f09a";
+    color: #3e5b98;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssTwitterSvg::after {
+    content: "\f099";
+    color: #4da7de;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssLinkedinSvg::after {
+    content: "\f0e1";
+    color: #0274b3;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssWhatsappSvg::after {
+    content: "\f232";
+    color: #60b82d;
+}
+.heateor_sss_sharing_container .heateorSssSharing .heateorSssEmailSvg::after {
+    content: "\f0e0";
+    color: #454545;
+}
+
+
 .history-video{
     height: 400px;
 }
@@ -9140,16 +9242,16 @@ body .mentors-application-title {
     }
     #site-header-inner {
         background: transparent;
-        height: 94px;
+        height: 84px;
     }
     #site-logo-inner {
         padding: 7px 0;
     }
     #site-logo .logo-img {
-        height: 80px;
+        height: 70px;
     }
     #site-logo .logo-img-sticky {
-        height: 56px;
+        height: 50px;
     }
     #header-aside{
         display: none!important;
@@ -9159,6 +9261,8 @@ body .mentors-application-title {
     }
     .easl-mobile-top-buttons {
         background-color: #78cdf2;
+        position: relative;
+        z-index: 3;
     }
     .easl-mobile-top-buttons .header-aside-buttons{
         display: block;
@@ -9173,7 +9277,7 @@ body .mentors-application-title {
         color: #004b87;
         display: inline-block;
         font-family: "KnockoutHTF51Middleweight";
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1em;
         margin: 0;
         padding: 0 20px;
@@ -9182,11 +9286,60 @@ body .mentors-application-title {
     .easl-mobile-top-buttons .header-aside-buttons .easl-header-mz-buttons:first-child {
         padding-left: 0;
     }
-    .easl-mobile-top-buttons .header-aside-buttons .easl-header-mz-buttons:last-child {
+    .easl-mobile-top-buttons .header-aside-buttons .easl-header-mz-buttons:last-child,
+    .easl-mobile-top-buttons .header-aside-buttons .easl-mz-header-login-button{
         border-right: 0;
         padding-right: 0;
     }
+    /* slider */
+    body rs-fullwidth-wrap {
+        margin-bottom: 0!important;
+    }
+    /* Follow buttons */
+    .social_buttons_widget {
+        position: relative;
+        top: auto;
+        transform: none;
+        left: auto;
+        right: auto;
+        background: #f0f0f0;
+        height: 32px;
+        overflow: hidden;
+        width: 100%;
+        z-index: 2;
+    }
+    .social_buttons_widget .sidebar-box {
+        max-width: 90%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .social_buttons_widget .sidebar-box .custom-html-widget {
+        display: flex;
+        overflow: hidden;
+        justify-content: space-between;
+    }
+    .social_buttons_widget .sidebar-box .easl-follow-buttons-title,
+    .social_buttons_widget .sidebar-box a.social-btn {
+        height: 32px;
+        width: 28px;
+        line-height: 32px;
+        margin: 0 5px 0 0;
+        background-color: transparent;;
+    }
+    .social_buttons_widget .sidebar-box .easl-follow-buttons-title {
+        margin-right: 10px;
+        padding: 0;
+    }
+    .social_buttons_widget .sidebar-box a.social-btn:last-child {
+        margin-right: 0;
+    }
 
+    .heateor_sss_sharing_container .heateor_sss_sharing_ul {
+        float: left;
+        width: calc(100% - 60px);
+        display: flex;
+        justify-content: space-between;
+    }
     /* Slider */
     body .custom.tparrows {
         top: 50%!important;
@@ -10031,6 +10184,7 @@ body .mentors-application-title {
     .easl-mobile-top-buttons .header-aside-buttons .become-a-member-button {
          font-size: 14px;
          padding: 0 8px;
+        margin-bottom: 24px;
      }
     .wpex-bars {
         width: 22px;

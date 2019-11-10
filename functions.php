@@ -1,5 +1,7 @@
 <?php
 
+define('EASL_Theme_Version', '1.1');
+
 if ( ! defined( 'EASL_INC_DIR' ) ) {
 	define( 'EASL_INC_DIR', trailingslashit( get_stylesheet_directory() ) . 'inc/' );
 }
@@ -38,7 +40,15 @@ function total_child_enqueue_parent_theme_style() {
 
 	// Load the stylesheet
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array(), $version );
-
+	if(defined('WPEX_THEME_STYLE_HANDLE')) {
+		wp_dequeue_style( WPEX_THEME_STYLE_HANDLE );
+		wp_enqueue_style(
+			WPEX_THEME_STYLE_HANDLE,
+			get_stylesheet_uri(),
+			array(),
+			EASL_Theme_Version
+		);
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'total_child_enqueue_parent_theme_style' );

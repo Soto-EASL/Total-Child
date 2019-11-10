@@ -580,11 +580,21 @@ function easl_social_share_icons() {
 }
 
 function easl_before_headder() {
-	get_template_part( 'partials/header/mobile-top-buttons' );
 	echo '<div id="header-top-line"></div>';
 }
 
 add_action( 'wpex_hook_header_before', 'easl_before_headder' );
+function easl_mobile_top_buttons() {
+	get_template_part( 'partials/header/mobile-top-buttons', 100 );
+}
+
+add_action( 'wpex_hook_header_top', 'easl_mobile_top_buttons', 1 );
+
+function easl_header_follow_icons() {
+	get_template_part( 'partials/follow-icons' );
+}
+
+add_action( 'wpex_hook_header_top', 'easl_header_follow_icons', 2 );
 
 function easl_page_prelaoder_template() {
 	get_template_part( 'partials/header/preloader' );
