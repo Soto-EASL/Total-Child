@@ -18,6 +18,7 @@ require_once EASL_INC_DIR . 'post-types/easl-history/easl-history-config.php';
 require_once EASL_INC_DIR . 'post-types/membership-category/membership-category-config.php';
 require_once EASL_INC_DIR . 'post-types/easl-widget/easl-widget-config.php';
 require_once EASL_INC_DIR . 'post-types/icon-widget/icon-widget-config.php';
+require_once EASL_INC_DIR . 'post-types/home-page-slider/home-page-slider.php';
 
 function easl_change_pt_labels_post($labels) {
 	$labels = array(
@@ -51,7 +52,7 @@ function easl_admin_menu_change() {
 	global $menu, $submenu, $pagenow, $title;
 	// Rename menu
 	$to_rename = array(
-		'revslider' => 'Homepage Sliders'
+		//'revslider' => 'Homepage Sliders'
 	);
 	foreach ( $menu as $id => $data ) {
 		if ( isset( $to_rename[$data[ 2 ]] ) ) {
@@ -74,7 +75,8 @@ function easl_menu_order($menu_order) {
 		'edit.php?post_type=event', // Events
 		'edit.php?post_type=easl_widget', // Events
 		'edit.php?post_type=fellowship', // Fellowship
-		'revslider', // Home page sliders
+		'edit.php?post_type=easl_hp_slider', // Home page sliders
+		//'revslider', // Home page sliders
 		'edit.php?post_type=easl_history', // History
 		'edit.php?post_type=ilc', // ILC
 		'edit.php?post_type=easl_icon_widget', // Icon Widget

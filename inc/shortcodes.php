@@ -86,5 +86,6 @@ function easl_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/easl-national-associations/easl-national-associations.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-misc-list/easl-misc-list.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-misc-list-item/easl-misc-list-item.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-homepage-slider/easl-homepage-slider.php');
 }
 add_action('vc_after_mapping', 'easl_map_vc_shortcodes');

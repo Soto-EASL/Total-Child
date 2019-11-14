@@ -1,6 +1,7 @@
 <?php
 
-define('EASL_Theme_Version', '1.1');
+//define('EASL_THEME_VERSION', '1.1');
+define( 'EASL_THEME_VERSION', time() );
 
 if ( ! defined( 'EASL_INC_DIR' ) ) {
 	define( 'EASL_INC_DIR', trailingslashit( get_stylesheet_directory() ) . 'inc/' );
@@ -40,13 +41,13 @@ function total_child_enqueue_parent_theme_style() {
 
 	// Load the stylesheet
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array(), $version );
-	if(defined('WPEX_THEME_STYLE_HANDLE')) {
+	if ( defined( 'WPEX_THEME_STYLE_HANDLE' ) ) {
 		wp_dequeue_style( WPEX_THEME_STYLE_HANDLE );
 		wp_enqueue_style(
 			WPEX_THEME_STYLE_HANDLE,
 			get_stylesheet_uri(),
 			array(),
-			EASL_Theme_Version
+			EASL_THEME_VERSION
 		);
 	}
 }
@@ -56,9 +57,9 @@ add_action( 'wp_enqueue_scripts', 'total_child_enqueue_parent_theme_style' );
 function easl_custom_scripts() {
 	wp_enqueue_script( 'jquery' );
 	if ( is_singular( 'event' ) && easl_is_future_event( get_queried_object_id() ) ) {
-		wp_enqueue_script( 'atc', 'https://addevent.com/libs/atc/1.6.1/atc.min.js', array(), null, false );
+		wp_enqueue_script( 'atc', 'https://addevent.com/libs/atc/1.6.1/atc.min.js', array(), '1.2.1', false );
 	}
-	wp_enqueue_script( 'easl-custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'easl-custom', get_stylesheet_directory_uri() . '/assets/js/custom.js', array( 'jquery' ), EASL_THEME_VERSION, true );
 	$ssl_scheme     = is_ssl() ? 'https' : 'http';
 	$fornt_end_data = array(
 		'ajaxUrl'     => admin_url( 'admin-ajax.php', $ssl_scheme ),
