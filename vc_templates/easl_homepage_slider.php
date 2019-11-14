@@ -105,7 +105,6 @@ if ( count( $slides ) > 0 ):
         </div>
 	    <?php if ( count( $navigation_dots ) > 1 ): ?>
             <div class="easl-hps-nav-wrap">
-                <div class="easl-hps-nav-dots-wrap"><?php echo implode('', $navigation_dots); ?></div>
                 <div class="easl-hps-nav-arrows-wrap">
                     <a href="#" class="easl-hps-nav-arrow-left"><span class="ticon ticon-chevron-left"></span></a>
                     <a href="#" class="easl-hps-nav-arrow-right"><span class="ticon ticon-chevron-right"></span></a>

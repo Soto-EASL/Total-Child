@@ -99,7 +99,7 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 		if ( ! in_array( $color, array( 'blue', 'lightblue', 'red', 'teal', 'orange', 'gray', 'yellow' ) ) ) {
 			$color = 'lightblue';
 		}
-		$link_html = '<a class="easl-generic-button easl-color-' . $color . '"' . $target_attr . '>' . $link['title'] . ' <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
+		$link_html = '<a class="easl-generic-button easl-color-' . $color . '" href="'. esc_url($link['url']) .'" ' . $target_attr . '>' . $link['title'] . ' <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
 
 		return $link_html;
 	}
