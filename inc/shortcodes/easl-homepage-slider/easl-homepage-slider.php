@@ -23,7 +23,7 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 		if ( ! $objects ) {
 			return $_dd;
 		}
-		$_dd = array( __( 'Select an icon widget', 'total-child' ) => '' );
+		$_dd = array( __( 'Select an slider', 'total-child' ) => '' );
 		foreach ( $objects as $object ) {
 			$_dd[ get_the_title( $object->ID ) ] = $object->ID;
 		}
@@ -200,7 +200,7 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 
 			$slides_data[] = array(
 				'image'     => $slider_image,
-				'image_alt' => $slide_link,
+				'image_alt' => $slider_image_alt,
 				'image_pos' => $slider_image_pos,
 				'link_html' => $slide_link_html,
 				'title'     => $this->build_text_html( $title, $title_font_family, $title_font_size, $title_color, 'easl-hsc-title', 'h3' ),

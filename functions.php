@@ -1,7 +1,7 @@
 <?php
 
-//define('EASL_THEME_VERSION', '1.1');
-define( 'EASL_THEME_VERSION', time() );
+define('EASL_THEME_VERSION', '1.2.1');
+//define( 'EASL_THEME_VERSION', time() );
 
 if ( ! defined( 'EASL_INC_DIR' ) ) {
 	define( 'EASL_INC_DIR', trailingslashit( get_stylesheet_directory() ) . 'inc/' );
