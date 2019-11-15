@@ -5351,8 +5351,13 @@ ul.event-links-list li:before {
     color: #fff;
 }
 
+.single-publication .easl-content-share-row {
+    margin-top: 35px;
+}
+
 .publication-main-section {
     padding: 40px 0 0;
+    margin-bottom: 35px;
 }
 
 .publication-main-section .vc_column-inner {
@@ -5907,11 +5912,6 @@ body.wpex-responsive .footer-newsletter .footer-newsletter-inner {
     display: none;
 }
 
-.sign-up-news {
-    margin-bottom: 40px;
-
-}
-
 .footer-newsletter .gform_wrapper {
     margin: 0;
 }
@@ -6215,9 +6215,20 @@ a.button:hover {
     opacity: .5;
 }
 
-/* Share icons*/
-.heateor_sss_sharing_container {
+/* Share icons row*/
+.easl-content-share-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 35px;
+}
+
+.sign-up-news {
+    margin-bottom: 0;
+}
+
+.heateor_sss_sharing_container {
+    margin-bottom: 0;
 }
 
 .single-fellowship .heateor_sss_sharing_container {
@@ -11181,6 +11192,34 @@ body .mentors-application-title {
         margin-right: 0;
     }
 
+    .easl-content-share-row {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+    .easl-sss-share-wrap {
+        margin-bottom: 30px;
+    }
+    .heateor_sss_sharing_container .heateorSssSharing {
+        margin: 0;
+    }
+    .easl-newsletter-wrap {
+         padding-left: 60px;
+    }
+    .easl-newsletter-inner {
+        width: calc( 100% - 40px - ((100% - 200px)/4) );
+    }
+    .easl-newsletter-wrap .sign-up-news {
+        display: block;
+        position: relative;
+    }
+    .easl-newsletter-wrap .sign-up-news .easl-generic-button-icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     .heateor_sss_sharing_container .heateor_sss_sharing_ul {
         float: left;
         width: calc(100% - 60px);
@@ -12336,41 +12375,50 @@ body .mentors-application-title {
     .easl-hps-caption-inner {
         bottom: 24px;
     }
+
     .easl-hps-caption-content {
         width: 250px;
         padding-top: 5px;
         padding-bottom: 5px;
     }
+
     .easl-hps-nav-wrap {
         width: 250px;
         height: 24px;
     }
+
     .easl-hps-nav-dots-wrap {
         top: 9px;
     }
+
     .easl-hps-nav-dots-wrap a.easl-hps-nav-dot-item {
         width: 10px;
         height: 10px;
     }
+
     .easl-hps-nav-arrows-wrap {
         height: 24px;
     }
+
     .easl-hps-nav-arrows-wrap a {
         height: 24px;
         width: 24px;
         line-height: 24px;
         font-size: 14px;
     }
+
     .easl-hps-caption-content .easl-hsc-easl-hsc-title {
         font-size: 14px !important;
         margin-bottom: 4px;
         min-height: 32px;
     }
+
     .easl-hps-caption-content .easl-hsc-easl-hsc-subtitle {
         font-size: 12px;
         margin-bottom: 3px;
         min-height: 26px;
     }
+
     .easl-hps-caption-content .easl-hsc-easl-hsc-text {
         font-size: 12px;
         margin-bottom: 4px;

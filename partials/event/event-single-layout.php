@@ -21,5 +21,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	        <?php get_template_part('partials/event/event-single-sidebar'); ?>
         </div>
     </div>
-	<?php get_template_part('partials/event/event-single-bottom'); ?>
 </article><!-- #single-blocks -->

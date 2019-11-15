@@ -579,6 +579,14 @@ function easl_social_share_icons() {
 	include get_theme_file_path( 'partials/social-shares-icons.php' );
 }
 
+function easl_social_share_icons_row() {
+	if (is_singular(Publication_Config::get_publication_slug())) {
+		return;
+	}
+	include get_theme_file_path( 'partials/social-shares-icons.php' );
+}
+add_action( 'wpex_hook_content_bottom', 'easl_social_share_icons_row' );
+
 function easl_before_headder() {
 	echo '<div id="header-top-line"></div>';
 }

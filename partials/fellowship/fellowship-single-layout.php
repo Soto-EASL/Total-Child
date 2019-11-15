@@ -178,7 +178,3 @@ if ( $award_query && $award_query->have_posts() ):
 	endif;
 endif;
 ?>
-
-<div class="easl-social-share-wrap ">
-	<?php easl_social_share_icons(); ?>
-</div>
