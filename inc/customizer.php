@@ -2,23 +2,23 @@
 function easl_customizer_panels($panels) {
 	$panels['events'] = array(
 		'title' => __('Events', 'total-child'),
-		'condition' => true,
+		'condition' => '__return_true',
 	);
 	$panels['fellowship'] = array(
 		'title' => __('Fellowship', 'total-child'),
-		'condition' => true,
+		'condition' => '__return_true',
 	);
 	$panels['publications'] = array(
 		'title' => __('Publications', 'total-child'),
-		'condition' => true,
+		'condition' => '__return_true',
 	);
 	$panels['easl_miscellaneous'] = array(
 		'title' => __('Miscellaneous', 'total-child'),
-		'condition' => true,
+		'condition' => '__return_true',
 	);
 	$panels['preloader_animation'] = array(
 		'title' => __('Preloader Animation', 'total-child'),
-		'condition' => true,
+		'condition' => '__return_true',
 	);
 	return $panels;
 }
