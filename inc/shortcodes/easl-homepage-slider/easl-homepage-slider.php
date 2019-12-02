@@ -34,12 +34,12 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 	public function escape_slider_text( $text ) {
 		$text = wp_kses( $text, array(
 			'br'     => array(),
-			'a'   => array(
-				'style' => array(),
-				'class' => array(),
-				'id'    => array(),
-				'href'    => array(),
-				'target'    => array(),
+			'a'      => array(
+				'style'  => array(),
+				'class'  => array(),
+				'id'     => array(),
+				'href'   => array(),
+				'target' => array(),
 			),
 			'span'   => array(
 				'style' => array(),
@@ -55,7 +55,17 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 				'style' => array(),
 				'class' => array(),
 				'id'    => array(),
-			)
+			),
+			'sup'     => array(
+				'style' => array(),
+				'class' => array(),
+				'id'    => array(),
+			),
+			'sub'     => array(
+				'style' => array(),
+				'class' => array(),
+				'id'    => array(),
+			),
 		) );
 		$text = str_replace( array( "<br>\n", "<br/>\n", "\n", "\r" ), array( '<br/>', '<br/>', '<br/>', '' ), $text );
 
@@ -99,7 +109,7 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 		if ( ! in_array( $color, array( 'blue', 'lightblue', 'red', 'teal', 'orange', 'gray', 'yellow' ) ) ) {
 			$color = 'lightblue';
 		}
-		$link_html = '<a class="easl-generic-button easl-color-' . $color . '" href="'. esc_url($link['url']) .'" ' . $target_attr . '>' . $link['title'] . ' <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
+		$link_html = '<a class="easl-generic-button easl-color-' . $color . '" href="' . esc_url( $link['url'] ) . '" ' . $target_attr . '>' . $link['title'] . ' <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
 
 		return $link_html;
 	}
@@ -151,6 +161,9 @@ class EASL_VC_Homepage_Slider extends WPBakeryShortCode {
 
 		while ( have_rows( 'slides', $slider_id ) ) {
 			the_row();
+			if ( ! get_sub_field( 'is_active' ) ) {
+				continue;
+			}
 			$slider_image     = get_sub_field( 'image' );
 			$slider_image_alt = strip_tags( get_sub_field( 'image_alt' ) );
 			$slider_image_pos = strip_tags( get_sub_field( 'image_pos' ) );
