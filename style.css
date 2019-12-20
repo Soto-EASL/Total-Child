@@ -3255,7 +3255,8 @@ body .wpb_single_image a.easl-vc-image-over:after {
 
 .easl-gbtn-elearning,
 .elearning-icon {
-    background-image: url('images/icons/elearning2.png')
+    background-image: url('images/icons/elearning2_3.png');
+    width: 130px;
 }
 
 .easl-gbtn-fellowship,
