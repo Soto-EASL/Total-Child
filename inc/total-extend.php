@@ -64,6 +64,7 @@ function easl_vc_button_grid_icons() {
 		__( 'Scroll', 'total' )           => 'scroll',
 		__( 'LiverTree', 'total' )        => 'livertree',
 		__( 'e-Learning', 'total-child' ) => 'elearning',
+		__( 'Liverscreen', 'total-child' ) => 'liverscreen',
 	);
 }
 

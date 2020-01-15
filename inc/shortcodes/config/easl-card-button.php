@@ -18,6 +18,7 @@ return array(
             'heading' => __( 'Button Text', 'total' ),
             'param_name' => 'button_text',
             'description' => __( 'Enter button text.', 'total' ),
+            'admin_label' => true,
         ),
         array(
             'type' => 'textfield',
@@ -37,7 +38,7 @@ return array(
             'param_name' => 'button_icon',
             'value' => easl_vc_button_grid_icons(),
         ),
-        vc_map_add_css_animation(),
+        vc_map_add_css_animation(false),
         array(
             'type' => 'el_id',
             'heading' => __( 'Element ID', 'js_composer' ),
