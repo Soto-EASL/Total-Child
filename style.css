@@ -7672,7 +7672,8 @@ ul.suggestions {
 }
 
 .fellowship-details-image {
-    width: 175px;
+    width: 188px;
+    margin-right: 25px;
 }
 
 .fellowship-details-image img {
