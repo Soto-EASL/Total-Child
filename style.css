@@ -3192,6 +3192,11 @@ body .wpb_single_image a.easl-vc-image-over:after {
     width: 150px;
 }
 
+.easl-card-btn-icon.liverscreen-icon {
+    height: 75px;
+    width: 122px;
+}
+
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-litmus {
     background-position: 0px 0px;
 }
@@ -3231,6 +3236,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 
 .easl-gbtn:hover .easl-gbtn-icon.easl-gbtn-globe {
     background-position: 0px -62px;
+}
+
+.easl-gbtn:hover .easl-gbtn-icon.liverscreen-icon {
+    background-position: 0px -75px;
 }
 
 .easl-gbtn-awards,
@@ -3401,6 +3410,11 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .livertree-icon,
 .easl-gbtn-livertree {
     background-image: url("images/icons/livertree.png");
+}
+
+.liverscreen-icon,
+.easl-gbtn-liverscreen {
+    background-image: url("images/icons/liverscreen.png");
 }
 
 .easl-gbtn-text {
@@ -6445,6 +6459,10 @@ a.easl-card-btn:hover {
 .easl-card-btn:hover .easl-card-btn-icon.ueg-icon {
     background-position: 0 0;
 
+}
+
+.easl-card-btn:hover .easl-card-btn-icon.liverscreen-icon {
+    background-position: 0px -75px;
 }
 
 .easl-card-btn-icon.aleh-icon {
