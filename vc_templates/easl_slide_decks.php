@@ -253,14 +253,51 @@ if(count($child_cats_drobdowns) > 0){
 						wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ) : '';
 					$image_src = $image ? $image[0] : '';
 
+					$has_landing_page =  get_field('sd_has_landing_page');
+					$landing_page_link =  get_field('sd_landing_page_url');
 					$download_link =  get_field('slide-decks-file');
+					$landing_page_url = '';
+					$landing_page_title = '';
+					$landing_page_target = '';
+					if($landing_page_link){
+						$landing_page_url = $landing_page_link['url'];
+						$landing_page_title = $landing_page_link['title'] ? $landing_page_link['title'] : __('Download', 'total-child');
+						$landing_page_target = $landing_page_link['target'] ? $landing_page_link['target'] : '_self';
+                    }
+
+					$img = '';
+					$title = '';
+					$button_link = '';
+					if($has_landing_page){
+                        if($landing_page_url){
+	                        if($image_src){
+		                        $img = '<a href="'. esc_url($landing_page_url) .'" title="" target="'. $landing_page_target .'"><img src="'. $image_src .'" alt=""></a>';
+	                        }
+	                        $title = '<a href="'. esc_url($landing_page_url) .'" title="" target="'. $landing_page_target .'">' . get_the_title() . '</a>';
+	                        $button_link = '<a class="easl-generic-button easl-size-medium easl-color-light-blue" href="'. esc_url($landing_page_url) .'" title="" target="'. $landing_page_target .'">'. $landing_page_title .'<span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
+                        }else{
+	                        if($image_src){
+		                        $img = '<img src="'. $image_src .'" alt="">';
+	                        }
+	                        $title = get_the_title();
+                        }
+                    }elseif($download_link){
+					    if($image_src){
+						    $img = '<a href="'. esc_url($download_link) .'" title="" target="_blank" download="'. basename( parse_url( $download_link, PHP_URL_PATH ) ) .'"><img src="'. $image_src .'" alt=""></a>';
+                        }
+						$title = '<a href="'. esc_url($download_link) .'" title="" target="_blank" download="'. basename( parse_url( $download_link, PHP_URL_PATH ) ) .'">' . get_the_title() . '</a>';
+						$button_link = '<a class="easl-generic-button easl-size-medium easl-color-light-blue" href="'. esc_url($download_link) .'" title="" target="_blank" download="'. basename( parse_url( $download_link, PHP_URL_PATH ) ) .'">'. __('Download', 'total-child') .'<span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>';
+                    }else{
+						if($image_src){
+							$img = '<img src="'. $image_src .'" alt="">';
+						}
+						$title = get_the_title();
+                    }
 					?>
                     <article class="easl-slide-deck-item <?php if($image_src){echo 'easl-slide-deck-item-has-thumb';} ?> easl-sdrow-color-<?php echo easl_get_slide_decks_topic_color(); ?> clr">
-						<?php if($image_src): ?>
+						<?php if($img): ?>
                             <div class="easl-slide-deck-item-thumb">
-                                <?php if($download_link): ?><a href="<?php echo $download_link;?>" title="" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php endif; ?>
-                                    <img alt="" src="<?php echo $image_src; ?>"/>
-					            <?php if($download_link): ?></a><?php endif; ?>
+                                <?php echo $img; ?>
                             </div>
 						<?php endif; ?>
                         <div class="easl-slide-deck-item-content">
@@ -271,15 +308,13 @@ if(count($child_cats_drobdowns) > 0){
                                     <span class="sp-meta-value"><?php echo $topic_str; ?></span>
                                 </p>
 	                            <?php endif; ?>
-                                <h3>
-                                    <?php if($download_link): ?><a href="<?php echo $download_link; ?>" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php endif; ?>
-                                        <?php the_title(); ?>
-                                    <?php if($download_link): ?></a><?php endif; ?>
-                                </h3>
+                                <h3><?php echo $title ?></h3>
                             </div>
-                            <?php if($download_link): ?>
-                            <a class="easl-generic-button easl-size-medium easl-color-light-blue" href="<?php echo $download_link; ?>" target="_blank" download="<?php echo basename( parse_url( $download_link, PHP_URL_PATH ) ); ?>"><?php _e('Download', 'total-child') ?> <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
-	                        <?php endif; ?>
+                            <?php
+                            if($button_link){
+                                echo $button_link;
+                            }
+                            ?>
                         </div>
                     </article>
 				<?php

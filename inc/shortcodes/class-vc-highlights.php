@@ -99,24 +99,27 @@ if( class_exists('WPBakeryShortCode') ){
                 'slide_decks' => '',
             );
 
+	        ob_start();
             while($latest_event->have_posts()){
                 $latest_event->the_post();
-                ob_start();
 	            get_template_part('partials/event/event-loop');
-	            $items['events'] = ob_get_clean();
             }
+	        $items['events'] = ob_get_clean();
+	        wp_reset_query();
+	        ob_start();
 	        while($latest_publication->have_posts()){
 		        $latest_publication->the_post();
-		        ob_start();
 		        get_template_part('partials/highlights/publications');
-		        $items['publications'] = ob_get_clean();
 	        }
+	        $items['publications'] = ob_get_clean();
+	        wp_reset_query();
+	        ob_start();
 	        while($latest_slide_desks->have_posts()){
 		        $latest_slide_desks->the_post();
-		        ob_start();
 		        get_template_part('partials/highlights/slide-decks');
-		        $items['slide_decks'] = ob_get_clean();
 	        }
+	        $items['slide_decks'] = ob_get_clean();
+	        wp_reset_query();
 
 	        wp_send_json(array(
 		        'status' => 'OK',
