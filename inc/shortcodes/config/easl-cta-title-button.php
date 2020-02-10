@@ -27,7 +27,7 @@ return array(
 		),
 		array(
 			'type'			 => 'textarea_html',
-			'heading'		 => __( 'Button title', 'total-child' ),
+			'heading'		 => __( 'Text', 'total-child' ),
 			'param_name'	 => 'content',
 			'description'	 => __( 'Enter ingtroduction text.', 'total-child' ),
 		),

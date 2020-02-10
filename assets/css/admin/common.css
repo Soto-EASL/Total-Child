@@ -4,3 +4,6 @@
 .vc_element-icon.easl-no-default-container-icon[data-is-container=true] {
     background-image: none!important;
 }
+#event_formatdiv {
+    display: none!important;
+}

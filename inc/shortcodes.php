@@ -87,5 +87,10 @@ function easl_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/easl-misc-list/easl-misc-list.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-misc-list-item/easl-misc-list-item.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-homepage-slider/easl-homepage-slider.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-heading/easl-heading.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-separator/easl-separator.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-heading-image-box/easl-heading-image-box.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-callout/easl-callout.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-logo-grid/easl-logo-grid.php');
 }
 add_action('vc_after_mapping', 'easl_map_vc_shortcodes');

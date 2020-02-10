@@ -79,18 +79,18 @@ return array(
                 'type' => 'text',
                 'description' => esc_html__( 'Enter the Notification URL.', 'total' ),
             ),
-            'submit_abstract' => array(
-                'title' => esc_html__( 'Submit Abstract', 'total' ),
-                'id' => $prefix . 'submit_abstract_url',
-                'type' => 'text',
-                'description' => esc_html__( 'Enter the Abstract Submission URL.', 'total' ),
-            ),
-            'register' => array(
-                'title' => esc_html__( 'Register', 'total' ),
-                'id' => $prefix . 'register_url',
-                'type' => 'text',
-                'description' => esc_html__( 'Enter the Registration URL.', 'total' ),
-            ),
+//            'submit_abstract' => array(
+//                'title' => esc_html__( 'Submit Abstract', 'total' ),
+//                'id' => $prefix . 'submit_abstract_url',
+//                'type' => 'text',
+//                'description' => esc_html__( 'Enter the Abstract Submission URL.', 'total' ),
+//            ),
+//            'register' => array(
+//                'title' => esc_html__( 'Register', 'total' ),
+//                'id' => $prefix . 'register_url',
+//                'type' => 'text',
+//                'description' => esc_html__( 'Enter the Registration URL.', 'total' ),
+//            ),
 			'application' => array(
 				'title' => esc_html__( 'Application URL', 'total' ),
 				'id' => $prefix . 'application_url',
