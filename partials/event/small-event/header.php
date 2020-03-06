@@ -70,43 +70,46 @@ if ( $header_style ) {
 			<?php if ( $featured_image_url ): ?>
                 <img class="small-event-header-bg-img" alt="<?php echo $img_alt; ?>" src="<?php echo $featured_image_url; ?>">
 			<?php endif; ?>
-            <h1 class="page-header-title wpex-clr" itemprop="headline">
-                <span><?php echo $custom_title; ?></span>
-            </h1>
-			<?php if ( $event_date_parts || $event_location_display ): ?>
-                <div class="small-event-date-location">
-					<?php if ( $event_date_parts ): ?>
-                        <p class="small-event-location"><?php echo $event_date_parts['day'] . ' ' . $event_date_parts['month'] . ', ' . $event_date_parts['year']; ?></p>
-					<?php endif; ?>
-					<?php if ( $event_location_display ): ?>
-                        <p class="small-event-location"><?php echo $event_location_display; ?></p>
-					<?php endif; ?>
-                </div>
-			<?php endif; ?>
-			<?php if ( ( $abstract_button_show && $event_submit_abstract_url ) || ( $event_submit_abstract_url && $register_button_show ) ): ?>
-                <div class="small-event-header-button-title">
-					<?php
-					if ( ( $abstract_button_show && $event_submit_abstract_url ) && ( $event_submit_abstract_url && $register_button_show ) ) {
-						echo 'Abstract submission and registration are open now';
-					} elseif ( $abstract_button_show && $event_submit_abstract_url ) {
-						echo 'Abstract submission is open now';
-					} elseif ( $event_submit_abstract_url && $register_button_show ) {
-						echo 'Registration is open now';
-					}
-					?>
-                </div>
-                <div class="small-event-header-buttons">
-					<?php if ( $abstract_button_show && $event_submit_abstract_url ): ?>
-                        <a class="easl-generic-button easl-color-lightblue" href="<?php echo esc_url( $event_submit_abstract_url ); ?>" target="_blank">Submit
-                            Abstract
-                            <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
-					<?php endif; ?>
-					<?php if ( $event_submit_abstract_url && $register_button_show ): ?>
-                        <a class="easl-generic-button easl-color-lightblue" href="<?php echo esc_url( $event_register_url ); ?>" target="_blank">Register
-                            <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
-					<?php endif; ?>
-                </div>
-			<?php endif; ?>
+            <div class="easl-hps-caption-content">
+                <h1 class="page-header-title easl-hsc-easl-hsc-title" itemprop="headline">
+                    <span><?php echo $custom_title; ?></span>
+                </h1>
+				<?php if ( $event_date_parts || $event_location_display ): ?>
+                    <h4 class="easl-hsc-easl-hsc-subtitle">
+						<?php if ( $event_date_parts ): ?>
+                            <span class="small-event-location"><?php echo $event_date_parts['day'] . ' ' . $event_date_parts['month'] . ', ' . $event_date_parts['year']; ?></span>
+						<?php endif; ?>
+						<?php if ( $event_date_parts && $event_location_display ): ?><br/><?php endif; ?>
+						<?php if ( $event_location_display ): ?>
+                            <span class="small-event-location"><?php echo $event_location_display; ?></span>
+						<?php endif; ?>
+                    </h4>
+				<?php endif; ?>
+				<?php if ( ( $abstract_button_show && $event_submit_abstract_url ) || ( $event_submit_abstract_url && $register_button_show ) ): ?>
+                    <p class="easl-hsc-easl-hsc-text">
+						<?php
+						if ( ( $abstract_button_show && $event_submit_abstract_url ) && ( $event_submit_abstract_url && $register_button_show ) ) {
+							echo 'Abstract submission and registration are open now';
+						} elseif ( $abstract_button_show && $event_submit_abstract_url ) {
+							echo 'Abstract submission is open now';
+						} elseif ( $event_submit_abstract_url && $register_button_show ) {
+							echo 'Registration is open now';
+						}
+						?>
+                    </p>
+                    <div class="easl-hps-caption-cta-wrap">
+						<?php if ( $abstract_button_show && $event_submit_abstract_url ): ?>
+                            <a class="easl-generic-button easl-color-lightblue" href="<?php echo esc_url( $event_submit_abstract_url ); ?>" target="_blank">Submit
+                                Abstract
+                                <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
+						<?php endif; ?>
+						<?php if ( $event_submit_abstract_url && $register_button_show ): ?>
+                            <a class="easl-generic-button easl-color-lightblue" href="<?php echo esc_url( $event_register_url ); ?>" target="_blank">Register
+                                <span class="easl-generic-button-icon"><span class="ticon ticon-chevron-right"></span></span></a>
+						<?php endif; ?>
+                    </div>
+				<?php endif; ?>
+            </div>
         </div>
     </div>
 </header>
