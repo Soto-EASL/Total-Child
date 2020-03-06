@@ -7219,8 +7219,7 @@ ul.suggestions {
 
 .small-event-page-title-wrap {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     width: 100%;
     padding-top: 30px;
     padding-bottom: 20px;
@@ -7235,10 +7234,9 @@ ul.suggestions {
 
 .small-event-page-title-wrap .page-header-title {
     color: #004b87;
-    font-family: "KnockoutHTF31JuniorMiddlewt";
-    font-size: 34px;
     line-height: 1.2em;
     margin: 0 0 20px;
+    padding: 0;
 }
 
 .small-event-date-location {
@@ -7488,6 +7486,19 @@ ul.suggestions {
 
 .easl-small-event-sbitem .eib-image {
     margin-bottom: 8px;
+}
+.easl-event-map .eib-image {
+    position: relative;
+    height: 0;
+    padding-top: 100%;
+    overflow: hidden;
+}
+.easl-event-map .eib-image iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .easl-event-accreditation {
@@ -12801,13 +12812,6 @@ body .mentors-application-title {
     .small-events-page-header {
         height: 39.0625vw;
     }
-    .small-event-page-title-wrap {
-        width: calc((100% - 30px) / 2);
-    }
-    .small-event-page-title-wrap .page-header-title {
-        font-size: 28px;
-        margin-bottom: 18px;
-    }
     .small-event-date-location {
         font-size: 15px;
         margin-bottom: 18px;
@@ -12838,6 +12842,9 @@ body .mentors-application-title {
 
     .single-event-article .vc_row > .vc_column_container:last-child > .vc_column-inner {
         margin-bottom: 0;
+    }
+    .easl-event-map .eib-image {
+        padding-top: 52.6%;
     }
     /*Logo grid*/
     .easl-logo-grid-item {
@@ -12961,10 +12968,6 @@ body .mentors-application-title {
         font-size: 9px;
     }
 
-    .small-event-page-title-wrap .page-header-title {
-        font-size: 24px;
-        margin-bottom: 14px;
-    }
     .small-event-date-location {
         font-size: 14px;
         margin-bottom: 12px;
@@ -13032,16 +13035,6 @@ body .mentors-application-title {
     .easl-logo-grid-item {
         width: 50%;
     }
-    .small-event-page-title-wrap {
-        padding: 8px 10px;
-        background-color: rgba(240, 240, 240, .93);
-        margin: 15px 0 30px;
-        width: 100%;
-    }
-    .small-event-page-title-wrap .page-header-title {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
     .small-event-date-location {
         font-size: 14px;
         margin-bottom: 10px;
@@ -13108,10 +13101,6 @@ body .mentors-application-title {
     .small-events-page-header {
         height: 52.08vw;
     }
-
-    .small-event-page-title-wrap {
-        margin: 20px 0 30px;
-    }
 }
 
 @media only screen and (max-width: 360px) {
@@ -13170,11 +13159,5 @@ body .mentors-application-title {
     /*Logo grid*/
     .easl-logo-grid-item {
         width: 100%;
-    }
-    .small-event-page-title-wrap {
-        margin: 15px 0 27px;
-    }
-    .small-event-page-title-wrap .page-header-title {
-        font-size: 18px;
     }
 }
