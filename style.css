@@ -7201,6 +7201,9 @@ ul.suggestions {
 }
 
 /* Small Event */
+.admin-bar .fancybox-toolbar {
+    top: 32px;
+}
 .small-events-page-header {
     background-color: #f0f0f0;
     height: 24.75vw;
