@@ -146,6 +146,18 @@ return array(
 			'group'       => __( 'Popup', 'total-child' ),
 		),
 		array(
+			'type'       => 'vcex_ofswitch',
+			'heading'    => __( 'Open in new Tab(pop will not work)', 'total-child' ),
+			'param_name' => 'new_tab',
+			'std'        => 'true',
+			'admin_label' => false,
+			'dependency'  => array(
+				'element' => 'popup_type',
+				'value'   => array( 'link' ),
+			),
+			'group'       => __( 'Popup', 'total-child' ),
+		),
+		array(
 			'type'        => 'dropdown',
 			'heading'     => __( 'Type', 'total-child' ),
 			'param_name'  => 'sch_type',

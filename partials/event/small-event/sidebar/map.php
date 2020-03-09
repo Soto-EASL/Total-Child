@@ -3,9 +3,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
-$event_google_map_iframe      = get_field( 'event_google_map_iframe' );
-$event_address                = get_field( 'event_address' );
-$event_google_map_view_on_map = get_field( 'event_google_map_view_on_map' );
+$event_google_map_iframe      = get_field( 'se_google_map_iframe' );
+$event_address                = get_field( 'se_address' );
+$event_google_map_view_on_map = get_field( 'se_google_map_view_on_map' );
 if ( $event_google_map_iframe ):
 	?>
     <div class="easl-small-event-sbitem easl-small-event-sbitem-map">

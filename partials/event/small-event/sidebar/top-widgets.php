@@ -3,8 +3,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
-if ( have_rows( 'sidebar_top_widgets' ) ) {
-	while ( have_rows( 'sidebar_top_widgets' ) ) {
+if ( have_rows( 'se_sidebar_top_widgets' ) ) {
+	while ( have_rows( 'se_sidebar_top_widgets' ) ) {
 		the_row();
 		$widget_type = get_sub_field( 'type' );
 		if ( $widget_type ) {

@@ -3,8 +3,21 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
-$event_poster_image   = get_field( 'event_poster_image' );
-$poster_download_link = get_field( 'poster_download_link' );
+$event_poster_image       = get_field( 'se_poster_image' );
+$poster_download_link     = get_field( 'se_poster_download_link' );
+$event_poster_text_source = get_field( 'se_poster_text_source' );
+$event_poster_custom_text = get_field( 'se_poster_custom_text' );
+if ( ! in_array( $event_poster_text_source, array( 'default', 'no', 'custom' ) ) ) {
+	$event_poster_text_source = 'default';
+}
+$event_poster_text = '';
+if ( $event_poster_text_source == 'no' ) {
+	$event_poster_text = '';
+} elseif ( $event_poster_text_source == 'custom' ) {
+	$event_poster_text = trim( $event_poster_custom_text );
+} else {
+	$event_poster_text = trim( wpex_get_mod( 'event_poster_text' ) );
+}
 
 if ( $event_poster_image || $poster_download_link ):
 	?>
@@ -31,8 +44,7 @@ if ( $event_poster_image || $poster_download_link ):
 					} ?> download>
 						<?php if ( ! empty( $poster_download_link['title'] ) ) {
 							echo esc_html( $poster_download_link['title'] );
-						}
-						{
+						} else {
 							_e( 'Download Poster', 'total-child' );
 						} ?>
                     </a>

@@ -20,6 +20,7 @@ $heading    = '';
 $box_ar     = '';
 $popup_type = '';
 $link       = '';
+$new_tab    = '';
 $pop_image  = '';
 $pdf        = '';
 $video_url  = '';
@@ -57,6 +58,9 @@ switch ( $popup_type ) {
 	case 'link':
 		$popup_trigger_url          = trim( $link );
 		$popup_trigger_attributes[] = 'class="easl-heading-image-box-link"';
+		if ( 'true' == $new_tab ) {
+			$popup_trigger_attributes[] = 'target="_blank"';
+		}
 		break;
 	case 'image':
 		$popup_trigger_url = wp_get_attachment_image_url( $pop_image, 'full' );
