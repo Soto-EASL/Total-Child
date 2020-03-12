@@ -7313,7 +7313,7 @@ ul.suggestions {
 }
 
 .easl-key-dates .easl-key-dates-list li {
-    color: #004b87;
+    color: #71c5e8;
     font-family: 'KnockoutHTF51Middleweight';
     font-size: 16px;
     font-weight: 400;
@@ -7327,38 +7327,6 @@ ul.suggestions {
     margin-bottom: 0;
 }
 
-.easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-
-}
-
-
-.event-color-blue .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #165291;
-}
-
-.event-color-light-blue .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #71c5e8;
-}
-
-.event-color-red .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #de2a57;
-}
-
-.event-color-teal .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #189790;
-}
-
-.event-color-orrange .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #f26827;
-}
-
-.event-color-gray .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #7e6a73;
-}
-
-.event-color-yellow .easl-key-dates .easl-key-dates-list li.key-date-not-expired {
-    color: #f9bc49;
-}
 
 .easl-key-dates .easl-key-dates-list li span {
     display: block;
@@ -7388,14 +7356,6 @@ ul.suggestions {
     position: absolute;
     top: 0;
     left: -18px;
-}
-
-.easl-key-dates .easl-key-dates-list li.key-date-not-expired::before {
-    background-color: #cbcbcb;
-}
-
-.easl-key-dates .easl-key-dates-list li.key-date-not-expired::after {
-    color: #cbcbcb;
 }
 
 .easl-key-dates .easl-key-dates-list li:last-child::before {
