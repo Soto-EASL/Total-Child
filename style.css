@@ -8330,6 +8330,54 @@ ul.suggestions {
     border: 1px solid #d1d1d1;
 }
 
+
+/* VC Shortcode: EASL Image Banner */
+.easl-banner-image-wrap {
+}
+.easl-banner-image-wrap .easl-banner-image {
+    display: block;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+.easl-banner-image-wrap .easl-banner-image.easl-banner-image-link {
+    text-decoration: none;
+    color: inherit;
+}
+.easl-banner-image .easl-banner-image-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+.easl-banner-image-overlay {
+    position: absolute;
+    top: 26%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: stretch;
+}
+.easl-banner-image-overlay-inner.easl-banner-image-overlay-inner {
+    margin: 0 auto;
+    width: 75%;
+    max-width: 640px;
+}
+.easl-hps-caption-content.easl-banner-image-overlay-inner .easl-hsc-easl-hsc-title {
+    min-height: auto;
+}
+.easl-hps-caption-content.easl-banner-image-overlay-inner .easl-hsc-easl-hsc-subtitle {
+
+}
+.easl-hps-caption-content.easl-banner-image-overlay-inner .easl-hsc-easl-hsc-text {
+
+}
+
 /* VC Shortcode: EASL News List */
 .easl-news-list-filter {
     padding: 15px 15px 0;
