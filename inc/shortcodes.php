@@ -92,5 +92,6 @@ function easl_map_vc_shortcodes() {
 	require_once get_theme_file_path('inc/shortcodes/easl-heading-image-box/easl-heading-image-box.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-callout/easl-callout.php');
 	require_once get_theme_file_path('inc/shortcodes/easl-logo-grid/easl-logo-grid.php');
+	require_once get_theme_file_path('inc/shortcodes/easl-banner-image/easl-banner-image.php');
 }
 add_action('vc_after_mapping', 'easl_map_vc_shortcodes');
