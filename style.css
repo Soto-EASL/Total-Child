@@ -6841,10 +6841,6 @@ ul.suggestions {
     background-position: -36px -41px;
 }
 
-.event-kd-title {
-    text-transform: capitalize;
-}
-
 .fellowships li a:hover {
     text-decoration: none;
 }
