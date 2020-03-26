@@ -11171,6 +11171,11 @@ body .mentors-application-title {
     z-index: 999999;
 }
 
+
+.ctf-tweet-text-media-wrap {
+    display: none!important;
+}
+
 @-webkit-keyframes easl-ytp-spinner-linspin {
     to {
         -webkit-transform: rotate(360deg);
