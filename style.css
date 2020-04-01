@@ -3208,6 +3208,11 @@ body .wpb_single_image a.easl-vc-image-over:after {
     width: 150px;
 }
 
+.easl-card-btn-icon.decision-icon {
+    height: 56px;
+    width: 175px;
+}
+
 .easl-card-btn-icon.liverscreen-icon {
     height: 75px;
     width: 122px;
@@ -3219,6 +3224,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 
 .easl-card-btn:hover .easl-card-btn-icon.litmus-icon {
     background-position: 0px -63px;
+}
+
+.easl-card-btn:hover .easl-card-btn-icon.decision-icon {
+    background-position: 0px -56px;
 }
 
 .easl-card-btn-icon.microb-predict-icon {
@@ -3382,6 +3391,10 @@ body .wpb_single_image a.easl-vc-image-over:after {
 .litmus-icon,
 .easl-gbtn-litmus {
     background-image: url("images/icons/litmus.png");
+}
+.decision-icon,
+.easl-gbtn-decision {
+    background-image: url("images/icons/decision.png");
 }
 
 
