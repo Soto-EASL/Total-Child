@@ -25,11 +25,9 @@ $event_application_url     = trim( get_field( 'event_application_url' ) );
 						?>
                         <div class="event-dates-wrap">
                             <div class="event-dates">
-                                <?php if(10972 != get_the_ID()): ?>
                                 <span class="event-day"><?php echo $event_date_parts['day']; ?></span>
                                 <span class="event-mon"><?php echo $event_date_parts['month']; ?></span>
-                                <?php endif; ?>
-                                <span class="event-year"<?php if(10972 == get_the_ID()): ?>style="font-size: 20px;line-height: 20px;margin-top: 25px;" <?php endif; ?>><?php echo $event_date_parts['year']; ?></span>
+                                <span class="event-year"><?php echo $event_date_parts['year']; ?></span>
                             </div>
                         </div>
 					<?php endif; ?>

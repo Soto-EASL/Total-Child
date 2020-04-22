@@ -115,11 +115,7 @@ if('venue|city,contury' == $event_location_display_format){
 
 $event_color = easl_get_events_topic_color($event_id);
 
-if(10972 == get_the_ID()){
-	$current_events_month = date('Y', $event_start_date);
-}else{
-    $current_events_month = date('F Y', $event_start_date);
-}
+$current_events_month = date('F Y', $event_start_date);
 
 $new_month_row = false;
 if($previous_events_month !== $current_events_month){
@@ -168,12 +164,10 @@ $event_highlights = wp_parse_args($event_highlights, array(
 				</p>
 				<?php endif; ?>
 				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-				<p class="ec-dates" href="">
-					<?php if(10972 != get_the_ID()): ?>
+				<p class="ec-dates">
                     <span class="ecd-day"><?php echo $event_date_days; ?></span>
                     <span class="ecd-mon"><?php echo $event_date_month; ?></span>
-                    <?php endif; ?>
-                    <span class="ecd-year"<?php if(10972 == get_the_ID()): ?>style="font-size: 20px;line-height: 20px;margin-top: 25px;" <?php endif; ?>><?php echo date('Y', $event_start_date); ?></span><i class="ticon ticon-play" aria-hidden="true"></i></p>
+                    <span class="ecd-year"><?php echo date('Y', $event_start_date); ?></span><i class="ticon ticon-play" aria-hidden="true"></i></p>
 			</header>
 			<p class="ec-location">
 				<span class="ec-loc-name"><?php echo easl_meeting_type_name($event_id); ?></span>
